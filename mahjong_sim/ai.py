@@ -11,6 +11,8 @@ skill（思考の精度）はベンチマークの強さ調整に使う:
   4: ダマテン判断あり（個体はこのレベルで思考する）
   5: 4に加えて2段先の受け入れ（好形変化）まで読む（タイトルホルダー用）
 """
+import random
+
 from .tiles import NUM_KINDS, DRAGONS, is_honor, is_yaochu, is_simple, suit_of, number_of
 from .shanten import shanten, winning_tiles, ukeire
 from .scoring import WinContext, evaluate_win
@@ -31,10 +33,12 @@ SHANTEN_UNIT = 12.0  # 1向聴の差を表す基準点
 
 
 class MahjongAI:
-    def __init__(self, params, skill=4, name="AI"):
+    def __init__(self, params, skill=4, name="AI", noise=0.0, rng=None):
         self.p = params
         self.skill = skill
         self.name = name
+        self.noise = noise          # ムラ気：打牌評価に加える揺らぎの大きさ（点）
+        self.rng = rng or random.Random()
 
     # ============================================================
     # 共通の観測
@@ -61,7 +65,7 @@ class MahjongAI:
                 out.append((opp, 1.0))
             elif self.skill >= 3 and rs.melds[opp]:
                 n = len(rs.melds[opp])
-                valuable = any(m.kind == "pon" and (m.base in yakuhai_all or m.base == rs.seat_wind(opp))
+                valuable = any(m.is_triplet_like and (m.base in yakuhai_all or m.base == rs.seat_wind(opp))
                                for m in rs.melds[opp]) or any(t in doras for m in rs.melds[opp] for t in m.tiles)
                 if n >= 3:
                     out.append((opp, 0.6 if valuable else 0.45))
@@ -105,7 +109,7 @@ class MahjongAI:
 
         yakuhai = 0.0
         for t in self._yakuhai_tiles(rs, seat):
-            c = hand[t] + sum(3 for m in melds if m.kind == "pon" and m.base == t)
+            c = hand[t] + sum(3 for m in melds if m.is_triplet_like and m.base == t)
             if c >= 3:
                 yakuhai += 1.5
             elif c == 2:
@@ -151,7 +155,7 @@ class MahjongAI:
         unseen = self._unseen(rs, seat)
         threats = self._threats(rs, seat) if self.skill >= 2 else []
 
-        candidates = [t for t in range(NUM_KINDS) if hand[t] > 0 and t != forbidden]
+        candidates = [t for t in range(NUM_KINDS) if hand[t] > 0 and t not in (forbidden or ())]
         if not candidates:
             candidates = [t for t in range(NUM_KINDS) if hand[t] > 0]
 
@@ -186,6 +190,9 @@ class MahjongAI:
 
             scored.append([attack + value - defense, t, sh, uk])
 
+        if self.noise > 0:
+            for row in scored:
+                row[0] += self.rng.gauss(0, self.noise)
         scored.sort(key=lambda x: -x[0])
 
         if self.skill >= 5:
@@ -196,7 +203,7 @@ class MahjongAI:
         declare = False
         if best[2] == 0 and rs.is_menzen(seat) and not rs.riichi[seat]:
             hand[discard] -= 1
-            declare = self._decide_riichi(rs, seat, hand, unseen, threats)
+            declare = self._decide_riichi(rs, seat, hand, k, unseen, threats)
             hand[discard] += 1
         return discard, declare
 
@@ -245,10 +252,10 @@ class MahjongAI:
     # ============================================================
     # リーチ判断
     # ============================================================
-    def _decide_riichi(self, rs, seat, hand13, unseen, threats):
-        if rs.tiles_left() < 4 or rs.scores[seat] < 1000:
+    def _decide_riichi(self, rs, seat, hand13, k, unseen, threats):
+        if rs.tiles_left() < 4 or rs.scores[seat] < rs.rules.riichi_min_score:
             return False
-        waits = winning_tiles(hand13, 0)
+        waits = winning_tiles(hand13, k)
         live = sum(unseen[w] for w in waits)
         if self.skill <= 1:
             return True
@@ -262,9 +269,10 @@ class MahjongAI:
         for w in waits:
             c = list(hand13)
             c[w] += 1
-            ctx = WinContext(closed_counts=c, melds=[], win_tile=w, is_tsumo=False,
+            ctx = WinContext(closed_counts=c, melds=rs.melds[seat], win_tile=w, is_tsumo=False,
                              seat_wind=rs.seat_wind(seat), round_wind=rs.round_wind,
-                             is_dealer=(seat == rs.dealer), dora_indicators=rs.dora_indicators)
+                             is_dealer=(seat == rs.dealer), dora_indicators=rs.dora_indicators,
+                             rules=rs.rules)
             res = evaluate_win(ctx)
             if res:
                 dama_han = max(dama_han, 13 if res.yakuman else res.han)
@@ -303,8 +311,11 @@ class MahjongAI:
         threats = self._threats(rs, seat)
 
         best_choice, best_score = None, 0.5
+        kan_option = next((o for o in options if o[0] == "minkan"), None)
         for opt in options:
             kind, tiles = opt
+            if kind == "minkan":
+                continue
             used = list(tiles)
             used.remove(tile)
             for t in used:
@@ -343,7 +354,37 @@ class MahjongAI:
                 score -= self.p["defense_weight"] / 20.0
             if score > best_score:
                 best_choice, best_score = opt, score
+
+        # 大明槓：ポンする価値がある場面で、槓子のまま使っても向聴数が悪くならず、鳴きに積極的なときだけ
+        if kan_option and best_choice and best_choice[0] == "pon" and not threats:
+            hand[tile] -= 3
+            ok = shanten(hand, k + 1) <= cur_sh
+            hand[tile] += 3
+            if ok and self.p["call_weight"] >= 6.0:
+                return kan_option
         return best_choice
+
+    def decide_self_kan(self, rs, seat, options):
+        """暗槓・加槓の判断。options: [("ankan"|"kakan", 牌)]"""
+        if self.skill <= 1:
+            return None
+        hand = list(rs.hands[seat])
+        k = len(rs.melds[seat])
+        best_now = min(self._sh_after_discard(hand, k, d) for d in range(NUM_KINDS) if hand[d] > 0)
+        threatened = bool(self._threats(rs, seat))
+        for kind, t in options:
+            if kind == "ankan":
+                if rs.riichi[seat]:
+                    return (kind, t)  # 待ちが変わらないことはエンジン側で確認済み
+                hand[t] -= 4
+                after = shanten(hand, k + 1)
+                hand[t] += 4
+                if after <= best_now and (not threatened or best_now == 0):
+                    return (kind, t)
+            else:
+                if self._sh_after_discard(hand, k, t) <= best_now and not threatened:
+                    return (kind, t)
+        return None
 
     @staticmethod
     def _sh_after_discard(hand, k, d):
@@ -356,7 +397,7 @@ class MahjongAI:
         """鳴いた後に役が付きそうか。付きそうなら役の系統名を返す"""
         yakuhai_set = self._yakuhai_tiles(rs, seat)
         melds_tiles = [list(m.tiles) for m in rs.melds[seat]] + [list(new_tiles)]
-        if is_yakuhai_pon or any(m.kind == "pon" and m.base in yakuhai_set for m in rs.melds[seat]):
+        if is_yakuhai_pon or any(m.is_triplet_like and m.base in yakuhai_set for m in rs.melds[seat]):
             return "yakuhai"
         if self.skill >= 3 and any(hand_after[t] >= 3 for t in yakuhai_set):
             return "yakuhai"

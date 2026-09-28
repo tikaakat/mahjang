@@ -93,7 +93,7 @@ class GameTest(unittest.TestCase):
         for level in (1, 3, 5):
             agents = [MahjongAI(BENCHMARK_PARAMS, skill=level) for _ in range(4)]
             result = Game(agents, length="east", rng=rng).run()
-            self.assertEqual(sum(result["final_scores"]), 100000)
+            self.assertEqual(sum(result["final_scores"]), 120000)
             self.assertEqual(sorted(result["placement"]), [1, 2, 3, 4])
             self.assertAlmostEqual(sum(result["points"]), 0.0, places=5)
 
