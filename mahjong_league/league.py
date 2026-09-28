@@ -285,11 +285,26 @@ def generate_disciples(count, season, pool, registry, titleholder_ids=frozenset(
     return disciples
 
 
-def recruit_d_league(rosters, season, registry, titleholder_ids=frozenset()):
+def recruit_d_league(rosters, season, registry, titleholder_ids=frozenset(), created_requests=None):
+    """Dリーグの欠員を補充する。新人リーグを勝ち抜いた投稿キャラ（created_requests）を優先し、
+    残りの枠は通常の新弟子で埋める。投稿キャラも必ず誰かの弟子として入門する"""
+    from .creation import build_created_individual
     vacancy = LEAGUE_CAPACITY["D"] - len(rosters["D"])
     if vacancy <= 0:
         return rosters, []
     pool = [ind for lg in LEAGUES for ind in rosters[lg]]
-    new = generate_disciples(vacancy, season, pool, registry, titleholder_ids)
+    active = [ind for ind in pool if not ind.retired]
+    eligible = [ind for ind in active if ind.age >= MASTER_MIN_AGE] or active
+    new = []
+    for i, req in enumerate((created_requests or [])[:vacancy]):
+        weights = [_master_weight(ind, titleholder_ids) for ind in eligible]
+        master = random.choices(eligible, weights=weights, k=1)[0] if eligible else None
+        ind = build_created_individual(req, f"CC{season}-{i:03d}", master=master,
+                                       clan_branch_chance=CLAN_BRANCH_CHANCE)
+        new.append(ind)
+        print(f"  ★ 投稿キャラ「{ind.display_name}」が入門（師匠: {master.display_name if master else 'なし'}）")
+    rest = vacancy - len(new)
+    if rest > 0:
+        new += generate_disciples(rest, season, pool, registry, titleholder_ids)
     rosters["D"] = rosters["D"] + new
     return rosters, new

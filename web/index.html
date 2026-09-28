@@ -12,6 +12,8 @@
 <script>
   // データ（run_season.py が出力する data/ ディレクトリ）の置き場所。サイトと同じ階層に置く場合は "data/"
   window.MAHJONG_DATA_BASE = window.MAHJONG_DATA_BASE || "data/";
+  // 投稿・集計API（server/api）の置き場所
+  window.MAHJONG_API_BASE = window.MAHJONG_API_BASE || "api/";
 </script>
 </head>
 <body>
@@ -22,7 +24,9 @@
     <a href="#/league" data-nav="league">鳳凰戦</a>
     <a href="#/titles" data-nav="titles">タイトル戦</a>
     <a href="#/players" data-nav="players">雀士名鑑</a>
+    <a href="#/stats" data-nav="stats">記録</a>
     <a href="#/clans" data-nav="clans">一門</a>
+    <a href="#/create" data-nav="create">クリエイト</a>
     <a href="#/rules" data-nav="rules">ルール</a>
   </nav>
 </header>

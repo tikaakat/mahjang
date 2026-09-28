@@ -1,0 +1,4 @@
+# 設定・共通処理・スキーマは直接配信しない
+<FilesMatch "^(config\.php|config\.sample\.php|lib\.php|schema\.sql)$">
+  Require all denied
+</FilesMatch>

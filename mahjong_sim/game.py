@@ -451,7 +451,8 @@ class Game:
         self._apply(deltas)
         rs.events.append({"type": "hora", "actor": winner, "target": winner, "pai": tile, "deltas": deltas})
         self._say(f"  {winner}家 ツモ {tile_name(tile)} {res.label()} {[n for n, _ in res.yaku]} → {deltas}")
-        return {"type": "tsumo", "winner": winner, "loser": None, "tile": tile, "win": res.to_dict(),
+        value = sum(from_dealer if s == rs.dealer else from_child for s in range(4) if s != winner)
+        return {"type": "tsumo", "winner": winner, "loser": None, "tile": tile, "win": dict(res.to_dict(), value=value),
                 "deltas": deltas, "dealer_keeps": is_dealer, "riichi": list(rs.riichi),
                 "pao": liable, "hand": self._reveal(rs, winner)}
 
@@ -471,7 +472,8 @@ class Game:
         self._apply(deltas)
         rs.events.append({"type": "hora", "actor": winner, "target": loser, "pai": tile, "deltas": deltas})
         self._say(f"  {winner}家 ロン {tile_name(tile)}（{loser}家から） {res.label()} {[n for n, _ in res.yaku]} → {deltas}")
-        return {"type": "ron", "winner": winner, "loser": loser, "tile": tile, "win": res.to_dict(),
+        return {"type": "ron", "winner": winner, "loser": loser, "tile": tile,
+                "win": dict(res.to_dict(), value=res.ron_points(is_dealer)),
                 "deltas": deltas, "dealer_keeps": is_dealer, "riichi": list(rs.riichi),
                 "pao": liable, "hand": self._reveal(rs, winner)}
 

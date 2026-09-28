@@ -19,6 +19,8 @@ mahjong_league/       リーグとタイトル戦
   tables.py           卓の対局（プロセス並列）と牌譜の記録
   buffs.py / elo.py / names.py / io_utils.py
 run_season.py         1期（1年）分を進めるメインスクリプト
+run_newcomer_league.py 新人リーグ（投稿キャラ同士のミニリーグ。上位がDリーグに入門）
+server/               サイトのサーバー側（PHP＋MySQL）：投稿受付・集計API・データ取り込み
 play_demo.py          1半荘を実況表示するデモ
 web/                  フロントエンド（静的サイト。data/ のJSONを読むだけでDB不要）
 tests/                ルール・点数計算のテスト
@@ -65,11 +67,42 @@ pip install -r requirements-dev.txt && python -m unittest discover -s tests -v
 - 一門（系統図）、対局結果（局ごとの和了）、ルール
 - 牌譜ビューア（タイトル戦決勝と鳳凰位決定戦の全半荘）
 
-ローカル確認：`mkdir site && cp web/* site/ && cp -r data site/ && cd site && python -m http.server`
+- 記録（集計一覧）・クリエイト（投稿・新人リーグ結果）…この2ページはサーバー（PHP＋MySQL）が必要
+
+ローカル確認：`mkdir site && cp web/* site/ && cp -r server/. site/ && cp -r data site/ && cd site && php -S localhost:8000`（DB を使うページは `config.php` の設定が必要）
+
+## キャラクリエイトと新人リーグ
+1. サイトの「クリエイト」ページで雀士名と打ち筋9項目（合計45まで）を投稿する（`api/submit.php` → MySQL）。
+2. GitHub Actions が `admin/export_pending.php` で未処理の投稿を取得し、`run_newcomer_league.py` が新人リーグを開催する。投稿が16名に満たない場合は自動生成の候補で埋める。1人12半荘。
+3. 上位のうち、来期のDリーグ欠員数までの投稿キャラが、次の期の開始時に入門する。師匠は自動で選ばれる。技量は入門時に抽選で決まる。
+4. `admin/import.php` の取り込みで、投稿のステータス（入門・落選）がサイトに反映される。
+
+## 記録（集計）
+`api/stats.php` がMySQLで集計する。
+- 個人成績：和了率・放銃率・立直率・ツモ率・平均打点・トップ率・平均着順
+- 役満一覧、高打点ランキング、役の出現率、タイトル獲得数、半荘の最高・最低得点
+
+それぞれ通算と期別で見られる。
+
+## サーバー設置（Xserver）
+1. MySQLのデータベースとユーザーを作る（サーバーパネル → MySQL設定）。
+2. 設置先ディレクトリに `server/config.sample.php` を `config.php` としてコピーし、DB接続情報と `secret_key` を設定する。
+3. GitHub のシークレットを登録する。
+   - `XSERVER_HOST` / `XSERVER_USER` / `XSERVER_SSH_PORT` / `XSERVER_SSH_KEY`（オセロ版と共通）
+   - `MAHJONG_XSERVER_TARGET_DIR`：設置先の絶対パス（末尾 `/`）
+   - `MAHJONG_SITE_URL`：サイトのURL（末尾 `/`）
+   - `IMPORT_SECRET_KEY`：`config.php` の `secret_key` と同じ値
+4. Actions を手動実行する。サイト一式と data/ が転送され、`admin/migrate.php`（テーブル作成）と `admin/import.php`（取り込み）が自動で呼ばれる。
+
+`config.php`・`lib.php`・`schema.sql` は `.htaccess` で直接アクセスを拒否している。投稿は1IPあたり1日3件、全体で1日60件まで（`config.php` で変更可）。
 
 ## GitHub Actions
-`.github/workflows/season.yml` は、毎日UTC 21:00または手動実行で1期ずつ進め、`data/` をコミット・プッシュする。
-シークレット `XSERVER_HOST` と `MAHJONG_XSERVER_TARGET_DIR`（サイトの設置先、末尾に `/`）が設定されている場合は、サイト一式と `data/` を Xserver に scp する。
+`.github/workflows/season.yml` は、毎日UTC 21:00または手動実行で次の順に1期ずつ進める。
+1. 投稿の取得
+2. 新人リーグ
+3. 本戦（`run_season.py`）
+4. `data/` のコミット・プッシュ
+5. Xserver への転送とDB取り込み（シークレット設定時のみ）
 
 ## 今後の課題
 - **AIの強化（段階導入の第2段階）**：思考部分を Mortal などの強豪AIに差し替える。`MahjongAI` の打牌・鳴き・リーチ判断の入口を差し替え、打ち筋は補正値、技量は揺らぎとして残す想定。

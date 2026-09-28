@@ -36,6 +36,9 @@ class LeagueIndividual:
         self.placements = [0, 0, 0, 0]    # 通算着順回数
         self.total_points = 0.0           # 通算ポイント
         self.career = []                  # [{"season", "league", "rank", "points"}]
+        self.created = False              # キャラクリエイトで生まれた雀士か
+        self.submission_id = None         # サイトの投稿ID
+        self.creator = None               # 投稿者の表示名（任意）
 
         # 今季のリーグ成績（保存しない一時値）
         self.points_this_season = 0.0
@@ -71,6 +74,7 @@ class LeagueIndividual:
             "seasons_in_league": self.seasons_in_league, "total_seasons": self.total_seasons,
             "retired": self.retired, "games": self.games, "placements": self.placements,
             "total_points": self.total_points, "career": self.career,
+            "created": self.created, "submission_id": self.submission_id, "creator": self.creator,
         }
 
     @staticmethod
@@ -93,4 +97,7 @@ class LeagueIndividual:
         ind.placements = d.get("placements", [0, 0, 0, 0])
         ind.total_points = d.get("total_points", 0.0)
         ind.career = d.get("career", [])
+        ind.created = d.get("created", False)
+        ind.submission_id = d.get("submission_id")
+        ind.creator = d.get("creator")
         return ind

@@ -349,6 +349,7 @@ async function pagePlayer(id) {
         <dt>一門</dt><dd>${founder ? `<a href="#/clan/${encodeURIComponent(p.clan_root_id)}">${esc(founder.display_name)}一門</a>` : "—"}（第${p.generation}世代）</dd>
         <dt>弟子</dt><dd>${disciples.length ? disciples.map((d) => playerLink(d.id, d.display_name)).join("、") : "なし"}</dd>
         <dt>タイトル</dt><dd>${Object.keys(tcount).length ? Object.entries(tcount).map(([t, n]) => `${t}${n}期`).join("・") : "なし"}</dd>
+        ${p.created ? `<dt>出自</dt><dd><span class="pill new">投稿キャラ</span>${p.creator ? ` <span class="muted">by ${esc(p.creator)}</span>` : ""}</dd>` : ""}
         ${p.awakened_param ? `<dt>覚醒</dt><dd><span class="pill gold">${STYLE_LABELS[p.awakened_param] || "技量"}</span></dd>` : ""}
       </dl></div>
       <div class="card"><h3>打ち筋</h3>${radar(p.params)}</div>
@@ -539,6 +540,205 @@ async function pageKifu(id) {
     <p class="muted">${esc(eventLabel(k.event))}</p><div id="kifu"></div>`;
 }
 
+
+// ------------------------------------------------------------
+// API（server/api）。未設置の環境ではエラーメッセージを出す
+// ------------------------------------------------------------
+const API = window.MAHJONG_API_BASE || "api/";
+async function api(path, options) {
+  const r = await fetch(API + path, { cache: "no-store", ...options });
+  let body = null;
+  try { body = await r.json(); } catch { /* HTMLのエラーページなど */ }
+  if (!r.ok || !body || body.ok === false) throw new Error((body && body.error) || `API に接続できませんでした (${r.status})`);
+  return body;
+}
+const apiUnavailable = (e) => `<div class="card"><b>集計サーバーに接続できません</b><p class="muted">${esc(e.message)}</p>
+  <p class="muted">この機能はサーバー（PHP＋MySQL）を設置すると使えます。README の「サーバー設置」を参照してください。</p></div>`;
+
+// ------------------------------------------------------------
+// ページ: 記録（集計一覧）
+// ------------------------------------------------------------
+const STAT_TABS = [
+  ["players", "個人成績"], ["yakuman", "役満"], ["big_hands", "高打点"], ["yaku", "役の出現率"],
+  ["titles", "タイトル獲得"], ["scores", "半荘最高・最低"],
+];
+function gameRef(r) {
+  const where = r.kind === "league" ? `${r.league}リーグ` : `${r.title}${r.stage ? " " + r.stage : ""}`;
+  return `<a href="#/game/${r.game_id}">第${r.season}期 ${esc(where)}</a>`;
+}
+async function pageStats() {
+  setActiveNav("stats");
+  const idx = await getIndex();
+  const q = qs();
+  const tab = STAT_TABS.some(([k]) => k === q.get("tab")) ? q.get("tab") : "players";
+  const season = q.get("season") || "";
+  const sortKey = q.get("sort") || "win_rate";
+  const seasonOpts = [`<option value="">通算</option>`];
+  for (let x = idx.current_season; x >= 1; x--) seasonOpts.push(`<option value="${x}" ${String(x) === season ? "selected" : ""}>第${x}期</option>`);
+  const head = `<h1>記録</h1>
+    <nav class="tabs">${STAT_TABS.map(([k, l]) => `<a class="${k === tab ? "active" : ""}" href="#/stats?tab=${k}&season=${season}">${l}</a>`).join("")}</nav>
+    ${tab !== "titles" ? `<div class="row" style="margin-bottom:10px"><select aria-label="期" onchange="location.hash='#/stats?tab=${tab}&season='+this.value">${seasonOpts.join("")}</select></div>` : ""}`;
+  let body;
+  try {
+    const sq = season ? `&season=${season}` : "";
+    if (tab === "players") {
+      const minHands = season ? 30 : 100;
+      const d = await api(`stats.php?type=players&min_hands=${minHands}${sq}`);
+      const rows = d.rows.map((r) => {
+        const games = +r.games;
+        return { ...r, win_rate: r.wins / r.hands, dealin_rate: r.dealins / r.hands, riichi_rate: r.riichis / r.hands,
+          tsumo_rate: r.wins ? r.tsumos / r.wins : 0, avg_place: games ? (+r.p1 + 2 * r.p2 + 3 * r.p3 + 4 * r.p4) / games : 0,
+          top_rate: games ? r.p1 / games : 0, avg_value: +r.avg_value || 0, points: +r.points };
+      });
+      const cols = [["win_rate", "和了率", "%"], ["dealin_rate", "放銃率", "%", true], ["riichi_rate", "立直率", "%"],
+        ["tsumo_rate", "ツモ率", "%"], ["avg_value", "平均打点", "n"], ["top_rate", "トップ率", "%"], ["avg_place", "平均着順", "f", true],
+        ["points", "ポイント", "p"], ["games", "半荘", "n"]];
+      const col = cols.find((c) => c[0] === sortKey) || cols[0];
+      rows.sort((a, b) => (col[3] ? a[col[0]] - b[col[0]] : b[col[0]] - a[col[0]]));
+      const fmt = (v, t) => t === "%" ? (v * 100).toFixed(1) : t === "f" ? v.toFixed(2) : t === "p" ? pt(v) : Math.round(v).toLocaleString();
+      body = `<p class="muted">${season ? "30" : "100"}局以上打った雀士が対象。列名をクリックで並べ替え（放銃率・平均着順は小さい順）。</p>
+        <div class="table-wrap"><table><thead><tr><th></th><th>雀士</th>${cols.map(([k, l]) =>
+          `<th class="num"><a href="#/stats?tab=players&season=${season}&sort=${k}">${l}${k === col[0] ? " ▼" : ""}</a></th>`).join("")}</tr></thead><tbody>
+        ${rows.map((r, i) => `<tr><td class="rank">${i + 1}</td><td>${playerLink(r.id, r.name)} <span class="muted">${r.league || "引退"}</span></td>
+          ${cols.map(([k, , t]) => `<td class="num">${fmt(r[k], t)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+    } else if (tab === "yakuman" || tab === "big_hands") {
+      const d = await api(`stats.php?type=${tab}${sq}`);
+      body = d.rows.length ? `<div class="table-wrap"><table><thead><tr><th>対局</th><th>局</th><th>和了者</th><th>役</th><th class="num">打点</th><th class="hide-sm">放銃</th></tr></thead><tbody>
+        ${d.rows.map((r) => `<tr><td>${gameRef(r)}</td><td>${esc(r.round_name)}</td><td>${playerLink(r.winner_id, r.winner_name)}</td>
+          <td>${tab === "big_hands" ? `<span class="pill gold">${esc(r.label)}</span> ` : ""}<span class="muted">${esc(r.yaku)}</span></td>
+          <td class="num">${(+r.value).toLocaleString()}</td><td class="hide-sm">${r.type === "tsumo" ? "ツモ" : esc(r.loser_name || "")}</td></tr>`).join("")}
+        </tbody></table></div>` : `<p class="muted">まだ記録がありません。</p>`;
+    } else if (tab === "yaku") {
+      const d = await api(`stats.php?type=yaku${sq}`);
+      const max = Math.max(1, ...d.rows.map((r) => +r.n));
+      body = `<p class="muted">和了 ${d.wins.toLocaleString()} 回のうち、各役が付いた割合（ドラを除く）。</p>
+        <div class="table-wrap"><table><thead><tr><th>役</th><th class="num">回数</th><th class="num">出現率</th><th class="hide-sm" style="width:40%"></th></tr></thead><tbody>
+        ${d.rows.map((r) => `<tr><td>${esc(r.name)}</td><td class="num">${(+r.n).toLocaleString()}</td><td class="num">${((r.n / Math.max(1, d.wins)) * 100).toFixed(2)}%</td>
+          <td class="hide-sm"><div class="bar"><span style="width:${(r.n / max) * 100}%;background:var(--accent)"></span></div></td></tr>`).join("")}</tbody></table></div>`;
+    } else if (tab === "titles") {
+      const d = await api("stats.php?type=titles");
+      const by = {};
+      d.rows.forEach((r) => { (by[r.id] ||= { id: r.id, name: r.name, retired: +r.retired, total: 0, t: {} }); by[r.id].t[r.title] = +r.n; by[r.id].total += +r.n; });
+      const list = Object.values(by).sort((a, b) => b.total - a.total);
+      body = `<div class="table-wrap"><table><thead><tr><th></th><th>雀士</th>${TITLES.map((t) => `<th class="num">${t}</th>`).join("")}<th class="num">合計</th></tr></thead><tbody>
+        ${list.map((p, i) => `<tr><td class="rank">${i + 1}</td><td>${playerLink(p.id, p.name)} ${p.retired ? `<span class="pill retired">引退</span>` : ""}</td>
+          ${TITLES.map((t) => `<td class="num">${p.t[t] || ""}</td>`).join("")}<td class="num"><b>${p.total}</b></td></tr>`).join("")}</tbody></table></div>`;
+    } else {
+      const d = await api(`stats.php?type=scores${sq}`);
+      const tbl = (rows) => `<div class="table-wrap"><table><thead><tr><th>雀士</th><th class="num">持ち点</th><th>対局</th></tr></thead><tbody>
+        ${rows.map((r) => `<tr><td>${playerLink(r.player_id, r.name)}</td><td class="num">${(+r.final_score).toLocaleString()}</td><td>${gameRef(r)}</td></tr>`).join("")}</tbody></table></div>`;
+      body = `<div class="grid grid-2"><div><h2>最高得点</h2>${tbl(d.high)}</div><div><h2>最低得点</h2>${tbl(d.low)}</div></div>`;
+    }
+  } catch (e) {
+    body = apiUnavailable(e);
+  }
+  return head + body;
+}
+
+// ------------------------------------------------------------
+// ページ: キャラクリエイト
+// ------------------------------------------------------------
+const PARAM_MIN = 0.5, PARAM_MAX = 10, PARAM_BUDGET = 45;
+const PRESETS = {  // mahjong_league/creation.py と同じ値
+  balanced: ["バランス", { speed_weight: 6, dora_weight: 4, yakuhai_weight: 4, flush_weight: 3, tanyao_weight: 4, call_weight: 5, riichi_weight: 6, defense_weight: 7, push_weight: 6 }],
+  attack: ["攻撃型", { speed_weight: 8, dora_weight: 6, yakuhai_weight: 4, flush_weight: 3, tanyao_weight: 4, call_weight: 4, riichi_weight: 9, defense_weight: 2, push_weight: 5 }],
+  defense: ["守備型", { speed_weight: 6, dora_weight: 3, yakuhai_weight: 3, flush_weight: 2, tanyao_weight: 3, call_weight: 3, riichi_weight: 5, defense_weight: 10, push_weight: 10 }],
+  caller: ["鳴き屋", { speed_weight: 7, dora_weight: 4, yakuhai_weight: 8, flush_weight: 5, tanyao_weight: 7, call_weight: 9, riichi_weight: 1, defense_weight: 2, push_weight: 2 }],
+  flush: ["染め手", { speed_weight: 4, dora_weight: 4, yakuhai_weight: 6, flush_weight: 10, tanyao_weight: 1, call_weight: 8, riichi_weight: 3, defense_weight: 5, push_weight: 4 }],
+};
+const STATUS_LABEL = { pending: "受付済み", exported: "新人リーグ出場中", entered: "入門", not_selected: "落選" };
+
+async function pageCreate() {
+  setActiveNav("create");
+  const idx = await getIndex();
+  let newcomer = null;
+  for (const s of [idx.current_season + 1, idx.current_season]) {
+    try { newcomer = await getJSON(`newcomer_league/for_season_${s}.json`); break; } catch { /* まだ無い */ }
+  }
+  const sliders = Object.entries(STYLE_LABELS).map(([k, l]) => `
+    <label class="slider"><span>${l}</span><input type="range" min="${PARAM_MIN}" max="${PARAM_MAX}" step="0.5" name="${k}" value="${PRESETS.balanced[1][k]}"><output>${PRESETS.balanced[1][k]}</output></label>`).join("");
+  const nlTable = newcomer && newcomer.standings.length ? `
+    <h2>新人リーグ（第${newcomer.season}期入門枠 ${newcomer.slots}名）</h2>
+    <div class="table-wrap"><table><thead><tr><th>順位</th><th>雀士</th><th class="num">ポイント</th><th class="num hide-sm">1/2/3/4着</th><th></th></tr></thead><tbody>
+    ${newcomer.standings.map((r) => `<tr class="${r.winner ? "zone-up" : ""}"><td class="rank">${r.rank}</td><td>${esc(r.name)} ${r.auto ? `<span class="muted">（自動）</span>` : r.creator ? `<span class="muted">by ${esc(r.creator)}</span>` : ""}</td>
+      <td class="num">${pt(r.points)}</td><td class="num hide-sm">${r.placements.join(" / ")}</td><td>${r.winner ? `<span class="pill up">入門</span>` : ""}</td></tr>`).join("")}
+    </tbody></table></div>` : "";
+  setTimeout(bindCreateForm, 0);
+  return `<h1>キャラクリエイト</h1>
+    <p class="muted">自分だけの雀士を投稿できます。投稿は次の新人リーグ（4人打ち・1人12半荘）に出場し、上位に入るとDリーグに入門します。入門時には既存の雀士が師匠に付きます。技量は入門時に決まり、若いうちに伸びます。</p>
+    <div class="grid grid-2">
+      <form id="create-form" class="card" autocomplete="off">
+        <div class="row"><label style="flex:1">雀士名（12文字まで）<br><input name="name" maxlength="12" required style="width:100%"></label></div>
+        <div class="row" style="margin-top:8px"><label style="flex:1">投稿者名（任意）<br><input name="creator" maxlength="12" style="width:100%"></label></div>
+        <input name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        <h3 style="margin-top:14px">打ち筋</h3>
+        <div class="row" style="margin-bottom:8px">${Object.entries(PRESETS).map(([k, [l]]) => `<button type="button" data-preset="${k}">${l}</button>`).join("")}</div>
+        <div class="sliders">${sliders}</div>
+        <p id="budget" class="muted"></p>
+        <button type="submit" class="primary">投稿する</button>
+        <p id="create-msg" role="status"></p>
+      </form>
+      <div class="card"><h3>打ち筋のプレビュー</h3><div id="create-radar"></div>
+        <p class="muted" style="font-size:.85rem">合計は${PARAM_BUDGET}まで。超えた場合は比率を保ったまま自動で縮めます。</p></div>
+    </div>
+    <h2>最近の投稿</h2><div id="submissions"><p class="loading">読み込み中…</p></div>
+    ${nlTable}`;
+}
+
+function bindCreateForm() {
+  const form = document.getElementById("create-form");
+  if (!form) return;
+  const inputs = [...form.querySelectorAll('input[type="range"]')];
+  const read = () => Object.fromEntries(inputs.map((i) => [i.name, Number(i.value)]));
+  const update = () => {
+    const vals = read();
+    const total = Object.values(vals).reduce((a, b) => a + b, 0);
+    inputs.forEach((i) => { i.nextElementSibling.textContent = i.value; });
+    const over = total > PARAM_BUDGET;
+    document.getElementById("budget").innerHTML = `合計 <b class="${over ? "minus" : ""}">${total.toFixed(1)}</b> / ${PARAM_BUDGET}${over ? "（投稿時に比率を保って縮めます）" : ""}`;
+    document.getElementById("create-radar").innerHTML = radar(vals);
+  };
+  inputs.forEach((i) => i.addEventListener("input", update));
+  let preset = "balanced";
+  form.querySelectorAll("[data-preset]").forEach((b) => b.addEventListener("click", () => {
+    preset = b.dataset.preset;
+    inputs.forEach((i) => { i.value = PRESETS[preset][1][i.name]; });
+    update();
+  }));
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const msg = document.getElementById("create-msg");
+    const fd = new FormData(form);
+    msg.textContent = "送信中…";
+    try {
+      const res = await api("submit.php", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: fd.get("name"), creator: fd.get("creator"), website: fd.get("website"), type: preset, params: read() }) });
+      msg.innerHTML = `<span class="plus">投稿を受け付けました（受付番号 ${res.id}）。次の新人リーグに出場します。</span>`;
+      form.reset(); update(); loadSubmissions();
+    } catch (err) {
+      msg.innerHTML = `<span class="minus">${esc(err.message)}</span>`;
+    }
+  });
+  update();
+  loadSubmissions();
+}
+
+async function loadSubmissions() {
+  const box = document.getElementById("submissions");
+  if (!box) return;
+  try {
+    const d = await api("submissions.php");
+    box.innerHTML = d.submissions.length ? `<div class="table-wrap"><table><thead><tr><th>受付</th><th>雀士</th><th class="hide-sm">投稿者</th><th>状況</th></tr></thead><tbody>
+      ${d.submissions.map((s) => `<tr><td class="muted">${esc(s.created_at)}</td>
+        <td>${s.player_id ? playerLink(s.player_id, s.name) : esc(s.name)}</td><td class="hide-sm">${esc(s.creator || "")}</td>
+        <td><span class="pill ${s.status === "entered" ? "up" : s.status === "not_selected" ? "retired" : ""}">${STATUS_LABEL[s.status] || s.status}</span>
+        ${s.result_rank ? `<span class="muted">新人リーグ${s.result_rank}位</span>` : ""}</td></tr>`).join("")}</tbody></table></div>`
+      : `<p class="muted">まだ投稿はありません。</p>`;
+  } catch (e) {
+    box.innerHTML = apiUnavailable(e);
+  }
+}
+
 // ------------------------------------------------------------
 // ページ: ルール
 // ------------------------------------------------------------
@@ -585,6 +785,8 @@ const routes = [
   [/^#\/game\/([^?]+)/, (m) => pageGame(m[1])],
   [/^#\/kifu\/([^?]+)/, (m) => pageKifu(m[1])],
   [/^#\/rules/, pageRules],
+  [/^#\/stats/, pageStats],
+  [/^#\/create/, pageCreate],
 ];
 
 async function router() {

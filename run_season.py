@@ -8,6 +8,8 @@ MAHJONG LEAGUE：1シーズン（1年）分を進める。
   5. 昇降級・引退・成長、保存
 """
 import argparse
+import json
+import os
 import random
 
 from mahjong_sim.ai import PARAM_KEYS
@@ -35,13 +37,14 @@ def _holder(state, title, by_id):
     return ind
 
 
-def run_one_season(rosters, state, rng, sections_scale=1.0):
+def run_one_season(rosters, state, rng, sections_scale=1.0, created_requests=None):
     season = state["current_season"] + 1
     print(f"=== 第{season}期 ===", flush=True)
     titleholder_ids = {v["id"] for v in state["titleholders"].values() if v}
 
     registry = NameRegistry.from_dict(state.get("name_registry", {}))
-    rosters, newcomers = recruit_d_league(rosters, season, registry, titleholder_ids)
+    rosters, newcomers = recruit_d_league(rosters, season, registry, titleholder_ids,
+                                          created_requests=created_requests)
     state["name_registry"] = registry.to_dict()
     if newcomers:
         print(f"  新弟子 {len(newcomers)}名がDリーグに入門")
@@ -168,8 +171,17 @@ def main():
         rosters = bootstrap_rosters(registry)
         state["name_registry"] = registry.to_dict()
 
-    for _ in range(args.seasons):
-        rosters, standings, matches, titles = run_one_season(rosters, state, rng, args.sections_scale)
+    # 新人リーグ（run_newcomer_league.py）の勝者。最初に処理する期にだけ適用し、読んだら消す
+    winners_path = os.path.join(args.data_dir, "newcomer_winners.json")
+    created_requests = None
+    if os.path.exists(winners_path):
+        with open(winners_path, encoding="utf-8") as f:
+            created_requests = json.load(f) or None
+        os.remove(winners_path)
+
+    for i in range(args.seasons):
+        rosters, standings, matches, titles = run_one_season(
+            rosters, state, rng, args.sections_scale, created_requests=created_requests if i == 0 else None)
         save_rosters(args.data_dir, rosters)
         save_season_files(args.data_dir, state["current_season"], standings, matches, titles)
         save_season_state(args.data_dir, state)
