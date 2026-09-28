@@ -1,0 +1,104 @@
+name: Evolve Mahjong Individuals
+
+concurrency:
+  group: evolve-mahjong
+  cancel-in-progress: false
+
+on:
+  workflow_dispatch:
+    inputs:
+      generations:
+        description: "何世代分進めるか"
+        required: false
+        default: "10"
+      population_size:
+        description: "個体数（固定・4の倍数）"
+        required: false
+        default: "16"
+      swiss_rounds:
+        description: "スイス方式トーナメントのラウンド数"
+        required: false
+        default: "4"
+      game_length:
+        description: "east=東風戦 / south=半荘戦"
+        required: false
+        default: "east"
+  schedule:
+    - cron: "0 21 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  evolve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Rule tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Run evolution generation-by-generation (with per-batch push)
+        timeout-minutes: 340
+        env:
+          XSERVER_HOST: ${{ secrets.XSERVER_HOST }}
+          XSERVER_USER: ${{ secrets.XSERVER_USER }}
+          XSERVER_PORT: ${{ secrets.XSERVER_SSH_PORT }}
+          XSERVER_TARGET_DIR: ${{ secrets.MAHJONG_XSERVER_TARGET_DIR }}
+          XSERVER_SSH_KEY: ${{ secrets.XSERVER_SSH_KEY }}
+          IMPORT_URL: ${{ secrets.MAHJONG_IMPORT_URL }}
+        run: |
+          git config user.name "mahjong-sim-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          # Xserver への反映は、転送先のシークレットが設定されている場合のみ行う
+          DEPLOY=0
+          if [ -n "$XSERVER_HOST" ] && [ -n "$XSERVER_TARGET_DIR" ]; then
+            DEPLOY=1
+            echo "$XSERVER_SSH_KEY" > /tmp/deploy_key
+            chmod 600 /tmp/deploy_key
+          fi
+
+          TOTAL="${{ github.event.inputs.generations || '10' }}"
+          POP_SIZE="${{ github.event.inputs.population_size || '16' }}"
+          SWISS_ROUNDS="${{ github.event.inputs.swiss_rounds || '4' }}"
+          GAME_LENGTH="${{ github.event.inputs.game_length || 'east' }}"
+
+          for i in $(seq 1 "$TOTAL"); do
+            echo "=== Running generation batch $i / $TOTAL ==="
+            python -u run_evolution.py \
+              --data-dir data \
+              --generations 1 \
+              --population-size "$POP_SIZE" \
+              --swiss-rounds "$SWISS_ROUNDS" \
+              --game-length "$GAME_LENGTH"
+
+            git add data/individuals.json data/matches.json data/training_state.json
+            if ! git diff --staged --quiet; then
+              git commit -m "Evolve: generation batch $i/$TOTAL [skip ci]"
+              git pull --rebase origin "${{ github.ref_name }}"
+              git push origin "HEAD:${{ github.ref_name }}"
+            fi
+
+            if [ "$DEPLOY" = "1" ]; then
+              echo "--- Xserverへ反映中（バッチ $i）---"
+              scp -i /tmp/deploy_key -P "$XSERVER_PORT" -o StrictHostKeyChecking=no \
+                data/individuals.json data/matches.json data/training_state.json \
+                "$XSERVER_USER@$XSERVER_HOST:$XSERVER_TARGET_DIR" \
+                || echo "::warning::scpでの転送に失敗しました（バッチ $i）。次のバッチへ続行します"
+              if [ -n "$IMPORT_URL" ]; then
+                curl -sS -f "$IMPORT_URL" \
+                  || echo "::warning::インポートに失敗しました（バッチ $i）。次のバッチへ続行します"
+              fi
+            fi
+          done
+
+          rm -f /tmp/deploy_key
