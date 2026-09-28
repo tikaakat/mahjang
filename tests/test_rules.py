@@ -4,7 +4,8 @@ import unittest
 from mahjong_sim.tiles import parse_tiles, to_counts, EAST, SOUTH, dora_from_indicator
 from mahjong_sim.shanten import shanten, winning_tiles
 from mahjong_sim.scoring import WinContext, Meld, evaluate_win
-from mahjong_sim.game import Game
+from mahjong_sim.game import Game, final_placement
+from mahjong_sim.rules import RENMEI, TENHOU_LIKE
 from mahjong_sim.ai import MahjongAI
 from mahjong_sim.play import BENCHMARK_PARAMS
 
@@ -85,6 +86,43 @@ class ScoringTest(unittest.TestCase):
         self.assertEqual(dora_from_indicator(parse_tiles("中")[0]), parse_tiles("白")[0])
         r = win("234m567p345s678s55m", "8s", tsumo=True, dora="4m")
         self.assertIn(("ドラ", 2), r.yaku)
+
+
+class RenmeiRuleTest(unittest.TestCase):
+    def test_no_ippatsu_no_ura(self):
+        ctx = WinContext(closed_counts=c("234m567p345s678s55m"), melds=[], win_tile=parse_tiles("8s")[0],
+                         is_tsumo=False, seat_wind=SOUTH, round_wind=EAST, is_dealer=False, riichi=True,
+                         ippatsu=True, dora_indicators=[], ura_indicators=parse_tiles("4m"))
+        names = [n for n, _ in evaluate_win(ctx).yaku]
+        self.assertNotIn("一発", names)
+        self.assertNotIn("裏ドラ", names)
+
+    def test_kazoe_capped_at_sanbaiman(self):
+        # 清一色・一気通貫・リーチ・ツモ・ドラ多数でも三倍満止まり
+        ctx = WinContext(closed_counts=c("12345678923455m"), melds=[], win_tile=0, is_tsumo=True,
+                         seat_wind=SOUTH, round_wind=EAST, is_dealer=False, riichi=True,
+                         dora_indicators=parse_tiles("4m"))
+        r = evaluate_win(ctx)
+        self.assertGreaterEqual(r.han, 13)
+        self.assertEqual(r.yakuman, 0)
+        self.assertEqual(r.base, 6000)
+
+    def test_ankan_fu(self):
+        melds = [Meld("ankan", (0, 0, 0, 0), None, 0)]
+        ctx = WinContext(closed_counts=c("234p567s東東西西西"), melds=melds, win_tile=parse_tiles("4p")[0],
+                         is_tsumo=True, seat_wind=SOUTH, round_wind=EAST, is_dealer=False, riichi=True)
+        r = evaluate_win(ctx)
+        # 20 + ツモ2 + 暗槓么九32 + 西暗刻8 + 雀頭(場風東)2 = 64 → 70符
+        self.assertEqual(r.fu, 70)
+
+    def test_tie_splits_uma(self):
+        res = final_placement([40000, 30000, 30000, 20000], RENMEI)
+        self.assertEqual(res["placement"], [1, 2, 2, 4])
+        self.assertEqual(res["points"], [25.0, 0.0, 0.0, -25.0])
+
+    def test_tenhou_like_oka(self):
+        res = final_placement([40000, 30000, 20000, 10000], TENHOU_LIKE)
+        self.assertEqual(res["points"], [60.0, 10.0, -20.0, -50.0])
 
 
 class GameTest(unittest.TestCase):
