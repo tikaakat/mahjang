@@ -9,14 +9,13 @@ import os
 import random
 from concurrent.futures import ProcessPoolExecutor
 
-from mahjong_sim.ai import MahjongAI
+from mahjong_sim.ai import MahjongAI, noise_from_talent
 from mahjong_sim.game import Game
 from mahjong_sim.rules import RULESETS, rule_key_for_event
 
 from .buffs import effective_params, effective_talent
 from .elo import update_elo_table
 
-NOISE_AT_ZERO_TALENT = 14.0   # 技量0のときの打牌評価の揺らぎ（1向聴=12点）
 FORM_SWING = 0.05             # ムラ気1.0あたりの、1半荘ごとの調子の振れ幅（技量換算）
 INDIVIDUAL_SKILL = 4
 
@@ -43,7 +42,7 @@ def _make_agent(spec, rng):
     form = rng.gauss(0.0, FORM_SWING * spec["volatility"])
     talent = max(0.0, min(1.0, spec["talent"] + form))
     return MahjongAI(spec["params"], skill=INDIVIDUAL_SKILL, name=spec["id"],
-                     noise=NOISE_AT_ZERO_TALENT * (1.0 - talent), rng=rng)
+                     noise=noise_from_talent(talent), rng=rng)
 
 
 def simulate_hanchan(job):

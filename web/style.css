@@ -54,7 +54,9 @@ th.num { text-align: right; }
 .small { font-size: 0.72rem; }
 .league-tag { display: inline-block; font-family: 'Orbitron', 'Noto Sans JP', sans-serif; font-size: 0.62rem; font-weight: 700; color: var(--navy-950); background: var(--amber); padding: 1px 6px; border-radius: 2px; margin-right: 6px; white-space: nowrap; }
 .league-tag.title-tag { background: linear-gradient(135deg, #ffd24f, #ff9d4f); }
-.crown { display: inline-block; font-family: 'Orbitron', 'Noto Sans JP', sans-serif; font-size: 0.62rem; font-weight: 700; color: var(--navy-950); background: linear-gradient(135deg,#ffd24f,#ff9d4f); padding: 1px 6px; border-radius: 2px; margin-right: 6px; white-space: nowrap; }
+/* 名前の右に付ける表示：タイトルは橙のハイライト、段位は橙の枠・橙の文字 */
+.crown { display: inline-block; font-family: 'Noto Sans JP', sans-serif; font-size: 0.64rem; font-weight: 700; color: var(--navy-950); background: var(--amber); border: 1px solid var(--amber); padding: 0 6px; border-radius: 2px; margin-left: 6px; white-space: nowrap; vertical-align: 1px; }
+.dan-tag { display: inline-block; font-family: 'Noto Sans JP', sans-serif; font-size: 0.64rem; font-weight: 500; color: var(--amber); border: 1px solid var(--amber); padding: 0 6px; border-radius: 2px; margin-left: 6px; white-space: nowrap; vertical-align: 1px; }
 .chip { display: inline-block; font-size: 0.64rem; border: 1px solid var(--navy-700); color: var(--text-dim); padding: 0 6px; border-radius: 8px; margin-left: 4px; white-space: nowrap; }
 .chip.gold { color: var(--amber); border-color: var(--amber-dim); }
 .chip.cyan { color: var(--cyan); border-color: var(--cyan-dim); }
