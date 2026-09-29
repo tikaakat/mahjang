@@ -1,0 +1,918 @@
+{
+ "current_season": 1,
+ "titleholders": {
+  "鳳凰位": {
+   "id": "A0-004",
+   "name": "橋口真一",
+   "since": 1
+  },
+  "麒麟位": {
+   "id": "D0-024",
+   "name": "佐野美和子",
+   "since": 1
+  },
+  "霊亀位": {
+   "id": "B0-013",
+   "name": "中川淳",
+   "since": 1
+  },
+  "応龍位": {
+   "id": "B0-000",
+   "name": "山内隆之",
+   "since": 1
+  }
+ },
+ "title_history": [
+  {
+   "title": "鳳凰位",
+   "season": 1,
+   "event": "初代",
+   "winner_id": "A0-004",
+   "winner_name": "橋口真一",
+   "previous_id": null,
+   "previous_name": null,
+   "final_standings": [
+    {
+     "id": "A0-004",
+     "name": "橋口真一",
+     "points": 69.5,
+     "raw": 45.5
+    },
+    {
+     "id": "A0-002",
+     "name": "中尾美穂",
+     "points": 12.0,
+     "raw": -12.0
+    },
+    {
+     "id": "A0-006",
+     "name": "南泉美",
+     "points": -29.1,
+     "raw": -18.1
+    },
+    {
+     "id": "A0-009",
+     "name": "水野蓮",
+     "points": -52.4,
+     "raw": -15.4
+    }
+   ]
+  },
+  {
+   "title": "麒麟位",
+   "season": 1,
+   "event": "初代",
+   "winner_id": "D0-024",
+   "winner_name": "佐野美和子",
+   "previous_id": null,
+   "previous_name": null,
+   "final_standings": [
+    {
+     "id": "D0-024",
+     "name": "佐野美和子",
+     "points": 66.4,
+     "raw": -23.6
+    },
+    {
+     "id": "A0-009",
+     "name": "水野蓮",
+     "points": 40.6,
+     "raw": -9.4
+    },
+    {
+     "id": "A0-004",
+     "name": "橋口真一",
+     "points": -3.6,
+     "raw": -13.6
+    },
+    {
+     "id": "A0-002",
+     "name": "中尾美穂",
+     "points": -103.4,
+     "raw": -53.4
+    }
+   ]
+  },
+  {
+   "title": "霊亀位",
+   "season": 1,
+   "event": "初代",
+   "winner_id": "B0-013",
+   "winner_name": "中川淳",
+   "previous_id": null,
+   "previous_name": null,
+   "final_standings": [
+    {
+     "id": "B0-013",
+     "name": "中川淳",
+     "points": 62.1,
+     "raw": 17.1
+    },
+    {
+     "id": "D0-013",
+     "name": "石黒裕子",
+     "points": 24.0,
+     "raw": 19.0
+    },
+    {
+     "id": "A0-011",
+     "name": "森本陽太",
+     "points": -9.6,
+     "raw": 5.4
+    },
+    {
+     "id": "C0-007",
+     "name": "江口雄大",
+     "points": -76.5,
+     "raw": -41.5
+    }
+   ]
+  },
+  {
+   "title": "応龍位",
+   "season": 1,
+   "event": "初代",
+   "winner_id": "B0-000",
+   "winner_name": "山内隆之",
+   "previous_id": null,
+   "previous_name": null,
+   "final_standings": [
+    {
+     "id": "B0-000",
+     "name": "山内隆之",
+     "points": 1.0,
+     "raw": 11.9
+    },
+    {
+     "id": "A0-007",
+     "name": "藤田千尋",
+     "points": 0.0,
+     "raw": -1.6
+    },
+    {
+     "id": "A0-008",
+     "name": "大村萌",
+     "points": 0.0,
+     "raw": -6.1
+    },
+    {
+     "id": "A0-003",
+     "name": "村田章子",
+     "points": -1.0,
+     "raw": -4.2
+    }
+   ]
+  }
+ ],
+ "retired_archive": [
+  {
+   "id": "D0-014",
+   "league": "D",
+   "params": {
+    "speed_weight": 7.353,
+    "dora_weight": 9.585,
+    "yakuhai_weight": 5.017,
+    "flush_weight": 9.843,
+    "tanyao_weight": 9.787,
+    "call_weight": 8.491,
+    "riichi_weight": 4.234,
+    "defense_weight": 8.804,
+    "push_weight": 1.289
+   },
+   "talent": 0.509,
+   "clan_root_id": "D0-014",
+   "display_name": "渡辺秀樹",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 39,
+   "age_multipliers": {
+    "speed_weight": 1.055,
+    "dora_weight": 0.96,
+    "yakuhai_weight": 0.996,
+    "flush_weight": 0.956,
+    "tanyao_weight": 0.98,
+    "call_weight": 0.959,
+    "riichi_weight": 1.061,
+    "defense_weight": 0.996,
+    "push_weight": 1.009,
+    "talent": 1.05
+   },
+   "consecutive_losing_seasons": 1,
+   "elo": 1433.76,
+   "peak_elo": 1500.0,
+   "volatility": 0.58,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": true,
+   "games": 19,
+   "placements": [
+    1,
+    8,
+    3,
+    7
+   ],
+   "total_points": -134.0,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 28,
+     "points": -104.2,
+     "elo": 1433.8,
+     "movement": "retired"
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null,
+   "stats": {
+    "hands": 220,
+    "wins": 35,
+    "tsumo": 9,
+    "dealins": 26,
+    "riichi": 42,
+    "draws": 46,
+    "draw_tenpai": 19,
+    "win_value": 95300,
+    "dealin_value": 108600,
+    "max_value": 8000,
+    "yakuman": 0,
+    "score_sum": 464600,
+    "score_max": 38000,
+    "busts": 0
+   },
+   "elo_history": [
+    [
+     1,
+     1433.8
+    ]
+   ],
+   "elo_trace": [
+    [
+     1,
+     1,
+     1476.0
+    ],
+    [
+     1,
+     2,
+     1486.2
+    ],
+    [
+     1,
+     3,
+     1479.5
+    ],
+    [
+     1,
+     4,
+     1489.3
+    ],
+    [
+     1,
+     5,
+     1466.0
+    ],
+    [
+     1,
+     6,
+     1444.8
+    ],
+    [
+     1,
+     7,
+     1457.4
+    ],
+    [
+     1,
+     8,
+     1453.0
+    ],
+    [
+     1,
+     9,
+     1462.8
+    ],
+    [
+     1,
+     10,
+     1479.7
+    ],
+    [
+     1,
+     11,
+     1455.1
+    ],
+    [
+     1,
+     12,
+     1432.8
+    ],
+    [
+     1,
+     13,
+     1443.7
+    ],
+    [
+     1,
+     14,
+     1454.8
+    ],
+    [
+     1,
+     15,
+     1469.2
+    ],
+    [
+     1,
+     16,
+     1450.0
+    ],
+    [
+     1,
+     17,
+     1448.4
+    ],
+    [
+     1,
+     18,
+     1457.5
+    ],
+    [
+     1,
+     19,
+     1433.8
+    ]
+   ],
+   "recent_games": [
+    {
+     "id": "1-0205",
+     "season": 1,
+     "label": "Dリーグ 第1節",
+     "placement": 4,
+     "points": -18.4,
+     "score": 19600,
+     "others": [
+      "谷本泉子",
+      "横山彩",
+      "大森綾香"
+     ]
+    },
+    {
+     "id": "1-0206",
+     "season": 1,
+     "label": "Dリーグ 第1節",
+     "placement": 2,
+     "points": -4.3,
+     "score": 26700,
+     "others": [
+      "横山彩",
+      "大森綾香",
+      "谷本泉子"
+     ]
+    },
+    {
+     "id": "1-0207",
+     "season": 1,
+     "label": "Dリーグ 第1節",
+     "placement": 3,
+     "points": 4.1,
+     "score": 33100,
+     "others": [
+      "大森綾香",
+      "谷本泉子",
+      "横山彩"
+     ]
+    },
+    {
+     "id": "1-0208",
+     "season": 1,
+     "label": "Dリーグ 第1節",
+     "placement": 2,
+     "points": -6.0,
+     "score": 25000,
+     "others": [
+      "谷本泉子",
+      "横山彩",
+      "大森綾香"
+     ]
+    },
+    {
+     "id": "1-0237",
+     "season": 1,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -33.2,
+     "score": 8800,
+     "others": [
+      "河野美和",
+      "石黒裕子",
+      "柳沢聡太"
+     ]
+    },
+    {
+     "id": "1-0238",
+     "season": 1,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -20.6,
+     "score": 17400,
+     "others": [
+      "河野美和",
+      "石黒裕子",
+      "柳沢聡太"
+     ]
+    },
+    {
+     "id": "1-0239",
+     "season": 1,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 12.0,
+     "score": 38000,
+     "others": [
+      "石黒裕子",
+      "柳沢聡太",
+      "河野美和"
+     ]
+    },
+    {
+     "id": "1-0240",
+     "season": 1,
+     "label": "Dリーグ 第2節",
+     "placement": 3,
+     "points": -17.9,
+     "score": 16100,
+     "others": [
+      "柳沢聡太",
+      "河野美和",
+      "石黒裕子"
+     ]
+    },
+    {
+     "id": "1-0285",
+     "season": 1,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": 7.0,
+     "score": 33000,
+     "others": [
+      "佐野美和子",
+      "谷本泉子",
+      "伊藤大輔"
+     ]
+    },
+    {
+     "id": "1-0286",
+     "season": 1,
+     "label": "Dリーグ 第3節",
+     "placement": 1,
+     "points": 7.5,
+     "score": 31500,
+     "others": [
+      "谷本泉子",
+      "伊藤大輔",
+      "佐野美和子"
+     ]
+    },
+    {
+     "id": "1-0287",
+     "season": 1,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -12.6,
+     "score": 25400,
+     "others": [
+      "伊藤大輔",
+      "佐野美和子",
+      "谷本泉子"
+     ]
+    },
+    {
+     "id": "1-0288",
+     "season": 1,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -21.8,
+     "score": 16200,
+     "others": [
+      "伊藤大輔",
+      "佐野美和子",
+      "谷本泉子"
+     ]
+    },
+    {
+     "id": "1-0330",
+     "season": 1,
+     "label": "霊亀位 1回戦",
+     "placement": 2,
+     "points": 3.6,
+     "score": 28600,
+     "others": [
+      "桜井力",
+      "田中朝陽",
+      "高橋美奈"
+     ]
+    },
+    {
+     "id": "1-0347",
+     "season": 1,
+     "label": "霊亀位 2回戦",
+     "placement": 2,
+     "points": 9.1,
+     "score": 34100,
+     "others": [
+      "山根蒼",
+      "山岸章子",
+      "岡島さくら"
+     ]
+    },
+    {
+     "id": "1-0353",
+     "season": 1,
+     "label": "霊亀位 3回戦",
+     "placement": 2,
+     "points": -0.4,
+     "score": 24600,
+     "others": [
+      "阿部美紀",
+      "須田新",
+      "近藤澪"
+     ]
+    },
+    {
+     "id": "1-0362",
+     "season": 1,
+     "label": "霊亀位 準々決勝",
+     "placement": 4,
+     "points": -36.6,
+     "score": 8400,
+     "others": [
+      "森本陽太",
+      "江口雄大",
+      "内田悠斗"
+     ]
+    },
+    {
+     "id": "1-0363",
+     "season": 1,
+     "label": "霊亀位 準々決勝",
+     "placement": 3,
+     "points": -4.5,
+     "score": 30500,
+     "others": [
+      "江口雄大",
+      "内田悠斗",
+      "森本陽太"
+     ]
+    },
+    {
+     "id": "1-0379",
+     "season": 1,
+     "label": "応龍位 1回戦",
+     "placement": 2,
+     "points": 0.0,
+     "score": 30300,
+     "others": [
+      "大森綾香",
+      "浦上友和",
+      "宮本秀一"
+     ]
+    },
+    {
+     "id": "1-0380",
+     "season": 1,
+     "label": "応龍位 1回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 17300,
+     "others": [
+      "大森綾香",
+      "浦上友和",
+      "宮本秀一"
+     ]
+    }
+   ],
+   "opponents": {
+    "D0-001": [
+     8,
+     2,
+     6
+    ],
+    "D0-016": [
+     4,
+     2,
+     2
+    ],
+    "D0-009": [
+     6,
+     2,
+     4
+    ],
+    "D0-021": [
+     4,
+     2,
+     2
+    ],
+    "D0-013": [
+     4,
+     0,
+     4
+    ],
+    "D0-010": [
+     4,
+     1,
+     3
+    ],
+    "D0-024": [
+     4,
+     2,
+     2
+    ],
+    "D0-007": [
+     4,
+     1,
+     2
+    ],
+    "D0-008": [
+     1,
+     1,
+     0
+    ],
+    "D0-025": [
+     1,
+     0,
+     1
+    ],
+    "D0-003": [
+     1,
+     1,
+     0
+    ],
+    "B0-002": [
+     1,
+     1,
+     0
+    ],
+    "C0-014": [
+     1,
+     0,
+     1
+    ],
+    "C0-016": [
+     1,
+     1,
+     0
+    ],
+    "C0-013": [
+     1,
+     1,
+     0
+    ],
+    "B0-001": [
+     1,
+     0,
+     1
+    ],
+    "C0-003": [
+     1,
+     1,
+     0
+    ],
+    "A0-011": [
+     2,
+     0,
+     2
+    ],
+    "C0-007": [
+     2,
+     0,
+     2
+    ],
+    "D0-027": [
+     2,
+     1,
+     1
+    ],
+    "D0-011": [
+     2,
+     1,
+     1
+    ],
+    "D0-019": [
+     2,
+     1,
+     1
+    ]
+   },
+   "retired_season": 1
+  }
+ ],
+ "name_registry": {
+  "福田剛": 1,
+  "笹木深雪": 1,
+  "中尾美穂": 1,
+  "村田章子": 1,
+  "橋口真一": 1,
+  "尾関浩二": 1,
+  "南泉美": 1,
+  "藤田千尋": 1,
+  "大村萌": 1,
+  "水野蓮": 1,
+  "大槻由紀": 1,
+  "森本陽太": 1,
+  "山内隆之": 1,
+  "須田新": 1,
+  "山根蒼": 1,
+  "松田陸": 1,
+  "大野尚樹": 1,
+  "岩崎久美子": 1,
+  "田口泉美": 1,
+  "山岸美和": 1,
+  "山内陽介": 1,
+  "小松亜由美": 1,
+  "柳沢悠真": 1,
+  "宮崎健一": 1,
+  "森本陽向": 1,
+  "中川淳": 1,
+  "高橋聡太": 1,
+  "野村美優": 1,
+  "笹木亜希子": 1,
+  "本田花子": 1,
+  "石塚亜紀": 1,
+  "近藤澪": 1,
+  "大槻信一": 1,
+  "小田美紀": 1,
+  "北村直人": 1,
+  "江口雄大": 1,
+  "望月亜希子": 1,
+  "大村豪": 1,
+  "宮崎友紀": 1,
+  "西村礼子": 1,
+  "鈴木健一": 1,
+  "阿部美紀": 1,
+  "山岸章子": 1,
+  "望月紗英": 1,
+  "岡島さくら": 1,
+  "柳沢遥": 1,
+  "三好麻衣": 1,
+  "酒井澪": 1,
+  "佐藤純一": 1,
+  "谷本泉子": 1,
+  "柳沢重樹": 1,
+  "高橋美奈": 1,
+  "谷秀樹": 1,
+  "内田蒼": 1,
+  "野村遥": 1,
+  "伊藤大輔": 1,
+  "桜井力": 1,
+  "大森綾香": 1,
+  "柳沢聡太": 1,
+  "浦上友和": 1,
+  "岡崎淳": 1,
+  "石黒裕子": 1,
+  "渡辺秀樹": 1,
+  "松田浩明": 1,
+  "横山彩": 1,
+  "尾形大輔": 1,
+  "桜井一葉": 1,
+  "宮本秀一": 1,
+  "柴田碧": 1,
+  "河野美和": 1,
+  "望月剛": 1,
+  "石黒優子": 1,
+  "佐野美和子": 1,
+  "田中朝陽": 1,
+  "長谷川深美": 1,
+  "内田悠斗": 1
+ },
+ "rules": {
+  "houou": {
+   "name": "鳳凰戦ルール（一発・裏・赤なし、沈みウマ）",
+   "game_length": "south",
+   "start_score": 30000,
+   "return_score": 30000,
+   "uma": [
+    15,
+    5,
+    -5,
+    -15
+   ],
+   "ippatsu": false,
+   "ura_dora": false,
+   "kan_dora": false,
+   "kazoe_yakuman": false,
+   "double_yakuman": true,
+   "nagashi_mangan": true,
+   "agari_yame": false,
+   "tobi": false,
+   "renpuu_pair_fu": 2,
+   "tie_split_uma": true,
+   "riichi_min_score": 1000,
+   "noten_penalty": 3000,
+   "honba_ron": 300,
+   "pao": true,
+   "max_kans": 4,
+   "aka": false,
+   "uma_mode": "sinking",
+   "draw_renchan": true
+  },
+  "kirin": {
+   "name": "麒麟戦ルール（一発・裏・赤あり、オカ・大きなウマ）",
+   "game_length": "south",
+   "start_score": 25000,
+   "return_score": 30000,
+   "uma": [
+    30,
+    10,
+    -10,
+    -30
+   ],
+   "ippatsu": true,
+   "ura_dora": true,
+   "kan_dora": true,
+   "kazoe_yakuman": true,
+   "double_yakuman": true,
+   "nagashi_mangan": true,
+   "agari_yame": true,
+   "tobi": false,
+   "renpuu_pair_fu": 2,
+   "tie_split_uma": false,
+   "riichi_min_score": 1000,
+   "noten_penalty": 3000,
+   "honba_ron": 300,
+   "pao": true,
+   "max_kans": 4,
+   "aka": true,
+   "uma_mode": "fixed",
+   "draw_renchan": true
+  },
+  "reiki": {
+   "name": "霊亀戦ルール（一発・裏あり／赤なし、定額ウマ）",
+   "game_length": "south",
+   "start_score": 30000,
+   "return_score": 30000,
+   "uma": [
+    15,
+    5,
+    -5,
+    -15
+   ],
+   "ippatsu": true,
+   "ura_dora": true,
+   "kan_dora": true,
+   "kazoe_yakuman": true,
+   "double_yakuman": true,
+   "nagashi_mangan": true,
+   "agari_yame": false,
+   "tobi": false,
+   "renpuu_pair_fu": 2,
+   "tie_split_uma": true,
+   "riichi_min_score": 1000,
+   "noten_penalty": 3000,
+   "honba_ron": 300,
+   "pao": true,
+   "max_kans": 4,
+   "aka": false,
+   "uma_mode": "fixed",
+   "draw_renchan": true
+  },
+  "ouryu": {
+   "name": "応龍戦ルール（ノーウマ・ノーテン罰符なし、101方式）",
+   "game_length": "south",
+   "start_score": 30000,
+   "return_score": 30000,
+   "uma": [
+    1,
+    0,
+    0,
+    -1
+   ],
+   "ippatsu": false,
+   "ura_dora": false,
+   "kan_dora": false,
+   "kazoe_yakuman": false,
+   "double_yakuman": true,
+   "nagashi_mangan": false,
+   "agari_yame": false,
+   "tobi": false,
+   "renpuu_pair_fu": 2,
+   "tie_split_uma": true,
+   "riichi_min_score": 1000,
+   "noten_penalty": 0,
+   "honba_ron": 300,
+   "pao": true,
+   "max_kans": 4,
+   "aka": false,
+   "uma_mode": "win_loss",
+   "draw_renchan": false
+  }
+ },
+ "title_rules": {
+  "鳳凰位": "houou",
+  "麒麟位": "kirin",
+  "霊亀位": "reiki",
+  "応龍位": "ouryu"
+ }
+}
