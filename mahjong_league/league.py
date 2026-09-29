@@ -140,8 +140,8 @@ def relegate_and_retire(ranked, exempt, titleholder_ids, exempt_next_ids=frozens
     for (upper, lower), n in MOVES.items():
         up_list, low_list = lists[upper], lists[lower]
         n = min(n, len(up_list), len(low_list))
-        # 上位リーグ下位のうちタイトル保持者は降級しない（1つ上の順位の者が代わりに降級）
-        demote = [ind for ind in reversed(up_list) if ind.id not in protected][:n]
+        # タイトル保持者でも成績どおりに降級する（保持者が守られるのは引退だけ）
+        demote = list(reversed(up_list))[:n]
         promote = low_list[:n]
         moved[upper]["down"] = demote
         moved[lower]["up"] = promote
@@ -201,6 +201,16 @@ def relegate_and_retire(ranked, exempt, titleholder_ids, exempt_next_ids=frozens
             ind.retired = True
             retired.append(ind)
             new["D"].remove(ind)
+
+    # 来季の並び：降級してきた者を上位、残留者を今季の順位順、昇級してきた者を下位に置く
+    order = {ind.id: i for lg in LEAGUES for i, ind in enumerate(ranked[lg])}
+    for lg in LEAGUES:
+        rank_lg = LEAGUES.index(lg)
+        exempt_here = [ind for ind in new[lg] if ind.id in exempt_ids]
+        rest = [ind for ind in new[lg] if ind.id not in exempt_ids]
+        rest.sort(key=lambda ind: (1 + (LEAGUES.index(ind.league) > rank_lg) - (LEAGUES.index(ind.league) < rank_lg)
+                                   if ind.league in LEAGUES else 3, order.get(ind.id, 10 ** 6)))
+        new[lg] = exempt_here + rest
 
     for lg in LEAGUES:
         for ind in new[lg]:

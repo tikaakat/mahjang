@@ -18,7 +18,19 @@ const TITLE_DESC = {
 const RESULT_TITLE_TABS = { hououi: "鳳凰位", jyudan: "十段位", oui: "王位", masters: "マスターズ" };
 const STYLE_LABELS = {
   speed_weight: "牌効率", dora_weight: "ドラ", yakuhai_weight: "役牌", flush_weight: "染め手",
-  tanyao_weight: "タンヤオ", call_weight: "鳴き", riichi_weight: "リーチ", defense_weight: "守備", push_weight: "押し",
+  tanyao_weight: "タンヤオ", call_weight: "鳴き", riichi_weight: "リーチ", defense_weight: "守備", push_weight: "押し返し",
+};
+// 打ち筋9項目の意味（mahjong_sim/ai.py の打牌・鳴き・リーチ判断での使われ方）
+const STYLE_DESC = {
+  speed_weight: "受け入れ枚数（有効牌の多さ）を重視する。高いほど最速の形を選ぶ。",
+  dora_weight: "ドラを手に残そうとする。",
+  yakuhai_weight: "役牌の対子・刻子を大事にし、ポンしやすくなる。",
+  flush_weight: "1色に寄せて染め手（混一色・清一色）を狙う。",
+  tanyao_weight: "么九牌を先に切ってタンヤオに寄せる。",
+  call_weight: "チー・ポンをしやすい。低いと門前で進める。",
+  riichi_weight: "聴牌したらリーチをかけやすい。低いとダマテンが増える。",
+  defense_weight: "他家のリーチや仕掛けに対して、危険牌を切らない強さ（降りの基本の強さ）。",
+  push_weight: "自分の手が良いとき（聴牌・一向聴や高い手）に、守備を弱めて押し返す度合い。",
 };
 const SERIES = ["#4ff0ff", "#ffb648", "#ff7a7a", "#7ee787"];
 
@@ -150,6 +162,51 @@ const SUIT_CLASS = ["m", "p", "s"];
 const SUIT_CHAR = ["萬", "筒", "索"];
 const KANJI_NUM = ["一", "二", "三", "四", "五", "六", "七", "八", "九"];
 const tileName = (t) => (t >= 27 ? HONORS[t - 27] : `${(t % 9) + 1}${SUIT_CLASS[Math.floor(t / 9)]}`);
+// 筒子・索子は実物に近い図柄（丸・竹）をSVGで描く。座標は幅30×高さ40の牌面
+const PIN_COLORS = { b: "#1f4f96", r: "#c0392b", g: "#1d6b3e" };
+const PIN_LAYOUT = [
+  [[15, 20, 10, "r"]],
+  [[15, 11, 6, "b"], [15, 29, 6, "g"]],
+  [[8, 8, 5, "b"], [15, 20, 5, "r"], [22, 32, 5, "g"]],
+  [[9, 11, 5, "b"], [21, 11, 5, "g"], [9, 29, 5, "g"], [21, 29, 5, "b"]],
+  [[8, 9, 4.6, "b"], [22, 9, 4.6, "g"], [15, 20, 4.6, "r"], [8, 31, 4.6, "g"], [22, 31, 4.6, "b"]],
+  [[9, 8, 4.4, "g"], [21, 8, 4.4, "g"], [9, 21, 4.4, "r"], [21, 21, 4.4, "r"], [9, 32, 4.4, "r"], [21, 32, 4.4, "r"]],
+  [[7, 6, 3.8, "g"], [15, 10, 3.8, "g"], [23, 14, 3.8, "g"], [9, 24, 3.8, "r"], [21, 24, 3.8, "r"], [9, 34, 3.8, "r"], [21, 34, 3.8, "r"]],
+  [[9, 6, 3.9, "b"], [21, 6, 3.9, "b"], [9, 15.3, 3.9, "b"], [21, 15.3, 3.9, "b"], [9, 24.7, 3.9, "b"], [21, 24.7, 3.9, "b"], [9, 34, 3.9, "b"], [21, 34, 3.9, "b"]],
+  [[7, 8, 3.8, "b"], [15, 8, 3.8, "b"], [23, 8, 3.8, "b"], [7, 20, 3.8, "r"], [15, 20, 3.8, "r"], [23, 20, 3.8, "r"], [7, 32, 3.8, "g"], [15, 32, 3.8, "g"], [23, 32, 3.8, "g"]],
+];
+// 索子：[x, y, 長さ, 色]（竹は縦向き、幅は共通）
+const SOU_LAYOUT = [
+  null,
+  [[15, 11, 14, "g"], [15, 29, 14, "g"]],
+  [[15, 11, 14, "g"], [9, 29, 14, "g"], [21, 29, 14, "g"]],
+  [[9, 11, 14, "g"], [21, 11, 14, "g"], [9, 29, 14, "g"], [21, 29, 14, "g"]],
+  [[8, 11, 14, "g"], [22, 11, 14, "g"], [15, 20, 14, "r"], [8, 29, 14, "g"], [22, 29, 14, "g"]],
+  [[7, 11, 14, "g"], [15, 11, 14, "g"], [23, 11, 14, "g"], [7, 29, 14, "g"], [15, 29, 14, "g"], [23, 29, 14, "g"]],
+  [[15, 6, 9, "r"], [7, 20, 9, "g"], [15, 20, 9, "g"], [23, 20, 9, "g"], [7, 33, 9, "g"], [15, 33, 9, "g"], [23, 33, 9, "g"]],
+  [[5, 11, 14, "g"], [11.7, 11, 14, "g"], [18.3, 11, 14, "g"], [25, 11, 14, "g"], [5, 29, 14, "g"], [11.7, 29, 14, "g"], [18.3, 29, 14, "g"], [25, 29, 14, "g"]],
+  [[7, 7, 10, "g"], [15, 7, 10, "r"], [23, 7, 10, "g"], [7, 20, 10, "g"], [15, 20, 10, "r"], [23, 20, 10, "g"], [7, 33, 10, "g"], [15, 33, 10, "r"], [23, 33, 10, "g"]],
+];
+function pinSVG(n) {
+  return PIN_LAYOUT[n].map(([x, y, r, c]) => {
+    const col = PIN_COLORS[c];
+    return `<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="${col}" stroke-width="${r * 0.32}"/><circle cx="${x}" cy="${y}" r="${r * 0.38}" fill="${col}"/>`
+      + (n === 0 ? `<circle cx="${x}" cy="${y}" r="${r * 0.7}" fill="none" stroke="${PIN_COLORS.g}" stroke-width="1"/>` : "");
+  }).join("");
+}
+function stick(x, y, len, c) {
+  const col = PIN_COLORS[c], w = 4.2, top = y - len / 2;
+  return `<rect x="${x - w / 2}" y="${top}" width="${w}" height="${len}" rx="1.6" fill="${col}"/>`
+    + `<line x1="${x}" y1="${top + 1.2}" x2="${x}" y2="${top + len - 1.2}" stroke="#fff" stroke-opacity="0.55" stroke-width="0.8"/>`
+    + `<line x1="${x - w / 2}" y1="${y}" x2="${x + w / 2}" y2="${y}" stroke="#fff" stroke-opacity="0.8" stroke-width="0.9"/>`;
+}
+function souSVG(n) {
+  if (n === 0) { // 一索は鳥の代わりに、大きな竹1本を赤と緑で
+    return `<rect x="11" y="4" width="8" height="32" rx="3" fill="${PIN_COLORS.g}"/><rect x="11" y="16" width="8" height="8" fill="${PIN_COLORS.r}"/>`
+      + `<line x1="11" y1="12" x2="19" y2="12" stroke="#fff" stroke-width="1"/><line x1="11" y1="28" x2="19" y2="28" stroke="#fff" stroke-width="1"/>`;
+  }
+  return SOU_LAYOUT[n].map(([x, y, len, c]) => stick(x, y, len, c)).join("");
+}
 function tile(t, extra = "", small = false) {
   const sz = small ? " sm" : "";
   if (t >= 27) {
@@ -157,8 +214,11 @@ function tile(t, extra = "", small = false) {
     return `<span class="tile z ${cls}${sz} ${extra}" title="${HONORS[t - 27]}">${HONORS[t - 27]}</span>`;
   }
   const suit = Math.floor(t / 9), n = t % 9;
-  const face = suit === 0 ? KANJI_NUM[n] : String(n + 1);
-  return `<span class="tile ${SUIT_CLASS[suit]}${sz} ${extra}" title="${tileName(t)}"><span class="n">${face}</span><small>${SUIT_CHAR[suit]}</small></span>`;
+  if (suit === 0) {
+    return `<span class="tile m${sz} ${extra}" title="${tileName(t)}"><span class="n">${KANJI_NUM[n]}</span><small>${SUIT_CHAR[0]}</small></span>`;
+  }
+  const art = suit === 1 ? pinSVG(n) : souSVG(n);
+  return `<span class="tile ${SUIT_CLASS[suit]} art${sz} ${extra}" title="${tileName(t)}"><svg viewBox="0 0 30 40" aria-hidden="true">${art}</svg></span>`;
 }
 const tilesHTML = (arr, small = false) => `<span class="tiles">${arr.map((t) => tile(t, "", small)).join("")}</span>`;
 function meldHTML(m, small = true) {
@@ -177,7 +237,7 @@ const TITLES_VIEWS = ["current", ...TITLES];
 const TITLES_VIEW_LABELS = { current: "現在の保持者", ...Object.fromEntries(TITLES.map((t) => [t, "歴代" + t])) };
 let _titlesView = "current";
 const HOF_VIEWS = ["ranking", "records", "retired", "awakened"];
-const HOF_VIEW_LABELS = { ranking: "総合ランキング", records: "記録", retired: "引退者一覧", awakened: "覚醒者一覧" };
+const HOF_VIEW_LABELS = { ranking: "総合ランキング", records: "記録集", retired: "引退者一覧", awakened: "覚醒者一覧" };
 let _hofView = "ranking";
 
 const TAB_GROUPS = {
@@ -188,7 +248,7 @@ const TAB_GROUPS = {
   leagues: { tabs: ["leagues", "clans"], subLabels: { leagues: "鳳凰戦リーグ表", clans: "一門" } },
   results: {
     tabs: ["houou", "hououi", "jyudan", "oui", "masters", "awards", "matches"],
-    subLabels: { houou: "鳳凰戦", hououi: "鳳凰位決定戦", jyudan: "十段戦", oui: "王位戦", masters: "マスターズ", awards: "表彰", matches: "対局記録" },
+    subLabels: { houou: "鳳凰戦リーグ", hououi: "鳳凰位決定戦", jyudan: "十段戦", oui: "王位戦", masters: "マスターズ", awards: "表彰", matches: "対局記録" },
   },
   titles: {
     tabs: ["titles"],
@@ -309,7 +369,7 @@ async function viewLeagues() {
   for (const lg of LEAGUES) {
     const members = (idx.leagues?.[lg] || []).map((id) => players._byId[id]).filter(Boolean);
     const holder = houou && members.find((p) => p.id === houou.id);
-    const rows = members.filter((p) => p !== holder).sort((a, b) => b.elo - a.elo);
+    const rows = members.filter((p) => p !== holder);
     const vacancy = lg === "D" ? dVacancy : 0;
     html += `<div class="league-block"><h3>${lg}リーグ（${rows.length}名${vacancy ? `+欠員${vacancy}` : ""}${holder ? "+鳳凰位" : ""}）</h3>`;
     if (holder) {
@@ -319,11 +379,8 @@ async function viewLeagues() {
     }
     html += `<table><thead><tr><th>#</th><th>名前</th><th class="num">年齢</th><th class="num">レート</th></tr></thead><tbody>`;
     rows.forEach((p, i) => {
-      const last = (p.career || [])[p.career.length - 1];
-      const isNew = !p.career || p.career.length === 0;
-      const mark = isNew ? movementMark("new") : last && last.league !== lg ? movementMark(last.league > lg ? "promoted" : "relegated") : "";
       html += `<tr data-id="${esc(p.id)}"><td class="rank-num">${i + 1}</td>
-        <td>${mark}${crownLabel(p.id)}${esc(p.display_name)}${p.created ? ' <span class="chip cyan">投稿</span>' : ""}</td>
+        <td>${crownLabel(p.id)}${esc(p.display_name)}${p.created ? ' <span class="chip cyan">投稿</span>' : ""}</td>
         <td class="num">${ageOf(p)}歳</td><td class="num elo-val">${Math.round(p.elo)}</td></tr>`;
     });
     for (let i = 0; i < vacancy; i++) {
@@ -334,7 +391,7 @@ async function viewLeagues() {
     }
     html += "</tbody></table></div>";
   }
-  html += `<div class="note">昇↑・降↓は前季からの昇降級、新は新規参入。並びはレート順。</div>`;
+  html += `<div class="note">並びは、上のリーグから降級してきた雀士、残留した雀士（前季の順位順）、下のリーグから昇級してきた雀士の順。昇降級の結果は「結果」タブの鳳凰戦リーグで見られます。</div>`;
   return html;
 }
 
@@ -350,10 +407,10 @@ async function viewClans() {
   const list = Object.entries(clans).map(([root, members]) => ({
     root, members, active: members.filter((m) => !m.retired).length, titles: titleCount[root] || 0,
     best: Math.max(...members.map((m) => m.peak_elo)),
-  })).filter((c) => c.members.length > 1 || c.titles).sort((a, b) => b.titles - a.titles || b.active - a.active || b.best - a.best);
+  })).filter((c) => c.members.length > 1).sort((a, b) => b.titles - a.titles || b.active - a.active || b.best - a.best);
   if (!list.length) return `<div class="empty">まだ弟子を持つ一門はありません</div>`;
   return `<h3 class="view-title">一門</h3>
-    <div class="note">師弟関係でつながる系統。弟子は師匠の打ち筋を受け継ぎます（弟子がいる、またはタイトル経験のある系統を表示）。</div>
+    <div class="note">師弟関係でつながる系統。弟子は師匠の打ち筋を受け継ぎます（弟子のいる系統だけを表示）。</div>
     <table><thead><tr><th>一門</th><th class="num">現役</th><th class="num">総数</th><th class="num">タイトル</th><th class="num">最高レート</th></tr></thead><tbody>
     ${list.map((c) => `<tr data-go="clans/${esc(c.root)}"><td>${esc(players._byId[c.root]?.display_name || c.root)}一門</td>
       <td class="num">${c.active}</td><td class="num">${c.members.length}</td><td class="num">${c.titles ? c.titles + "期" : "-"}</td><td class="num elo-val">${Math.round(c.best)}</td></tr>`).join("")}
@@ -384,7 +441,7 @@ async function viewHouou(season) {
   const s = Math.min(Math.max(1, season || idx.current_season), idx.current_season);
   const standings = await getJSON(`standings/season_${s}.json`);
   const winners = Object.fromEntries(idx.title_history.filter((h) => h.season === s).map((h) => [h.winner_id, h.title]));
-  let html = seasonNav(s, idx.current_season, "houou") + `<h3 class="view-title">鳳凰戦 リーグ成績（A〜D）</h3>`;
+  let html = seasonNav(s, idx.current_season, "houou") + `<h3 class="view-title">鳳凰戦リーグ 成績（A〜D）</h3>`;
   for (const lg of LEAGUES) {
     const rows = standings.filter((r) => r.league === lg);
     if (!rows.length) continue;
@@ -539,7 +596,7 @@ async function viewMatches(season) {
   const idx = await getIndex();
   if (!idx.current_season) return `<div class="empty">まだ記録がありません</div>`;
   const s = Math.min(Math.max(1, season || idx.current_season), idx.current_season);
-  setTimeout(() => bindMatchSearch(s), 0);
+  afterRender(() => bindMatchSearch(s));
   return seasonNav(s, idx.current_season, "matches") + `
     <div style="margin-bottom:10px;"><input type="search" id="matches-search" placeholder="対局者名で検索..." value="${esc(_matchQuery)}" style="width:100%;"></div>
     <div id="matches-list" class="loading">読み込み中...</div>`;
@@ -748,12 +805,12 @@ async function viewIndividual(id) {
     ${secTitle("今季の表彰")}<div id="ind-awards" class="dim small">読み込み中...</div>
     ${secTitle("シーズンごとの成績")}${careerHtml(p, idx)}
     ${secTitle("最近の対局")}${recentHtml(p)}`;
-  setTimeout(async () => {
+  afterRender(async () => {
     document.getElementById("ind-fav-toggle")?.addEventListener("click", () => toggleFavorite(p.id));
     applyFavorites();
     const box = document.getElementById("ind-awards");
     if (box) { box.className = ""; box.innerHTML = await awardsOfHtml(p.id, idx); }
-  }, 0);
+  });
   return html;
 }
 
@@ -904,7 +961,7 @@ async function viewKifu(id) {
     }
     draw();
   };
-  setTimeout(draw, 0);
+  afterRender(draw);
   return `<div class="back-link" data-go="game/${k.id}">← 対局結果へ</div>
     <h3 class="view-title">牌譜</h3><div class="note">${esc(eventLabel(k.event))}</div><div id="kifu"></div>`;
 }
@@ -980,12 +1037,12 @@ async function viewHof() {
     });
     const arrow = (k) => (k === sort.key ? (sort.dir === -1 ? " ▼" : " ▲") : "");
     const head = `<thead><tr><th>#</th><th>名前</th>${cols.map(([k, l]) => `<th class="num hof-sort" data-sort="${k}" style="cursor:pointer;">${l}${arrow(k)}</th>`).join("")}</tr></thead>`;
-    setTimeout(() => document.querySelectorAll("th.hof-sort").forEach((th) => th.addEventListener("click", () => {
+    afterRender(() => document.querySelectorAll("th.hof-sort").forEach((th) => th.addEventListener("click", () => {
       const k = th.dataset.sort, asc = cols.find((c) => c[0] === k)[3];
       _hofSort = _hofSort.key === k ? { key: k, dir: -_hofSort.dir } : { key: k, dir: asc ? 1 : -1 };
       render("hof");
-    })), 0);
-    return `<div class="note">列見出しをクリックすると並び替え（和了率・放銃率は${HOF_MIN_HANDS}局以上が対象）。引退者も含みます。</div>` +
+    })));
+    return `<div class="note">雀士ごとの通算成績の一覧。列見出しをクリックすると並び替え（和了率・放銃率は${HOF_MIN_HANDS}局以上が対象）。引退者も含みます。</div>` +
       collapsibleTable(head, rows, (r, n) => `<tr data-id="${esc(r.p.id)}"><td class="rank-num">${n}</td>
         <td style="white-space:nowrap;">${crownLabel(r.p.id)}${esc(r.p.display_name)}${r.p.retired ? '<span class="dim small">（引退）</span>' : `<span class="dim small">（${r.p.league}）</span>`}</td>
         ${cols.map(([k, , f]) => `<td class="num"${k === sort.key ? ' style="color:var(--amber);"' : ""}>${f(r)}</td>`).join("")}</tr>`, 15);
@@ -1015,12 +1072,13 @@ function gameRef(r) {
 async function viewRecords(idx) {
   const seasonOpts = [`<option value="">通算</option>`];
   for (let x = idx.current_season; x >= 1; x--) seasonOpts.push(`<option value="${x}" ${String(x) === _rec.season ? "selected" : ""}>第${x}季</option>`);
-  setTimeout(() => {
+  afterRender(() => {
     document.querySelectorAll("[data-rtab]").forEach((b) => b.addEventListener("click", () => { _rec.tab = b.dataset.rtab; render("hof"); }));
     document.getElementById("rec-season")?.addEventListener("change", (e) => { _rec.season = e.target.value; render("hof"); });
     document.querySelectorAll("[data-rsort]").forEach((b) => b.addEventListener("click", () => { _rec.sort = b.dataset.rsort; render("hof"); }));
-  }, 0);
-  let html = `<div class="pill-row">${STAT_TABS.map(([k, l]) => `<button class="btn${k === _rec.tab ? " active" : ""}" data-rtab="${k}">${l}</button>`).join("")}</div>
+  });
+  let html = `<div class="note">記録集は、全半荘の局データをサーバーのデータベースで集計したもの。季ごとに絞り込めるほか、役満・高打点の一覧、役の出現率、タイトル獲得数、半荘の最高・最低得点が見られます。</div>
+    <div class="pill-row">${STAT_TABS.map(([k, l]) => `<button class="btn${k === _rec.tab ? " active" : ""}" data-rtab="${k}">${l}</button>`).join("")}</div>
     ${_rec.tab !== "titles" ? `<div style="margin-bottom:10px;"><select id="rec-season" aria-label="季">${seasonOpts.join("")}</select></div>` : ""}`;
   const sq = _rec.season ? `&season=${_rec.season}` : "";
   try {
@@ -1092,8 +1150,8 @@ const STATUS_LABEL = { pending: "受付済み", exported: "新人リーグ出場
 
 async function viewCreate() {
   const sliders = Object.entries(STYLE_LABELS).map(([k, l]) => `
-    <label class="slider"><span>${l}</span><input type="range" min="${PARAM_MIN}" max="${PARAM_MAX}" step="0.5" name="${k}" value="${PRESETS.balanced[1][k]}"><output>${PRESETS.balanced[1][k]}</output></label>`).join("");
-  setTimeout(bindCreateForm, 0);
+    <label class="slider" title="${STYLE_DESC[k]}"><span>${l}</span><input type="range" min="${PARAM_MIN}" max="${PARAM_MAX}" step="0.5" name="${k}" value="${PRESETS.balanced[1][k]}"><output>${PRESETS.balanced[1][k]}</output></label>`).join("");
+  afterRender(bindCreateForm);
   return `<h3 class="view-title">キャラクリエイト</h3>
     <div class="note">自分だけの雀士を投稿できます。投稿は次の新人リーグ（4人打ち・1人12半荘）に出場し、上位に入るとDリーグに入門します。入門時には既存の雀士が師匠に付きます。技量は入門時に決まり、若いうちに伸びます。</div>
     <div class="form-grid">
@@ -1105,6 +1163,7 @@ async function viewCreate() {
         ${secTitle("打ち筋")}
         <div class="pill-row">${Object.entries(PRESETS).map(([k, [l]]) => `<button type="button" class="btn${k === "balanced" ? " active" : ""}" data-preset="${k}">${l}</button>`).join("")}</div>
         <div class="sliders">${sliders}</div>
+        <div class="note" style="margin-top:6px;">各項目の意味はページ上部の「？」（ルール）に載っています。</div>
         <div id="budget" class="note"></div>
         <button type="submit" class="btn primary">投稿する</button>
         <div id="create-msg" role="status" class="note"></div>
@@ -1247,7 +1306,14 @@ async function rulesHtml() {
     ${sec("雀士")}
     打ち筋（9項目）と技量（判断の正確さ）を持ちます。若手は伸び、ベテランは緩やかに衰えます。
     新弟子は既存の雀士に弟子入りし、師匠の打ち筋を受け継ぎます（稀に新しい一門の開祖に）。
-    70歳（タイトル保持中を除く）またはDリーグで2年連続マイナスで引退します。
+    ${sec("打ち筋の9項目")}
+    <dl class="params-grid">${Object.entries(STYLE_DESC).map(([k, d]) => `<dt>${STYLE_LABELS[k]}</dt><dd>${d}</dd>`).join("")}</dl>
+    <div class="dim small" style="margin-top:4px;">守備と押し返しは別の軸です。危険牌の打ちにくさ＝守備×危険度×「降りる度合い」で、降りる度合いは手が悪いほど大きく、押し返しが高いほど手が良いときに小さくなります。守備も押し返しも高いと「手が悪ければ降り、良ければ押す」打ち手になります。</div>
+    ${sec("引退")}
+    ・70歳に達すると引退<br>
+    ・Dリーグで2年連続マイナスなら引退<br>
+    ・Dリーグに毎年最低2名の新人枠を確保するため、欠員が足りない場合はDリーグの下位から引退<br>
+    ・いずれもタイトル保持中は猶予され、失冠するまで引退しない（降級は成績どおり）
   </div>`;
 }
 
@@ -1265,6 +1331,9 @@ function navigateTo(hash) {
 window.addEventListener("popstate", () => render(currentHash(), true));
 
 let _renderSeq = 0;
+// 描画後に行う処理（イベントの登録など）。ビューの中で登録し、HTMLを差し込んだ直後に実行する
+let _afterRender = [];
+const afterRender = (fn) => _afterRender.push(fn);
 async function render(hash, isPopstate) {
   const parts = (hash || "").split("?")[0].split("/").map(decodeURIComponent);
   let [tab, param] = parts;
@@ -1290,6 +1359,7 @@ async function render(hash, isPopstate) {
   if (!views[tab] || ((tab === "individual" || tab === "game" || tab === "kifu") && !param)) tab = "leagues";
   showTab(tab);
   const seq = ++_renderSeq;
+  _afterRender = [];
   const app = document.getElementById("app");
   const stay = tab === "titles" || tab === "hof"; // サブビュー切り替えでは読み込み表示を挟まない
   if (!stay) { app.className = "loading"; app.innerHTML = "読み込み中..."; }
@@ -1300,6 +1370,8 @@ async function render(hash, isPopstate) {
     if (seq !== _renderSeq) return; // 読み込み中に別のページへ移った
     app.className = "";
     app.innerHTML = html;
+    const hooks = _afterRender; _afterRender = [];
+    hooks.forEach((fn) => fn());
   } catch (e) {
     if (seq !== _renderSeq) return;
     app.className = "empty";

@@ -164,6 +164,7 @@ input[type="text"], input[type="search"], input:not([type]), select {
 .tile.hi { outline: 2px solid var(--amber); outline-offset: 1px; }
 .tile.back { background: var(--tile-edge); }
 .meld { display: inline-flex; gap: 1px; margin-left: 8px; }
+.tile.art svg { width: 88%; height: 88%; display: block; }
 
 /* ---------- 牌譜ビューア ---------- */
 .board { display: grid; gap: 8px; }
