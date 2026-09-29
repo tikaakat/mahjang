@@ -61,6 +61,8 @@ jobs:
             DEPLOY=1
             echo "$XSERVER_SSH_KEY" > /tmp/deploy_key
             chmod 600 /tmp/deploy_key
+          else
+            echo "::warning::XSERVER_HOST または MAHJONG_XSERVER_TARGET_DIR が未設定のため、Xserverへの転送は行いません"
           fi
 
           TOTAL="${{ github.event.inputs.seasons || '1' }}"
@@ -72,9 +74,15 @@ jobs:
             # --- キャラクリエイトの投稿を取得して新人リーグを開催（サイト未設置なら0件） ---
             echo '[]' > data/newcomer_submissions.json
             if [ -n "$SITE_URL" ] && [ -n "$IMPORT_KEY" ]; then
-              curl -sS -f --connect-timeout 10 --max-time 30 "${SITE_URL}admin/export_pending.php?key=${IMPORT_KEY}" \
-                | jq '.characters // []' > data/newcomer_submissions.json \
-                || { echo "::warning::投稿の取得に失敗しました。0件として扱います"; echo '[]' > data/newcomer_submissions.json; }
+              # 取得・解析のどちらかに失敗したら0件として続行する（サイト未設置の初回など）
+              if curl -sS -f --connect-timeout 10 --max-time 30 -o /tmp/pending.json \
+                   "${SITE_URL}admin/export_pending.php?key=${IMPORT_KEY}" \
+                 && jq -e '.characters // []' /tmp/pending.json > /tmp/submissions.json; then
+                mv /tmp/submissions.json data/newcomer_submissions.json
+              else
+                echo "::warning::投稿の取得に失敗しました。0件として扱います（サイト未設置・config.php未設定の可能性）"
+                head -c 300 /tmp/pending.json 2>/dev/null || true
+              fi
             fi
             python -u run_newcomer_league.py --data-dir data --submissions-path data/newcomer_submissions.json
 

@@ -37,8 +37,13 @@ def main():
 
     submissions = []
     if os.path.exists(args.submissions_path):
-        with open(args.submissions_path, encoding="utf-8") as f:
-            submissions = json.load(f) or []
+        try:
+            with open(args.submissions_path, encoding="utf-8") as f:
+                submissions = json.load(f) or []
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"※ 投稿ファイルを読めなかったため0件として扱います: {e}")
+        if not isinstance(submissions, list):
+            submissions = []
     submissions = [s for s in submissions if clean_name(s.get("name"))][:SUBMISSION_CAP]
 
     state = load_season_state(args.data_dir)
