@@ -93,8 +93,11 @@ jobs:
               return 0
             fi
             # サイト本体（config.php はサーバー上で作成したものを上書きしない）
+            # index.html の app.js・style.css の参照にコミットIDを付け、ブラウザが古いファイルを使い続けないようにする
+            mkdir -p /tmp/site
+            sed "s/__BUILD__/${GITHUB_SHA::8}/g" web/index.html > /tmp/site/index.html
             retry_cmd scp -i /tmp/deploy_key -P "$XSERVER_PORT" $SSH_OPTS -r \
-              web/index.html web/app.js web/style.css \
+              /tmp/site/index.html web/app.js web/style.css \
               server/.htaccess server/lib.php server/schema.sql server/config.sample.php server/api server/admin \
               "$XSERVER_USER@$XSERVER_HOST:$XSERVER_TARGET_DIR" \
               || echo "::warning::サイトの転送に失敗しました（$tag）"
