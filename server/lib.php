@@ -11,6 +11,14 @@ const PARAM_BUDGET = 45.0;
 const NAME_MAX_LEN = 12;
 const PRESET_TYPES = ['balanced', 'attack', 'defense', 'caller', 'flush'];
 
+set_exception_handler(function (Throwable $e) {
+    // 詳細はサーバーのエラーログへ。応答には原因の種類だけを返す（パスワード等を出さない）
+    error_log('[mahjong] ' . $e);
+    $msg = $e instanceof PDOException ? 'データベースに接続できないか、SQLでエラーが発生しました（config.php の接続情報を確認してください）'
+                                      : 'サーバー内部でエラーが発生しました';
+    json_out(['ok' => false, 'error' => $msg], 500);
+});
+
 function config(): array {
     static $cfg = null;
     if ($cfg === null) {
