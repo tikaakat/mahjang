@@ -10,3 +10,10 @@ DirectoryIndex index.html
 <FilesMatch "^(config\.php|config\.sample\.php|lib\.php|schema\.sql)$">
   Require all denied
 </FilesMatch>
+
+# index.html は毎回サーバーに確認させる（app.js・style.css はURLにコミットIDが付くので、更新時は必ず新しい版が読まれる）
+<IfModule mod_headers.c>
+  <FilesMatch "^index\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
