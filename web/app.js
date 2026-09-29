@@ -138,11 +138,50 @@ function setHolders(idx) {
   HOLDERS = {};
   for (const [t, h] of Object.entries(idx.titleholders || {})) if (h) (HOLDERS[h.id] ||= []).push(t);
 }
-function crownLabel(id) {
+// 段位規定：初段から始まり、九段が最高。段位は下がらない。
+// 昇段ポイント（季ごと）＝所属リーグの参加点 ＋ 順位ボーナス ＋ タイトル獲得（防衛を含む）
+//   参加点：A 6 / B 4 / C 2 / D 1　順位ボーナス：A（1位 +4、3位以内 +2）、B〜D（1位 +2、3位以内 +1）
+//   タイトル：鳳凰位 +8、その他 +5
+// 累計ポイントの目安：二段 3 / 三段 7 / 四段 12 / 五段 18 / 六段 26 / 七段 36 / 八段 50 / 九段 70（九段はタイトル経験者のみ）
+const DAN_NAMES = ["初段", "二段", "三段", "四段", "五段", "六段", "七段", "八段", "九段"];
+const DAN_THRESHOLDS = [0, 3, 7, 12, 18, 26, 36, 50, 70];
+const LEAGUE_ENTRY_POINTS = { A: 6, B: 4, C: 2, D: 1 };
+function danPoints(p, titleHistory) {
+  let pts = 0;
+  for (const c of p.career || []) {
+    pts += LEAGUE_ENTRY_POINTS[c.league] || 0;
+    if (c.rank === 1) pts += c.league === "A" ? 4 : 2;
+    else if (c.rank && c.rank <= 3) pts += c.league === "A" ? 2 : 1;
+  }
+  let titles = 0;
+  for (const h of titleHistory) {
+    if (h.winner_id !== p.id) continue;
+    titles += 1;
+    pts += titleName(h.title) === "鳳凰位" ? 8 : 5;
+  }
+  return { pts, titles };
+}
+function danOf(p, titleHistory) {
+  const { pts, titles } = danPoints(p, titleHistory);
+  let level = 0;
+  DAN_THRESHOLDS.forEach((t, i) => { if (pts >= t) level = i; });
+  if (level === 8 && !titles) level = 7;
+  return { level, name: DAN_NAMES[level], pts };
+}
+let DANS = {};
+function setDans(players, idx) {
+  DANS = {};
+  for (const p of players) DANS[p.id] = danOf(p, idx.title_history || []);
+}
+// 名前の右に付ける表示：タイトル保持者はタイトル（橙のハイライト）、それ以外は段位（橙の枠・橙の文字）
+function nameTag(id) {
   const titles = TITLES.filter((t) => (HOLDERS[id] || []).includes(t));
-  if (!titles.length) return "";
-  const label = titles.length === 1 ? TITLE_SHORT[titles[0]] : ["", "", "二冠", "三冠", "四冠"][titles.length];
-  return `<span class="crown">${esc(label)}</span>`;
+  if (titles.length) {
+    const label = titles.length === 1 ? TITLE_SHORT[titles[0]] : ["", "", "二冠", "三冠", "四冠"][titles.length];
+    return `<span class="crown">${esc(label)}</span>`;
+  }
+  const d = DANS[id];
+  return d ? `<span class="dan-tag">${d.name}</span>` : "";
 }
 const MOVEMENT_MARKS = {
   promoted: '<span class="movement-mark" style="color:var(--up);" title="昇級">昇↑</span>',
@@ -419,13 +458,13 @@ async function viewLeagues() {
     html += `<div class="league-block"><h3>${lg}リーグ（${rows.length}名${vacancy ? `+欠員${vacancy}` : ""}${holder ? "+鳳凰位" : ""}）</h3>`;
     if (holder) {
       html += `<table style="margin-bottom:4px;"><tbody><tr data-id="${esc(holder.id)}">
-        <td class="rank-num" style="width:4.5em;">${crownLabel(holder.id)}</td><td>${esc(holder.display_name)} <span class="chip gold">リーグ免除</span></td>
+        <td class="rank-num">-</td><td>${esc(holder.display_name)}${nameTag(holder.id)} <span class="chip gold">リーグ免除</span></td>
         <td class="num">${ageOf(holder)}歳</td><td class="num elo-val">${Math.round(holder.elo)}</td></tr></tbody></table>`;
     }
     html += `<table><thead><tr><th>#</th><th>名前</th><th class="num">年齢</th><th class="num">レート</th></tr></thead><tbody>`;
     rows.forEach((p, i) => {
       html += `<tr data-id="${esc(p.id)}"><td class="rank-num">${i + 1}</td>
-        <td>${crownLabel(p.id)}${esc(p.display_name)}${p.created ? ' <span class="chip cyan">投稿</span>' : ""}</td>
+        <td>${esc(p.display_name)}${nameTag(p.id)}${p.created ? ' <span class="chip cyan">投稿</span>' : ""}</td>
         <td class="num">${ageOf(p)}歳</td><td class="num elo-val">${Math.round(p.elo)}</td></tr>`;
     });
     for (let i = 0; i < vacancy; i++) {
@@ -470,7 +509,7 @@ async function viewClan(root) {
     const p = players._byId[id];
     if (!p || depth > 40) return "";
     const kids = (children[id] || []).map((c) => node(c.id, depth + 1)).join("");
-    return `<li>${crownLabel(p.id)}${plink(p.id, p.display_name)} <span class="dim small">${p.retired ? "引退" : p.league + "リーグ"}・レート${Math.round(p.elo)}</span>${kids ? `<ul>${kids}</ul>` : ""}</li>`;
+    return `<li>${plink(p.id, p.display_name)}${nameTag(p.id)} <span class="dim small">${p.retired ? "引退" : p.league + "リーグ"}・レート${Math.round(p.elo)}</span>${kids ? `<ul>${kids}</ul>` : ""}</li>`;
   };
   return `<div class="back-link" data-go="clans">← 一門一覧に戻る</div>
     <h3 class="view-title">${esc(players._byId[root]?.display_name || root)}一門（${members.length}名）</h3>
@@ -494,8 +533,8 @@ async function viewHouou(season) {
     const n = ranked.length, z = LEAGUE_ZONES[lg];
     html += `<div class="league-block"><h3>${lg}リーグ</h3>`;
     const ex = rows.find((r) => r.exempt);
-    if (ex) html += `<table style="margin-bottom:4px;"><tbody><tr data-id="${esc(ex.id)}"><td class="rank-num" style="width:4.5em;"><span class="crown">鳳凰</span></td>
-      <td>${esc(ex.name)} <span class="chip gold">リーグ免除</span></td><td class="num elo-val">${Math.round(ex.elo)}</td></tr></tbody></table>`;
+    if (ex) html += `<table style="margin-bottom:4px;"><tbody><tr data-id="${esc(ex.id)}"><td class="rank-num">-</td>
+      <td>${esc(ex.name)}${nameTag(ex.id)} <span class="chip gold">リーグ免除</span></td><td class="num elo-val">${Math.round(ex.elo)}</td></tr></tbody></table>`;
     html += `<div class="scroll-x"><table><thead><tr><th>#</th><th>名前</th><th class="num">pt</th><th class="num">半荘</th><th class="num hide-sm">1/2/3/4着</th><th class="num">平均着順</th></tr></thead><tbody>`;
     ranked.forEach((r) => {
       let zone = "";
@@ -505,7 +544,7 @@ async function viewHouou(season) {
       const avg = avgPlace(r.placements, r.games);
       const won = winners[r.id] ? `<span class="chip gold">${esc(winners[r.id])}</span>` : "";
       html += `<tr class="${zone}" data-id="${esc(r.id)}"><td class="rank-num">${r.rank}</td>
-        <td>${movementMark(r.new ? "new" : "")}${movementMark(r.movement)}${esc(r.name)}${won}</td>
+        <td>${movementMark(r.new ? "new" : "")}${movementMark(r.movement)}${esc(r.name)}${nameTag(r.id)}${won}</td>
         <td class="num">${pt(r.points)}</td><td class="num">${r.games}</td><td class="num hide-sm dim">${r.placements.join("/")}</td>
         <td class="num">${avg ? avg.toFixed(2) : "-"}</td></tr>`;
     });
@@ -640,7 +679,7 @@ async function viewAwards(season) {
     html += `<h4 class="cat">${c.label}</h4>`;
     html += list.length
       ? collapsibleTable('<thead><tr><th>#</th><th>名前</th><th class="num">成績</th></tr></thead>', list,
-        (p, rank) => `<tr data-id="${esc(p.id)}"><td class="rank-num">${rank}</td><td>${crownLabel(p.id)}${esc(p.name)}</td><td class="num">${c.fmt(p)}</td></tr>`, 3, c.keyFn)
+        (p, rank) => `<tr data-id="${esc(p.id)}"><td class="rank-num">${rank}</td><td>${esc(p.name)}${nameTag(p.id)}</td><td class="num">${c.fmt(p)}</td></tr>`, 3, c.keyFn)
       : `<div class="dim small">該当者なし</div>`;
   }
   return html;
@@ -727,74 +766,29 @@ function detailGrid(r) {
   ];
   return `<div class="detail-grid">${cells.map(([l, v]) => `<div class="dg-cell"><span class="dg-label">${l}</span><span class="dg-value">${v}</span></div>`).join("")}</div>`;
 }
-function careerDetail(p) {
-  const st = p.stats || {};
-  return detailGrid({ games: p.games, total: p.total_points || 0, scoreSum: st.score_sum || 0, scoreMax: st.score_max, busts: st.busts || 0, pl: p.placements || [0, 0, 0, 0] });
-}
-
-// 季ごとの鳳凰戦リーグ成績：トータルスコア推移（節ごと）と成績詳細
-async function leagueSeasonHtml(p, season) {
-  const matches = await getJSON(`matches/season_${season}.json`);
-  const mine = matches.filter((m) => m.event.kind === "league" && m.seats.includes(p.id));
-  const c = (p.career || []).find((x) => x.season === season);
-  if (!mine.length) return `<div class="dim small">第${season}季は鳳凰戦リーグに出場していません${c && !c.rank ? "（鳳凰位のためリーグ免除）" : ""}</div>`;
-  const r = { games: 0, total: 0, scoreSum: 0, scoreMax: null, busts: 0, pl: [0, 0, 0, 0] };
-  const bySection = new Map();
-  for (const m of mine) {
-    const i = m.seats.indexOf(p.id), sc = m.final_scores[i];
-    r.games += 1; r.total = Math.round((r.total + m.points[i]) * 10) / 10; r.scoreSum += sc;
-    r.scoreMax = r.scoreMax == null ? sc : Math.max(r.scoreMax, sc); r.busts += sc < 0; r.pl[m.placement[i] - 1] += 1;
-    bySection.set(m.event.section, (bySection.get(m.event.section) || 0) + m.points[i]);
-  }
-  const labels = ["開始"], values = [0];
-  [...bySection.keys()].sort((a, b) => a - b).forEach((sec) => { labels.push(`第${sec}節`); values.push(Math.round((values[values.length - 1] + bySection.get(sec)) * 10) / 10); });
-  const lg = mine[0].event.league;
-  return `<div style="display:flex; justify-content:center; gap:28px; margin:6px 0 10px; text-align:center;">
-      <div><div style="font-family:'Orbitron',sans-serif; font-size:1.3rem;">${pt(r.total)}</div><div class="dim small">トータルスコア</div></div>
-      <div><div style="font-family:'Orbitron',sans-serif; font-size:1.3rem;">${r.games}</div><div class="dim small">半荘数</div></div>
-      <div><div style="font-family:'Orbitron',sans-serif; font-size:1.3rem;">${c && c.rank ? c.rank + "位" : "-"}</div><div class="dim small">${lg}リーグ順位</div></div>
-    </div>
-    <h4 class="cat">第${season}季 鳳凰戦${lg}リーグ｜トータルスコア推移</h4>
-    ${scoreChart(labels, values)}
-    <h4 class="cat">成績詳細</h4>${detailGrid(r)}`;
-}
-function scoreChart(labels, values) {
-  const W = 360, H = 170, L = 38, R = 10, T = 10, B = 26;
-  let lo = Math.min(0, ...values), hi = Math.max(0, ...values);
-  if (hi - lo < 20) { hi += 10; lo -= 10; }
-  const n = values.length - 1;
-  const x = (i) => L + (i / Math.max(1, n)) * (W - L - R);
-  const y = (v) => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
-  const step = niceStep((hi - lo) / 5);
-  let grid = "";
-  for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) grid += `<line class="grid-line" x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/><text x="${L - 4}" y="${y(v) + 3}" text-anchor="end">${v}</text>`;
-  const xt = labels.map((l, i) => `<line class="grid-line" x1="${x(i)}" x2="${x(i)}" y1="${T}" y2="${H - B}"/><text x="${x(i)}" y="${H - 8}" text-anchor="middle">${l}</text>`).join("");
-  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="トータルスコア推移">${grid}${xt}
-    <line class="axis" x1="${L}" x2="${W - R}" y1="${y(0)}" y2="${y(0)}"/>
-    <polyline fill="none" stroke="var(--cyan)" stroke-width="1.8" points="${values.map((v, i) => `${x(i)},${y(v)}`).join(" ")}"/>
-    ${values.map((v, i) => `<circle cx="${x(i)}" cy="${y(v)}" r="2.6" fill="var(--cyan)"><title>${labels[i]}: ${sign(v)}</title></circle>`).join("")}</svg>`;
-}
-
-function statTiles(p) {
+// 通算成績：半荘単位（着順・素点・順位点）と局単位（和了・放銃・立直など）をひとつの表にまとめる
+function careerStats(p) {
   const st = p.stats || {}, hands = st.hands || 0, g = p.games || 0, pl = p.placements || [0, 0, 0, 0];
+  if (!g) return `<div class="dim small">対局記録なし</div>`;
   const num = (v) => (v ? Math.round(v).toLocaleString() : "-");
-  const avg = avgPlace(pl, g);
-  const tiles = [
-    ["半荘数", g ? `${g}` : "-", `通算 ${sign(p.total_points || 0)}pt`],
-    ["平均着順", avg ? avg.toFixed(2) : "-", `トップ率 ${pct(pl[0], g)}`],
-    ["和了率", pct(st.wins, hands), `${st.wins || 0}回 / ${hands}局`],
-    ["放銃率", pct(st.dealins, hands), `${st.dealins || 0}回`],
-    ["平均打点", num(st.wins ? st.win_value / st.wins : 0), `最高 ${num(st.max_value)}`],
-    ["平均放銃打点", num(st.dealins ? st.dealin_value / st.dealins : 0), ""],
-    ["立直率", pct(st.riichi, hands), `${st.riichi || 0}回`],
-    ["ツモ率", pct(st.tsumo, st.wins), "和了のうち"],
-    ["流局時聴牌率", pct(st.draw_tenpai, st.draws), `流局${st.draws || 0}回`],
-    ["役満", st.yakuman ? `${st.yakuman}<small>回</small>` : "-", `ラス率 ${pct(pl[3], g)}`],
+  const total = p.total_points || 0;
+  const raw = st.score_sum ? Math.round((st.score_sum - 30000 * g) / 100) / 10 : null;
+  const pc = (a, b = g) => (b ? `${((a / b) * 100).toFixed(2)}<small>%</small>` : "-");
+  const cells = [
+    ["試合数", `${g}<small>試合</small>`], ["トータル", pt(total)],
+    ["素点", raw == null ? "-" : pt(raw)], ["順位点", raw == null ? "-" : pt(Math.round((total - raw) * 10) / 10)],
+    ["平均点数", st.score_sum ? `${Math.round(st.score_sum / g).toLocaleString()}<small>点</small>` : "-"], ["最高点数", st.score_max == null ? "-" : `${st.score_max.toLocaleString()}<small>点</small>`],
+    ["連対率", pc(pl[0] + pl[1])], ["ラス回避率", pc(g - pl[3])],
+    ["飛び率", st.score_sum ? pc(st.busts || 0) : "-"], ["平均着順", `${avgPlace(pl, g).toFixed(2)}<small>位</small>`],
+    ...pl.map((c, i) => [`${"一二三四"[i]}位 <span class="dim">（${c}回）</span>`, pc(c)]),
+    ["和了率", pc(st.wins, hands)], ["放銃率", pc(st.dealins, hands)],
+    ["平均打点", num(st.wins ? st.win_value / st.wins : 0)], ["平均放銃打点", num(st.dealins ? st.dealin_value / st.dealins : 0)],
+    ["立直率", pc(st.riichi, hands)], ["ツモ率", pc(st.tsumo, st.wins)],
+    ["流局時聴牌率", pc(st.draw_tenpai, st.draws)], ["最高打点", num(st.max_value)],
+    ["役満", st.yakuman ? `${st.yakuman}<small>回</small>` : "-"], ["局数", `${hands.toLocaleString()}<small>局</small>`],
   ];
-  const colors = ["var(--amber)", "var(--cyan)", "var(--text-dim)", "var(--minus)"];
-  const bar = g ? `<div class="place-bar">${pl.map((c, i) => `<span style="width:${(c / g) * 100}%; background:${colors[i]}" title="${i + 1}着 ${c}回"></span>`).join("")}</div>
-    <div class="dim small">${pl.map((c, i) => `${i + 1}着 ${c}回（${pct(c, g)}）`).join("　")}</div>` : "";
-  return `<div class="stat-grid">${tiles.map(([l, v, sub]) => `<div class="stat"><div class="stat-label">${l}</div><div class="stat-value">${v}</div><div class="stat-sub">${sub}</div></div>`).join("")}</div>${bar}`;
+  return `<div class="detail-grid">${cells.map(([l, v]) => `<div class="dg-cell"><span class="dg-label">${l}</span><span class="dg-value">${v}</span></div>`).join("")}</div>
+    <div class="note">和了率・放銃率・立直率などは、打った局数に対する割合。</div>`;
 }
 
 // 半荘ごとのレート推移（季の切れ目に区切り線）
@@ -855,7 +849,7 @@ function opponentsHtml(p, players) {
     .sort((a, b) => b.n - a.n || b.above - a.above);
   if (!rows.length) return `<div class="dim small">対局記録なし</div>`;
   const head = '<thead><tr><th>対戦相手</th><th class="num">同卓</th><th class="num">上位</th><th class="num">下位</th><th class="num">上位率</th></tr></thead>';
-  return collapsibleTable(head, rows, (o) => `<tr data-id="${esc(o.id)}"><td>${crownLabel(o.id)}${esc(o.name)}</td><td class="num">${o.n}</td>
+  return collapsibleTable(head, rows, (o) => `<tr data-id="${esc(o.id)}"><td>${esc(o.name)}${nameTag(o.id)}</td><td class="num">${o.n}</td>
     <td class="num" style="color:var(--cyan);">${o.above}</td><td class="num" style="color:var(--minus);">${o.below}</td><td class="num">${pct(o.above, o.above + o.below, 0)}</td></tr>`, 5)
     + `<div class="note">同じ半荘で自分が相手より上の着順だった回数（上位）と下だった回数（下位）。</div>`;
 }
@@ -916,7 +910,7 @@ async function viewIndividual(id) {
   let html = `<div class="back-link" data-go="leagues">← 一覧に戻る</div>
     <div style="text-align:center; margin-bottom:14px;">
       <div style="margin-bottom:6px;">${p.retired ? `<span class="dim small">（第${p.retired_season ?? "?"}季に引退）</span>` : leagueTag(p.league + "リーグ")}</div>
-      <h3 style="margin:0; font-size:1.1rem; font-family:'Noto Sans JP',sans-serif;">${crownLabel(p.id)}${esc(p.display_name)}</h3>
+      <h3 style="margin:0; font-size:1.1rem; font-family:'Noto Sans JP',sans-serif;">${esc(p.display_name)}${nameTag(p.id)}</h3>
       <div class="dim" style="font-size:0.75rem; margin-top:2px;">通算${p.total_seasons}季　${ageOf(p)}歳${p.created ? `　<span class="chip cyan">投稿キャラ${p.creator ? `（${esc(p.creator)}）` : ""}</span>` : ""}</div>
       <div style="margin-top:6px;">レート <span class="elo-val" style="font-size:1.1rem;">${Math.round(p.elo)}</span>
         <span style="font-size:0.72rem; color:var(--amber); margin-left:8px;">最高 ${Math.round(p.peak_elo)}</span></div>
@@ -926,11 +920,7 @@ async function viewIndividual(id) {
     </div>
     <div style="display:flex; justify-content:center; margin-bottom:6px;">${radar(p.params || {})}</div>
     ${secTitle("系譜")}${lineageHtml(p, players)}
-    ${secTitle("鳳凰戦リーグ成績")}
-    ${(p.career || []).length > 1 ? `<div style="margin-bottom:6px;"><select id="ind-league-season" aria-label="季">${[...p.career].reverse().map((c) => `<option value="${c.season}">第${c.season}季（${c.league}リーグ）</option>`).join("")}</select></div>` : ""}
-    <div id="ind-league" class="dim small">読み込み中...</div>
-    ${secTitle("通算成績（リーグ戦・タイトル戦）")}${careerDetail(p)}
-    <h4 class="cat">局の成績</h4>${statTiles(p)}
+    ${secTitle("通算成績")}${careerStats(p)}
     ${secTitle("対戦相手別成績")}${opponentsHtml(p, players)}
     ${secTitle("タイトル獲得歴")}${wonHtml}
     ${secTitle("タイトル戦決勝進出")}${finHtml}
@@ -942,14 +932,6 @@ async function viewIndividual(id) {
     document.getElementById("ind-fav-toggle")?.addEventListener("click", () => toggleFavorite(p.id));
     applyFavorites();
     const box = document.getElementById("ind-awards");
-    const lgBox = document.getElementById("ind-league");
-    const showSeason = async (season) => {
-      if (!lgBox) return;
-      if (season == null) { lgBox.innerHTML = "まだリーグ戦の記録がありません"; return; }
-      lgBox.className = ""; lgBox.innerHTML = await leagueSeasonHtml(p, season);
-    };
-    document.getElementById("ind-league-season")?.addEventListener("change", (e) => showSeason(Number(e.target.value)));
-    showSeason((p.career || []).length ? p.career[p.career.length - 1].season : null);
     if (box) { box.className = ""; box.innerHTML = await awardsOfHtml(p.id, idx); }
   });
   return html;
@@ -1217,7 +1199,7 @@ async function viewHof() {
     })));
     return `<div class="note">雀士ごとの通算成績の一覧。列見出しをクリックすると並び替え（和了率・放銃率は${HOF_MIN_HANDS}局以上が対象）。引退者も含みます。</div>` +
       collapsibleTable(head, rows, (r, n) => `<tr data-id="${esc(r.p.id)}"><td class="rank-num">${n}</td>
-        <td style="white-space:nowrap;">${crownLabel(r.p.id)}${esc(r.p.display_name)}${r.p.retired ? '<span class="dim small">（引退）</span>' : `<span class="dim small">（${r.p.league}）</span>`}</td>
+        <td style="white-space:nowrap;">${esc(r.p.display_name)}${nameTag(r.p.id)}${r.p.retired ? '<span class="dim small">（引退）</span>' : `<span class="dim small">（${r.p.league}）</span>`}</td>
         ${cols.map(([k, , f]) => `<td class="num"${k === sort.key ? ' style="color:var(--amber);"' : ""}>${f(r)}</td>`).join("")}</tr>`, 15);
   }
   if (_hofView === "records") return viewRecords(idx);
@@ -1437,7 +1419,7 @@ async function viewNewcomerHistory() {
   let html = `<h3 class="view-title">投稿キャラの歴代記録</h3>`;
   html += created.length
     ? collapsibleTable('<thead><tr><th>#</th><th>名前</th><th>所属</th><th class="num">最高</th><th class="num">タイトル</th></tr></thead>', created,
-      (p, n) => `<tr data-id="${esc(p.id)}"><td class="rank-num">${n}</td><td>${crownLabel(p.id)}${esc(p.display_name)}${p.creator ? ` <span class="dim small">by ${esc(p.creator)}</span>` : ""}</td>
+      (p, n) => `<tr data-id="${esc(p.id)}"><td class="rank-num">${n}</td><td>${esc(p.display_name)}${nameTag(p.id)}${p.creator ? ` <span class="dim small">by ${esc(p.creator)}</span>` : ""}</td>
         <td>${p.retired ? '<span class="dim small">引退</span>' : leagueTag(p.league)}</td><td class="num elo-val">${Math.round(p.peak_elo)}</td>
         <td class="num">${idx.title_history.filter((h) => h.winner_id === p.id).length || "-"}</td></tr>`, 15, (p) => p.peak_elo)
     : `<div class="dim small">まだ入門した投稿キャラはいません</div>`;
@@ -1475,6 +1457,14 @@ async function rulesHtml() {
     ${sec("打ち筋の9項目")}
     <dl class="params-grid">${Object.entries(STYLE_DESC).map(([k, d]) => `<dt>${STYLE_LABELS[k]}</dt><dd>${d}</dd>`).join("")}</dl>
     <div class="dim small" style="margin-top:4px;">守備と押し返しは別の軸です。危険牌の打ちにくさ＝守備×危険度×「降りる度合い」で、降りる度合いは手が悪いほど大きく、押し返しが高いほど手が良いときに小さくなります。守備も押し返しも高いと「手が悪ければ降り、良ければ押す」打ち手になります。</div>
+    ${sec("段位")}
+    初段から始まり、九段が最高です。段位は下がりません。季ごとに昇段ポイントが入り、累計で昇段します。
+    <dl class="params-grid">
+      <dt>リーグ参加点</dt><dd>Aリーグ 6／Bリーグ 4／Cリーグ 2／Dリーグ 1</dd>
+      <dt>順位ボーナス</dt><dd>Aリーグ：1位 +4、3位以内 +2　B〜Dリーグ：1位 +2、3位以内 +1</dd>
+      <dt>タイトル</dt><dd>鳳凰位 +8、その他のタイトル +5（防衛も加算）</dd>
+      <dt>昇段の目安</dt><dd>${DAN_NAMES.map((n, i) => `${n} ${DAN_THRESHOLDS[i]}点`).join("／")}。九段はタイトル獲得経験者のみ</dd>
+    </dl>
     ${sec("引退")}
     ・70歳に達すると引退<br>
     ・Dリーグで2年連続マイナスなら引退<br>
@@ -1530,8 +1520,9 @@ async function render(hash, isPopstate) {
   const stay = tab === "titles" || tab === "hof"; // サブビュー切り替えでは読み込み表示を挟まない
   if (!stay) { app.className = "loading"; app.innerHTML = "読み込み中..."; }
   try {
-    const [idx] = await Promise.all([getIndex()]);
+    const [idx, allPlayers] = await Promise.all([getIndex(), getPlayers()]);
     setHolders(idx);
+    setDans(allPlayers, idx);
     const html = await views[tab]();
     if (seq !== _renderSeq) return; // 読み込み中に別のページへ移った
     app.className = "";
