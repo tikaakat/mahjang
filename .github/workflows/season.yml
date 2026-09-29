@@ -15,6 +15,11 @@ on:
         description: "リーグの節数の倍率（1.0=標準、0.5=半分）"
         required: false
         default: "1.0"
+      deploy_only:
+        description: "シーズンを進めず、Xserverへの転送とDB取り込みだけを行う"
+        type: boolean
+        required: false
+        default: false
   # 定期実行は準備が整うまで止めている。再開するときは下の2行のコメントを外す
   # schedule:
   #   - cron: "0 21 * * *"
@@ -65,6 +70,47 @@ jobs:
             echo "::warning::XSERVER_HOST または MAHJONG_XSERVER_TARGET_DIR が未設定のため、Xserverへの転送は行いません"
           fi
 
+          SSH_OPTS="-o StrictHostKeyChecking=no -o ConnectTimeout=20"
+          # Xserverへの接続は一時的にタイムアウトすることがあるため、少し待って1回だけやり直す
+          retry_cmd() {
+            "$@" && return 0
+            echo "::warning::失敗したため30秒後にもう一度試します: $1"
+            sleep 30
+            "$@"
+          }
+
+          deploy() {
+            local tag="$1"
+            if [ "$DEPLOY" != "1" ]; then return 0; fi
+            echo "--- Xserverへ反映中（$tag）---"
+            if ! retry_cmd ssh -i /tmp/deploy_key -p "$XSERVER_PORT" $SSH_OPTS "$XSERVER_USER@$XSERVER_HOST" \
+                 "mkdir -p ${XSERVER_TARGET_DIR}data"; then
+              echo "::warning::Xserverに接続できませんでした（$tag）。サーバーパネルの「国外IPアクセス制限」などを確認してください"
+              return 0
+            fi
+            # サイト本体（config.php はサーバー上で作成したものを上書きしない）
+            retry_cmd scp -i /tmp/deploy_key -P "$XSERVER_PORT" $SSH_OPTS -r \
+              web/index.html web/app.js web/style.css \
+              server/.htaccess server/lib.php server/schema.sql server/config.sample.php server/api server/admin \
+              "$XSERVER_USER@$XSERVER_HOST:$XSERVER_TARGET_DIR" \
+              || echo "::warning::サイトの転送に失敗しました（$tag）"
+            retry_cmd scp -i /tmp/deploy_key -P "$XSERVER_PORT" $SSH_OPTS -r \
+              data/index.json data/players.json data/standings data/matches data/titles data/kifu data/newcomer_league \
+              "$XSERVER_USER@$XSERVER_HOST:${XSERVER_TARGET_DIR}data/" \
+              || echo "::warning::データの転送に失敗しました（$tag）"
+            if [ -n "$SITE_URL" ] && [ -n "$IMPORT_KEY" ]; then
+              curl -sS -f --connect-timeout 20 --max-time 60 "${SITE_URL}admin/migrate.php?key=${IMPORT_KEY}" \
+                && curl -sS -f --connect-timeout 20 --max-time 600 "${SITE_URL}admin/import.php?key=${IMPORT_KEY}" \
+                || echo "::warning::データベースへの取り込みに失敗しました（$tag）"
+            fi
+          }
+
+          if [ "${{ github.event.inputs.deploy_only }}" = "true" ]; then
+            deploy "転送のみ"
+            rm -f /tmp/deploy_key
+            exit 0
+          fi
+
           TOTAL="${{ github.event.inputs.seasons || '1' }}"
           SCALE="${{ github.event.inputs.sections_scale || '1.0' }}"
 
@@ -95,27 +141,7 @@ jobs:
               git push origin "HEAD:${{ github.ref_name }}"
             fi
 
-            if [ "$DEPLOY" = "1" ]; then
-              echo "--- Xserverへ反映中（バッチ $i）---"
-              ssh -i /tmp/deploy_key -p "$XSERVER_PORT" -o StrictHostKeyChecking=no "$XSERVER_USER@$XSERVER_HOST" \
-                "mkdir -p ${XSERVER_TARGET_DIR}data" \
-                || echo "::warning::ディレクトリ作成に失敗しました（バッチ $i）"
-              # サイト本体（config.php はサーバー上で作成したものを上書きしない）
-              scp -i /tmp/deploy_key -P "$XSERVER_PORT" -o StrictHostKeyChecking=no -r \
-                web/index.html web/app.js web/style.css \
-                server/.htaccess server/lib.php server/schema.sql server/config.sample.php server/api server/admin \
-                "$XSERVER_USER@$XSERVER_HOST:$XSERVER_TARGET_DIR" \
-                || echo "::warning::サイトの転送に失敗しました（バッチ $i）"
-              scp -i /tmp/deploy_key -P "$XSERVER_PORT" -o StrictHostKeyChecking=no -r \
-                data/index.json data/players.json data/standings data/matches data/titles data/kifu data/newcomer_league \
-                "$XSERVER_USER@$XSERVER_HOST:${XSERVER_TARGET_DIR}data/" \
-                || echo "::warning::データの転送に失敗しました（バッチ $i）"
-              if [ -n "$SITE_URL" ] && [ -n "$IMPORT_KEY" ]; then
-                curl -sS -f --connect-timeout 10 --max-time 60 "${SITE_URL}admin/migrate.php?key=${IMPORT_KEY}" \
-                  && curl -sS -f --connect-timeout 10 --max-time 600 "${SITE_URL}admin/import.php?key=${IMPORT_KEY}" \
-                  || echo "::warning::データベースへの取り込みに失敗しました（バッチ $i）"
-              fi
-            fi
+            deploy "$i"
           done
 
           rm -f /tmp/deploy_key
