@@ -99,7 +99,7 @@ jobs:
               "$XSERVER_USER@$XSERVER_HOST:$XSERVER_TARGET_DIR" \
               || echo "::warning::サイトの転送に失敗しました（$tag）"
             retry_cmd scp -i /tmp/deploy_key -P "$XSERVER_PORT" $SSH_OPTS -r \
-              data/index.json data/players.json data/standings data/matches data/titles data/kifu data/newcomer_league \
+              data/index.json data/players.json data/players data/awards data/standings data/matches data/titles data/kifu data/newcomer_league \
               "$XSERVER_USER@$XSERVER_HOST:${XSERVER_TARGET_DIR}data/" \
               || echo "::warning::データの転送に失敗しました（$tag）"
             # DB取り込みは SSH 経由でサーバー上の php を直接実行する

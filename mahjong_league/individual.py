@@ -5,6 +5,14 @@ from mahjong_sim.ai import PARAM_KEYS
 STYLE_KEYS = PARAM_KEYS  # 打ち筋の個性（牌効率・ドラ・役牌・染め手・タンヤオ・鳴き・リーチ・守備・押し）
 
 
+ELO_TRACE_MAX = 400
+
+
+def empty_stats():
+    return {"hands": 0, "wins": 0, "tsumo": 0, "dealins": 0, "riichi": 0, "draws": 0, "draw_tenpai": 0,
+            "win_value": 0, "dealin_value": 0, "max_value": 0, "yakuman": 0}
+
+
 class LeagueIndividual:
     """
     リーグ制における雀士。
@@ -35,7 +43,12 @@ class LeagueIndividual:
         self.games = 0                    # 通算半荘数
         self.placements = [0, 0, 0, 0]    # 通算着順回数
         self.total_points = 0.0           # 通算ポイント
-        self.career = []                  # [{"season", "league", "rank", "points"}]
+        self.career = []                  # [{"season", "league", "rank", "points", "elo"}]
+        self.stats = empty_stats()        # 局単位の通算成績（和了率・放銃率などの元データ）
+        self.elo_history = []             # [[期, 期末レート], ...]
+        self.elo_trace = []               # [[期, 通算半荘数, レート], ...] 半荘ごと（直近 ELO_TRACE_MAX 件）
+        self.recent_games = []            # 最近の対局（records.apply_match_index が更新）
+        self.opponents = {}               # {相手id: [同卓数, 自分が上位, 自分が下位]}
         self.created = False              # キャラクリエイトで生まれた雀士か
         self.submission_id = None         # サイトの投稿ID
         self.creator = None               # 投稿者の表示名（任意）
@@ -57,8 +70,35 @@ class LeagueIndividual:
         if value > self.peak_elo:
             self.peak_elo = value
 
-    def record_game(self, placement, points):
+    def record_rounds(self, seat, rounds):
+        """1半荘分の局結果から、和了・放銃・立直などを通算成績に加える"""
+        st = self.stats
+        for r in rounds:
+            st["hands"] += 1
+            if (r.get("riichi") or [False] * 4)[seat]:
+                st["riichi"] += 1
+            win = r.get("win")
+            if r.get("winner") == seat and win:
+                st["wins"] += 1
+                st["win_value"] += win.get("value", 0)
+                st["max_value"] = max(st["max_value"], win.get("value", 0))
+                if r["type"] == "tsumo":
+                    st["tsumo"] += 1
+                if win.get("yakuman"):
+                    st["yakuman"] += 1
+            if r.get("loser") == seat and win:
+                st["dealins"] += 1
+                st["dealin_value"] += win.get("value", 0)
+            if r["type"] in ("draw", "nagashi") and r.get("tenpai") and r["tenpai"][seat]:
+                st["draw_tenpai"] += 1
+            if r["type"] in ("draw", "nagashi"):
+                st["draws"] += 1
+
+    def record_game(self, placement, points, season=None):
         self.games += 1
+        if season is not None:
+            self.elo_trace.append([season, self.games, round(self.elo, 1)])
+            del self.elo_trace[:-ELO_TRACE_MAX]
         self.placements[placement - 1] += 1
         self.total_points = round(self.total_points + points, 1)
 
@@ -75,6 +115,8 @@ class LeagueIndividual:
             "retired": self.retired, "games": self.games, "placements": self.placements,
             "total_points": self.total_points, "career": self.career,
             "created": self.created, "submission_id": self.submission_id, "creator": self.creator,
+            "stats": self.stats, "elo_history": self.elo_history, "elo_trace": self.elo_trace,
+            "recent_games": self.recent_games, "opponents": self.opponents,
         }
 
     @staticmethod
@@ -100,4 +142,9 @@ class LeagueIndividual:
         ind.created = d.get("created", False)
         ind.submission_id = d.get("submission_id")
         ind.creator = d.get("creator")
+        ind.stats = {**empty_stats(), **(d.get("stats") or {})}
+        ind.elo_history = d.get("elo_history", [])
+        ind.elo_trace = d.get("elo_trace", [])
+        ind.recent_games = d.get("recent_games", [])
+        ind.opponents = d.get("opponents", {})
         return ind

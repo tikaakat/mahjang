@@ -132,7 +132,8 @@ def play_sessions(sessions, rng):
     for (s_idx, seats, event), res in zip(meta, results):
         update_elo_table(seats, res["placement"])
         for s, ind in enumerate(seats):
-            ind.record_game(res["placement"][s], res["points"][s])
+            ind.record_game(res["placement"][s], res["points"][s], season=event.get("season"))
+            ind.record_rounds(s, res["rounds"])
         record = {"event": event, "seats": [ind.id for ind in seats],
                   "names": [ind.display_name for ind in seats], **res}
         totals, records = outputs[s_idx]
