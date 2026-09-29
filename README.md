@@ -109,12 +109,15 @@ pip install -r requirements-dev.txt && python -m unittest discover -s tests -v
 `config.php`・`lib.php`・`schema.sql` は `.htaccess` で直接アクセスを拒否している。投稿は1IPあたり1日3件、全体で1日60件まで（`config.php` で変更可）。
 
 ## GitHub Actions
-`.github/workflows/season.yml` は、手動実行で次の順に1期ずつ進める（定期実行は現在停止中。ワークフロー内の `schedule` のコメントを外すと毎日UTC 21:00に実行）。
+`.github/workflows/season.yml` は、毎日 朝6時・昼12時・夜18時（日本時間）に1季ずつ進める（手動実行もできる）。オセロ版とは別リポジトリなので、時刻が重なっても互いに待たない。
 1. 投稿の取得
 2. 新人リーグ
 3. 本戦（`run_season.py`）
 4. `data/` のコミット・プッシュ
 5. Xserver への転送とDB取り込み（シークレット設定時のみ）
+
+Xserver への接続は一時的にタイムアウトすることがあるため、待ち時間を延ばしながら最大5回試す。それでも反映できなかった実行は「失敗」として終わり、その実行で作った牌譜は Actions のアーティファクト `kifu-backup`（14日間）に残る。次の実行で、コミット済みのデータ（成績・対局・タイトルなど）は再び転送される。
+手動実行の `deploy_only` は、季を進めずに転送とDB取り込みだけを行う。
 
 ## AIの調整と計測
 `python tools/measure_ai.py --games 150 --rule houou` は、リーグの雀士で半荘を多数打ち、局単位の指標を現実のプロの目安（Mリーグの平均：和了率20.6%・放銃率11.0%・立直率24.2%・副露率23.3%・流局率16〜22%）と並べて表示する。技量帯ごとの平均着順も出るので、技量が高いほど強いことも確認できる。

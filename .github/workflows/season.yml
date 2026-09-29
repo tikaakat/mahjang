@@ -20,9 +20,12 @@ on:
         type: boolean
         required: false
         default: false
-  # 定期実行は準備が整うまで止めている。再開するときは下の2行のコメントを外す
-  # schedule:
-  #   - cron: "0 21 * * *"
+  # 定期実行：毎日 朝6時・昼12時・夜18時（日本時間）に1季ずつ進める。時刻はUTCで書く
+  # （GitHub の定期実行は混み合うと数分〜数十分遅れることがある）
+  schedule:
+    - cron: "0 21 * * *"   # 日本時間 6:00
+    - cron: "0 3 * * *"    # 日本時間 12:00
+    - cron: "0 9 * * *"    # 日本時間 18:00
 
 permissions:
   contents: write
@@ -67,14 +70,20 @@ jobs:
             echo "::warning::XSERVER_HOST または MAHJONG_XSERVER_TARGET_DIR が未設定のため、Xserverへの転送は行いません"
           fi
 
-          SSH_OPTS="-o StrictHostKeyChecking=no -o ConnectTimeout=20"
-          # Xserverへの接続は一時的にタイムアウトすることがあるため、少し待って1回だけやり直す
+          SSH_OPTS="-o StrictHostKeyChecking=no -o ConnectTimeout=30 -o ServerAliveInterval=15 -o ServerAliveCountMax=4"
+          # Xserverへの接続は一時的にタイムアウトすることがあるため、待ち時間を延ばしながら最大5回試す
+          RETRIES=5
           retry_cmd() {
-            "$@" && return 0
-            echo "::warning::失敗したため30秒後にもう一度試します: $1"
-            sleep 30
-            "$@"
+            local n=1
+            while true; do
+              "$@" && return 0
+              if [ "$n" -ge "$RETRIES" ]; then return 1; fi
+              echo "::warning::失敗（$n/$RETRIES回目）。$((n * 30))秒後にもう一度試します: $1"
+              sleep $((n * 30))
+              n=$((n + 1))
+            done
           }
+          DEPLOY_FAILED=0
 
           # サイトのディレクトリで PHP を実行する。$PHP は新しい版を優先して選ぶ
           # （Xserver の php コマンドは古い版を指すことがあるため）
@@ -89,8 +98,9 @@ jobs:
             echo "--- Xserverへ反映中（$tag）---"
             if ! retry_cmd ssh -i /tmp/deploy_key -p "$XSERVER_PORT" $SSH_OPTS "$XSERVER_USER@$XSERVER_HOST" \
                  "mkdir -p ${XSERVER_TARGET_DIR}data"; then
-              echo "::warning::Xserverに接続できませんでした（$tag）。サーバーパネルの「国外IPアクセス制限」などを確認してください"
-              return 0
+              echo "::error::Xserverに接続できませんでした（$tag）。サーバーパネルの「国外IPアクセス制限」などを確認してください"
+              DEPLOY_FAILED=1
+              return 1
             fi
             # サイト本体（config.php はサーバー上で作成したものを上書きしない）
             # index.html の app.js・style.css の参照にコミットIDを付け、ブラウザが古いファイルを使い続けないようにする
@@ -100,23 +110,33 @@ jobs:
               /tmp/site/index.html web/app.js web/style.css \
               server/.htaccess server/lib.php server/schema.sql server/config.sample.php server/api server/admin \
               "$XSERVER_USER@$XSERVER_HOST:$XSERVER_TARGET_DIR" \
-              || echo "::warning::サイトの転送に失敗しました（$tag）"
+              || { echo "::error::サイトの転送に失敗しました（$tag）"; DEPLOY_FAILED=1; }
             # 牌譜（data/kifu）はリポジトリに入れていないため、この実行で作った分だけが転送される（サーバー上の過去分は残る）
             mkdir -p data/kifu data/players data/awards
             retry_cmd scp -i /tmp/deploy_key -P "$XSERVER_PORT" $SSH_OPTS -r \
               data/index.json data/players.json data/players data/awards data/standings data/matches data/titles data/kifu data/newcomer_league \
               "$XSERVER_USER@$XSERVER_HOST:${XSERVER_TARGET_DIR}data/" \
-              || echo "::warning::データの転送に失敗しました（$tag）"
+              || { echo "::error::データの転送に失敗しました（$tag）"; DEPLOY_FAILED=1; }
             # DB取り込みは SSH 経由でサーバー上の php を直接実行する
             # （Xserver は海外からの Web アクセスを弾くため、Actions から URL を呼ぶ方式は使えない）
             echo "--- DB取り込み ---"
-            xs_php "\$PHP admin/migrate.php && \$PHP admin/import.php" \
-              || echo "::warning::データベースへの取り込みに失敗しました（$tag）"
+            retry_cmd xs_php "\$PHP admin/migrate.php && \$PHP admin/import.php" \
+              || { echo "::error::データベースへの取り込みに失敗しました（$tag）"; DEPLOY_FAILED=1; }
+            return 0
+          }
+          # 反映に失敗した実行は、最後に「失敗」として終わらせる（次の実行でデータは再送されるが、
+          # 牌譜はこの実行で作った分だけなので、失敗時はアーティファクトに退避する）
+          finish() {
+            rm -f /tmp/deploy_key
+            if [ "$DEPLOY_FAILED" = "1" ]; then
+              echo "::error::Xserverへの反映に失敗しました。牌譜はこの実行のアーティファクト（kifu-backup）に保存しています"
+              exit 1
+            fi
           }
 
           if [ "${{ github.event.inputs.deploy_only }}" = "true" ]; then
             deploy "転送のみ"
-            rm -f /tmp/deploy_key
+            finish
             exit 0
           fi
 
@@ -130,8 +150,11 @@ jobs:
             echo '[]' > data/newcomer_submissions.json
             if [ "$DEPLOY" = "1" ]; then
               # 取得・解析のどちらかに失敗したら0件として続行する（サイト未設置・DB未設定の場合など）
-              if xs_php "\$PHP admin/export_pending.php" > /tmp/pending.json \
-                 && jq -e '.characters // []' /tmp/pending.json > /tmp/submissions.json; then
+              fetch_pending() {
+                xs_php "\$PHP admin/export_pending.php" > /tmp/pending.json \
+                  && jq -e '.characters // []' /tmp/pending.json > /tmp/submissions.json
+              }
+              if retry_cmd fetch_pending; then
                 mv /tmp/submissions.json data/newcomer_submissions.json
               else
                 echo "::warning::投稿の取得に失敗しました。0件として扱います"
@@ -152,4 +175,13 @@ jobs:
             deploy "$i"
           done
 
-          rm -f /tmp/deploy_key
+          finish
+
+      - name: Save kifu on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kifu-backup
+          path: data/kifu
+          retention-days: 14
+          if-no-files-found: ignore
