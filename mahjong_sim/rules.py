@@ -49,12 +49,12 @@ SINKING_UMA = {1: (12, -1, -3, -8), 2: (8, 4, -4, -8), 3: (8, 3, 1, -12)}
 
 # タイトル戦ごとのルール
 HOUOU_RULES = replace(RENMEI, name="鳳凰戦ルール（一発・裏・赤なし、沈みウマ）", uma_mode="sinking")
-KIRIN_RULES = replace(RENMEI, name="麒麟戦ルール（一発・裏あり／赤なし、定額ウマ）",
-                      ippatsu=True, ura_dora=True, kan_dora=True, kazoe_yakuman=True)
-REIKI_RULES = replace(RENMEI, name="霊亀戦ルール（一発・裏・赤あり、オカ・大きなウマ）",
+KIRIN_RULES = replace(RENMEI, name="麒麟戦ルール（一発・裏・赤あり、オカ・大きなウマ）",
                       start_score=25000, return_score=30000, uma=(30, 10, -10, -30),
                       ippatsu=True, ura_dora=True, kan_dora=True, aka=True, kazoe_yakuman=True,
                       agari_yame=True, tie_split_uma=False)
+REIKI_RULES = replace(RENMEI, name="霊亀戦ルール（一発・裏あり／赤なし、定額ウマ）",
+                      ippatsu=True, ura_dora=True, kan_dora=True, kazoe_yakuman=True)
 OURYU_RULES = replace(RENMEI, name="応龍戦ルール（ノーウマ・ノーテン罰符なし、101方式）",
                       uma=(1, 0, 0, -1), uma_mode="win_loss", noten_penalty=0, nagashi_mangan=False,
                       draw_renchan=False)

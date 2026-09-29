@@ -144,8 +144,8 @@ class TitleRulesTest(unittest.TestCase):
         self.assertEqual(final_placement([33000, 32000, 31000, 24000], HOUOU_RULES)["points"], [11.0, 5.0, 2.0, -18.0])
 
     def test_oka_and_big_uma(self):
-        from mahjong_sim.rules import REIKI_RULES
-        self.assertEqual(final_placement([40000, 30000, 20000, 10000], REIKI_RULES)["points"], [60.0, 10.0, -20.0, -50.0])
+        from mahjong_sim.rules import KIRIN_RULES
+        self.assertEqual(final_placement([40000, 30000, 20000, 10000], KIRIN_RULES)["points"], [60.0, 10.0, -20.0, -50.0])
 
     def test_win_loss_counts_only_first_and_last(self):
         from mahjong_sim.rules import OURYU_RULES
