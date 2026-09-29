@@ -1,3 +1,11 @@
+# 親ディレクトリの .htaccess にある書き換えルール（mod_rewrite）を、このサイトには適用しない。
+# 適用されると内部リダイレクトが無限ループし、app.js や PHP が 500 エラーになる
+<IfModule mod_rewrite.c>
+  RewriteEngine Off
+</IfModule>
+
+DirectoryIndex index.html
+
 # 設定・共通処理・スキーマは直接配信しない
 <FilesMatch "^(config\.php|config\.sample\.php|lib\.php|schema\.sql)$">
   Require all denied
