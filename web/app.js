@@ -6,16 +6,44 @@ const API = window.MAHJONG_API_BASE || "api/";
 const LEAGUES = ["A", "B", "C", "D"];
 const LEAGUE_CAPACITY = { A: 16, B: 16, C: 20, D: 24 }; // mahjong_league/league.py と一致させること
 const LEAGUE_ZONES = { A: { down: 3 }, B: { up: 3, down: 3 }, C: { up: 3, down: 4 }, D: { up: 4 } };
-const TITLES = ["鳳凰位", "十段位", "王位", "マスターズ"];
-const TITLE_SHORT = { "鳳凰位": "鳳凰", "十段位": "十段", "王位": "王位", "マスターズ": "マスターズ" };
-const TITLE_EVENT_NAME = { "鳳凰位": "鳳凰位決定戦", "十段位": "十段戦", "王位": "王位戦", "マスターズ": "マスターズ" };
+const TITLES = ["鳳凰位", "麒麟位", "霊亀位", "応龍位"];
+const TITLE_SHORT = { "鳳凰位": "鳳凰", "麒麟位": "麒麟", "霊亀位": "霊亀", "応龍位": "応龍" };
+const TITLE_EVENT_NAME = { "鳳凰位": "鳳凰位決定戦", "麒麟位": "麒麟戦", "霊亀位": "霊亀戦", "応龍位": "応龍戦" };
+// 旧名称（第1季の途中まで）で残っているデータの表示用
+const OLD_TITLE_NAME = { "十段位": "麒麟位", "王位": "霊亀位", "マスターズ": "応龍位" };
+const titleName = (t) => OLD_TITLE_NAME[t] || t;
+// タイトル → ルール（mahjong_sim/rules.py の TITLE_RULE と一致させること）
+const TITLE_RULE = { "鳳凰位": "houou", "麒麟位": "kirin", "霊亀位": "reiki", "応龍位": "ouryu" };
 const TITLE_DESC = {
   "鳳凰位": "鳳凰戦Aリーグ上位3名と前年鳳凰位による決定戦（半荘16回戦）",
-  "十段位": "レート上位32名によるシード付きトーナメント",
-  "王位": "全雀士参加の抽選トーナメント（各卓1半荘・上位2名勝ち上がり）",
-  "マスターズ": "全雀士参加の抽選トーナメント（各卓2半荘合計）",
+  "麒麟位": "レート上位32名によるシード付きトーナメント",
+  "霊亀位": "全雀士参加の抽選トーナメント（各卓1半荘・上位2名勝ち上がり）",
+  "応龍位": "全雀士参加の抽選トーナメント（各卓2半荘合計）",
 };
-const RESULT_TITLE_TABS = { hououi: "鳳凰位", jyudan: "十段位", oui: "王位", masters: "マスターズ" };
+const RESULT_TITLE_TABS = { hououi: "鳳凰位", kirin: "麒麟位", reiki: "霊亀位", ouryu: "応龍位" };
+// ルールの要約（index.json の rules[キー] から）
+function ruleSummary(r) {
+  if (!r) return "";
+  const yn = (b) => (b ? "あり" : "なし");
+  const oka = (r.return_score - r.start_score) * 4 / 1000;
+  const uma = r.uma_mode === "sinking" ? "沈みウマ（原点以上の人数で変動：1人浮き +12/−1/−3/−8、2人浮き +8/+4/−4/−8、3人浮き +8/+3/+1/−12）"
+    : r.uma_mode === "win_loss" ? "なし（1着 +1・4着 −1 のみ。素点は数えない）"
+    : r.uma.map((u) => (u > 0 ? "+" : "") + u).join(" / ");
+  return `<dl class="params-grid">
+    <dt>持ち点・返し</dt><dd>${r.start_score.toLocaleString()}点持ち ${r.return_score.toLocaleString()}点返し</dd>
+    <dt>オカ</dt><dd>${oka ? `あり（トップに +${oka}）` : "なし"}</dd>
+    <dt>ウマ（順位点）</dt><dd>${uma}</dd>
+    <dt>一発・裏ドラ</dt><dd>${yn(r.ippatsu)}・${yn(r.ura_dora)}</dd>
+    <dt>槓ドラ・赤ドラ</dt><dd>${yn(r.kan_dora)}・${r.aka ? "あり（赤五萬・赤五筒・赤五索 各1枚）" : "なし"}</dd>
+    <dt>数え役満</dt><dd>${r.kazoe_yakuman ? "あり" : "なし（11翻以上は三倍満）"}</dd>
+    <dt>ノーテン罰符</dt><dd>${r.noten_penalty ? `あり（場に${r.noten_penalty}点）` : "なし"}</dd>
+    <dt>連荘</dt><dd>${r.draw_renchan === false ? "和了のみ（流局は親流れ）" : "和了・流局時の親の聴牌"}</dd>
+    <dt>流し満貫</dt><dd>${yn(r.nagashi_mangan)}</dd>
+  </dl>`;
+}
+const isWinLoss = (idx, title) => idx.rules?.[TITLE_RULE[title]]?.uma_mode === "win_loss";
+// 応龍戦（1着+1・4着-1）は整数の勝ち点で表示する
+const ptOf = (v, winLoss) => (winLoss ? `<span class="${v > 0 ? "plus" : v < 0 ? "minus" : ""}">${v > 0 ? "+" : ""}${Math.round(v * 10) / 10}</span>` : pt(v));
 const STYLE_LABELS = {
   speed_weight: "牌効率", dora_weight: "ドラ", yakuhai_weight: "役牌", flush_weight: "染め手",
   tanyao_weight: "タンヤオ", call_weight: "鳴き", riichi_weight: "リーチ", defense_weight: "守備", push_weight: "押し返し",
@@ -161,7 +189,10 @@ const HONORS = ["東", "南", "西", "北", "白", "發", "中"];
 const SUIT_CLASS = ["m", "p", "s"];
 const SUIT_CHAR = ["萬", "筒", "索"];
 const KANJI_NUM = ["一", "二", "三", "四", "五", "六", "七", "八", "九"];
-const tileName = (t) => (t >= 27 ? HONORS[t - 27] : `${(t % 9) + 1}${SUIT_CLASS[Math.floor(t / 9)]}`);
+// 牌譜の牌番号：0-33 が通常の牌、34・35・36 が赤五萬・赤五筒・赤五索
+const kindOf = (t) => (t >= 34 ? [4, 13, 22][t - 34] : t);
+const byKind = (a, b) => kindOf(a) - kindOf(b) || a - b;
+const tileName = (t) => (t >= 34 ? `赤5${SUIT_CLASS[t - 34]}` : t >= 27 ? HONORS[t - 27] : `${(t % 9) + 1}${SUIT_CLASS[Math.floor(t / 9)]}`);
 // 筒子・索子は実物に近い図柄（丸・竹）をSVGで描く。座標は幅30×高さ40の牌面
 const PIN_COLORS = { b: "#1f4f96", r: "#c0392b", g: "#1d6b3e" };
 const PIN_LAYOUT = [
@@ -187,9 +218,9 @@ const SOU_LAYOUT = [
   [[5, 11, 14, "g"], [11.7, 11, 14, "g"], [18.3, 11, 14, "g"], [25, 11, 14, "g"], [5, 29, 14, "g"], [11.7, 29, 14, "g"], [18.3, 29, 14, "g"], [25, 29, 14, "g"]],
   [[7, 7, 10, "g"], [15, 7, 10, "r"], [23, 7, 10, "g"], [7, 20, 10, "g"], [15, 20, 10, "r"], [23, 20, 10, "g"], [7, 33, 10, "g"], [15, 33, 10, "r"], [23, 33, 10, "g"]],
 ];
-function pinSVG(n) {
+function pinSVG(n, aka = false) {
   return PIN_LAYOUT[n].map(([x, y, r, c]) => {
-    const col = PIN_COLORS[c];
+    const col = aka ? PIN_COLORS.r : PIN_COLORS[c];
     return `<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="${col}" stroke-width="${r * 0.32}"/><circle cx="${x}" cy="${y}" r="${r * 0.38}" fill="${col}"/>`
       + (n === 0 ? `<circle cx="${x}" cy="${y}" r="${r * 0.7}" fill="none" stroke="${PIN_COLORS.g}" stroke-width="1"/>` : "");
   }).join("");
@@ -200,15 +231,29 @@ function stick(x, y, len, c) {
     + `<line x1="${x}" y1="${top + 1.2}" x2="${x}" y2="${top + len - 1.2}" stroke="#fff" stroke-opacity="0.55" stroke-width="0.8"/>`
     + `<line x1="${x - w / 2}" y1="${y}" x2="${x + w / 2}" y2="${y}" stroke="#fff" stroke-opacity="0.8" stroke-width="0.9"/>`;
 }
-function souSVG(n) {
-  if (n === 0) { // 一索は鳥の代わりに、大きな竹1本を赤と緑で
-    return `<rect x="11" y="4" width="8" height="32" rx="3" fill="${PIN_COLORS.g}"/><rect x="11" y="16" width="8" height="8" fill="${PIN_COLORS.r}"/>`
-      + `<line x1="11" y1="12" x2="19" y2="12" stroke="#fff" stroke-width="1"/><line x1="11" y1="28" x2="19" y2="28" stroke="#fff" stroke-width="1"/>`;
+function souSVG(n, aka = false) {
+  if (n === 0) { // 一索は鳥（孔雀）の図柄：扇形の尾羽、緑の胴、赤い頭とくちばし
+    const G = PIN_COLORS.g, R = PIN_COLORS.r, B = PIN_COLORS.b;
+    const feathers = [-50, -25, 0, 25, 50].map((a) => {
+      const rad = (a - 90) * Math.PI / 180, x = 13 + Math.cos(rad) * 11, y = 22 + Math.sin(rad) * 11;
+      return `<line x1="13" y1="22" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="${G}" stroke-width="1.6"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.3" fill="${B}" stroke="${G}" stroke-width="0.8"/>`;
+    }).join("");
+    return `${feathers}
+      <ellipse cx="15" cy="25" rx="6.5" ry="5" fill="${G}"/>
+      <path d="M11 26 q4 -4 9 -1" fill="none" stroke="#9fd18b" stroke-width="1"/>
+      <path d="M19 23 q3 -4 3 -8" fill="none" stroke="${G}" stroke-width="2.6" stroke-linecap="round"/>
+      <circle cx="22.3" cy="13.8" r="2.6" fill="${R}"/>
+      <path d="M24.6 13.4 l3 0.9 l-3 0.9 z" fill="#d9a21b"/>
+      <circle cx="22.8" cy="13.2" r="0.6" fill="#fff"/>
+      <line x1="13" y1="29.5" x2="12" y2="35" stroke="${R}" stroke-width="1.2"/><line x1="17" y1="29.5" x2="18" y2="35" stroke="${R}" stroke-width="1.2"/>
+      <line x1="10" y1="35" x2="14" y2="35" stroke="${R}" stroke-width="1"/><line x1="16" y1="35" x2="20" y2="35" stroke="${R}" stroke-width="1"/>`;
   }
-  return SOU_LAYOUT[n].map(([x, y, len, c]) => stick(x, y, len, c)).join("");
+  return SOU_LAYOUT[n].map(([x, y, len, c]) => stick(x, y, len, aka ? "r" : c)).join("");
 }
 function tile(t, extra = "", small = false) {
   const sz = small ? " sm" : "";
+  const aka = t >= 34;
+  if (aka) { t = kindOf(t); extra += " aka"; }
   if (t >= 27) {
     const cls = { 31: "haku", 32: "hatsu", 33: "chun" }[t] || "";
     return `<span class="tile z ${cls}${sz} ${extra}" title="${HONORS[t - 27]}">${HONORS[t - 27]}</span>`;
@@ -217,7 +262,7 @@ function tile(t, extra = "", small = false) {
   if (suit === 0) {
     return `<span class="tile m${sz} ${extra}" title="${tileName(t)}"><span class="n">${KANJI_NUM[n]}</span><small>${SUIT_CHAR[0]}</small></span>`;
   }
-  const art = suit === 1 ? pinSVG(n) : souSVG(n);
+  const art = suit === 1 ? pinSVG(n, aka) : souSVG(n, aka);
   return `<span class="tile ${SUIT_CLASS[suit]} art${sz} ${extra}" title="${tileName(t)}"><svg viewBox="0 0 30 40" aria-hidden="true">${art}</svg></span>`;
 }
 const tilesHTML = (arr, small = false) => `<span class="tiles">${arr.map((t) => tile(t, "", small)).join("")}</span>`;
@@ -247,8 +292,8 @@ const TAB_GROUPS = {
   },
   leagues: { tabs: ["leagues", "clans"], subLabels: { leagues: "鳳凰戦リーグ表", clans: "一門" } },
   results: {
-    tabs: ["houou", "hououi", "jyudan", "oui", "masters", "awards", "matches"],
-    subLabels: { houou: "鳳凰戦リーグ", hououi: "鳳凰位決定戦", jyudan: "十段戦", oui: "王位戦", masters: "マスターズ", awards: "表彰", matches: "対局記録" },
+    tabs: ["houou", "hououi", "kirin", "reiki", "ouryu", "awards", "matches"],
+    subLabels: { houou: "鳳凰戦リーグ", hououi: "鳳凰位決定戦", kirin: "麒麟戦", reiki: "霊亀戦", ouryu: "応龍戦", awards: "表彰", matches: "対局記録" },
   },
   titles: {
     tabs: ["titles"],
@@ -472,7 +517,7 @@ async function viewHouou(season) {
 }
 
 // ------------------------------------------------------------
-// 結果：タイトル戦（鳳凰位決定戦・十段戦・王位戦・マスターズ）
+// 結果：タイトル戦（鳳凰位決定戦・麒麟戦・霊亀戦・応龍戦）
 // ------------------------------------------------------------
 async function viewTitleResult(tab, season) {
   const name = RESULT_TITLE_TABS[tab];
@@ -481,11 +526,11 @@ async function viewTitleResult(tab, season) {
   const s = Math.min(Math.max(1, season || idx.current_season), idx.current_season);
   const [titles, matches] = await Promise.all([getJSON(`titles/season_${s}.json`), getJSON(`matches/season_${s}.json`)]);
   const nav = seasonNav(s, idx.current_season, tab);
-  const t = titles.find((x) => x.title === name);
+  const t = titles.find((x) => titleName(x.title) === name);
   if (!t) return nav + `<div class="empty">第${s}季の${TITLE_EVENT_NAME[name]}は行われていません</div>`;
   const nm = (id) => players._byId[id]?.display_name || id;
   const finalStage = t.stages[t.stages.length - 1];
-  const finalGames = matches.filter((m) => m.event.kind === "title" && m.event.title === name && m.event.stage === finalStage.name)
+  const finalGames = matches.filter((m) => m.event.kind === "title" && titleName(m.event.title) === name && m.event.stage === finalStage.name)
     .sort((a, b) => a.event.game - b.event.game);
   const ids = finalStage.tables[0].members;
   const cum = Object.fromEntries(ids.map((id) => [id, [0]]));
@@ -493,30 +538,47 @@ async function viewTitleResult(tab, season) {
     const i = g.seats.indexOf(id), arr = cum[id];
     arr.push(Math.round((arr[arr.length - 1] + (i >= 0 ? g.points[i] : 0)) * 10) / 10);
   }));
+  // この季に実際に使われたルール（第1季は旧ルール）
+  const ruleKey = finalGames[0]?.event.rule || TITLE_RULE[name];
+  const rule = idx.rules?.[ruleKey];
+  const wl = rule?.uma_mode === "win_loss";
+  const P = (v) => ptOf(v, wl);
+  const rawOf = (id) => {
+    let sum = 0;
+    finalGames.forEach((g) => { const i = g.seats.indexOf(id); if (i >= 0) sum += (g.final_scores[i] - 30000) / 1000; });
+    return Math.round(sum * 10) / 10;
+  };
   const eventChip = t.event === "奪取" ? '<span class="chip gold">奪取</span>' : t.event === "防衛" ? '<span class="chip cyan">防衛</span>' : '<span class="chip">初代</span>';
   let html = nav + `<h3 class="view-title">${TITLE_EVENT_NAME[name]}</h3>
     <div class="note">${TITLE_DESC[name]}</div>
+    ${rule ? collapsible(`<div style="font-size:0.78rem; margin-bottom:8px;">${ruleSummary(rule)}</div>`, `ルール：${rule.name}`) : ""}
     <div style="text-align:center; margin:14px 0;">
       <div class="dim small">第${s}季 ${esc(name)}</div>
       <div style="font-size:1.1rem; font-weight:700; margin-top:4px;">${plink(t.winner_id, t.winner_name)} ${eventChip}</div>
       ${t.previous_name ? `<div class="dim small">前${esc(name)}：${esc(t.previous_name)}</div>` : ""}
     </div>
     ${secTitle(`${esc(finalStage.name)} 最終成績`)}
-    <table><thead><tr><th>#</th><th>名前</th><th class="num">合計pt</th></tr></thead><tbody>
-    ${t.final_standings.map((r, i) => `<tr data-id="${esc(r.id)}"><td class="rank-num">${i + 1}</td><td>${esc(r.name)}</td><td class="num">${pt(r.points)}</td></tr>`).join("")}
+    <table><thead><tr><th>#</th><th>名前</th><th class="num">${wl ? "勝ち点" : "合計pt"}</th><th class="num">${wl ? "素点（同点時の順位）" : "素点"}</th>${wl ? '<th class="num">1着/4着</th>' : ""}</tr></thead><tbody>
+    ${t.final_standings.map((r, i) => {
+      const pl = [0, 0, 0, 0];
+      finalGames.forEach((g) => { const k = g.seats.indexOf(r.id); if (k >= 0) pl[g.placement[k] - 1] += 1; });
+      return `<tr data-id="${esc(r.id)}"><td class="rank-num">${i + 1}</td><td>${esc(r.name)}</td><td class="num">${P(r.points)}</td>
+        <td class="num">${pt(r.raw ?? rawOf(r.id))}</td>${wl ? `<td class="num dim">${pl[0]}/${pl[3]}</td>` : ""}</tr>`;
+    }).join("")}
     </tbody></table>
-    ${secTitle("ポイント推移")}${lineChart(ids.map((id, k) => ({ name: nm(id), values: cum[id], color: SERIES[k % 4] })), finalGames.length)}
+    ${wl ? `<div class="note">応龍戦は1着 +1・4着 −1 だけを数えます。勝ち点が並んだときは素点の合計で順位を決めます。</div>` : ""}
+    ${secTitle(wl ? "勝ち点の推移" : "ポイント推移")}${lineChart(ids.map((id, k) => ({ name: nm(id), values: cum[id], color: SERIES[k % 4] })), finalGames.length)}
     <div class="legend">${ids.map((id, k) => `<span><i style="background:${SERIES[k % 4]}"></i>${esc(nm(id))}</span>`).join("")}</div>
     ${secTitle("半荘ごとの成績")}
     <div class="scroll-x"><table><thead><tr><th>半荘</th>${ids.map((id) => `<th class="num">${esc(nm(id))}</th>`).join("")}</tr></thead><tbody>
     ${finalGames.map((g) => `<tr data-go="game/${g.id}"><td>第${g.event.game}戦${g.has_kifu ? ' <span class="chip cyan">牌譜</span>' : ""}</td>
-      ${ids.map((id) => { const i = g.seats.indexOf(id); return `<td class="num">${i >= 0 ? pt(g.points[i]) : "-"}</td>`; }).join("")}</tr>`).join("")}
+      ${ids.map((id) => { const i = g.seats.indexOf(id); return `<td class="num">${i >= 0 ? (wl ? `${g.placement[i]}着 <span class="dim small">${g.final_scores[i].toLocaleString()}</span>` : pt(g.points[i])) : "-"}</td>`; }).join("")}</tr>`).join("")}
     </tbody></table></div>`;
   const stages = t.stages.slice(0, -1);
   if (stages.length) {
     html += secTitle("予選・本戦") + stages.map((st) => `<div class="stage"><h4>${esc(st.name)}<span class="dim small">（各卓${st.games}半荘${st.byes?.length ? `・シード${st.byes.length}名` : ""}）</span></h4>
       <div class="stage-tables">${st.tables.map((tb, i) => `<div class="ttable"><div class="dim small">${i + 1}卓</div>
-        ${tb.members.map((id) => `<div class="m ${tb.advanced.includes(id) ? "adv" : ""}"><span>${plink(id, nm(id))}</span>${pt(tb.totals[id])}</div>`).join("")}</div>`).join("")}
+        ${tb.members.map((id) => `<div class="m ${tb.advanced.includes(id) ? "adv" : ""}"><span>${plink(id, nm(id))}</span><span>${P(tb.totals[id])}${wl && tb.raw ? ` <span class="dim small">(${sign(tb.raw[id])})</span>` : ""}</span></div>`).join("")}</div>`).join("")}
       </div></div>`).join("");
   }
   return html;
@@ -590,7 +652,7 @@ async function viewAwards(season) {
 let _matchQuery = "";
 function matchLabel(ev) {
   if (ev.kind === "league") return `${ev.league}リーグ 第${ev.section}節`;
-  return `${ev.title} ${ev.stage}`;
+  return `${TITLE_EVENT_NAME[titleName(ev.title)] || ev.title} ${ev.stage}`;
 }
 async function viewMatches(season) {
   const idx = await getIndex();
@@ -611,7 +673,7 @@ async function bindMatchSearch(season) {
     const hit = (q ? matches.filter((m) => m.names.some((n) => n.includes(q))) : matches).slice().reverse();
     const row = (m) => {
       const order = [0, 1, 2, 3].sort((a, b) => m.placement[a] - m.placement[b]);
-      return `<div class="list-row" data-go="game/${m.id}"><span>${leagueTag(m.event.kind === "league" ? m.event.league : m.event.title)}${esc(matchLabel(m.event).replace(/^[A-D]リーグ /, ""))} 第${m.event.game}戦${m.has_kifu ? ' <span class="chip cyan">牌譜</span>' : ""}<br>
+      return `<div class="list-row" data-go="game/${m.id}"><span>${leagueTag(m.event.kind === "league" ? m.event.league : TITLE_SHORT[titleName(m.event.title)] || m.event.title)}${esc(matchLabel(m.event).replace(/^[A-D]リーグ /, ""))} 第${m.event.game}戦${m.has_kifu ? ' <span class="chip cyan">牌譜</span>' : ""}<br>
         <span class="dim small">${order.map((i) => `${m.placement[i]}着 ${esc(m.names[i])}`).join("　")}</span></span><span class="dim small">${m.id}</span></div>`;
     };
     const box = document.getElementById("matches-list");
@@ -645,6 +707,72 @@ function radar(params) {
   }).join("");
   return `<svg viewBox="0 0 ${S} ${S}" style="width:100%; max-width:280px;" role="img" aria-label="打ち筋">${rings}${spokes}
     <polygon points="${pts(null).map((p) => p.join(",")).join(" ")}" fill="rgba(79,240,255,0.25)" stroke="#4ff0ff" stroke-width="2"/>${labels}</svg>`;
+}
+
+// 成績詳細（試合数・トータル・素点・順位点・平均点数・最高点数・連対率・ラス回避率・飛び率・着順）
+// r = { games, total, scoreSum, scoreMax, busts, pl: [1着,2着,3着,4着] }
+function detailGrid(r) {
+  const g = r.games;
+  if (!g) return `<div class="dim small">対局記録なし</div>`;
+  const raw = Math.round((r.scoreSum - 30000 * g) / 100) / 10;
+  const uma = Math.round((r.total - raw) * 10) / 10;
+  const pc = (a) => `${((a / g) * 100).toFixed(2)}<small>%</small>`;
+  const cells = [
+    ["試合数", `${g}<small>試合</small>`], ["トータル", pt(r.total)],
+    ["素点", pt(raw)], ["順位点", pt(uma)],
+    ["平均点数", `${Math.round(r.scoreSum / g).toLocaleString()}<small>点</small>`], ["最高点数", r.scoreMax == null ? "-" : `${r.scoreMax.toLocaleString()}<small>点</small>`],
+    ["連対率", pc(r.pl[0] + r.pl[1])], ["ラス回避率", pc(g - r.pl[3])],
+    ["飛び率", pc(r.busts)], ["平均着順", `${avgPlace(r.pl, g).toFixed(2)}<small>位</small>`],
+    ...r.pl.map((c, i) => [`${"一二三四"[i]}位 <span class="dim">（${c}回）</span>`, pc(c)]),
+  ];
+  return `<div class="detail-grid">${cells.map(([l, v]) => `<div class="dg-cell"><span class="dg-label">${l}</span><span class="dg-value">${v}</span></div>`).join("")}</div>`;
+}
+function careerDetail(p) {
+  const st = p.stats || {};
+  return detailGrid({ games: p.games, total: p.total_points || 0, scoreSum: st.score_sum || 0, scoreMax: st.score_max, busts: st.busts || 0, pl: p.placements || [0, 0, 0, 0] });
+}
+
+// 季ごとの鳳凰戦リーグ成績：トータルスコア推移（節ごと）と成績詳細
+async function leagueSeasonHtml(p, season) {
+  const matches = await getJSON(`matches/season_${season}.json`);
+  const mine = matches.filter((m) => m.event.kind === "league" && m.seats.includes(p.id));
+  const c = (p.career || []).find((x) => x.season === season);
+  if (!mine.length) return `<div class="dim small">第${season}季は鳳凰戦リーグに出場していません${c && !c.rank ? "（鳳凰位のためリーグ免除）" : ""}</div>`;
+  const r = { games: 0, total: 0, scoreSum: 0, scoreMax: null, busts: 0, pl: [0, 0, 0, 0] };
+  const bySection = new Map();
+  for (const m of mine) {
+    const i = m.seats.indexOf(p.id), sc = m.final_scores[i];
+    r.games += 1; r.total = Math.round((r.total + m.points[i]) * 10) / 10; r.scoreSum += sc;
+    r.scoreMax = r.scoreMax == null ? sc : Math.max(r.scoreMax, sc); r.busts += sc < 0; r.pl[m.placement[i] - 1] += 1;
+    bySection.set(m.event.section, (bySection.get(m.event.section) || 0) + m.points[i]);
+  }
+  const labels = ["開始"], values = [0];
+  [...bySection.keys()].sort((a, b) => a - b).forEach((sec) => { labels.push(`第${sec}節`); values.push(Math.round((values[values.length - 1] + bySection.get(sec)) * 10) / 10); });
+  const lg = mine[0].event.league;
+  return `<div style="display:flex; justify-content:center; gap:28px; margin:6px 0 10px; text-align:center;">
+      <div><div style="font-family:'Orbitron',sans-serif; font-size:1.3rem;">${pt(r.total)}</div><div class="dim small">トータルスコア</div></div>
+      <div><div style="font-family:'Orbitron',sans-serif; font-size:1.3rem;">${r.games}</div><div class="dim small">半荘数</div></div>
+      <div><div style="font-family:'Orbitron',sans-serif; font-size:1.3rem;">${c && c.rank ? c.rank + "位" : "-"}</div><div class="dim small">${lg}リーグ順位</div></div>
+    </div>
+    <h4 class="cat">第${season}季 鳳凰戦${lg}リーグ｜トータルスコア推移</h4>
+    ${scoreChart(labels, values)}
+    <h4 class="cat">成績詳細</h4>${detailGrid(r)}`;
+}
+function scoreChart(labels, values) {
+  const W = 360, H = 170, L = 38, R = 10, T = 10, B = 26;
+  let lo = Math.min(0, ...values), hi = Math.max(0, ...values);
+  if (hi - lo < 20) { hi += 10; lo -= 10; }
+  const n = values.length - 1;
+  const x = (i) => L + (i / Math.max(1, n)) * (W - L - R);
+  const y = (v) => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
+  const step = niceStep((hi - lo) / 5);
+  let grid = "";
+  for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) grid += `<line class="grid-line" x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/><text x="${L - 4}" y="${y(v) + 3}" text-anchor="end">${v}</text>`;
+  const xt = labels.map((l, i) => `<line class="grid-line" x1="${x(i)}" x2="${x(i)}" y1="${T}" y2="${H - B}"/><text x="${x(i)}" y="${H - 8}" text-anchor="middle">${l}</text>`).join("");
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="トータルスコア推移">${grid}${xt}
+    <line class="axis" x1="${L}" x2="${W - R}" y1="${y(0)}" y2="${y(0)}"/>
+    <polyline fill="none" stroke="var(--cyan)" stroke-width="1.8" points="${values.map((v, i) => `${x(i)},${y(v)}`).join(" ")}"/>
+    ${values.map((v, i) => `<circle cx="${x(i)}" cy="${y(v)}" r="2.6" fill="var(--cyan)"><title>${labels[i]}: ${sign(v)}</title></circle>`).join("")}</svg>`;
 }
 
 function statTiles(p) {
@@ -751,10 +879,11 @@ async function awardsOfHtml(id, idx) {
   const rows = awardCategories(d).map((c) => {
     const list = d[c.key] || [];
     const i = list.findIndex((p) => p.id === id);
-    const cell = i === -1 ? '<span class="dim">対象外</span>' : `<span class="elo-val">${competitionRanks(list, c.keyFn)[i]}位</span>（${c.fmt(list[i])}）`;
+    const none = c.key === "yakuman" || c.key === "max_value" ? "-" : "対象外";
+    const cell = i === -1 ? `<span class="dim">${none}</span>` : `<span class="elo-val">${competitionRanks(list, c.keyFn)[i]}位</span>（${c.fmt(list[i])}）`;
     return `<tr><td class="dim">${c.label}</td><td class="num">${cell}</td></tr>`;
   }).join("");
-  return `<div class="note">第${d.season}季（最新季）・各部門上位${(d.games || []).length}名まで</div><table><tbody>${rows}</tbody></table>`;
+  return `<div class="note">第${d.season}季（最新季）。対象外は、その部門の条件（${d.min_games_for_rate}半荘以上・${d.min_hands_for_rate}局以上）に届いていないもの。</div><table><tbody>${rows}</tbody></table>`;
 }
 
 function careerHtml(p, idx) {
@@ -797,7 +926,11 @@ async function viewIndividual(id) {
     </div>
     <div style="display:flex; justify-content:center; margin-bottom:6px;">${radar(p.params || {})}</div>
     ${secTitle("系譜")}${lineageHtml(p, players)}
-    ${secTitle("通算成績")}${statTiles(p)}
+    ${secTitle("鳳凰戦リーグ成績")}
+    ${(p.career || []).length > 1 ? `<div style="margin-bottom:6px;"><select id="ind-league-season" aria-label="季">${[...p.career].reverse().map((c) => `<option value="${c.season}">第${c.season}季（${c.league}リーグ）</option>`).join("")}</select></div>` : ""}
+    <div id="ind-league" class="dim small">読み込み中...</div>
+    ${secTitle("通算成績（リーグ戦・タイトル戦）")}${careerDetail(p)}
+    <h4 class="cat">局の成績</h4>${statTiles(p)}
     ${secTitle("対戦相手別成績")}${opponentsHtml(p, players)}
     ${secTitle("タイトル獲得歴")}${wonHtml}
     ${secTitle("タイトル戦決勝進出")}${finHtml}
@@ -809,6 +942,14 @@ async function viewIndividual(id) {
     document.getElementById("ind-fav-toggle")?.addEventListener("click", () => toggleFavorite(p.id));
     applyFavorites();
     const box = document.getElementById("ind-awards");
+    const lgBox = document.getElementById("ind-league");
+    const showSeason = async (season) => {
+      if (!lgBox) return;
+      if (season == null) { lgBox.innerHTML = "まだリーグ戦の記録がありません"; return; }
+      lgBox.className = ""; lgBox.innerHTML = await leagueSeasonHtml(p, season);
+    };
+    document.getElementById("ind-league-season")?.addEventListener("change", (e) => showSeason(Number(e.target.value)));
+    showSeason((p.career || []).length ? p.career[p.career.length - 1].season : null);
     if (box) { box.className = ""; box.innerHTML = await awardsOfHtml(p.id, idx); }
   });
   return html;
@@ -823,7 +964,7 @@ async function findGame(id) {
 }
 function eventLabel(ev) {
   if (ev.kind === "league") return `第${ev.season}季 鳳凰戦 ${ev.league}リーグ 第${ev.section}節 ${ev.table}卓 第${ev.game}戦`;
-  return `第${ev.season}季 ${TITLE_EVENT_NAME[ev.title] || ev.title} ${ev.stage}${ev.table ? ` ${ev.table}卓` : ""} 第${ev.game}戦`;
+  return `第${ev.season}季 ${TITLE_EVENT_NAME[titleName(ev.title)] || ev.title} ${ev.stage}${ev.table ? ` ${ev.table}卓` : ""} 第${ev.game}戦`;
 }
 function roundLine(r, names) {
   if (r.type === "draw" || r.type === "nagashi") {
@@ -836,18 +977,21 @@ function roundLine(r, names) {
     <div class="dim small">${w.yaku.map(([n, h]) => (h >= 13 ? n : `${n} ${h}翻`)).join("・")}</div>`;
 }
 async function viewGame(id) {
-  const g = await findGame(id);
+  const [g, idx] = await Promise.all([findGame(id), getIndex()]);
   if (!g) return `<div class="empty">対局が見つかりません</div>`;
+  const rule = idx.rules?.[g.event.rule];
+  const P = (v) => ptOf(v, rule?.uma_mode === "win_loss");
   const order = [0, 1, 2, 3].sort((a, b) => g.placement[a] - g.placement[b]);
   return `<div class="back-link" onclick="history.back()">← 戻る</div>
     <h3 class="view-title">対局結果</h3><div class="note">${esc(eventLabel(g.event))}</div>
     ${g.has_kifu ? `<div style="margin:8px 0;"><button class="btn primary" data-go="kifu/${g.id}">牌譜を再生する</button></div>` : ""}
     <table><thead><tr><th>着順</th><th>名前</th><th class="num">持ち点</th><th class="num">pt</th></tr></thead><tbody>
-    ${order.map((i) => `<tr data-id="${esc(g.seats[i])}"><td class="rank-num">${g.placement[i]}</td><td>${esc(g.names[i])}</td><td class="num">${g.final_scores[i].toLocaleString()}</td><td class="num">${pt(g.points[i])}</td></tr>`).join("")}
+    ${order.map((i) => `<tr data-id="${esc(g.seats[i])}"><td class="rank-num">${g.placement[i]}</td><td>${esc(g.names[i])}</td><td class="num">${g.final_scores[i].toLocaleString()}</td><td class="num">${P(g.points[i])}</td></tr>`).join("")}
     </tbody></table>
+    ${rule ? `<div class="note">ルール：${esc(rule.name)}</div>` : ""}
     ${secTitle("局の推移")}
     <div class="scroll-x"><table><thead><tr><th>局</th><th>結果</th>${g.names.map((n) => `<th class="num hide-sm">${esc(n)}</th>`).join("")}</tr></thead><tbody>
-    ${g.rounds.map((r) => `<tr><td style="white-space:nowrap;">${r.round}${r.honba ? `<br><span class="dim small">${r.honba}本場</span>` : ""}</td><td>${roundLine(r, g.names)}</td>
+    ${g.rounds.map((r, i) => `<tr ${g.has_kifu ? `data-go="kifu/${g.id}/${i}"` : ""}><td style="white-space:nowrap;">${r.round}${r.honba ? `<br><span class="dim small">${r.honba}本場</span>` : ""}</td><td>${roundLine(r, g.names)}</td>
       ${r.deltas.map((d) => `<td class="num hide-sm">${d ? pt(d / 1000) : ""}</td>`).join("")}</tr>`).join("")}
     </tbody></table></div>`;
 }
@@ -856,8 +1000,10 @@ async function viewGame(id) {
 function replay(round, step) {
   const hands = round.haipai.map((h) => [...h]);
   const rivers = [[], [], [], []], melds = [[], [], [], []], riichi = [false, false, false, false];
+  const doras = [round.dora];
   let pendingRiichi = -1, last = null, actor = round.oya, desc = "配牌";
   const remove = (arr, t, n = 1) => { for (let k = 0; k < n; k++) { const i = arr.indexOf(t); if (i >= 0) arr.splice(i, 1); } };
+  const removeKind = (arr, kind, n) => { for (let k = 0; k < n; k++) { const i = arr.findIndex((x) => kindOf(x) === kind); if (i >= 0) arr.splice(i, 1); } };
   for (let i = 0; i < step && i < round.seq.length; i++) {
     const ev = round.seq[i];
     const code = ev[0], a = Number(ev[1]);
@@ -877,21 +1023,32 @@ function replay(round, step) {
       consumed.forEach((x) => remove(hands[a], x));
       const rv = rivers[target];
       if (rv.length) rv[rv.length - 1].called = true;
-      melds[a].push({ kind: { c: "chi", p: "pon", m: "minkan" }[code], tiles: [t, ...consumed].sort((x, y) => x - y) });
+      melds[a].push({ kind: { c: "chi", p: "pon", m: "minkan" }[code], tiles: [t, ...consumed].sort(byKind) });
       desc = `${{ c: "チー", p: "ポン", m: "大明槓" }[code]} ${tileName(t)}`;
-    } else if (code === "a") { remove(hands[a], t, 4); melds[a].push({ kind: "ankan", tiles: [t, t, t, t] }); desc = `暗槓 ${tileName(t)}`; }
-    else if (code === "k") {
+    } else if (code === "a") {
+      const kd = kindOf(t);
+      removeKind(hands[a], kd, 4);
+      melds[a].push({ kind: "ankan", tiles: t >= 34 ? [kd, t, kd, kd] : [kd, kd, kd, kd] });
+      desc = `暗槓 ${tileName(kd)}`;
+    } else if (code === "k") {
       remove(hands[a], t);
-      const m = melds[a].find((x) => x.kind === "pon" && x.tiles[0] === t);
-      if (m) { m.kind = "kakan"; m.tiles = [t, t, t, t]; }
-      desc = `加槓 ${tileName(t)}`;
-    }
+      const m = melds[a].find((x) => x.kind === "pon" && kindOf(x.tiles[0]) === kindOf(t));
+      if (m) { m.kind = "kakan"; m.tiles = [...m.tiles, t].sort(byKind); }
+      desc = `加槓 ${tileName(kindOf(t))}`;
+    } else if (code === "n") { doras.push(t); desc = `槓ドラ ${tileName(t)} をめくる`; }
   }
-  return { hands, rivers, melds, riichi, last, actor, desc };
+  return { hands, rivers, melds, riichi, last, actor, desc, doras };
 }
-async function viewKifu(id) {
+async function viewKifu(id, roundIdx) {
   const k = await getJSON(`kifu/${id}.json`);
   const state = { r: 0, step: 0, timer: null, view: 0 };
+  if (roundIdx != null && k.rounds[roundIdx]) {
+    // 記録集などから局を指定して開いたときは、その局の和了の場面を表示し、和了者を視点にする
+    state.r = roundIdx;
+    state.step = k.rounds[roundIdx].seq.length;
+    const w = k.rounds[roundIdx].result.winner;
+    if (w != null) state.view = w;
+  }
   const winds = ["東", "南", "西", "北"];
   const draw = () => {
     const box = document.getElementById("kifu");
@@ -908,7 +1065,7 @@ async function viewKifu(id) {
       const hand = [...st.hands[s]];
       let drawn = null;
       if (st.last && st.last.kind === "draw" && st.last.a === s) { drawn = st.last.t; hand.splice(hand.indexOf(drawn), 1); }
-      hand.sort((a, b) => a - b);
+      hand.sort(byKind);
       const river = st.rivers[s].map((d, i) => tile(d.t, `${d.riichi ? "side" : ""} ${d.called ? "called" : ""} ${d.tg ? "tsumogiri" : ""} ${lastDiscard && lastDiscard.a === s && i === st.rivers[s].length - 1 ? "hi" : ""}`)).join("");
       const wind = winds[(s - round.oya + 4) % 4];
       return `<div class="mb-seat" style="transform:rotate(${-90 * pos}deg)">
@@ -921,7 +1078,7 @@ async function viewKifu(id) {
     }).join("");
     const center = `<div class="mb-center"><div class="rd">${round.round}${round.honba ? `<small>${round.honba}本場</small>` : ""}</div>
       <div class="rest">残り<b>${Math.max(0, remaining)}</b>枚</div>
-      <div class="dora"><span>ドラ表示</span>${tile(round.dora)}</div>
+      <div class="dora"><span>ドラ表示</span>${st.doras.map((d) => tile(d)).join("")}</div>
       ${round.kyotaku ? `<div class="kyo">供託 ${round.kyotaku}</div>` : ""}</div>`;
     const res = done ? `<div class="result-box">${roundLine(round.result, k.names)}
         ${round.result.hand ? `<div style="margin-top:6px">${tilesHTML(round.result.hand.closed)}${round.result.hand.melds.map((m) => meldHTML(m)).join("")}</div>` : ""}
@@ -932,12 +1089,19 @@ async function viewKifu(id) {
         <select id="kview" aria-label="視点">${k.names.map((n, i) => `<option value="${i}" ${i === state.view ? "selected" : ""}>${esc(n)}</option>`).join("")}</select></div>
       <div class="mboard">${seats}${center}</div>${res}
       <div class="controls">
+        <button data-k="prevround" ${state.r === 0 ? "disabled" : ""}>← 前の局</button>
         <button data-k="first" aria-label="局の最初へ">⏮</button><button data-k="prev" aria-label="1手戻る">◀</button>
         <button data-k="play">${state.timer ? "停止" : "再生"}</button>
         <button data-k="next" aria-label="1手進む">▶</button><button data-k="last" aria-label="局の最後へ">⏭</button>
+        <button data-k="nextround" ${state.r === k.rounds.length - 1 ? "disabled" : ""}>次の局 →</button>
         <span class="status">${state.step}/${round.seq.length}手 ${done ? "終局" : `${esc(k.names[st.actor])}: ${st.desc}`}</span>
-        <button data-k="nextround">次の局 →</button>
-      </div>`;
+      </div>
+      <div class="note">盤面の右半分をタップで1手進む、左半分で1手戻る。</div>`;
+    // 盤面タップ：右半分で進む・左半分で戻る（局の端では前後の局へ移る）
+    box.querySelector(".mboard").onclick = (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      act(e.clientX - rect.left >= rect.width / 2 ? "stepfwd" : "stepback");
+    };
     document.getElementById("kround").onchange = (e) => { state.r = Number(e.target.value); state.step = 0; draw(); };
     document.getElementById("kview").onchange = (e) => { state.view = Number(e.target.value); draw(); };
     box.querySelectorAll(".controls button").forEach((b) => { b.onclick = () => act(b.dataset.k); });
@@ -949,6 +1113,15 @@ async function viewKifu(id) {
     if (kind === "next") state.step = Math.min(round.seq.length, state.step + 1);
     if (kind === "last") state.step = round.seq.length;
     if (kind === "nextround" && state.r < k.rounds.length - 1) { state.r += 1; state.step = 0; }
+    if (kind === "prevround" && state.r > 0) { state.r -= 1; state.step = 0; }
+    if (kind === "stepfwd") {
+      if (state.step < round.seq.length) state.step += 1;
+      else if (state.r < k.rounds.length - 1) { state.r += 1; state.step = 0; }
+    }
+    if (kind === "stepback") {
+      if (state.step > 0) state.step -= 1;
+      else if (state.r > 0) { state.r -= 1; state.step = k.rounds[state.r].seq.length; }
+    }
     if (kind === "play") {
       if (state.timer) { clearInterval(state.timer); state.timer = null; }
       else state.timer = setInterval(() => {
@@ -1067,7 +1240,8 @@ const STAT_TABS = [["players", "個人成績"], ["yakuman", "役満"], ["big_han
 const _rec = { tab: "players", season: "", sort: "win_rate" };
 function gameRef(r) {
   const where = r.kind === "league" ? `${r.league}リーグ` : `${r.title}${r.stage ? " " + r.stage : ""}`;
-  return `<span class="link" data-go="game/${r.game_id}">第${r.season}季 ${esc(where)}</span>`;
+  const kifu = +r.has_kifu && r.idx != null ? ` <span class="chip cyan link" data-go="kifu/${r.game_id}/${r.idx}">牌譜</span>` : "";
+  return `<span class="link" data-go="game/${r.game_id}">第${r.season}季 ${esc(where)}</span>${kifu}`;
 }
 async function viewRecords(idx) {
   const seasonOpts = [`<option value="">通算</option>`];
@@ -1280,23 +1454,15 @@ async function viewNewcomerHistory() {
 // ルール（？ボタンのモーダル）
 // ------------------------------------------------------------
 async function rulesHtml() {
-  let r = {};
-  try { r = (await getIndex()).rules || {}; } catch { /* 既定値で表示 */ }
-  const yn = (b) => (b ? "あり" : "なし");
+  let rules = {};
+  try { rules = (await getIndex()).rules || {}; } catch { /* 取得できなければタイトル別のルールは省略 */ }
   const sec = (t) => `<h3 style="font-size:0.85rem; color:var(--cyan); margin:14px 0 6px;">${t}</h3>`;
   return `<div style="font-size:0.8rem; line-height:1.7;">
-    ${sec("対局ルール（日本プロ麻雀連盟 公式ルール準拠）")}
-    <dl class="params-grid">
-      <dt>対局</dt><dd>${r.game_length === "east" ? "東風戦" : "半荘戦"}・${(r.start_score || 30000).toLocaleString()}点持ち${(r.return_score || 30000).toLocaleString()}点返し</dd>
-      <dt>順位点</dt><dd>${(r.uma || [15, 5, -5, -15]).map((u) => (u > 0 ? "+" : "") + u).join(" / ")}（千点）</dd>
-      <dt>一発・裏ドラ・槓ドラ</dt><dd>${yn(r.ippatsu)}・${yn(r.ura_dora)}・${yn(r.kan_dora)}（赤ドラなし）</dd>
-      <dt>数え役満</dt><dd>${r.kazoe_yakuman ? "あり" : "なし（11翻以上は三倍満）"}・役満の複合${yn(r.double_yakuman)}</dd>
-      <dt>流し満貫</dt><dd>${yn(r.nagashi_mangan)}</dd>
-      <dt>途中流局・飛び</dt><dd>なし・${r.tobi ? "あり" : "なし"}</dd>
-      <dt>ダブロン</dt><dd>なし（頭ハネ）</dd>
-      <dt>喰いタン・後付け</dt><dd>あり・あり</dd>
-      <dt>責任払い</dt><dd>${r.pao ? "大三元・大四喜・四槓子" : "なし"}</dd>
-    </dl>
+    ${sec("タイトルごとのルール")}
+    ${TITLES.map((t) => { const rr = rules[TITLE_RULE[t]]; return rr && rr.start_score ? `<div style="margin:10px 0 4px; color:var(--amber);">${TITLE_EVENT_NAME[t]}${t === "鳳凰位" ? "・鳳凰戦リーグ・新人リーグ" : ""}</div>${ruleSummary(rr)}` : ""; }).join("")}
+    ${sec("共通ルール")}
+    半荘戦。途中流局なし、飛びなし、ダブロンなし（頭ハネ）、喰いタン・後付けあり、役満の複合あり、
+    責任払いあり（大三元・大四喜・四槓子）。第1季は全タイトルとも旧ルール（一発・裏・赤なし、定額ウマ +15/+5/−5/−15）で行われました。
     ${sec("鳳凰戦（リーグ）")}
     A16・B16・C20・D24名の通年リーグ。1節4半荘（A5節・B4節・C4節・D3節）の合計ポイントで順位を決めます。
     昇降級は A⇔B 3名、B⇔C 3名、C⇔D 4名。Aリーグ上位3名は鳳凰位決定戦へ。鳳凰位はAリーグ免除です。
@@ -1343,15 +1509,15 @@ async function render(hash, isPopstate) {
     leagues: () => viewLeagues(),
     clans: () => (param ? viewClan(param) : viewClans()),
     houou: () => viewHouou(num),
-    hououi: () => viewTitleResult("hououi", num), jyudan: () => viewTitleResult("jyudan", num),
-    oui: () => viewTitleResult("oui", num), masters: () => viewTitleResult("masters", num),
+    hououi: () => viewTitleResult("hououi", num), kirin: () => viewTitleResult("kirin", num),
+    reiki: () => viewTitleResult("reiki", num), ouryu: () => viewTitleResult("ouryu", num),
     awards: () => viewAwards(num),
     matches: () => viewMatches(num),
     titles: () => viewTitles(),
     hof: () => viewHof(),
     individual: () => viewIndividual(param),
     game: () => viewGame(param),
-    kifu: () => viewKifu(param),
+    kifu: () => viewKifu(param, parts[2] != null && parts[2] !== "" ? parseInt(parts[2], 10) : null),
     newcomer_create: () => viewCreate(),
     newcomer: () => viewNewcomer(num),
     newcomer_history: () => viewNewcomerHistory(),

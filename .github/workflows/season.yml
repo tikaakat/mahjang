@@ -101,6 +101,8 @@ jobs:
               server/.htaccess server/lib.php server/schema.sql server/config.sample.php server/api server/admin \
               "$XSERVER_USER@$XSERVER_HOST:$XSERVER_TARGET_DIR" \
               || echo "::warning::サイトの転送に失敗しました（$tag）"
+            # 牌譜（data/kifu）はリポジトリに入れていないため、この実行で作った分だけが転送される（サーバー上の過去分は残る）
+            mkdir -p data/kifu data/players data/awards
             retry_cmd scp -i /tmp/deploy_key -P "$XSERVER_PORT" $SSH_OPTS -r \
               data/index.json data/players.json data/players data/awards data/standings data/matches data/titles data/kifu data/newcomer_league \
               "$XSERVER_USER@$XSERVER_HOST:${XSERVER_TARGET_DIR}data/" \

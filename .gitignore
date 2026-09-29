@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 data/newcomer_submissions.json
 server/config.php
+# 全半荘の牌譜はサイズが大きいためリポジトリに入れず、Xserver にだけ置く
+data/kifu/

@@ -11,7 +11,7 @@ from concurrent.futures import ProcessPoolExecutor
 
 from mahjong_sim.ai import MahjongAI
 from mahjong_sim.game import Game
-from mahjong_sim.rules import RENMEI
+from mahjong_sim.rules import RULESETS, rule_key_for_event
 
 from .buffs import effective_params, effective_talent
 from .elo import update_elo_table
@@ -47,23 +47,26 @@ def _make_agent(spec, rng):
 
 
 def simulate_hanchan(job):
-    """プロセスプールで実行される1半荘。job = (席順のspec 4つ, 乱数シード, 牌譜を残すか)"""
-    specs, seed, keep_kifu = job
+    """プロセスプールで実行される1半荘。job = (席順のspec 4つ, 乱数シード, 牌譜を残すか, ルール名)"""
+    specs, seed, keep_kifu, rule_key = job
     rng = random.Random(seed)
     agents = [_make_agent(s, rng) for s in specs]
-    result = Game(agents, rules=RENMEI, rng=rng).run()
+    result = Game(agents, rules=RULESETS[rule_key], rng=rng).run()
     out = {
         "final_scores": result["final_scores"], "placement": result["placement"], "points": result["points"],
         "rounds": [{"round": r["round"], "honba": r["honba"], **summarize_round(r)} for r in result["rounds"]],
     }
-    if keep_kifu:
-        out["kifu"] = compact_kifu(result["rounds"])
+    out["kifu"] = compact_kifu(result["rounds"])   # 牌譜は全半荘ぶん残す（keep_kifu は互換のため受け取るだけ）
     return out
 
 
 def compact_kifu(rounds):
-    """牌譜を保存用に圧縮する。牌は 0〜33 の整数（0-8:萬子 9-17:筒子 18-26:索子 27-33:東南西北白發中）
-    記号: t=ツモ d=打牌(*はツモ切り) r=リーチ c=チー p=ポン m=大明槓 a=暗槓 k=加槓"""
+    """牌譜を保存用に圧縮する。牌は 0〜33 の整数（0-8:萬子 9-17:筒子 18-26:索子 27-33:東南西北白發中）。
+    赤5は 34（赤五萬）・35（赤五筒）・36（赤五索）で表す。
+    記号: t=ツモ d=打牌(*はツモ切り) r=リーチ c=チー p=ポン m=大明槓 a=暗槓 k=加槓 n=槓ドラ表示牌"""
+    def code(pai, red):
+        return 34 + pai // 9 if red else pai
+
     out = []
     for r in rounds:
         ev = r["events"]
@@ -72,21 +75,36 @@ def compact_kifu(rounds):
         for e in ev[1:]:
             t = e["type"]
             if t == "tsumo":
-                seq.append(f"t{e['actor']} {e['pai']}")
+                seq.append(f"t{e['actor']} {code(e['pai'], e.get('red'))}")
             elif t == "dahai":
-                seq.append(f"d{e['actor']} {e['pai']}{'*' if e.get('tsumogiri') else ''}")
+                seq.append(f"d{e['actor']} {code(e['pai'], e.get('red'))}{'*' if e.get('tsumogiri') else ''}")
             elif t == "reach":
                 seq.append(f"r{e['actor']}")
             elif t in ("chi", "pon", "daiminkan"):
-                code = {"chi": "c", "pon": "p", "daiminkan": "m"}[t]
-                seq.append(f"{code}{e['actor']} {e['pai']} {e['target']} {','.join(str(x) for x in e['consumed'])}")
+                kind = {"chi": "c", "pon": "p", "daiminkan": "m"}[t]
+                consumed, red_left = [], e.get("consumed_red", False)
+                for x in e["consumed"]:
+                    if red_left and x in (4, 13, 22):
+                        consumed.append(code(x, True))
+                        red_left = False
+                    else:
+                        consumed.append(x)
+                seq.append(f"{kind}{e['actor']} {code(e['pai'], e.get('red'))} {e['target']} {','.join(str(x) for x in consumed)}")
             elif t == "ankan":
-                seq.append(f"a{e['actor']} {e['pai']}")
+                seq.append(f"a{e['actor']} {code(e['pai'], e.get('red'))}")
             elif t == "kakan":
-                seq.append(f"k{e['actor']} {e['pai']}")
+                seq.append(f"k{e['actor']} {code(e['pai'], e.get('red'))}")
+            elif t == "dora":
+                seq.append(f"n0 {e['dora_marker']}")
+        haipai = []
+        for s, hand in enumerate(start["tehais"]):
+            hand = list(hand)
+            for k in (start.get("aka") or [[], [], [], []])[s]:
+                hand[hand.index(k)] = code(k, True)
+            haipai.append(hand)
         out.append({
             "round": r["round"], "honba": r["honba"], "kyotaku": start["kyotaku"], "oya": start["oya"],
-            "dora": start["dora_marker"], "scores": start["scores"], "haipai": start["tehais"],
+            "dora": start["dora_marker"], "scores": start["scores"], "haipai": haipai,
             "seq": seq, "result": summarize_round(r),
         })
     return out
@@ -117,9 +135,10 @@ def play_sessions(sessions, rng):
     for s_idx, (members, games, event, keep_kifu) in enumerate(sessions):
         order = list(members)
         rng.shuffle(order)
+        event = {**event, "rule": rule_key_for_event(event)}
         for g in range(games):
             seats = order[g % 4:] + order[:g % 4]
-            jobs.append(([_spec(ind) for ind in seats], rng.getrandbits(64), keep_kifu))
+            jobs.append(([_spec(ind) for ind in seats], rng.getrandbits(64), keep_kifu, event["rule"]))
             meta.append((s_idx, seats, {**event, "game": g + 1}))
 
     executor = _get_executor()
@@ -132,7 +151,8 @@ def play_sessions(sessions, rng):
     for (s_idx, seats, event), res in zip(meta, results):
         update_elo_table(seats, res["placement"])
         for s, ind in enumerate(seats):
-            ind.record_game(res["placement"][s], res["points"][s], season=event.get("season"))
+            ind.record_game(res["placement"][s], res["points"][s], season=event.get("season"),
+                            score=res["final_scores"][s])
             ind.record_rounds(s, res["rounds"])
         record = {"event": event, "seats": [ind.id for ind in seats],
                   "names": [ind.display_name for ind in seats], **res}

@@ -72,7 +72,10 @@
     "win_value": 314100,
     "dealin_value": 122700,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1356800,
+    "score_max": 62400,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -616,7 +619,7 @@
     {
      "id": "1-0313",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 4,
      "points": -23.7,
      "score": 21300,
@@ -629,7 +632,7 @@
     {
      "id": "1-0344",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 21.8,
      "score": 36800,
@@ -642,7 +645,7 @@
     {
      "id": "1-0366",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 4,
      "points": -29.1,
      "score": 15900,
@@ -655,7 +658,7 @@
     {
      "id": "1-0425",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -2.9,
      "score": 32100,
@@ -668,7 +671,7 @@
     {
      "id": "1-0426",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -15.4,
      "score": 19600,
@@ -874,7 +877,10 @@
     "win_value": 478900,
     "dealin_value": 185000,
     "max_value": 32000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 1799800,
+    "score_max": 73200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -1338,7 +1344,7 @@
     {
      "id": "1-0314",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 3,
      "points": -5.7,
      "score": 29300,
@@ -1351,7 +1357,7 @@
     {
      "id": "1-0351",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 17.4,
      "score": 42400,
@@ -1364,7 +1370,7 @@
     {
      "id": "1-0360",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 3,
      "points": -9.6,
      "score": 25400,
@@ -1377,7 +1383,7 @@
     {
      "id": "1-0427",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 13.1,
      "score": 38100,
@@ -1390,7 +1396,7 @@
     {
      "id": "1-0428",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 10.4,
      "score": 35400,
@@ -1403,7 +1409,7 @@
     {
      "id": "1-0439",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 21.5,
      "score": 36500,
@@ -1416,7 +1422,7 @@
     {
      "id": "1-0440",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 22.2,
      "score": 37200,
@@ -1429,7 +1435,7 @@
     {
      "id": "1-0449",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 1,
      "points": 24.6,
      "score": 39600,
@@ -1442,7 +1448,7 @@
     {
      "id": "1-0450",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 1,
      "points": 58.2,
      "score": 73200,
@@ -1455,7 +1461,7 @@
     {
      "id": "1-0455",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 2,
      "points": 11.4,
      "score": 36400,
@@ -1468,7 +1474,7 @@
     {
      "id": "1-0456",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 1,
      "points": 26.2,
      "score": 41200,
@@ -1481,7 +1487,7 @@
     {
      "id": "1-0457",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 4,
      "points": -20.1,
      "score": 24900,
@@ -1494,7 +1500,7 @@
     {
      "id": "1-0458",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 4,
      "points": -34.6,
      "score": 10400,
@@ -1507,7 +1513,7 @@
     {
      "id": "1-0459",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 1,
      "points": 20.3,
      "score": 35300,
@@ -1520,7 +1526,7 @@
     {
      "id": "1-0460",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 2,
      "points": 10.9,
      "score": 35900,
@@ -1741,7 +1747,10 @@
     "win_value": 334200,
     "dealin_value": 225100,
     "max_value": 32000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 1290500,
+    "score_max": 80700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -2253,7 +2262,7 @@
     {
      "id": "1-0355",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -5.3,
      "score": 29700,
@@ -2266,7 +2275,7 @@
     {
      "id": "1-0415",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 4.6,
      "score": 29600,
@@ -2279,7 +2288,7 @@
     {
      "id": "1-0416",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 23.7,
      "score": 38700,
@@ -2292,7 +2301,7 @@
     {
      "id": "1-0437",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -8.8,
      "score": 26200,
@@ -2305,7 +2314,7 @@
     {
      "id": "1-0438",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 25.5,
      "score": 40500,
@@ -2318,7 +2327,7 @@
     {
      "id": "1-0445",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 1,
      "points": 23.1,
      "score": 38100,
@@ -2331,7 +2340,7 @@
     {
      "id": "1-0446",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 2,
      "points": 9.7,
      "score": 34700,
@@ -2344,7 +2353,7 @@
     {
      "id": "1-0455",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 3,
      "points": -5.2,
      "score": 29800,
@@ -2357,7 +2366,7 @@
     {
      "id": "1-0456",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 3,
      "points": -4.5,
      "score": 30500,
@@ -2548,7 +2557,10 @@
     "win_value": 294700,
     "dealin_value": 150200,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1257700,
+    "score_max": 50400,
+    "busts": 1
    },
    "elo_history": [
     [
@@ -3076,7 +3088,7 @@
     {
      "id": "1-0317",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 3,
      "points": -8.8,
      "score": 26200,
@@ -3089,7 +3101,7 @@
     {
      "id": "1-0355",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 13.1,
      "score": 38100,
@@ -3102,7 +3114,7 @@
     {
      "id": "1-0364",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 4,
      "points": -26.6,
      "score": 18400,
@@ -3115,7 +3127,7 @@
     {
      "id": "1-0421",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 25.9,
      "score": 40900,
@@ -3128,7 +3140,7 @@
     {
      "id": "1-0422",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 28.4,
      "score": 43400,
@@ -3141,7 +3153,7 @@
     {
      "id": "1-0441",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 28.5,
      "score": 43500,
@@ -3154,7 +3166,7 @@
     {
      "id": "1-0442",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -50.8,
      "score": -5800,
@@ -3360,7 +3372,10 @@
     "win_value": 332800,
     "dealin_value": 106200,
     "max_value": 32000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 1317400,
+    "score_max": 70100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -3712,7 +3727,7 @@
     {
      "id": "1-0356",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 4.0,
      "score": 29000,
@@ -3725,7 +3740,7 @@
     {
      "id": "1-0366",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 1,
      "points": 37.5,
      "score": 52500,
@@ -3738,7 +3753,7 @@
     {
      "id": "1-0368",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 1,
      "points": 34.2,
      "score": 49200,
@@ -3751,7 +3766,7 @@
     {
      "id": "1-0369",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 4,
      "points": -22.7,
      "score": 22300,
@@ -3764,7 +3779,7 @@
     {
      "id": "1-0376",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 3,
      "points": -13.4,
      "score": 21600,
@@ -3777,7 +3792,7 @@
     {
      "id": "1-0377",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 1,
      "points": 30.1,
      "score": 45100,
@@ -3790,7 +3805,7 @@
     {
      "id": "1-0380",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 1,
      "points": 22.5,
      "score": 37500,
@@ -3803,7 +3818,7 @@
     {
      "id": "1-0381",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 2,
      "points": 0.5,
      "score": 25500,
@@ -3816,7 +3831,7 @@
     {
      "id": "1-0382",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 3,
      "points": -8.7,
      "score": 26300,
@@ -3829,7 +3844,7 @@
     {
      "id": "1-0383",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 3,
      "points": -6.0,
      "score": 29000,
@@ -3842,7 +3857,7 @@
     {
      "id": "1-0384",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 1,
      "points": 23.9,
      "score": 38900,
@@ -3855,7 +3870,7 @@
     {
      "id": "1-0413",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 29.1,
      "score": 44100,
@@ -3868,7 +3883,7 @@
     {
      "id": "1-0414",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 13.8,
      "score": 38800,
@@ -3881,7 +3896,7 @@
     {
      "id": "1-0431",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 11.0,
      "score": 36000,
@@ -3894,7 +3909,7 @@
     {
      "id": "1-0432",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 33.2,
      "score": 48200,
@@ -3907,7 +3922,7 @@
     {
      "id": "1-0447",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 4,
      "points": -25.3,
      "score": 19700,
@@ -3920,7 +3935,7 @@
     {
      "id": "1-0448",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 1,
      "points": 23.1,
      "score": 38100,
@@ -3933,7 +3948,7 @@
     {
      "id": "1-0455",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 4,
      "points": -28.3,
      "score": 16700,
@@ -3946,7 +3961,7 @@
     {
      "id": "1-0456",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 2,
      "points": 6.2,
      "score": 31200,
@@ -4172,7 +4187,10 @@
     "win_value": 187100,
     "dealin_value": 78800,
     "max_value": 32000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 687100,
+    "score_max": 57800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -4561,7 +4579,7 @@
     {
      "id": "1-0356",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -6.3,
      "score": 28700,
@@ -4574,7 +4592,7 @@
     {
      "id": "1-0409",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -23.0,
      "score": 22000,
@@ -4587,7 +4605,7 @@
     {
      "id": "1-0410",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -23.1,
      "score": 21900,
@@ -4763,7 +4781,10 @@
     "win_value": 233400,
     "dealin_value": 124900,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1051200,
+    "score_max": 59700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -5139,7 +5160,7 @@
     {
      "id": "1-0318",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 2,
      "points": 7.5,
      "score": 32500,
@@ -5152,7 +5173,7 @@
     {
      "id": "1-0327",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 2,
      "points": 6.6,
      "score": 31600,
@@ -5165,7 +5186,7 @@
     {
      "id": "1-0328",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 2,
      "points": 4.9,
      "score": 29900,
@@ -5178,7 +5199,7 @@
     {
      "id": "1-0331",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 3,
      "points": -16.2,
      "score": 18800,
@@ -5191,7 +5212,7 @@
     {
      "id": "1-0332",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 1,
      "points": 20.8,
      "score": 35800,
@@ -5204,7 +5225,7 @@
     {
      "id": "1-0333",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 3,
      "points": -4.6,
      "score": 30400,
@@ -5217,7 +5238,7 @@
     {
      "id": "1-0334",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 4,
      "points": -22.9,
      "score": 22100,
@@ -5230,7 +5251,7 @@
     {
      "id": "1-0335",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 4,
      "points": -26.9,
      "score": 18100,
@@ -5243,7 +5264,7 @@
     {
      "id": "1-0336",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 3,
      "points": -18.6,
      "score": 16400,
@@ -5256,7 +5277,7 @@
     {
      "id": "1-0337",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 1,
      "points": 26.9,
      "score": 41900,
@@ -5269,7 +5290,7 @@
     {
      "id": "1-0357",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 31.9,
      "score": 46900,
@@ -5282,7 +5303,7 @@
     {
      "id": "1-0360",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 4,
      "points": -24.9,
      "score": 20100,
@@ -5295,7 +5316,7 @@
     {
      "id": "1-0411",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -6.1,
      "score": 28900,
@@ -5308,7 +5329,7 @@
     {
      "id": "1-0412",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 0.6,
      "score": 25600,
@@ -5321,7 +5342,7 @@
     {
      "id": "1-0429",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -25.5,
      "score": 19500,
@@ -5334,7 +5355,7 @@
     {
      "id": "1-0430",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 11.8,
      "score": 36800,
@@ -5570,7 +5591,10 @@
     "win_value": 273500,
     "dealin_value": 149700,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1186500,
+    "score_max": 62500,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -5930,7 +5954,7 @@
     {
      "id": "1-0316",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 3,
      "points": -6.5,
      "score": 28500,
@@ -5943,7 +5967,7 @@
     {
      "id": "1-0354",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 28.5,
      "score": 43500,
@@ -5956,7 +5980,7 @@
     {
      "id": "1-0365",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 1,
      "points": 25.2,
      "score": 40200,
@@ -5969,7 +5993,7 @@
     {
      "id": "1-0374",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 1,
      "points": 22.9,
      "score": 37900,
@@ -5982,7 +6006,7 @@
     {
      "id": "1-0375",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 2,
      "points": 8.5,
      "score": 33500,
@@ -5995,7 +6019,7 @@
     {
      "id": "1-0378",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 1,
      "points": 32.2,
      "score": 47200,
@@ -6008,7 +6032,7 @@
     {
      "id": "1-0379",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 1,
      "points": 47.5,
      "score": 62500,
@@ -6021,7 +6045,7 @@
     {
      "id": "1-0380",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 2,
      "points": 5.0,
      "score": 30000,
@@ -6034,7 +6058,7 @@
     {
      "id": "1-0381",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 3,
      "points": -12.7,
      "score": 22300,
@@ -6047,7 +6071,7 @@
     {
      "id": "1-0382",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 4,
      "points": -27.3,
      "score": 17700,
@@ -6060,7 +6084,7 @@
     {
      "id": "1-0383",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 1,
      "points": 21.3,
      "score": 36300,
@@ -6073,7 +6097,7 @@
     {
      "id": "1-0384",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 2,
      "points": 5.5,
      "score": 30500,
@@ -6086,7 +6110,7 @@
     {
      "id": "1-0405",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -11.3,
      "score": 23700,
@@ -6099,7 +6123,7 @@
     {
      "id": "1-0406",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 25.9,
      "score": 40900,
@@ -6112,7 +6136,7 @@
     {
      "id": "1-0433",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 9.8,
      "score": 34800,
@@ -6125,7 +6149,7 @@
     {
      "id": "1-0434",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": -0.3,
      "score": 24700,
@@ -6138,7 +6162,7 @@
     {
      "id": "1-0449",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 4,
      "points": -30.7,
      "score": 14300,
@@ -6151,7 +6175,7 @@
     {
      "id": "1-0450",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 2,
      "points": -7.6,
      "score": 17400,
@@ -6387,7 +6411,10 @@
     "win_value": 285100,
     "dealin_value": 133500,
     "max_value": 32000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 1054800,
+    "score_max": 61100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -6787,7 +6814,7 @@
     {
      "id": "1-0358",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -7.3,
      "score": 27700,
@@ -6800,7 +6827,7 @@
     {
      "id": "1-0405",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 24.1,
      "score": 39100,
@@ -6813,7 +6840,7 @@
     {
      "id": "1-0406",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 10.1,
      "score": 35100,
@@ -6826,7 +6853,7 @@
     {
      "id": "1-0443",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -10.1,
      "score": 24900,
@@ -6839,7 +6866,7 @@
     {
      "id": "1-0444",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 26.4,
      "score": 41400,
@@ -6852,7 +6879,7 @@
     {
      "id": "1-0449",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 2,
      "points": 13.7,
      "score": 38700,
@@ -6865,7 +6892,7 @@
     {
      "id": "1-0450",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 3,
      "points": -19.4,
      "score": 15600,
@@ -6878,7 +6905,7 @@
     {
      "id": "1-0453",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 2,
      "points": 11.3,
      "score": 36300,
@@ -6891,7 +6918,7 @@
     {
      "id": "1-0454",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 1,
      "points": 29.1,
      "score": 44100,
@@ -6904,7 +6931,7 @@
     {
      "id": "1-0457",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 2,
      "points": 5.1,
      "score": 30100,
@@ -6917,7 +6944,7 @@
     {
      "id": "1-0458",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 1,
      "points": 30.5,
      "score": 45500,
@@ -6930,7 +6957,7 @@
     {
      "id": "1-0459",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 4,
      "points": -20.8,
      "score": 24200,
@@ -6943,7 +6970,7 @@
     {
      "id": "1-0460",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 1,
      "points": 22.6,
      "score": 37600,
@@ -7139,7 +7166,10 @@
     "win_value": 139800,
     "dealin_value": 109300,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 777000,
+    "score_max": 53600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -7548,7 +7578,7 @@
     {
      "id": "1-0355",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -35.4,
      "score": 9600,
@@ -7561,7 +7591,7 @@
     {
      "id": "1-0399",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 21.6,
      "score": 36600,
@@ -7574,7 +7604,7 @@
     {
      "id": "1-0400",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 3.1,
      "score": 28100,
@@ -7587,7 +7617,7 @@
     {
      "id": "1-0433",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 21.8,
      "score": 36800,
@@ -7600,7 +7630,7 @@
     {
      "id": "1-0434",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -11.1,
      "score": 23900,
@@ -7613,7 +7643,7 @@
     {
      "id": "1-0445",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 3,
      "points": -4.4,
      "score": 30600,
@@ -7626,7 +7656,7 @@
     {
      "id": "1-0446",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 4,
      "points": -34.1,
      "score": 10900,
@@ -7812,7 +7842,10 @@
     "win_value": 156300,
     "dealin_value": 120600,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 771900,
+    "score_max": 49100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -8216,7 +8249,7 @@
     {
      "id": "1-0344",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 4.2,
      "score": 29200,
@@ -8229,7 +8262,7 @@
     {
      "id": "1-0366",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 3,
      "points": -13.9,
      "score": 21100,
@@ -8242,7 +8275,7 @@
     {
      "id": "1-0397",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 31.7,
      "score": 46700,
@@ -8255,7 +8288,7 @@
     {
      "id": "1-0398",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 8.7,
      "score": 33700,
@@ -8268,7 +8301,7 @@
     {
      "id": "1-0443",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -20.5,
      "score": 24500,
@@ -8281,7 +8314,7 @@
     {
      "id": "1-0444",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 8.3,
      "score": 33300,
@@ -8467,7 +8500,10 @@
     "win_value": 130200,
     "dealin_value": 79000,
     "max_value": 24000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 650300,
+    "score_max": 55800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -8861,7 +8897,7 @@
     {
      "id": "1-0358",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 20.1,
      "score": 35100,
@@ -8874,7 +8910,7 @@
     {
      "id": "1-0362",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 4,
      "points": -23.1,
      "score": 21900,
@@ -8887,7 +8923,7 @@
     {
      "id": "1-0423",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -24.6,
      "score": 20400,
@@ -8900,7 +8936,7 @@
     {
      "id": "1-0424",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 3.4,
      "score": 28400,
@@ -9086,7 +9122,10 @@
     "win_value": 198000,
     "dealin_value": 173000,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 706300,
+    "score_max": 63100,
+    "busts": 1
    },
    "elo_history": [
     [
@@ -9485,7 +9524,7 @@
     {
      "id": "1-0352",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -8.2,
      "score": 26800,
@@ -9498,7 +9537,7 @@
     {
      "id": "1-0427",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 32.1,
      "score": 47100,
@@ -9511,7 +9550,7 @@
     {
      "id": "1-0428",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 26.3,
      "score": 41300,
@@ -9524,7 +9563,7 @@
     {
      "id": "1-0431",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -28.0,
      "score": 17000,
@@ -9537,7 +9576,7 @@
     {
      "id": "1-0432",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -25.2,
      "score": 19800,
@@ -9718,7 +9757,10 @@
     "win_value": 268300,
     "dealin_value": 76200,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1129100,
+    "score_max": 77700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -10082,7 +10124,7 @@
     {
      "id": "1-0314",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 1,
      "points": 25.1,
      "score": 40100,
@@ -10095,7 +10137,7 @@
     {
      "id": "1-0321",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 1,
      "points": 21.2,
      "score": 36200,
@@ -10108,7 +10150,7 @@
     {
      "id": "1-0322",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 1,
      "points": 37.2,
      "score": 52200,
@@ -10121,7 +10163,7 @@
     {
      "id": "1-0329",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 4,
      "points": -23.8,
      "score": 21200,
@@ -10134,7 +10176,7 @@
     {
      "id": "1-0330",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 3,
      "points": -5.5,
      "score": 29500,
@@ -10147,7 +10189,7 @@
     {
      "id": "1-0349",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 8.2,
      "score": 33200,
@@ -10160,7 +10202,7 @@
     {
      "id": "1-0361",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 1,
      "points": 28.4,
      "score": 43400,
@@ -10173,7 +10215,7 @@
     {
      "id": "1-0370",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 1,
      "points": 26.3,
      "score": 41300,
@@ -10186,7 +10228,7 @@
     {
      "id": "1-0371",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 3,
      "points": -5.4,
      "score": 29600,
@@ -10199,7 +10241,7 @@
     {
      "id": "1-0378",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 3,
      "points": -9.8,
      "score": 25200,
@@ -10212,7 +10254,7 @@
     {
      "id": "1-0379",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 3,
      "points": -16.0,
      "score": 19000,
@@ -10225,7 +10267,7 @@
     {
      "id": "1-0423",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 25.0,
      "score": 40000,
@@ -10238,7 +10280,7 @@
     {
      "id": "1-0424",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 32.7,
      "score": 47700,
@@ -10251,7 +10293,7 @@
     {
      "id": "1-0437",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 7.8,
      "score": 32800,
@@ -10264,7 +10306,7 @@
     {
      "id": "1-0438",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -7.3,
      "score": 27700,
@@ -10505,7 +10547,10 @@
     "win_value": 233900,
     "dealin_value": 60300,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1041200,
+    "score_max": 77000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -10872,7 +10917,7 @@
     {
      "id": "1-0316",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 1,
      "points": 25.8,
      "score": 40800,
@@ -10885,7 +10930,7 @@
     {
      "id": "1-0323",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 3,
      "points": -7.0,
      "score": 28000,
@@ -10898,7 +10943,7 @@
     {
      "id": "1-0324",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 1,
      "points": 29.0,
      "score": 44000,
@@ -10911,7 +10956,7 @@
     {
      "id": "1-0331",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 2,
      "points": 1.1,
      "score": 26100,
@@ -10924,7 +10969,7 @@
     {
      "id": "1-0332",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 3,
      "points": -13.4,
      "score": 26600,
@@ -10937,7 +10982,7 @@
     {
      "id": "1-0348",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 62.0,
      "score": 77000,
@@ -10950,7 +10995,7 @@
     {
      "id": "1-0362",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 2,
      "points": 7.5,
      "score": 32500,
@@ -10963,7 +11008,7 @@
     {
      "id": "1-0368",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 3,
      "points": -5.2,
      "score": 29800,
@@ -10976,7 +11021,7 @@
     {
      "id": "1-0369",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 2,
      "points": 2.8,
      "score": 27800,
@@ -10989,7 +11034,7 @@
     {
      "id": "1-0403",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 27.3,
      "score": 42300,
@@ -11002,7 +11047,7 @@
     {
      "id": "1-0404",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 11.9,
      "score": 36900,
@@ -11015,7 +11060,7 @@
     {
      "id": "1-0433",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -31.1,
      "score": 13900,
@@ -11028,7 +11073,7 @@
     {
      "id": "1-0434",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 34.5,
      "score": 49500,
@@ -11244,7 +11289,10 @@
     "win_value": 169400,
     "dealin_value": 81900,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 812600,
+    "score_max": 52500,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -11586,7 +11634,7 @@
     {
      "id": "1-0317",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 1,
      "points": 27.8,
      "score": 42800,
@@ -11599,7 +11647,7 @@
     {
      "id": "1-0325",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 4,
      "points": -23.8,
      "score": 21200,
@@ -11612,7 +11660,7 @@
     {
      "id": "1-0326",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 1,
      "points": 25.9,
      "score": 40900,
@@ -11625,7 +11673,7 @@
     {
      "id": "1-0349",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -4.5,
      "score": 30500,
@@ -11638,7 +11686,7 @@
     {
      "id": "1-0419",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 37.5,
      "score": 52500,
@@ -11651,7 +11699,7 @@
     {
      "id": "1-0420",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 10.8,
      "score": 35800,
@@ -11664,7 +11712,7 @@
     {
      "id": "1-0439",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -8.5,
      "score": 26500,
@@ -11677,7 +11725,7 @@
     {
      "id": "1-0440",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -8.0,
      "score": 27000,
@@ -11878,7 +11926,10 @@
     "win_value": 257200,
     "dealin_value": 87100,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1001400,
+    "score_max": 61000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -12242,7 +12293,7 @@
     {
      "id": "1-0318",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 1,
      "points": 27.7,
      "score": 42700,
@@ -12255,7 +12306,7 @@
     {
      "id": "1-0323",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 1,
      "points": 24.3,
      "score": 39300,
@@ -12268,7 +12319,7 @@
     {
      "id": "1-0324",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 2,
      "points": 11.1,
      "score": 36100,
@@ -12281,7 +12332,7 @@
     {
      "id": "1-0331",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 4,
      "points": -26.5,
      "score": 18500,
@@ -12294,7 +12345,7 @@
     {
      "id": "1-0332",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 3,
      "points": -13.4,
      "score": 26600,
@@ -12307,7 +12358,7 @@
     {
      "id": "1-0352",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 32.3,
      "score": 47300,
@@ -12320,7 +12371,7 @@
     {
      "id": "1-0367",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 3,
      "points": -3.6,
      "score": 31400,
@@ -12333,7 +12384,7 @@
     {
      "id": "1-0417",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 26.9,
      "score": 41900,
@@ -12346,7 +12397,7 @@
     {
      "id": "1-0418",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -28.7,
      "score": 16300,
@@ -12359,7 +12410,7 @@
     {
      "id": "1-0443",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 8.3,
      "score": 33300,
@@ -12372,7 +12423,7 @@
     {
      "id": "1-0444",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -9.4,
      "score": 25600,
@@ -12385,7 +12436,7 @@
     {
      "id": "1-0447",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 1,
      "points": 24.3,
      "score": 39300,
@@ -12398,7 +12449,7 @@
     {
      "id": "1-0448",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 2,
      "points": 11.1,
      "score": 36100,
@@ -12411,7 +12462,7 @@
     {
      "id": "1-0453",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 3,
      "points": -13.4,
      "score": 21600,
@@ -12424,7 +12475,7 @@
     {
      "id": "1-0454",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 4,
      "points": -24.9,
      "score": 20100,
@@ -12652,7 +12703,10 @@
     "win_value": 128800,
     "dealin_value": 105600,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 626600,
+    "score_max": 62600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -13041,7 +13095,7 @@
     {
      "id": "1-0359",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -22.1,
      "score": 22900,
@@ -13054,7 +13108,7 @@
     {
      "id": "1-0427",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -16.7,
      "score": 18300,
@@ -13067,7 +13121,7 @@
     {
      "id": "1-0428",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -12.3,
      "score": 22700,
@@ -13233,7 +13287,10 @@
     "win_value": 248700,
     "dealin_value": 162600,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1001000,
+    "score_max": 66200,
+    "busts": 1
    },
    "elo_history": [
     [
@@ -13633,7 +13690,7 @@
     {
      "id": "1-0346",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -5.2,
      "score": 29800,
@@ -13646,7 +13703,7 @@
     {
      "id": "1-0411",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 21.3,
      "score": 36300,
@@ -13659,7 +13716,7 @@
     {
      "id": "1-0412",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 32.8,
      "score": 47800,
@@ -13672,7 +13729,7 @@
     {
      "id": "1-0435",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 5.9,
      "score": 30900,
@@ -13685,7 +13742,7 @@
     {
      "id": "1-0436",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 51.2,
      "score": 66200,
@@ -13698,7 +13755,7 @@
     {
      "id": "1-0445",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 4,
      "points": -25.6,
      "score": 19400,
@@ -13711,7 +13768,7 @@
     {
      "id": "1-0446",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 1,
      "points": 41.9,
      "score": 56900,
@@ -13724,7 +13781,7 @@
     {
      "id": "1-0453",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 1,
      "points": 26.8,
      "score": 41800,
@@ -13737,7 +13794,7 @@
     {
      "id": "1-0454",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 2,
      "points": 4.2,
      "score": 29200,
@@ -13750,7 +13807,7 @@
     {
      "id": "1-0457",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 1,
      "points": 20.1,
      "score": 35100,
@@ -13763,7 +13820,7 @@
     {
      "id": "1-0458",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 2,
      "points": 11.2,
      "score": 36200,
@@ -13776,7 +13833,7 @@
     {
      "id": "1-0459",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 2,
      "points": 8.4,
      "score": 33400,
@@ -13789,7 +13846,7 @@
     {
      "id": "1-0460",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 3,
      "points": -9.8,
      "score": 25200,
@@ -13990,7 +14047,10 @@
     "win_value": 336900,
     "dealin_value": 205500,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1377200,
+    "score_max": 59100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -14310,7 +14370,7 @@
     {
      "id": "1-0353",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 22.7,
      "score": 37700,
@@ -14323,7 +14383,7 @@
     {
      "id": "1-0360",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 1,
      "points": 26.4,
      "score": 41400,
@@ -14336,7 +14396,7 @@
     {
      "id": "1-0372",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 1,
      "points": 26.0,
      "score": 41000,
@@ -14349,7 +14409,7 @@
     {
      "id": "1-0373",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 1,
      "points": 26.4,
      "score": 41400,
@@ -14362,7 +14422,7 @@
     {
      "id": "1-0376",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 1,
      "points": 34.5,
      "score": 49500,
@@ -14375,7 +14435,7 @@
     {
      "id": "1-0377",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 2,
      "points": 10.9,
      "score": 35900,
@@ -14388,7 +14448,7 @@
     {
      "id": "1-0380",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 3,
      "points": -8.5,
      "score": 26500,
@@ -14401,7 +14461,7 @@
     {
      "id": "1-0381",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 1,
      "points": 36.2,
      "score": 51200,
@@ -14414,7 +14474,7 @@
     {
      "id": "1-0382",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 1,
      "points": 34.5,
      "score": 49500,
@@ -14427,7 +14487,7 @@
     {
      "id": "1-0383",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 2,
      "points": 10.8,
      "score": 35800,
@@ -14440,7 +14500,7 @@
     {
      "id": "1-0384",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 3,
      "points": -7.0,
      "score": 28000,
@@ -14453,7 +14513,7 @@
     {
      "id": "1-0401",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 37.5,
      "score": 52500,
@@ -14466,7 +14526,7 @@
     {
      "id": "1-0402",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 21.6,
      "score": 36600,
@@ -14479,7 +14539,7 @@
     {
      "id": "1-0437",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 36.2,
      "score": 51200,
@@ -14492,7 +14552,7 @@
     {
      "id": "1-0438",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 8.0,
      "score": 33000,
@@ -14505,7 +14565,7 @@
     {
      "id": "1-0451",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 1,
      "points": 28.8,
      "score": 43800,
@@ -14518,7 +14578,7 @@
     {
      "id": "1-0452",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 2,
      "points": 3.6,
      "score": 28600,
@@ -14531,7 +14591,7 @@
     {
      "id": "1-0455",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 1,
      "points": 22.1,
      "score": 37100,
@@ -14544,7 +14604,7 @@
     {
      "id": "1-0456",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 4,
      "points": -27.9,
      "score": 17100,
@@ -14557,7 +14617,7 @@
     {
      "id": "1-0457",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 3,
      "points": -5.1,
      "score": 29900,
@@ -14570,7 +14630,7 @@
     {
      "id": "1-0458",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 3,
      "points": -7.1,
      "score": 27900,
@@ -14583,7 +14643,7 @@
     {
      "id": "1-0459",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 3,
      "points": -7.9,
      "score": 27100,
@@ -14596,7 +14656,7 @@
     {
      "id": "1-0460",
      "season": 1,
-     "label": "マスターズ 決勝",
+     "label": "応龍位 決勝",
      "placement": 4,
      "points": -23.7,
      "score": 21300,
@@ -14817,7 +14877,10 @@
     "win_value": 180000,
     "dealin_value": 124000,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 977500,
+    "score_max": 87900,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -15181,7 +15244,7 @@
     {
      "id": "1-0316",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 2,
      "points": 4.3,
      "score": 29300,
@@ -15194,7 +15257,7 @@
     {
      "id": "1-0323",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 4,
      "points": -20.4,
      "score": 24600,
@@ -15207,7 +15270,7 @@
     {
      "id": "1-0324",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 4,
      "points": -29.3,
      "score": 15700,
@@ -15220,7 +15283,7 @@
     {
      "id": "1-0359",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 26.0,
      "score": 41000,
@@ -15233,7 +15296,7 @@
     {
      "id": "1-0364",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 2,
      "points": 6.9,
      "score": 31900,
@@ -15246,7 +15309,7 @@
     {
      "id": "1-0374",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 2,
      "points": 6.0,
      "score": 31000,
@@ -15259,7 +15322,7 @@
     {
      "id": "1-0375",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 1,
      "points": 20.9,
      "score": 35900,
@@ -15272,7 +15335,7 @@
     {
      "id": "1-0376",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 2,
      "points": 2.5,
      "score": 27500,
@@ -15285,7 +15348,7 @@
     {
      "id": "1-0377",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 3,
      "points": -14.4,
      "score": 20600,
@@ -15298,7 +15361,7 @@
     {
      "id": "1-0399",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 10.9,
      "score": 35900,
@@ -15311,7 +15374,7 @@
     {
      "id": "1-0400",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 26.0,
      "score": 41000,
@@ -15324,7 +15387,7 @@
     {
      "id": "1-0441",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -21.8,
      "score": 23200,
@@ -15337,7 +15400,7 @@
     {
      "id": "1-0442",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 72.9,
      "score": 87900,
@@ -15350,7 +15413,7 @@
     {
      "id": "1-0451",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 3,
      "points": -2.2,
      "score": 32800,
@@ -15363,7 +15426,7 @@
     {
      "id": "1-0452",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 4,
      "points": -26.7,
      "score": 18300,
@@ -15594,7 +15657,10 @@
     "win_value": 150400,
     "dealin_value": 92500,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 821100,
+    "score_max": 53000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -15951,7 +16017,7 @@
     {
      "id": "1-0320",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 3,
      "points": -4.4,
      "score": 30600,
@@ -15964,7 +16030,7 @@
     {
      "id": "1-0346",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 5.1,
      "score": 30100,
@@ -15977,7 +16043,7 @@
     {
      "id": "1-0365",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 2,
      "points": 8.5,
      "score": 33500,
@@ -15990,7 +16056,7 @@
     {
      "id": "1-0374",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 3,
      "points": -5.0,
      "score": 30000,
@@ -16003,7 +16069,7 @@
     {
      "id": "1-0375",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 4,
      "points": -24.5,
      "score": 20500,
@@ -16016,7 +16082,7 @@
     {
      "id": "1-0409",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 3.9,
      "score": 28900,
@@ -16029,7 +16095,7 @@
     {
      "id": "1-0410",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 22.3,
      "score": 37300,
@@ -16042,7 +16108,7 @@
     {
      "id": "1-0429",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -13.5,
      "score": 21500,
@@ -16055,7 +16121,7 @@
     {
      "id": "1-0430",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 26.3,
      "score": 41300,
@@ -16068,7 +16134,7 @@
     {
      "id": "1-0451",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 2,
      "points": 10.4,
      "score": 35400,
@@ -16081,7 +16147,7 @@
     {
      "id": "1-0452",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 3,
      "points": -12.7,
      "score": 22300,
@@ -16292,7 +16358,10 @@
     "win_value": 248700,
     "dealin_value": 146000,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1074300,
+    "score_max": 66300,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -16640,7 +16709,7 @@
     {
      "id": "1-0315",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 2,
      "points": 12.6,
      "score": 37600,
@@ -16653,7 +16722,7 @@
     {
      "id": "1-0325",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 1,
      "points": 31.6,
      "score": 46600,
@@ -16666,7 +16735,7 @@
     {
      "id": "1-0326",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 4,
      "points": -23.7,
      "score": 21300,
@@ -16679,7 +16748,7 @@
     {
      "id": "1-0329",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 1,
      "points": 29.9,
      "score": 44900,
@@ -16692,7 +16761,7 @@
     {
      "id": "1-0330",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 1,
      "points": 27.4,
      "score": 42400,
@@ -16705,7 +16774,7 @@
     {
      "id": "1-0333",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 2,
      "points": 7.5,
      "score": 32500,
@@ -16718,7 +16787,7 @@
     {
      "id": "1-0334",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 3,
      "points": -9.4,
      "score": 25600,
@@ -16731,7 +16800,7 @@
     {
      "id": "1-0335",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 3,
      "points": -14.5,
      "score": 20500,
@@ -16744,7 +16813,7 @@
     {
      "id": "1-0336",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 2,
      "points": 20.3,
      "score": 45300,
@@ -16757,7 +16826,7 @@
     {
      "id": "1-0337",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 4,
      "points": -24.3,
      "score": 20700,
@@ -16770,7 +16839,7 @@
     {
      "id": "1-0356",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -18.8,
      "score": 26200,
@@ -16783,7 +16852,7 @@
     {
      "id": "1-0417",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 5.1,
      "score": 30100,
@@ -16796,7 +16865,7 @@
     {
      "id": "1-0418",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 51.3,
      "score": 66300,
@@ -16809,7 +16878,7 @@
     {
      "id": "1-0431",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 30.1,
      "score": 45100,
@@ -16822,7 +16891,7 @@
     {
      "id": "1-0432",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 4.8,
      "score": 29800,
@@ -16835,7 +16904,7 @@
     {
      "id": "1-0447",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 3,
      "points": -7.5,
      "score": 27500,
@@ -16848,7 +16917,7 @@
     {
      "id": "1-0448",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 3,
      "points": -7.2,
      "score": 27800,
@@ -17064,7 +17133,10 @@
     "win_value": 139400,
     "dealin_value": 72300,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 743700,
+    "score_max": 52100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -17411,7 +17483,7 @@
     {
      "id": "1-0313",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 3,
      "points": -7.3,
      "score": 27700,
@@ -17424,7 +17496,7 @@
     {
      "id": "1-0346",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 17.8,
      "score": 32800,
@@ -17437,7 +17509,7 @@
     {
      "id": "1-0365",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 4,
      "points": -22.1,
      "score": 22900,
@@ -17450,7 +17522,7 @@
     {
      "id": "1-0413",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 13.6,
      "score": 38600,
@@ -17463,7 +17535,7 @@
     {
      "id": "1-0414",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 24.2,
      "score": 39200,
@@ -17476,7 +17548,7 @@
     {
      "id": "1-0435",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 17.5,
      "score": 32500,
@@ -17489,7 +17561,7 @@
     {
      "id": "1-0436",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 0.8,
      "score": 25800,
@@ -17502,7 +17574,7 @@
     {
      "id": "1-0445",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 2,
      "points": 6.9,
      "score": 31900,
@@ -17515,7 +17587,7 @@
     {
      "id": "1-0446",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 3,
      "points": -17.5,
      "score": 17500,
@@ -17731,7 +17803,10 @@
     "win_value": 114900,
     "dealin_value": 41900,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 576200,
+    "score_max": 53100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -18058,7 +18133,7 @@
     {
      "id": "1-0354",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -24.8,
      "score": 20200,
@@ -18071,7 +18146,7 @@
     {
      "id": "1-0425",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 9.0,
      "score": 34000,
@@ -18084,7 +18159,7 @@
     {
      "id": "1-0426",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": -4.7,
      "score": 20300,
@@ -18097,7 +18172,7 @@
     {
      "id": "1-0435",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -4.4,
      "score": 30600,
@@ -18110,7 +18185,7 @@
     {
      "id": "1-0436",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -16.9,
      "score": 18100,
@@ -18296,7 +18371,10 @@
     "win_value": 108000,
     "dealin_value": 55900,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 567800,
+    "score_max": 43900,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -18618,7 +18696,7 @@
     {
      "id": "1-0354",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 8.6,
      "score": 33600,
@@ -18631,7 +18709,7 @@
     {
      "id": "1-0362",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 3,
      "points": -9.8,
      "score": 25200,
@@ -18644,7 +18722,7 @@
     {
      "id": "1-0397",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -11.6,
      "score": 23400,
@@ -18657,7 +18735,7 @@
     {
      "id": "1-0398",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -8.4,
      "score": 26600,
@@ -18833,7 +18911,10 @@
     "win_value": 82600,
     "dealin_value": 58700,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 612400,
+    "score_max": 36600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -19165,7 +19246,7 @@
     {
      "id": "1-0357",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 6.8,
      "score": 31800,
@@ -19178,7 +19259,7 @@
     {
      "id": "1-0367",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 2,
      "points": 9.5,
      "score": 34500,
@@ -19191,7 +19272,7 @@
     {
      "id": "1-0370",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 3,
      "points": -8.0,
      "score": 27000,
@@ -19204,7 +19285,7 @@
     {
      "id": "1-0371",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 4,
      "points": -20.6,
      "score": 24400,
@@ -19217,7 +19298,7 @@
     {
      "id": "1-0411",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 10.3,
      "score": 35300,
@@ -19230,7 +19311,7 @@
     {
      "id": "1-0412",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -23.6,
      "score": 21400,
@@ -19411,7 +19492,10 @@
     "win_value": 119500,
     "dealin_value": 101100,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 701200,
+    "score_max": 51000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -19758,7 +19842,7 @@
     {
      "id": "1-0351",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -19.6,
      "score": 15400,
@@ -19771,7 +19855,7 @@
     {
      "id": "1-0403",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 6.1,
      "score": 31100,
@@ -19784,7 +19868,7 @@
     {
      "id": "1-0404",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 25.6,
      "score": 40600,
@@ -19797,7 +19881,7 @@
     {
      "id": "1-0429",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 36.0,
      "score": 51000,
@@ -19810,7 +19894,7 @@
     {
      "id": "1-0430",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -13.5,
      "score": 21500,
@@ -19823,7 +19907,7 @@
     {
      "id": "1-0451",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 4,
      "points": -37.0,
      "score": 8000,
@@ -19836,7 +19920,7 @@
     {
      "id": "1-0452",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 1,
      "points": 35.8,
      "score": 50800,
@@ -19849,7 +19933,7 @@
     {
      "id": "1-0453",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 4,
      "points": -24.7,
      "score": 20300,
@@ -19862,7 +19946,7 @@
     {
      "id": "1-0454",
      "season": 1,
-     "label": "マスターズ 準決勝",
+     "label": "応龍位 準決勝",
      "placement": 3,
      "points": -8.4,
      "score": 26600,
@@ -20058,7 +20142,10 @@
     "win_value": 158200,
     "dealin_value": 136900,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 681900,
+    "score_max": 46800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -20400,7 +20487,7 @@
     {
      "id": "1-0347",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 26.3,
      "score": 41300,
@@ -20413,7 +20500,7 @@
     {
      "id": "1-0361",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 2,
      "points": 5.9,
      "score": 30900,
@@ -20426,7 +20513,7 @@
     {
      "id": "1-0372",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 2,
      "points": 11.0,
      "score": 36000,
@@ -20439,7 +20526,7 @@
     {
      "id": "1-0373",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 3,
      "points": -13.7,
      "score": 21300,
@@ -20452,7 +20539,7 @@
     {
      "id": "1-0378",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 2,
      "points": 1.4,
      "score": 26400,
@@ -20465,7 +20552,7 @@
     {
      "id": "1-0379",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 4,
      "points": -36.4,
      "score": 8600,
@@ -20478,7 +20565,7 @@
     {
      "id": "1-0421",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -21.7,
      "score": 23300,
@@ -20491,7 +20578,7 @@
     {
      "id": "1-0422",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 9.6,
      "score": 34600,
@@ -20692,7 +20779,10 @@
     "win_value": 303300,
     "dealin_value": 100200,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1120600,
+    "score_max": 60700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -21048,7 +21138,7 @@
     {
      "id": "1-0315",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 1,
      "points": 38.1,
      "score": 53100,
@@ -21061,7 +21151,7 @@
     {
      "id": "1-0321",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 2,
      "points": 9.3,
      "score": 34300,
@@ -21074,7 +21164,7 @@
     {
      "id": "1-0322",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 2,
      "points": -0.1,
      "score": 24900,
@@ -21087,7 +21177,7 @@
     {
      "id": "1-0329",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 3,
      "points": -11.8,
      "score": 23200,
@@ -21100,7 +21190,7 @@
     {
      "id": "1-0330",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 2,
      "points": 12.0,
      "score": 37000,
@@ -21113,7 +21203,7 @@
     {
      "id": "1-0333",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 1,
      "points": 22.8,
      "score": 37800,
@@ -21126,7 +21216,7 @@
     {
      "id": "1-0334",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 2,
      "points": 10.2,
      "score": 35200,
@@ -21139,7 +21229,7 @@
     {
      "id": "1-0335",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 1,
      "points": 44.3,
      "score": 59300,
@@ -21152,7 +21242,7 @@
     {
      "id": "1-0336",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 1,
      "points": 33.2,
      "score": 48200,
@@ -21165,7 +21255,7 @@
     {
      "id": "1-0337",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 3,
      "points": -9.5,
      "score": 25500,
@@ -21178,7 +21268,7 @@
     {
      "id": "1-0350",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 6.7,
      "score": 31700,
@@ -21191,7 +21281,7 @@
     {
      "id": "1-0364",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 3,
      "points": -6.7,
      "score": 28300,
@@ -21204,7 +21294,7 @@
     {
      "id": "1-0425",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -27.6,
      "score": 17400,
@@ -21217,7 +21307,7 @@
     {
      "id": "1-0426",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 45.7,
      "score": 60700,
@@ -21230,7 +21320,7 @@
     {
      "id": "1-0441",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 4.0,
      "score": 29000,
@@ -21243,7 +21333,7 @@
     {
      "id": "1-0442",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -20.3,
      "score": 14700,
@@ -21464,7 +21554,10 @@
     "win_value": 242600,
     "dealin_value": 82300,
     "max_value": 32000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 1067100,
+    "score_max": 65600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -21836,7 +21929,7 @@
     {
      "id": "1-0320",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 1,
      "points": 26.7,
      "score": 41700,
@@ -21849,7 +21942,7 @@
     {
      "id": "1-0327",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 1,
      "points": 20.2,
      "score": 35200,
@@ -21862,7 +21955,7 @@
     {
      "id": "1-0328",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 1,
      "points": 23.3,
      "score": 38300,
@@ -21875,7 +21968,7 @@
     {
      "id": "1-0331",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 1,
      "points": 41.6,
      "score": 56600,
@@ -21888,7 +21981,7 @@
     {
      "id": "1-0332",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 2,
      "points": 6.0,
      "score": 31000,
@@ -21901,7 +21994,7 @@
     {
      "id": "1-0333",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 4,
      "points": -25.7,
      "score": 19300,
@@ -21914,7 +22007,7 @@
     {
      "id": "1-0334",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 1,
      "points": 22.1,
      "score": 37100,
@@ -21927,7 +22020,7 @@
     {
      "id": "1-0335",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 2,
      "points": -2.9,
      "score": 22100,
@@ -21940,7 +22033,7 @@
     {
      "id": "1-0336",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 4,
      "points": -34.9,
      "score": 10100,
@@ -21953,7 +22046,7 @@
     {
      "id": "1-0337",
      "season": 1,
-     "label": "十段位 決勝",
+     "label": "麒麟位 決勝",
      "placement": 2,
      "points": 6.9,
      "score": 31900,
@@ -21966,7 +22059,7 @@
     {
      "id": "1-0345",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 28.6,
      "score": 43600,
@@ -21979,7 +22072,7 @@
     {
      "id": "1-0363",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 3,
      "points": -4.4,
      "score": 30600,
@@ -21992,7 +22085,7 @@
     {
      "id": "1-0425",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 21.5,
      "score": 36500,
@@ -22005,7 +22098,7 @@
     {
      "id": "1-0426",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -25.6,
      "score": 19400,
@@ -22211,7 +22304,10 @@
     "win_value": 202500,
     "dealin_value": 62000,
     "max_value": 48000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 738600,
+    "score_max": 94600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -22543,7 +22639,7 @@
     {
      "id": "1-0313",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 1,
      "points": 23.5,
      "score": 38500,
@@ -22556,7 +22652,7 @@
     {
      "id": "1-0321",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 3,
      "points": -2.0,
      "score": 33000,
@@ -22569,7 +22665,7 @@
     {
      "id": "1-0322",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 3,
      "points": -12.9,
      "score": 22100,
@@ -22582,7 +22678,7 @@
     {
      "id": "1-0359",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -9.8,
      "score": 25200,
@@ -22595,7 +22691,7 @@
     {
      "id": "1-0405",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -21.6,
      "score": 23400,
@@ -22608,7 +22704,7 @@
     {
      "id": "1-0406",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -25.7,
      "score": 19300,
@@ -22794,7 +22890,10 @@
     "win_value": 140200,
     "dealin_value": 68400,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 630100,
+    "score_max": 59800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -23116,7 +23215,7 @@
     {
      "id": "1-0320",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 4,
      "points": -31.2,
      "score": 13800,
@@ -23129,7 +23228,7 @@
     {
      "id": "1-0349",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -25.7,
      "score": 19300,
@@ -23142,7 +23241,7 @@
     {
      "id": "1-0417",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -21.1,
      "score": 23900,
@@ -23155,7 +23254,7 @@
     {
      "id": "1-0418",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": -4.3,
      "score": 20700,
@@ -23343,7 +23442,10 @@
     "win_value": 87300,
     "dealin_value": 58600,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 561400,
+    "score_max": 51100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -23665,7 +23767,7 @@
     {
      "id": "1-0351",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 36.1,
      "score": 51100,
@@ -23678,7 +23780,7 @@
     {
      "id": "1-0363",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 4,
      "points": -21.6,
      "score": 23400,
@@ -23691,7 +23793,7 @@
     {
      "id": "1-0409",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -10.6,
      "score": 24400,
@@ -23704,7 +23806,7 @@
     {
      "id": "1-0410",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -5.7,
      "score": 29300,
@@ -23885,7 +23987,10 @@
     "win_value": 60400,
     "dealin_value": 59000,
     "max_value": 24000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 479200,
+    "score_max": 42200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -24202,7 +24307,7 @@
     {
      "id": "1-0347",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -21.9,
      "score": 23100,
@@ -24215,7 +24320,7 @@
     {
      "id": "1-0403",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -8.7,
      "score": 26300,
@@ -24228,7 +24333,7 @@
     {
      "id": "1-0404",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -13.7,
      "score": 21300,
@@ -24394,7 +24499,10 @@
     "win_value": 74200,
     "dealin_value": 52000,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 471600,
+    "score_max": 50200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -24711,7 +24819,7 @@
     {
      "id": "1-0352",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -27.6,
      "score": 17400,
@@ -24724,7 +24832,7 @@
     {
      "id": "1-0397",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -35.1,
      "score": 9900,
@@ -24737,7 +24845,7 @@
     {
      "id": "1-0398",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -27.4,
      "score": 17600,
@@ -24903,7 +25011,10 @@
     "win_value": 137700,
     "dealin_value": 57700,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 887800,
+    "score_max": 46600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -25275,7 +25386,7 @@
     {
      "id": "1-0319",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 4,
      "points": -20.2,
      "score": 24800,
@@ -25288,7 +25399,7 @@
     {
      "id": "1-0359",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 5.9,
      "score": 30900,
@@ -25301,7 +25412,7 @@
     {
      "id": "1-0367",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 1,
      "points": 20.9,
      "score": 35900,
@@ -25314,7 +25425,7 @@
     {
      "id": "1-0370",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 2,
      "points": 9.2,
      "score": 34200,
@@ -25327,7 +25438,7 @@
     {
      "id": "1-0371",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 2,
      "points": 7.0,
      "score": 32000,
@@ -25340,7 +25451,7 @@
     {
      "id": "1-0378",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 4,
      "points": -23.8,
      "score": 21200,
@@ -25353,7 +25464,7 @@
     {
      "id": "1-0379",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 2,
      "points": 4.9,
      "score": 29900,
@@ -25366,7 +25477,7 @@
     {
      "id": "1-0380",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 4,
      "points": -19.0,
      "score": 26000,
@@ -25379,7 +25490,7 @@
     {
      "id": "1-0381",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 4,
      "points": -24.0,
      "score": 21000,
@@ -25392,7 +25503,7 @@
     {
      "id": "1-0382",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 2,
      "points": 1.5,
      "score": 26500,
@@ -25405,7 +25516,7 @@
     {
      "id": "1-0383",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 4,
      "points": -26.1,
      "score": 18900,
@@ -25418,7 +25529,7 @@
     {
      "id": "1-0384",
      "season": 1,
-     "label": "王位 決勝",
+     "label": "霊亀位 決勝",
      "placement": 4,
      "points": -22.4,
      "score": 22600,
@@ -25431,7 +25542,7 @@
     {
      "id": "1-0407",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -18.6,
      "score": 26400,
@@ -25444,7 +25555,7 @@
     {
      "id": "1-0408",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -12.2,
      "score": 22800,
@@ -25665,7 +25776,10 @@
     "win_value": 116200,
     "dealin_value": 48600,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 738400,
+    "score_max": 55300,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -26007,7 +26121,7 @@
     {
      "id": "1-0319",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 2,
      "points": 6.9,
      "score": 31900,
@@ -26020,7 +26134,7 @@
     {
      "id": "1-0327",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 3,
      "points": -5.2,
      "score": 29800,
@@ -26033,7 +26147,7 @@
     {
      "id": "1-0328",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 4,
      "points": -22.6,
      "score": 22400,
@@ -26046,7 +26160,7 @@
     {
      "id": "1-0344",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -18.2,
      "score": 26800,
@@ -26059,7 +26173,7 @@
     {
      "id": "1-0415",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 22.9,
      "score": 37900,
@@ -26072,7 +26186,7 @@
     {
      "id": "1-0416",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 3.4,
      "score": 28400,
@@ -26085,7 +26199,7 @@
     {
      "id": "1-0433",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -0.5,
      "score": 34500,
@@ -26098,7 +26212,7 @@
     {
      "id": "1-0434",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -23.1,
      "score": 21900,
@@ -26289,7 +26403,10 @@
     "win_value": 181800,
     "dealin_value": 63500,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 900100,
+    "score_max": 47000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -26656,7 +26773,7 @@
     {
      "id": "1-0319",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 1,
      "points": 19.3,
      "score": 34300,
@@ -26669,7 +26786,7 @@
     {
      "id": "1-0327",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 4,
      "points": -21.6,
      "score": 23400,
@@ -26682,7 +26799,7 @@
     {
      "id": "1-0328",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 3,
      "points": -5.6,
      "score": 29400,
@@ -26695,7 +26812,7 @@
     {
      "id": "1-0355",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 27.6,
      "score": 42600,
@@ -26708,7 +26825,7 @@
     {
      "id": "1-0362",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 1,
      "points": 25.4,
      "score": 40400,
@@ -26721,7 +26838,7 @@
     {
      "id": "1-0368",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 2,
      "points": 6.6,
      "score": 31600,
@@ -26734,7 +26851,7 @@
     {
      "id": "1-0369",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 1,
      "points": 29.7,
      "score": 44700,
@@ -26747,7 +26864,7 @@
     {
      "id": "1-0376",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 4,
      "points": -23.6,
      "score": 21400,
@@ -26760,7 +26877,7 @@
     {
      "id": "1-0377",
      "season": 1,
-     "label": "王位 準決勝",
+     "label": "霊亀位 準決勝",
      "placement": 4,
      "points": -26.6,
      "score": 18400,
@@ -26773,7 +26890,7 @@
     {
      "id": "1-0401",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 5.4,
      "score": 30400,
@@ -26786,7 +26903,7 @@
     {
      "id": "1-0402",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 6.8,
      "score": 31800,
@@ -26799,7 +26916,7 @@
     {
      "id": "1-0443",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 1,
      "points": 22.3,
      "score": 37300,
@@ -26812,7 +26929,7 @@
     {
      "id": "1-0444",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -25.3,
      "score": 19700,
@@ -27043,7 +27160,10 @@
     "win_value": 49300,
     "dealin_value": 50500,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 560000,
+    "score_max": 43500,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -27365,7 +27485,7 @@
     {
      "id": "1-0317",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 4,
      "points": -25.8,
      "score": 19200,
@@ -27378,7 +27498,7 @@
     {
      "id": "1-0350",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -18.3,
      "score": 26700,
@@ -27391,7 +27511,7 @@
     {
      "id": "1-0423",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -10.7,
      "score": 24300,
@@ -27404,7 +27524,7 @@
     {
      "id": "1-0424",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -29.3,
      "score": 15700,
@@ -27590,7 +27710,10 @@
     "win_value": 97900,
     "dealin_value": 32000,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 566600,
+    "score_max": 42700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -27907,7 +28030,7 @@
     {
      "id": "1-0357",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -28.3,
      "score": 16700,
@@ -27920,7 +28043,7 @@
     {
      "id": "1-0407",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 7.0,
      "score": 32000,
@@ -27933,7 +28056,7 @@
     {
      "id": "1-0408",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -26.6,
      "score": 18400,
@@ -28099,7 +28222,10 @@
     "win_value": 56800,
     "dealin_value": 68700,
     "max_value": 7900,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 633400,
+    "score_max": 39200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -28431,7 +28557,7 @@
     {
      "id": "1-0352",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 3.5,
      "score": 28500,
@@ -28444,7 +28570,7 @@
     {
      "id": "1-0363",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 1,
      "points": 19.3,
      "score": 34300,
@@ -28457,7 +28583,7 @@
     {
      "id": "1-0370",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 4,
      "points": -27.5,
      "score": 17500,
@@ -28470,7 +28596,7 @@
     {
      "id": "1-0371",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 1,
      "points": 19.0,
      "score": 34000,
@@ -28483,7 +28609,7 @@
     {
      "id": "1-0411",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -25.5,
      "score": 19500,
@@ -28496,7 +28622,7 @@
     {
      "id": "1-0412",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -9.8,
      "score": 25200,
@@ -28677,7 +28803,10 @@
     "win_value": 113000,
     "dealin_value": 33500,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 523900,
+    "score_max": 50300,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -28994,7 +29123,7 @@
     {
      "id": "1-0348",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -38.5,
      "score": 6500,
@@ -29007,7 +29136,7 @@
     {
      "id": "1-0399",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -2.4,
      "score": 32600,
@@ -29020,7 +29149,7 @@
     {
      "id": "1-0400",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -21.6,
      "score": 23400,
@@ -29186,7 +29315,10 @@
     "win_value": 67300,
     "dealin_value": 63900,
     "max_value": 16000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 597300,
+    "score_max": 56400,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -29513,7 +29645,7 @@
     {
      "id": "1-0353",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -24.5,
      "score": 20500,
@@ -29526,7 +29658,7 @@
     {
      "id": "1-0419",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 11.5,
      "score": 36500,
@@ -29539,7 +29671,7 @@
     {
      "id": "1-0420",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 32.1,
      "score": 47100,
@@ -29552,7 +29684,7 @@
     {
      "id": "1-0435",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -19.0,
      "score": 26000,
@@ -29565,7 +29697,7 @@
     {
      "id": "1-0436",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -35.1,
      "score": 9900,
@@ -29756,7 +29888,10 @@
     "win_value": 49300,
     "dealin_value": 40100,
     "max_value": 6400,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 619500,
+    "score_max": 39100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -30088,7 +30223,7 @@
     {
      "id": "1-0358",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 9.2,
      "score": 34200,
@@ -30101,7 +30236,7 @@
     {
      "id": "1-0360",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 2,
      "points": 8.1,
      "score": 33100,
@@ -30114,7 +30249,7 @@
     {
      "id": "1-0372",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 3,
      "points": -6.5,
      "score": 28500,
@@ -30127,7 +30262,7 @@
     {
      "id": "1-0373",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 4,
      "points": -24.5,
      "score": 20500,
@@ -30140,7 +30275,7 @@
     {
      "id": "1-0413",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -30.3,
      "score": 14700,
@@ -30153,7 +30288,7 @@
     {
      "id": "1-0414",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -13.3,
      "score": 21700,
@@ -30344,7 +30479,10 @@
     "win_value": 54600,
     "dealin_value": 41200,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 592500,
+    "score_max": 44700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -30671,7 +30809,7 @@
     {
      "id": "1-0350",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -5.7,
      "score": 29300,
@@ -30684,7 +30822,7 @@
     {
      "id": "1-0409",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 29.7,
      "score": 44700,
@@ -30697,7 +30835,7 @@
     {
      "id": "1-0410",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 6.5,
      "score": 31500,
@@ -30710,7 +30848,7 @@
     {
      "id": "1-0431",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -13.1,
      "score": 21900,
@@ -30723,7 +30861,7 @@
     {
      "id": "1-0432",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -12.8,
      "score": 22200,
@@ -30904,7 +31042,10 @@
     "win_value": 80400,
     "dealin_value": 83000,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 485800,
+    "score_max": 45900,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -31221,7 +31362,7 @@
     {
      "id": "1-0357",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -10.4,
      "score": 24600,
@@ -31234,7 +31375,7 @@
     {
      "id": "1-0419",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -38.1,
      "score": 6900,
@@ -31247,7 +31388,7 @@
     {
      "id": "1-0420",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -34.0,
      "score": 11000,
@@ -31418,7 +31559,10 @@
     "win_value": 86600,
     "dealin_value": 68700,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 492900,
+    "score_max": 45100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -31735,7 +31879,7 @@
     {
      "id": "1-0345",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -11.2,
      "score": 23800,
@@ -31748,7 +31892,7 @@
     {
      "id": "1-0401",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -13.0,
      "score": 22000,
@@ -31761,7 +31905,7 @@
     {
      "id": "1-0402",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -4.7,
      "score": 30300,
@@ -31927,7 +32071,10 @@
     "win_value": 150700,
     "dealin_value": 63900,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 729100,
+    "score_max": 53000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -32202,7 +32349,7 @@
     {
      "id": "1-0318",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 3,
      "points": -10.3,
      "score": 24700,
@@ -32215,7 +32362,7 @@
     {
      "id": "1-0340",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 2,
      "points": 8.4,
      "score": 33400,
@@ -32228,7 +32375,7 @@
     {
      "id": "1-0353",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -6.3,
      "score": 28700,
@@ -32241,7 +32388,7 @@
     {
      "id": "1-0387",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 1,
      "points": 27.3,
      "score": 42300,
@@ -32254,7 +32401,7 @@
     {
      "id": "1-0388",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 2,
      "points": 11.5,
      "score": 36500,
@@ -32267,7 +32414,7 @@
     {
      "id": "1-0397",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 15.0,
      "score": 40000,
@@ -32280,7 +32427,7 @@
     {
      "id": "1-0398",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 27.1,
      "score": 42100,
@@ -32293,7 +32440,7 @@
     {
      "id": "1-0439",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 6.4,
      "score": 31400,
@@ -32306,7 +32453,7 @@
     {
      "id": "1-0440",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -20.2,
      "score": 24800,
@@ -32502,7 +32649,10 @@
     "win_value": 87300,
     "dealin_value": 69300,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 606000,
+    "score_max": 50100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -32767,7 +32917,7 @@
     {
      "id": "1-0318",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 4,
      "points": -24.9,
      "score": 20100,
@@ -32780,7 +32930,7 @@
     {
      "id": "1-0338",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 1,
      "points": 35.1,
      "score": 50100,
@@ -32793,7 +32943,7 @@
     {
      "id": "1-0344",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -7.8,
      "score": 27200,
@@ -32806,7 +32956,7 @@
     {
      "id": "1-0391",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 1,
      "points": 29.9,
      "score": 44900,
@@ -32819,7 +32969,7 @@
     {
      "id": "1-0392",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 4,
      "points": -26.3,
      "score": 18700,
@@ -32832,7 +32982,7 @@
     {
      "id": "1-0415",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -6.3,
      "score": 28700,
@@ -32845,7 +32995,7 @@
     {
      "id": "1-0416",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -18.7,
      "score": 26300,
@@ -33031,7 +33181,10 @@
     "win_value": 106200,
     "dealin_value": 66100,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 699100,
+    "score_max": 57800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -33311,7 +33464,7 @@
     {
      "id": "1-0316",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 4,
      "points": -23.6,
      "score": 21400,
@@ -33324,7 +33477,7 @@
     {
      "id": "1-0341",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 1,
      "points": 24.8,
      "score": 39800,
@@ -33337,7 +33490,7 @@
     {
      "id": "1-0347",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 3.0,
      "score": 28000,
@@ -33350,7 +33503,7 @@
     {
      "id": "1-0366",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 2,
      "points": 5.5,
      "score": 30500,
@@ -33363,7 +33516,7 @@
     {
      "id": "1-0368",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 4,
      "points": -35.6,
      "score": 9400,
@@ -33376,7 +33529,7 @@
     {
      "id": "1-0369",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 3,
      "points": -9.8,
      "score": 25200,
@@ -33389,7 +33542,7 @@
     {
      "id": "1-0385",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 1,
      "points": 31.9,
      "score": 46900,
@@ -33402,7 +33555,7 @@
     {
      "id": "1-0386",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 1,
      "points": 42.8,
      "score": 57800,
@@ -33415,7 +33568,7 @@
     {
      "id": "1-0417",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -10.9,
      "score": 24100,
@@ -33428,7 +33581,7 @@
     {
      "id": "1-0418",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -18.3,
      "score": 16700,
@@ -33634,7 +33787,10 @@
     "win_value": 68700,
     "dealin_value": 68600,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 504500,
+    "score_max": 48900,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -33889,7 +34045,7 @@
     {
      "id": "1-0315",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 4,
      "points": -34.8,
      "score": 10200,
@@ -33902,7 +34058,7 @@
     {
      "id": "1-0342",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 2,
      "points": 5.9,
      "score": 30900,
@@ -33915,7 +34071,7 @@
     {
      "id": "1-0346",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -17.7,
      "score": 27300,
@@ -33928,7 +34084,7 @@
     {
      "id": "1-0387",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 4,
      "points": -25.0,
      "score": 20000,
@@ -33941,7 +34097,7 @@
     {
      "id": "1-0388",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 4,
      "points": -22.2,
      "score": 22800,
@@ -34122,7 +34278,10 @@
     "win_value": 108100,
     "dealin_value": 66400,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 677100,
+    "score_max": 52900,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -34402,7 +34561,7 @@
     {
      "id": "1-0341",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 2,
      "points": 9.9,
      "score": 34900,
@@ -34415,7 +34574,7 @@
     {
      "id": "1-0348",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -25.5,
      "score": 9500,
@@ -34428,7 +34587,7 @@
     {
      "id": "1-0391",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 2,
      "points": 5.0,
      "score": 30000,
@@ -34441,7 +34600,7 @@
     {
      "id": "1-0392",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 1,
      "points": 23.5,
      "score": 38500,
@@ -34454,7 +34613,7 @@
     {
      "id": "1-0423",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 10.3,
      "score": 35300,
@@ -34467,7 +34626,7 @@
     {
      "id": "1-0424",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -6.8,
      "score": 28200,
@@ -34480,7 +34639,7 @@
     {
      "id": "1-0441",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 3,
      "points": -10.7,
      "score": 24300,
@@ -34493,7 +34652,7 @@
     {
      "id": "1-0442",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": -1.8,
      "score": 23200,
@@ -34506,7 +34665,7 @@
     {
      "id": "1-0449",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 3,
      "points": -7.6,
      "score": 27400,
@@ -34519,7 +34678,7 @@
     {
      "id": "1-0450",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 4,
      "points": -31.2,
      "score": 13800,
@@ -34727,7 +34886,10 @@
     "win_value": 74200,
     "dealin_value": 48200,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 502200,
+    "score_max": 37200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -35044,7 +35206,7 @@
     {
      "id": "1-0358",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -22.0,
      "score": 23000,
@@ -35057,7 +35219,7 @@
     {
      "id": "1-0415",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -21.2,
      "score": 23800,
@@ -35070,7 +35232,7 @@
     {
      "id": "1-0416",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -8.4,
      "score": 26600,
@@ -35241,7 +35403,10 @@
     "win_value": 35900,
     "dealin_value": 27600,
     "max_value": 6400,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 508000,
+    "score_max": 46000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -35563,7 +35728,7 @@
     {
      "id": "1-0348",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 2.0,
      "score": 27000,
@@ -35576,7 +35741,7 @@
     {
      "id": "1-0361",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 4,
      "points": -23.3,
      "score": 21700,
@@ -35589,7 +35754,7 @@
     {
      "id": "1-0427",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -28.5,
      "score": 16500,
@@ -35602,7 +35767,7 @@
     {
      "id": "1-0428",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -24.4,
      "score": 20600,
@@ -35788,7 +35953,10 @@
     "win_value": 73100,
     "dealin_value": 80000,
     "max_value": 7700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 573100,
+    "score_max": 44800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -36120,7 +36288,7 @@
     {
      "id": "1-0350",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 17.3,
      "score": 32300,
@@ -36133,7 +36301,7 @@
     {
      "id": "1-0363",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 2,
      "points": 6.7,
      "score": 31700,
@@ -36146,7 +36314,7 @@
     {
      "id": "1-0372",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 4,
      "points": -30.5,
      "score": 14500,
@@ -36159,7 +36327,7 @@
     {
      "id": "1-0373",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 2,
      "points": 11.8,
      "score": 36800,
@@ -36172,7 +36340,7 @@
     {
      "id": "1-0419",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -10.9,
      "score": 24100,
@@ -36185,7 +36353,7 @@
     {
      "id": "1-0420",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -8.9,
      "score": 26100,
@@ -36366,7 +36534,10 @@
     "win_value": 60600,
     "dealin_value": 76800,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 488200,
+    "score_max": 41000,
+    "busts": 1
    },
    "elo_history": [
     [
@@ -36688,7 +36859,7 @@
     {
      "id": "1-0356",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 21.1,
      "score": 36100,
@@ -36701,7 +36872,7 @@
     {
      "id": "1-0365",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 3,
      "points": -11.6,
      "score": 23400,
@@ -36714,7 +36885,7 @@
     {
      "id": "1-0403",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -24.7,
      "score": 20300,
@@ -36727,7 +36898,7 @@
     {
      "id": "1-0404",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -23.8,
      "score": 21200,
@@ -36913,7 +37084,10 @@
     "win_value": 70100,
     "dealin_value": 29400,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 599300,
+    "score_max": 41400,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -37183,7 +37357,7 @@
     {
      "id": "1-0317",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 2,
      "points": 6.8,
      "score": 31800,
@@ -37196,7 +37370,7 @@
     {
      "id": "1-0325",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 2,
      "points": 5.0,
      "score": 30000,
@@ -37209,7 +37383,7 @@
     {
      "id": "1-0326",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 2,
      "points": 10.1,
      "score": 35100,
@@ -37222,7 +37396,7 @@
     {
      "id": "1-0329",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 2,
      "points": 5.7,
      "score": 30700,
@@ -37235,7 +37409,7 @@
     {
      "id": "1-0330",
      "season": 1,
-     "label": "十段位 準決勝",
+     "label": "麒麟位 準決勝",
      "placement": 4,
      "points": -33.9,
      "score": 11100,
@@ -37248,7 +37422,7 @@
     {
      "id": "1-0342",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 4,
      "points": -23.5,
      "score": 21500,
@@ -37261,7 +37435,7 @@
     {
      "id": "1-0385",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 2,
      "points": 3.4,
      "score": 28400,
@@ -37274,7 +37448,7 @@
     {
      "id": "1-0386",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 3,
      "points": -14.0,
      "score": 21000,
@@ -37460,7 +37634,10 @@
     "win_value": 40900,
     "dealin_value": 25400,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 462600,
+    "score_max": 47100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -37710,7 +37887,7 @@
     {
      "id": "1-0315",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 3,
      "points": -15.9,
      "score": 19100,
@@ -37723,7 +37900,7 @@
     {
      "id": "1-0343",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 4,
      "points": -18.7,
      "score": 26300,
@@ -37736,7 +37913,7 @@
     {
      "id": "1-0393",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 3,
      "points": -6.0,
      "score": 29000,
@@ -37749,7 +37926,7 @@
     {
      "id": "1-0394",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 3,
      "points": -15.7,
      "score": 19300,
@@ -37900,7 +38077,10 @@
     "win_value": 42400,
     "dealin_value": 47600,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 490700,
+    "score_max": 37600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -38160,7 +38340,7 @@
     {
      "id": "1-0319",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 3,
      "points": -6.0,
      "score": 29000,
@@ -38173,7 +38353,7 @@
     {
      "id": "1-0341",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 4,
      "points": -27.6,
      "score": 17400,
@@ -38186,7 +38366,7 @@
     {
      "id": "1-0385",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 3,
      "points": -11.9,
      "score": 23100,
@@ -38199,7 +38379,7 @@
     {
      "id": "1-0386",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 2,
      "points": 2.0,
      "score": 27000,
@@ -38212,7 +38392,7 @@
     {
      "id": "1-0401",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -29.9,
      "score": 15100,
@@ -38225,7 +38405,7 @@
     {
      "id": "1-0402",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -23.7,
      "score": 21300,
@@ -38391,7 +38571,10 @@
     "win_value": 87700,
     "dealin_value": 25300,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 610700,
+    "score_max": 49800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -38661,7 +38844,7 @@
     {
      "id": "1-0313",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 2,
      "points": 7.5,
      "score": 32500,
@@ -38674,7 +38857,7 @@
     {
      "id": "1-0321",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 4,
      "points": -28.5,
      "score": 16500,
@@ -38687,7 +38870,7 @@
     {
      "id": "1-0322",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 4,
      "points": -24.2,
      "score": 20800,
@@ -38700,7 +38883,7 @@
     {
      "id": "1-0340",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 3,
      "points": -9.8,
      "score": 25200,
@@ -38713,7 +38896,7 @@
     {
      "id": "1-0393",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 4,
      "points": -20.9,
      "score": 24100,
@@ -38726,7 +38909,7 @@
     {
      "id": "1-0394",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 1,
      "points": 34.8,
      "score": 49800,
@@ -38739,7 +38922,7 @@
     {
      "id": "1-0405",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 8.8,
      "score": 33800,
@@ -38752,7 +38935,7 @@
     {
      "id": "1-0406",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -10.3,
      "score": 24700,
@@ -38938,7 +39121,10 @@
     "win_value": 100100,
     "dealin_value": 46400,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 543700,
+    "score_max": 78700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -39193,7 +39379,7 @@
     {
      "id": "1-0342",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 3,
      "points": -9.9,
      "score": 25100,
@@ -39206,7 +39392,7 @@
     {
      "id": "1-0389",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 1,
      "points": 21.4,
      "score": 36400,
@@ -39219,7 +39405,7 @@
     {
      "id": "1-0390",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 3,
      "points": -7.5,
      "score": 27500,
@@ -39232,7 +39418,7 @@
     {
      "id": "1-0413",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -12.4,
      "score": 22600,
@@ -39245,7 +39431,7 @@
     {
      "id": "1-0414",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -24.7,
      "score": 20300,
@@ -39421,7 +39607,10 @@
     "win_value": 84500,
     "dealin_value": 51000,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 594600,
+    "score_max": 43700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -39691,7 +39880,7 @@
     {
      "id": "1-0314",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 4,
      "points": -24.1,
      "score": 20900,
@@ -39704,7 +39893,7 @@
     {
      "id": "1-0341",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 3,
      "points": -7.1,
      "score": 27900,
@@ -39717,7 +39906,7 @@
     {
      "id": "1-0387",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 3,
      "points": -7.2,
      "score": 27800,
@@ -39730,7 +39919,7 @@
     {
      "id": "1-0388",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 1,
      "points": 22.1,
      "score": 37100,
@@ -39743,7 +39932,7 @@
     {
      "id": "1-0407",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -8.4,
      "score": 26600,
@@ -39756,7 +39945,7 @@
     {
      "id": "1-0408",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 28.7,
      "score": 43700,
@@ -39769,7 +39958,7 @@
     {
      "id": "1-0429",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 3.0,
      "score": 28000,
@@ -39782,7 +39971,7 @@
     {
      "id": "1-0430",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -24.6,
      "score": 20400,
@@ -39978,7 +40167,10 @@
     "win_value": 65600,
     "dealin_value": 29500,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 594400,
+    "score_max": 44400,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -40248,7 +40440,7 @@
     {
      "id": "1-0314",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 2,
      "points": 4.7,
      "score": 29700,
@@ -40261,7 +40453,7 @@
     {
      "id": "1-0323",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 2,
      "points": 3.1,
      "score": 28100,
@@ -40274,7 +40466,7 @@
     {
      "id": "1-0324",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 3,
      "points": -10.8,
      "score": 24200,
@@ -40287,7 +40479,7 @@
     {
      "id": "1-0343",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 1,
      "points": 12.1,
      "score": 32100,
@@ -40300,7 +40492,7 @@
     {
      "id": "1-0349",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 1,
      "points": 22.0,
      "score": 37000,
@@ -40313,7 +40505,7 @@
     {
      "id": "1-0367",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 4,
      "points": -26.8,
      "score": 18200,
@@ -40326,7 +40518,7 @@
     {
      "id": "1-0391",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 3,
      "points": -7.6,
      "score": 27400,
@@ -40339,7 +40531,7 @@
     {
      "id": "1-0392",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 3,
      "points": -6.8,
      "score": 28200,
@@ -40535,7 +40727,10 @@
     "win_value": 73800,
     "dealin_value": 10500,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 485100,
+    "score_max": 44700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -40785,7 +40980,7 @@
     {
      "id": "1-0343",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 1,
      "points": 12.1,
      "score": 32100,
@@ -40798,7 +40993,7 @@
     {
      "id": "1-0345",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -23.7,
      "score": 21300,
@@ -40811,7 +41006,7 @@
     {
      "id": "1-0393",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 1,
      "points": 21.1,
      "score": 36100,
@@ -40824,7 +41019,7 @@
     {
      "id": "1-0394",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 4,
      "points": -26.5,
      "score": 18500,
@@ -40990,7 +41185,10 @@
     "win_value": 101700,
     "dealin_value": 45900,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 765400,
+    "score_max": 38200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -41290,7 +41488,7 @@
     {
      "id": "1-0320",
      "season": 1,
-     "label": "十段位 1回戦",
+     "label": "麒麟位 1回戦",
      "placement": 2,
      "points": 8.9,
      "score": 33900,
@@ -41303,7 +41501,7 @@
     {
      "id": "1-0325",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 3,
      "points": -12.8,
      "score": 22200,
@@ -41316,7 +41514,7 @@
     {
      "id": "1-0326",
      "season": 1,
-     "label": "十段位 準々決勝",
+     "label": "麒麟位 準々決勝",
      "placement": 3,
      "points": -12.3,
      "score": 22700,
@@ -41329,7 +41527,7 @@
     {
      "id": "1-0340",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 1,
      "points": 22.8,
      "score": 37800,
@@ -41342,7 +41540,7 @@
     {
      "id": "1-0345",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 6.3,
      "score": 31300,
@@ -41355,7 +41553,7 @@
     {
      "id": "1-0361",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 3,
      "points": -11.0,
      "score": 24000,
@@ -41368,7 +41566,7 @@
     {
      "id": "1-0389",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 2,
      "points": 4.6,
      "score": 29600,
@@ -41381,7 +41579,7 @@
     {
      "id": "1-0390",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 1,
      "points": 21.5,
      "score": 36500,
@@ -41394,7 +41592,7 @@
     {
      "id": "1-0421",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 6.2,
      "score": 31200,
@@ -41407,7 +41605,7 @@
     {
      "id": "1-0422",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -13.4,
      "score": 21600,
@@ -41420,7 +41618,7 @@
     {
      "id": "1-0439",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -19.4,
      "score": 25600,
@@ -41433,7 +41631,7 @@
     {
      "id": "1-0440",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 2,
      "points": 6.0,
      "score": 31000,
@@ -41446,7 +41644,7 @@
     {
      "id": "1-0447",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 2,
      "points": 8.5,
      "score": 33500,
@@ -41459,7 +41657,7 @@
     {
      "id": "1-0448",
      "season": 1,
-     "label": "マスターズ 準々決勝",
+     "label": "応龍位 準々決勝",
      "placement": 4,
      "points": -27.0,
      "score": 18000,
@@ -41695,7 +41893,10 @@
     "win_value": 56900,
     "dealin_value": 49900,
     "max_value": 7700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 418900,
+    "score_max": 44200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -41940,7 +42141,7 @@
     {
      "id": "1-0339",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 4,
      "points": -21.4,
      "score": 23600,
@@ -41953,7 +42154,7 @@
     {
      "id": "1-0395",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 2,
      "points": 7.3,
      "score": 32300,
@@ -41966,7 +42167,7 @@
     {
      "id": "1-0396",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 4,
      "points": -28.6,
      "score": 16400,
@@ -42112,7 +42313,10 @@
     "win_value": 77300,
     "dealin_value": 47000,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 594500,
+    "score_max": 41400,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -42387,7 +42591,7 @@
     {
      "id": "1-0338",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 2,
      "points": 0.6,
      "score": 25600,
@@ -42400,7 +42604,7 @@
     {
      "id": "1-0353",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 2,
      "points": 8.1,
      "score": 33100,
@@ -42413,7 +42617,7 @@
     {
      "id": "1-0364",
      "season": 1,
-     "label": "王位 3回戦",
+     "label": "霊亀位 3回戦",
      "placement": 1,
      "points": 26.4,
      "score": 41400,
@@ -42426,7 +42630,7 @@
     {
      "id": "1-0374",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 4,
      "points": -23.9,
      "score": 21100,
@@ -42439,7 +42643,7 @@
     {
      "id": "1-0375",
      "season": 1,
-     "label": "王位 準々決勝",
+     "label": "霊亀位 準々決勝",
      "placement": 3,
      "points": -4.9,
      "score": 30100,
@@ -42452,7 +42656,7 @@
     {
      "id": "1-0395",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 4,
      "points": -20.7,
      "score": 24300,
@@ -42465,7 +42669,7 @@
     {
      "id": "1-0396",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 2,
      "points": 14.6,
      "score": 39600,
@@ -42478,7 +42682,7 @@
     {
      "id": "1-0421",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -10.4,
      "score": 24600,
@@ -42491,7 +42695,7 @@
     {
      "id": "1-0422",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -24.6,
      "score": 20400,
@@ -42677,7 +42881,10 @@
     "win_value": 47300,
     "dealin_value": 28800,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 421100,
+    "score_max": 39200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -42922,7 +43129,7 @@
     {
      "id": "1-0338",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 3,
      "points": -11.7,
      "score": 23300,
@@ -42935,7 +43142,7 @@
     {
      "id": "1-0391",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 4,
      "points": -27.3,
      "score": 17700,
@@ -42948,7 +43155,7 @@
     {
      "id": "1-0392",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 2,
      "points": 9.6,
      "score": 34600,
@@ -43099,7 +43306,10 @@
     "win_value": 26200,
     "dealin_value": 21900,
     "max_value": 6400,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 394500,
+    "score_max": 40700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -43344,7 +43554,7 @@
     {
      "id": "1-0340",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 4,
      "points": -21.4,
      "score": 23600,
@@ -43357,7 +43567,7 @@
     {
      "id": "1-0387",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 2,
      "points": 4.9,
      "score": 29900,
@@ -43370,7 +43580,7 @@
     {
      "id": "1-0388",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 3,
      "points": -11.4,
      "score": 23600,
@@ -43521,7 +43731,10 @@
     "win_value": 51500,
     "dealin_value": 43300,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 450800,
+    "score_max": 41500,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -43771,7 +43984,7 @@
     {
      "id": "1-0339",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 1,
      "points": 26.5,
      "score": 41500,
@@ -43784,7 +43997,7 @@
     {
      "id": "1-0347",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -7.4,
      "score": 27600,
@@ -43797,7 +44010,7 @@
     {
      "id": "1-0389",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 3,
      "points": -7.7,
      "score": 27300,
@@ -43810,7 +44023,7 @@
     {
      "id": "1-0390",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 2,
      "points": 4.5,
      "score": 29500,
@@ -43971,7 +44184,10 @@
     "win_value": 44700,
     "dealin_value": 22200,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 484000,
+    "score_max": 44800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -44226,7 +44442,7 @@
     {
      "id": "1-0343",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 3,
      "points": -5.5,
      "score": 29500,
@@ -44239,7 +44455,7 @@
     {
      "id": "1-0395",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 1,
      "points": 20.5,
      "score": 35500,
@@ -44252,7 +44468,7 @@
     {
      "id": "1-0396",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 1,
      "points": 29.8,
      "score": 44800,
@@ -44265,7 +44481,7 @@
     {
      "id": "1-0399",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 4,
      "points": -30.1,
      "score": 14900,
@@ -44278,7 +44494,7 @@
     {
      "id": "1-0400",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 3,
      "points": -7.5,
      "score": 27500,
@@ -44444,7 +44660,10 @@
     "win_value": 48500,
     "dealin_value": 48900,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 507700,
+    "score_max": 42200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -44709,7 +44928,7 @@
     {
      "id": "1-0338",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 4,
      "points": -24.0,
      "score": 21000,
@@ -44722,7 +44941,7 @@
     {
      "id": "1-0393",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 2,
      "points": 5.8,
      "score": 30800,
@@ -44735,7 +44954,7 @@
     {
      "id": "1-0394",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 2,
      "points": 7.4,
      "score": 32400,
@@ -44748,7 +44967,7 @@
     {
      "id": "1-0407",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 1,
      "points": 20.0,
      "score": 35000,
@@ -44761,7 +44980,7 @@
     {
      "id": "1-0408",
      "season": 1,
-     "label": "マスターズ 2回戦",
+     "label": "応龍位 2回戦",
      "placement": 2,
      "points": 10.1,
      "score": 35100,
@@ -44774,7 +44993,7 @@
     {
      "id": "1-0437",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -35.2,
      "score": 9800,
@@ -44787,7 +45006,7 @@
     {
      "id": "1-0438",
      "season": 1,
-     "label": "マスターズ 3回戦",
+     "label": "応龍位 3回戦",
      "placement": 4,
      "points": -26.2,
      "score": 18800,
@@ -44968,7 +45187,10 @@
     "win_value": 20200,
     "dealin_value": 28800,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 419200,
+    "score_max": 39900,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -45218,7 +45440,7 @@
     {
      "id": "1-0339",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 2,
      "points": 2.9,
      "score": 27900,
@@ -45231,7 +45453,7 @@
     {
      "id": "1-0354",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 3,
      "points": -12.3,
      "score": 22700,
@@ -45244,7 +45466,7 @@
     {
      "id": "1-0395",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 3,
      "points": -7.1,
      "score": 27900,
@@ -45257,7 +45479,7 @@
     {
      "id": "1-0396",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 3,
      "points": -15.8,
      "score": 19200,
@@ -45423,7 +45645,10 @@
     "win_value": 43700,
     "dealin_value": 58000,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 413600,
+    "score_max": 42500,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -45673,7 +45898,7 @@
     {
      "id": "1-0342",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 1,
      "points": 27.5,
      "score": 42500,
@@ -45686,7 +45911,7 @@
     {
      "id": "1-0351",
      "season": 1,
-     "label": "王位 2回戦",
+     "label": "霊亀位 2回戦",
      "placement": 4,
      "points": -33.9,
      "score": 11100,
@@ -45699,7 +45924,7 @@
     {
      "id": "1-0385",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 4,
      "points": -23.4,
      "score": 21600,
@@ -45712,7 +45937,7 @@
     {
      "id": "1-0386",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 4,
      "points": -30.8,
      "score": 14200,
