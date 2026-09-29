@@ -90,9 +90,9 @@ pip install -r requirements-dev.txt && python -m unittest discover -s tests -v
 3. GitHub のシークレットを登録する。
    - `XSERVER_HOST` / `XSERVER_USER` / `XSERVER_SSH_PORT` / `XSERVER_SSH_KEY`（オセロ版と共通）
    - `MAHJONG_XSERVER_TARGET_DIR`：設置先の絶対パス（末尾 `/`）
-   - `MAHJONG_SITE_URL`：サイトのURL（末尾 `/`）
-   - `IMPORT_SECRET_KEY`：`config.php` の `secret_key` と同じ値
-4. Actions を手動実行する。サイト一式と data/ が転送され、`admin/migrate.php`（テーブル作成）と `admin/import.php`（取り込み）が自動で呼ばれる。
+4. Actions を手動実行する。サイト一式と data/ が転送され、SSH 経由でサーバー上の `admin/migrate.php`（テーブル作成）と `admin/import.php`（取り込み）が実行される。投稿の取得（`admin/export_pending.php`）も SSH 経由。
+   Xserver は海外（GitHub Actions）からの Web アクセスを弾くため、URL を呼ぶ方式は使わない。
+   ブラウザから手動で実行したいときは `admin/import.php?key=（config.php の secret_key）` を開く。
 
 `config.php`・`lib.php`・`schema.sql` は `.htaccess` で直接アクセスを拒否している。投稿は1IPあたり1日3件、全体で1日60件まで（`config.php` で変更可）。
 

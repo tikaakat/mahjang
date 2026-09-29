@@ -54,9 +54,6 @@ jobs:
           XSERVER_SSH_KEY: ${{ secrets.XSERVER_SSH_KEY }}
           # サイト（web/・server/・data/）の設置先。末尾は / で終える。例: /home/xxx/lab.spia-net.com/public_html/mahjong/
           XSERVER_TARGET_DIR: ${{ secrets.MAHJONG_XSERVER_TARGET_DIR }}
-          # サイトのURL（末尾 /）。例: https://lab.spia-net.com/mahjong/
-          SITE_URL: ${{ secrets.MAHJONG_SITE_URL }}
-          IMPORT_KEY: ${{ secrets.IMPORT_SECRET_KEY }}
         run: |
           git config user.name "mahjong-league-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -79,6 +76,13 @@ jobs:
             "$@"
           }
 
+          # サイトのディレクトリで PHP を実行する。$PHP は新しい版を優先して選ぶ
+          # （Xserver の php コマンドは古い版を指すことがあるため）
+          xs_php() {
+            ssh -i /tmp/deploy_key -p "$XSERVER_PORT" $SSH_OPTS "$XSERVER_USER@$XSERVER_HOST" \
+              "cd ${XSERVER_TARGET_DIR} && PHP=\$(command -v php8.3 || command -v php8.2 || command -v php8.1 || command -v php) && $1"
+          }
+
           deploy() {
             local tag="$1"
             if [ "$DEPLOY" != "1" ]; then return 0; fi
@@ -98,19 +102,11 @@ jobs:
               data/index.json data/players.json data/standings data/matches data/titles data/kifu data/newcomer_league \
               "$XSERVER_USER@$XSERVER_HOST:${XSERVER_TARGET_DIR}data/" \
               || echo "::warning::データの転送に失敗しました（$tag）"
-            # 転送先の実際の場所と中身をログに残す（パスそのものはシークレットのため *** と表示される）
-            echo "--- 転送先の確認 ---"
-            ssh -i /tmp/deploy_key -p "$XSERVER_PORT" $SSH_OPTS "$XSERVER_USER@$XSERVER_HOST" \
-              "cd ${XSERVER_TARGET_DIR} && echo \"実パス: \$(pwd -P | sed 's#^/home/[^/]*#/home/(ID)#')\" && ls -la && echo '[data/]' && ls -la data | head -20" \
-              || echo "::warning::転送先の確認に失敗しました（$tag）"
-            if [ -n "$SITE_URL" ] && [ -n "$IMPORT_KEY" ]; then
-              echo "--- DB取り込み（エラー時は応答内容を表示）---"
-              curl -sS --connect-timeout 20 --max-time 60 "${SITE_URL}admin/migrate.php?key=${IMPORT_KEY}" | head -c 400; echo
-              curl -sS --connect-timeout 20 --max-time 60 -o /dev/null -w "data/index.json の応答: %{http_code}\n" "${SITE_URL}data/index.json" || true
-              curl -sS -f --connect-timeout 20 --max-time 60 "${SITE_URL}admin/migrate.php?key=${IMPORT_KEY}" \
-                && curl -sS -f --connect-timeout 20 --max-time 600 "${SITE_URL}admin/import.php?key=${IMPORT_KEY}" \
-                || echo "::warning::データベースへの取り込みに失敗しました（$tag）"
-            fi
+            # DB取り込みは SSH 経由でサーバー上の php を直接実行する
+            # （Xserver は海外からの Web アクセスを弾くため、Actions から URL を呼ぶ方式は使えない）
+            echo "--- DB取り込み ---"
+            xs_php "\$PHP admin/migrate.php && \$PHP admin/import.php" \
+              || echo "::warning::データベースへの取り込みに失敗しました（$tag）"
           }
 
           if [ "${{ github.event.inputs.deploy_only }}" = "true" ]; then
@@ -127,14 +123,13 @@ jobs:
 
             # --- キャラクリエイトの投稿を取得して新人リーグを開催（サイト未設置なら0件） ---
             echo '[]' > data/newcomer_submissions.json
-            if [ -n "$SITE_URL" ] && [ -n "$IMPORT_KEY" ]; then
-              # 取得・解析のどちらかに失敗したら0件として続行する（サイト未設置の初回など）
-              if curl -sS -f --connect-timeout 10 --max-time 30 -o /tmp/pending.json \
-                   "${SITE_URL}admin/export_pending.php?key=${IMPORT_KEY}" \
+            if [ "$DEPLOY" = "1" ]; then
+              # 取得・解析のどちらかに失敗したら0件として続行する（サイト未設置・DB未設定の場合など）
+              if xs_php "\$PHP admin/export_pending.php" > /tmp/pending.json \
                  && jq -e '.characters // []' /tmp/pending.json > /tmp/submissions.json; then
                 mv /tmp/submissions.json data/newcomer_submissions.json
               else
-                echo "::warning::投稿の取得に失敗しました。0件として扱います（サイト未設置・config.php未設定の可能性）"
+                echo "::warning::投稿の取得に失敗しました。0件として扱います"
                 head -c 300 /tmp/pending.json 2>/dev/null || true
               fi
             fi
