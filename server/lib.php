@@ -50,6 +50,11 @@ function db(): PDO {
 }
 
 function json_out($data, int $status = 200): void {
+    if (PHP_SAPI === 'cli') {
+        // SSH から php コマンドで実行された場合（GitHub Actions）。失敗は終了コードで伝える
+        echo json_encode($data, JSON_UNESCAPED_UNICODE), "\n";
+        exit($status >= 400 ? 1 : 0);
+    }
     http_response_code($status);
     header('Content-Type: application/json; charset=utf-8');
     header('Cache-Control: no-store');
@@ -58,6 +63,13 @@ function json_out($data, int $status = 200): void {
 }
 
 function require_key(): void {
+    // サーバー上で直接実行された場合（SSH 経由の php コマンド）はキー不要。詳細なエラーも返す
+    if (PHP_SAPI === 'cli') {
+        if (!defined('SHOW_ERROR_DETAIL')) {
+            define('SHOW_ERROR_DETAIL', true);
+        }
+        return;
+    }
     $key = (string)($_GET['key'] ?? '');
     if ($key === '' || !hash_equals((string)config()['secret_key'], $key)) {
         json_out(['ok' => false, 'error' => 'forbidden'], 403);
