@@ -98,7 +98,15 @@ jobs:
               data/index.json data/players.json data/standings data/matches data/titles data/kifu data/newcomer_league \
               "$XSERVER_USER@$XSERVER_HOST:${XSERVER_TARGET_DIR}data/" \
               || echo "::warning::データの転送に失敗しました（$tag）"
+            # 転送先の実際の場所と中身をログに残す（パスそのものはシークレットのため *** と表示される）
+            echo "--- 転送先の確認 ---"
+            ssh -i /tmp/deploy_key -p "$XSERVER_PORT" $SSH_OPTS "$XSERVER_USER@$XSERVER_HOST" \
+              "cd ${XSERVER_TARGET_DIR} && echo \"実パス: \$(pwd -P | sed 's#^/home/[^/]*#/home/(ID)#')\" && ls -la && echo '[data/]' && ls -la data | head -20" \
+              || echo "::warning::転送先の確認に失敗しました（$tag）"
             if [ -n "$SITE_URL" ] && [ -n "$IMPORT_KEY" ]; then
+              echo "--- DB取り込み（エラー時は応答内容を表示）---"
+              curl -sS --connect-timeout 20 --max-time 60 "${SITE_URL}admin/migrate.php?key=${IMPORT_KEY}" | head -c 400; echo
+              curl -sS --connect-timeout 20 --max-time 60 -o /dev/null -w "data/index.json の応答: %{http_code}\n" "${SITE_URL}data/index.json" || true
               curl -sS -f --connect-timeout 20 --max-time 60 "${SITE_URL}admin/migrate.php?key=${IMPORT_KEY}" \
                 && curl -sS -f --connect-timeout 20 --max-time 600 "${SITE_URL}admin/import.php?key=${IMPORT_KEY}" \
                 || echo "::warning::データベースへの取り込みに失敗しました（$tag）"
