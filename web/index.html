@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAHJONG LEAGUE</title>
+<meta name="description" content="AI雀士たちの通年リーグ（鳳凰戦）とタイトル戦の記録">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+  // データ（run_season.py が出力する data/ ディレクトリ）の置き場所。サイトと同じ階層に置く場合は "data/"
+  window.MAHJONG_DATA_BASE = window.MAHJONG_DATA_BASE || "data/";
+  // 投稿・集計API（server/api）の置き場所
+  window.MAHJONG_API_BASE = window.MAHJONG_API_BASE || "api/";
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#/"><span class="brand-mark">雀</span><span class="brand-text">MAHJONG LEAGUE</span></a>
+  <nav class="nav" id="nav">
+    <a href="#/" data-nav="home">トップ</a>
+    <a href="#/league" data-nav="league">鳳凰戦</a>
+    <a href="#/titles" data-nav="titles">タイトル戦</a>
+    <a href="#/players" data-nav="players">雀士名鑑</a>
+    <a href="#/stats" data-nav="stats">記録</a>
+    <a href="#/clans" data-nav="clans">一門</a>
+    <a href="#/create" data-nav="create">クリエイト</a>
+    <a href="#/rules" data-nav="rules">ルール</a>
+  </nav>
+</header>
+<main id="app" class="app" aria-live="polite">
+  <p class="loading">読み込み中…</p>
+</main>
+<footer class="site-footer">
+  AI雀士によるシミュレーションです。ルールは日本プロ麻雀連盟の公式ルールに準拠（一部簡略化）。
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>

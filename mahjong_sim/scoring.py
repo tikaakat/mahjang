@@ -1,10 +1,6 @@
 """
 和了形の判定と点数計算（役・符・翻）。
-
-対応ルール（簡略化あり）:
-  - 赤ドラなし・カンなし（嶺上開花・槍槓・四槓子などは存在しない）
-  - 喰いタンあり、後付けあり
-  - 数え役満あり、ダブル役満は役満の複合のみ（四暗刻単騎などの2倍扱いはしない）
+ルールの差分（一発・裏ドラ・数え役満など）は RuleSet で切り替える。
 """
 from dataclasses import dataclass, field
 
@@ -13,18 +9,33 @@ from .tiles import (
     is_honor, is_terminal, is_yaochu, is_simple, suit_of, dora_from_indicator,
 )
 from .shanten import shanten
+from .rules import RENMEI
+
+KAN_KINDS = ("minkan", "ankan", "kakan")
 
 
 @dataclass
 class Meld:
-    kind: str            # "pon" または "chi"
-    tiles: tuple         # 構成牌（昇順）
-    called_tile: int     # 鳴いた牌
-    from_seat: int       # 誰から鳴いたか
+    kind: str            # "chi" / "pon" / "minkan"（大明槓） / "ankan" / "kakan"（加槓）
+    tiles: tuple         # 構成牌（昇順。槓子は4枚）
+    called_tile: int     # 鳴いた牌（暗槓は None）
+    from_seat: int       # 誰から鳴いたか（暗槓は自分）
 
     @property
     def base(self):
         return self.tiles[0]
+
+    @property
+    def is_kan(self):
+        return self.kind in KAN_KINDS
+
+    @property
+    def is_triplet_like(self):
+        return self.kind != "chi"
+
+    @property
+    def is_open(self):
+        return self.kind != "ankan"
 
     def to_dict(self):
         return {"kind": self.kind, "tiles": list(self.tiles), "called": self.called_tile, "from": self.from_seat}
@@ -32,7 +43,7 @@ class Meld:
 
 @dataclass
 class WinContext:
-    closed_counts: list          # 和了牌を含む門前部分の枚数
+    closed_counts: list          # 和了牌を含む門前部分（槓子・副露を除く）の枚数
     melds: list                  # Meld のリスト
     win_tile: int
     is_tsumo: bool
@@ -44,8 +55,13 @@ class WinContext:
     ippatsu: bool = False
     haitei: bool = False
     houtei: bool = False
+    rinshan: bool = False
+    chankan: bool = False
+    tenhou: bool = False
+    chiihou: bool = False
     dora_indicators: list = field(default_factory=list)
     ura_indicators: list = field(default_factory=list)
+    rules: object = RENMEI
 
 
 @dataclass
@@ -55,6 +71,7 @@ class WinResult:
     yaku: list          # [(役名, 翻数)]
     yakuman: int        # 役満の倍数（0なら通常役）
     base: int           # 基本点
+    yakuman_names: list = field(default_factory=list)
 
     def ron_points(self, is_dealer):
         return _ceil100(self.base * (6 if is_dealer else 4))
@@ -69,13 +86,13 @@ class WinResult:
     def label(self):
         if self.yakuman:
             return "役満" if self.yakuman == 1 else f"{self.yakuman}倍役満"
-        if self.han >= 13:
+        if self.base >= 8000:
             return "数え役満"
-        if self.han >= 11:
+        if self.base >= 6000:
             return "三倍満"
-        if self.han >= 8:
+        if self.base >= 4000:
             return "倍満"
-        if self.han >= 6:
+        if self.base >= 3000:
             return "跳満"
         if self.base >= 2000:
             return "満貫"
@@ -90,10 +107,10 @@ def _ceil100(x):
     return -(-x // 100) * 100
 
 
-def base_points(han, fu, yakuman=0):
+def base_points(han, fu, yakuman=0, rules=RENMEI):
     if yakuman:
-        return 8000 * yakuman
-    if han >= 13:
+        return 8000 * (yakuman if rules.double_yakuman else 1)
+    if han >= 13 and rules.kazoe_yakuman:
         return 8000
     if han >= 11:
         return 6000
@@ -155,7 +172,7 @@ def is_kokushi(closed_counts):
 # 役判定
 # ============================================================
 def _block_tiles(kind, t):
-    return [t, t, t] if kind == "koutsu" else [t, t + 1, t + 2]
+    return [t, t + 1, t + 2] if kind == "shuntsu" else [t, t, t]
 
 
 def _all_tiles(ctx):
@@ -170,7 +187,7 @@ def _all_tiles(ctx):
 def _count_dora(ctx, tiles):
     dora = sum(tiles.count(dora_from_indicator(i)) for i in ctx.dora_indicators)
     ura = 0
-    if ctx.riichi or ctx.double_riichi:
+    if (ctx.riichi or ctx.double_riichi) and ctx.rules.ura_dora:
         ura = sum(tiles.count(dora_from_indicator(i)) for i in ctx.ura_indicators)
     return dora, ura
 
@@ -182,11 +199,15 @@ def _common_yaku(ctx, menzen, tiles):
         yaku.append(("ダブル立直", 2))
     elif ctx.riichi:
         yaku.append(("立直", 1))
-    if ctx.ippatsu and (ctx.riichi or ctx.double_riichi):
+    if ctx.ippatsu and ctx.rules.ippatsu and (ctx.riichi or ctx.double_riichi):
         yaku.append(("一発", 1))
     if menzen and ctx.is_tsumo:
         yaku.append(("門前清自摸和", 1))
-    if ctx.haitei and ctx.is_tsumo:
+    if ctx.rinshan:
+        yaku.append(("嶺上開花", 1))
+    if ctx.chankan:
+        yaku.append(("槍槓", 1))
+    if ctx.haitei and ctx.is_tsumo and not ctx.rinshan:
         yaku.append(("海底摸月", 1))
     if ctx.houtei and not ctx.is_tsumo:
         yaku.append(("河底撈魚", 1))
@@ -204,6 +225,10 @@ def _common_yaku(ctx, menzen, tiles):
 
 def _yakuman_common(ctx, tiles):
     ym = []
+    if ctx.tenhou:
+        ym.append("天和")
+    if ctx.chiihou:
+        ym.append("地和")
     if all(is_honor(t) for t in tiles):
         ym.append("字一色")
     if all(t in GREEN_TILES for t in tiles):
@@ -215,14 +240,16 @@ def _yakuman_common(ctx, tiles):
 
 def _evaluate_regular(ctx, head, blocks, wait, menzen, tiles):
     """
-    blocks: [(種類, 先頭牌, 副露/明刻か)]（和了牌によるロン明刻は副露扱い済み）
+    blocks: [(種類, 先頭牌, 明刻/副露か)]  種類は "shuntsu" / "koutsu" / "kantsu"
+            （和了牌によるロン明刻は副露扱い済み）
     wait: "ryanmen" / "kanchan" / "penchan" / "shanpon" / "tanki"
-    戻り値: (翻, 符, 役リスト, 役満数)
+    戻り値: (翻, 符, 役リスト, 役満数, 役満名)
     """
     shuntsu = [t for k, t, _ in blocks if k == "shuntsu"]
-    koutsu = [(t, o) for k, t, o in blocks if k == "koutsu"]
-    ankou = [t for t, o in koutsu if not o]
-    koutsu_tiles = [t for t, _ in koutsu]
+    koutsu = [(t, o, k == "kantsu") for k, t, o in blocks if k != "shuntsu"]
+    ankou = [t for t, o, _ in koutsu if not o]
+    koutsu_tiles = [t for t, _, _ in koutsu]
+    kan_count = sum(1 for _, _, is_kan in koutsu if is_kan)
 
     # --- 役満 ---
     ym = _yakuman_common(ctx, tiles)
@@ -236,7 +263,9 @@ def _evaluate_regular(ctx, head, blocks, wait, menzen, tiles):
         ym.append("大四喜")
     elif wind_trips == 3 and head in WINDS:
         ym.append("小四喜")
-    if menzen and len({suit_of(t) for t in tiles}) == 1 and not is_honor(tiles[0]):
+    if kan_count == 4:
+        ym.append("四槓子")
+    if menzen and not ctx.melds and len({suit_of(t) for t in tiles}) == 1 and not is_honor(tiles[0]):
         c = [0] * 9
         for t in tiles:
             c[t % 9] += 1
@@ -244,7 +273,7 @@ def _evaluate_regular(ctx, head, blocks, wait, menzen, tiles):
         if all(c[i] >= need[i] for i in range(9)):
             ym.append("九蓮宝燈")
     if ym:
-        return 0, 0, [(n, 13) for n in ym], len(ym)
+        return 0, 0, [(n, 13) for n in ym], len(ym), ym
 
     yaku = _common_yaku(ctx, menzen, tiles)
 
@@ -258,25 +287,20 @@ def _evaluate_regular(ctx, head, blocks, wait, menzen, tiles):
             v += 1
         return v
 
-    # 平和
     pinfu = (menzen and len(shuntsu) == 4 and wait == "ryanmen" and yakuhai_value(head) == 0)
     if pinfu:
         yaku.append(("平和", 1))
 
-    # 一盃口・二盃口（門前のみ）
     if menzen:
-        pairs_of_same = 0
         seen = {}
         for s in shuntsu:
             seen[s] = seen.get(s, 0) + 1
-        for v in seen.values():
-            pairs_of_same += v // 2
+        pairs_of_same = sum(v // 2 for v in seen.values())
         if pairs_of_same == 2:
             yaku.append(("二盃口", 3))
         elif pairs_of_same == 1:
             yaku.append(("一盃口", 1))
 
-    # 役牌
     for t in koutsu_tiles:
         if t in DRAGONS:
             yaku.append(({31: "役牌 白", 32: "役牌 發", 33: "役牌 中"}[t], 1))
@@ -285,7 +309,6 @@ def _evaluate_regular(ctx, head, blocks, wait, menzen, tiles):
         if t == ctx.round_wind:
             yaku.append(("場風牌", 1))
 
-    # 三色同順・一気通貫
     for n in range(7):
         if n in shuntsu and n + 9 in shuntsu and n + 18 in shuntsu:
             yaku.append(("三色同順", 2 if menzen else 1))
@@ -295,24 +318,20 @@ def _evaluate_regular(ctx, head, blocks, wait, menzen, tiles):
         if base in shuntsu and base + 3 in shuntsu and base + 6 in shuntsu:
             yaku.append(("一気通貫", 2 if menzen else 1))
             break
-
-    # 三色同刻
     for n in range(9):
         if n in koutsu_tiles and n + 9 in koutsu_tiles and n + 18 in koutsu_tiles:
             yaku.append(("三色同刻", 2))
             break
 
-    # 対々和・三暗刻
     if len(koutsu) == 4:
         yaku.append(("対々和", 2))
     if len(ankou) == 3:
         yaku.append(("三暗刻", 2))
-
-    # 小三元
+    if kan_count == 3:
+        yaku.append(("三槓子", 2))
     if dragon_trips == 2 and head in DRAGONS:
         yaku.append(("小三元", 2))
 
-    # 混老頭 / 混全帯么九 / 純全帯么九
     if all(is_yaochu(t) for t in tiles):
         yaku.append(("混老頭", 2))
     else:
@@ -326,7 +345,7 @@ def _evaluate_regular(ctx, head, blocks, wait, menzen, tiles):
 
     han = sum(h for _, h in yaku)
     if han == 0:
-        return 0, 0, [], 0
+        return 0, 0, [], 0, []
 
     # --- 符計算 ---
     if pinfu:
@@ -337,18 +356,24 @@ def _evaluate_regular(ctx, head, blocks, wait, menzen, tiles):
             fu += 10
         if ctx.is_tsumo:
             fu += 2
-        for t, is_open in koutsu:
+        for t, is_open, is_kan in koutsu:
             f = 2 if is_open else 4
+            if is_kan:
+                f *= 4
             if is_yaochu(t):
                 f *= 2
             fu += f
-        fu += 2 * yakuhai_value(head)
+        head_value = yakuhai_value(head)
+        if head_value >= 2:
+            fu += ctx.rules.renpuu_pair_fu if head not in DRAGONS else 2 * head_value
+        else:
+            fu += 2 * head_value
         if wait in ("kanchan", "penchan", "tanki"):
             fu += 2
         fu = -(-fu // 10) * 10
         if fu == 20:
             fu = 30  # 喰い平和形のロンなど
-    return han, fu, yaku, 0
+    return han, fu, yaku, 0, []
 
 
 def evaluate_win(ctx):
@@ -356,29 +381,36 @@ def evaluate_win(ctx):
     closed = ctx.closed_counts
     if shanten(closed, len(ctx.melds)) != -1:
         return None
-    menzen = len(ctx.melds) == 0
+    menzen = all(not m.is_open for m in ctx.melds)
     tiles = _all_tiles(ctx)
     dora, ura = _count_dora(ctx, tiles)
+    rules = ctx.rules
 
-    candidates = []  # (han, fu, yaku, yakuman)
+    candidates = []  # (han, fu, yaku, yakuman, yakuman_names)
 
-    # 国士無双
-    if menzen and is_kokushi(closed):
-        candidates.append((0, 0, [("国士無双", 13)], 1))
+    if not ctx.melds and is_kokushi(closed):
+        names = ["国士無双"] + [n for n in _yakuman_common(ctx, tiles) if n in ("天和", "地和")]
+        candidates.append((0, 0, [(n, 13) for n in names], len(names), names))
 
-    # 七対子
-    if menzen and is_chiitoitsu(closed):
+    if not ctx.melds and is_chiitoitsu(closed):
         ym = _yakuman_common(ctx, tiles)
         if ym:
-            candidates.append((0, 0, [(n, 13) for n in ym], len(ym)))
+            candidates.append((0, 0, [(n, 13) for n in ym], len(ym), ym))
         else:
             yaku = [("七対子", 2)] + _common_yaku(ctx, menzen, tiles)
             if all(is_yaochu(t) for t in tiles):
                 yaku.append(("混老頭", 2))
-            candidates.append((sum(h for _, h in yaku), 25, yaku, 0))
+            candidates.append((sum(h for _, h in yaku), 25, yaku, 0, []))
 
-    # 通常形
-    meld_blocks = [("koutsu" if m.kind == "pon" else "shuntsu", m.base, True) for m in ctx.melds]
+    meld_blocks = []
+    for m in ctx.melds:
+        if m.kind == "chi":
+            meld_blocks.append(("shuntsu", m.base, True))
+        elif m.is_kan:
+            meld_blocks.append(("kantsu", m.base, m.is_open))
+        else:
+            meld_blocks.append(("koutsu", m.base, True))
+
     w = ctx.win_tile
     for head, closed_blocks in regular_decompositions(closed):
         interpretations = []
@@ -407,12 +439,14 @@ def evaluate_win(ctx):
                 opened = (wait == "shanpon" and j == idx and not ctx.is_tsumo)
                 blocks.append((k, t, opened))
             blocks += meld_blocks
-            han, fu, yaku, ym = _evaluate_regular(ctx, head, blocks, wait, menzen, tiles)
+            han, fu, yaku, ym, ym_names = _evaluate_regular(ctx, head, blocks, wait, menzen, tiles)
             if yaku:
-                candidates.append((han, fu, yaku, ym))
+                candidates.append((han, fu, yaku, ym, ym_names))
 
     best = None
-    for han, fu, yaku, ym in candidates:
+    for han, fu, yaku, ym, ym_names in candidates:
+        if ym and not rules.double_yakuman:
+            ym = 1
         if not ym:
             yaku = list(yaku)
             if dora:
@@ -420,12 +454,8 @@ def evaluate_win(ctx):
             if ura:
                 yaku.append(("裏ドラ", ura))
             han = sum(h for _, h in yaku)
-        res = WinResult(han=han, fu=fu, yaku=yaku, yakuman=ym, base=base_points(han, fu, ym))
+        res = WinResult(han=han, fu=fu, yaku=yaku, yakuman=ym,
+                        base=base_points(han, fu, ym, rules), yakuman_names=ym_names)
         if best is None or (res.base, res.han, res.fu) > (best.base, best.han, best.fu):
             best = res
     return best
-
-
-def has_yaku_shape(ctx):
-    """点数計算を行わず、役があるかだけを知りたい場合の簡易ラッパー"""
-    return evaluate_win(ctx) is not None

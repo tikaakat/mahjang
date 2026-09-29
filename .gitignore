@@ -1,2 +1,4 @@
 __pycache__/
 *.pyc
+data/newcomer_submissions.json
+server/config.php

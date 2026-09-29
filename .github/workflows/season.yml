@@ -1,0 +1,113 @@
+name: Mahjong League Season
+
+concurrency:
+  group: mahjong-league
+  cancel-in-progress: false
+
+on:
+  workflow_dispatch:
+    inputs:
+      seasons:
+        description: "何期（シーズン）分進めるか"
+        required: false
+        default: "1"
+      sections_scale:
+        description: "リーグの節数の倍率（1.0=標準、0.5=半分）"
+        required: false
+        default: "1.0"
+  # 定期実行は準備が整うまで止めている。再開するときは下の2行のコメントを外す
+  # schedule:
+  #   - cron: "0 21 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  season:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install test dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Rule tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Run seasons (push after each season)
+        env:
+          XSERVER_HOST: ${{ secrets.XSERVER_HOST }}
+          XSERVER_USER: ${{ secrets.XSERVER_USER }}
+          XSERVER_PORT: ${{ secrets.XSERVER_SSH_PORT }}
+          XSERVER_SSH_KEY: ${{ secrets.XSERVER_SSH_KEY }}
+          # サイト（web/・server/・data/）の設置先。末尾は / で終える。例: /home/xxx/lab.spia-net.com/public_html/mahjong/
+          XSERVER_TARGET_DIR: ${{ secrets.MAHJONG_XSERVER_TARGET_DIR }}
+          # サイトのURL（末尾 /）。例: https://lab.spia-net.com/mahjong/
+          SITE_URL: ${{ secrets.MAHJONG_SITE_URL }}
+          IMPORT_KEY: ${{ secrets.IMPORT_SECRET_KEY }}
+        run: |
+          git config user.name "mahjong-league-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          DEPLOY=0
+          if [ -n "$XSERVER_HOST" ] && [ -n "$XSERVER_TARGET_DIR" ]; then
+            DEPLOY=1
+            echo "$XSERVER_SSH_KEY" > /tmp/deploy_key
+            chmod 600 /tmp/deploy_key
+          fi
+
+          TOTAL="${{ github.event.inputs.seasons || '1' }}"
+          SCALE="${{ github.event.inputs.sections_scale || '1.0' }}"
+
+          for i in $(seq 1 "$TOTAL"); do
+            echo "=== Season batch $i / $TOTAL ==="
+
+            # --- キャラクリエイトの投稿を取得して新人リーグを開催（サイト未設置なら0件） ---
+            echo '[]' > data/newcomer_submissions.json
+            if [ -n "$SITE_URL" ] && [ -n "$IMPORT_KEY" ]; then
+              curl -sS -f --connect-timeout 10 --max-time 30 "${SITE_URL}admin/export_pending.php?key=${IMPORT_KEY}" \
+                | jq '.characters // []' > data/newcomer_submissions.json \
+                || { echo "::warning::投稿の取得に失敗しました。0件として扱います"; echo '[]' > data/newcomer_submissions.json; }
+            fi
+            python -u run_newcomer_league.py --data-dir data --submissions-path data/newcomer_submissions.json
+
+            python -u run_season.py --data-dir data --seasons 1 --sections-scale "$SCALE"
+
+            git add data
+            if ! git diff --staged --quiet; then
+              git commit -m "Season batch $i/$TOTAL [skip ci]"
+              git pull --rebase origin "${{ github.ref_name }}"
+              git push origin "HEAD:${{ github.ref_name }}"
+            fi
+
+            if [ "$DEPLOY" = "1" ]; then
+              echo "--- Xserverへ反映中（バッチ $i）---"
+              ssh -i /tmp/deploy_key -p "$XSERVER_PORT" -o StrictHostKeyChecking=no "$XSERVER_USER@$XSERVER_HOST" \
+                "mkdir -p ${XSERVER_TARGET_DIR}data" \
+                || echo "::warning::ディレクトリ作成に失敗しました（バッチ $i）"
+              # サイト本体（config.php はサーバー上で作成したものを上書きしない）
+              scp -i /tmp/deploy_key -P "$XSERVER_PORT" -o StrictHostKeyChecking=no -r \
+                web/index.html web/app.js web/style.css \
+                server/.htaccess server/lib.php server/schema.sql server/config.sample.php server/api server/admin \
+                "$XSERVER_USER@$XSERVER_HOST:$XSERVER_TARGET_DIR" \
+                || echo "::warning::サイトの転送に失敗しました（バッチ $i）"
+              scp -i /tmp/deploy_key -P "$XSERVER_PORT" -o StrictHostKeyChecking=no -r \
+                data/index.json data/players.json data/standings data/matches data/titles data/kifu data/newcomer_league \
+                "$XSERVER_USER@$XSERVER_HOST:${XSERVER_TARGET_DIR}data/" \
+                || echo "::warning::データの転送に失敗しました（バッチ $i）"
+              if [ -n "$SITE_URL" ] && [ -n "$IMPORT_KEY" ]; then
+                curl -sS -f --connect-timeout 10 --max-time 60 "${SITE_URL}admin/migrate.php?key=${IMPORT_KEY}" \
+                  && curl -sS -f --connect-timeout 10 --max-time 600 "${SITE_URL}admin/import.php?key=${IMPORT_KEY}" \
+                  || echo "::warning::データベースへの取り込みに失敗しました（バッチ $i）"
+              fi
+            fi
+          done
+
+          rm -f /tmp/deploy_key
