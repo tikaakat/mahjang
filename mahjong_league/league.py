@@ -11,12 +11,12 @@ from .buffs import maybe_awaken
 from .tables import play_sessions
 
 LEAGUES = ("A", "B", "C", "D")
-LEAGUE_CAPACITY = {"A": 16, "B": 16, "C": 20, "D": 24}   # 4の倍数（卓を組むため）
+LEAGUE_CAPACITY = {"A": 12, "B": 16, "C": 20, "D": 28}   # 4の倍数（卓を組むため）。下位ほど多いピラミッド型
 SECTIONS = {"A": 5, "B": 4, "C": 4, "D": 3}             # 年間の節数（1節=4半荘）
 GAMES_PER_SECTION = 4
 
 # 昇降級人数（上位リーグの下位 n 名 ⇔ 下位リーグの上位 n 名）
-MOVES = {("A", "B"): 3, ("B", "C"): 3, ("C", "D"): 4}
+MOVES = {("A", "B"): 2, ("B", "C"): 3, ("C", "D"): 4}
 
 RETIREMENT_AGE = 70
 D_CONSECUTIVE_LOSING_LIMIT = 2     # Dリーグで2年連続マイナスなら引退
