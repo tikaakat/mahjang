@@ -24,6 +24,7 @@ from mahjong_league.titles import (
 )
 from mahjong_league.io_utils import (
     load_rosters, save_rosters, load_season_state, save_season_state, save_season_files, save_site_index,
+    backfill_history, needs_backfill,
 )
 
 
@@ -135,8 +136,11 @@ def run_one_season(rosters, state, rng, sections_scale=1.0, created_requests=Non
                 "elo": round(ind.elo, 1), "movement": movement, "exempt": rank is None,
                 "new": ind.total_seasons == 0,
             })
-            ind.career.append({"season": season, "league": lg, "rank": rank, "points": st["points"]})
+            ind.career.append({"season": season, "league": lg, "rank": rank, "points": st["points"],
+                               "elo": round(ind.elo, 1)})
 
+    for ind in all_members:
+        ind.elo_history.append([season, round(ind.elo, 1)])
     for ind in retired:
         ind.retired_season = season
     for lg in LEAGUES:
@@ -170,6 +174,10 @@ def main():
         registry = NameRegistry.from_dict(state.get("name_registry", {}))
         rosters = bootstrap_rosters(registry)
         state["name_registry"] = registry.to_dict()
+
+    if needs_backfill(rosters):
+        print("通算の局成績・レート推移を過去の対局記録から作り直します")
+        backfill_history(args.data_dir, rosters, state)
 
     # 新人リーグ（run_newcomer_league.py）の勝者。最初に処理する期にだけ適用し、読んだら消す
     winners_path = os.path.join(args.data_dir, "newcomer_winners.json")

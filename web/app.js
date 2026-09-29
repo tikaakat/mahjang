@@ -313,6 +313,62 @@ function radar(params) {
     ${rings}<polygon points="${pts(null).map((p) => p.join(",")).join(" ")}" fill="var(--accent)" fill-opacity=".25" stroke="var(--accent)" stroke-width="2"/>${labels}</svg>`;
 }
 
+// 局単位の通算成績（和了率・放銃率など）
+function statTiles(p) {
+  const st = p.stats || {};
+  const hands = st.hands || 0;
+  const g = p.games || 0;
+  const pct = (a, b) => (b ? `${((a / b) * 100).toFixed(1)}<small>%</small>` : "—");
+  const num = (v) => (v ? Math.round(v).toLocaleString() : "—");
+  const avgPlace = g ? (p.placements.reduce((a, c, i) => a + c * (i + 1), 0) / g).toFixed(2) : "—";
+  const tiles = [
+    ["和了率", pct(st.wins, hands), `${st.wins || 0}回 / ${hands}局`],
+    ["放銃率", pct(st.dealins, hands), `${st.dealins || 0}回`],
+    ["立直率", pct(st.riichi, hands), `${st.riichi || 0}回`],
+    ["ツモ率", pct(st.tsumo, st.wins), "和了のうち"],
+    ["平均打点", num(st.wins ? st.win_value / st.wins : 0), `最高 ${num(st.max_value)}`],
+    ["平均放銃打点", num(st.dealins ? st.dealin_value / st.dealins : 0), ""],
+    ["流局時聴牌率", pct(st.draw_tenpai, st.draws), `${st.draws || 0}回の流局`],
+    ["平均着順", avgPlace, `${g}半荘`],
+    ["トップ率", pct(p.placements?.[0] || 0, g), `ラス率 ${g ? ((p.placements[3] / g) * 100).toFixed(1) : "—"}%`],
+    ["役満", st.yakuman ? `${st.yakuman}<small>回</small>` : "—", ""],
+  ];
+  return `<div class="stat-grid">${tiles.map(([label, value, sub]) => `
+    <div class="stat"><div class="stat-label">${label}</div><div class="stat-value">${value}</div>
+    <div class="stat-sub">${sub}</div></div>`).join("")}</div>`;
+}
+
+// 半荘ごとのレート推移（期の切れ目に区切り線）
+function rateChart(p) {
+  const trace = p.elo_trace || [];
+  if (trace.length < 2) return `<p class="muted">まだ推移を表示できるだけの対局がありません。</p>`;
+  const W = 640, H = 260, L = 58, R = 12, T = 12, B = 30;
+  const xs = trace.map((t) => t[1]), ys = trace.map((t) => t[2]);
+  const x0 = Math.min(...xs), x1 = Math.max(...xs);
+  let lo = Math.min(...ys, 1500), hi = Math.max(...ys, 1500);
+  const pad = Math.max(10, (hi - lo) * 0.1); lo -= pad; hi += pad;
+  const x = (v) => L + ((v - x0) / Math.max(1, x1 - x0)) * (W - L - R);
+  const y = (v) => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
+  const step = niceStep((hi - lo) / 4);
+  let grid = "";
+  for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) {
+    grid += `<line class="grid-line" x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${Math.round(v)}</text>`;
+  }
+  let seasons = "";
+  trace.forEach((t, i) => {
+    if (i === 0 || trace[i - 1][0] !== t[0]) {
+      seasons += `<line class="axis" stroke-dasharray="3 3" x1="${x(t[1])}" x2="${x(t[1])}" y1="${T}" y2="${H - B}"/>
+        <text x="${x(t[1]) + 4}" y="${H - 8}">第${t[0]}期</text>`;
+    }
+  });
+  const base = `<line class="axis" stroke-dasharray="2 4" x1="${L}" x2="${W - R}" y1="${y(1500)}" y2="${y(1500)}"/>`;
+  const last = trace[trace.length - 1];
+  return `<svg class="chart chart-lg" viewBox="0 0 ${W} ${H}" role="img" aria-label="レート推移">${grid}${base}${seasons}
+    <polyline fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" points="${trace.map((t) => `${x(t[1])},${y(t[2])}`).join(" ")}"/>
+    <circle cx="${x(last[1])}" cy="${y(last[2])}" r="3.5" fill="var(--accent)"/></svg>
+    <p class="muted" style="font-size:.8rem;margin:4px 0 0">横軸は通算の半荘数（直近${trace.length}半荘）。点線は初期値1500。</p>`;
+}
+
 async function pagePlayer(id) {
   setActiveNav("players");
   const [players, idx] = await Promise.all([getPlayers(), getIndex()]);
@@ -332,6 +388,7 @@ async function pagePlayer(id) {
   const career = [...(p.career || [])].sort((a, b) => b.season - a.season).map((c) => `
     <tr><td><a href="#/league?season=${c.season}&lg=${c.league}">第${c.season}期</a></td><td>${c.league}リーグ</td>
     <td class="num">${c.rank ?? "免除"}</td><td class="num">${pt(c.points)}</td>
+    <td class="num hide-sm">${c.elo != null ? Math.round(c.elo) : "—"}</td>
     <td>${titles.filter((h) => h.season === c.season).map((h) => `<span class="pill gold">${h.title}</span>`).join(" ")}</td></tr>`).join("");
   return `
     <div class="row"><h1>${esc(p.display_name)}</h1>${current.map((t) => `<span class="pill gold">${t}</span>`).join(" ")}
@@ -354,9 +411,13 @@ async function pagePlayer(id) {
       </dl></div>
       <div class="card"><h3>打ち筋</h3>${radar(p.params)}</div>
     </div>
+    <h2>成績</h2>
+    ${statTiles(p)}
+    <h2>レート推移</h2>
+    <div class="card">${rateChart(p)}</div>
     <h2>経歴</h2>
-    <div class="table-wrap"><table><thead><tr><th>期</th><th>所属</th><th class="num">順位</th><th class="num">ポイント</th><th>タイトル</th></tr></thead>
-    <tbody>${career || `<tr><td colspan="5" class="muted">まだ対局がありません</td></tr>`}</tbody></table></div>`;
+    <div class="table-wrap"><table><thead><tr><th>期</th><th>所属</th><th class="num">順位</th><th class="num">ポイント</th><th class="num hide-sm">期末レート</th><th>タイトル</th></tr></thead>
+    <tbody>${career || `<tr><td colspan="6" class="muted">まだ対局がありません</td></tr>`}</tbody></table></div>`;
 }
 
 // ------------------------------------------------------------

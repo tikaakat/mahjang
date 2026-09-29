@@ -74,3 +74,66 @@ def save_site_index(data_dir, state, rosters):
         "rules": state.get("rules"),
         "leagues": {lg: [ind.id for ind in rosters[lg]] for lg in LEAGUES},
     })
+
+
+def backfill_history(data_dir, rosters, state):
+    """
+    通算の局成績（stats）と期末レート（elo_history）を、保存済みの対局記録・成績表から作り直す。
+    これらの項目を追加する前に行われた期の分を補うためのもので、何度実行しても同じ結果になる。
+    """
+    from .individual import empty_stats
+
+    people = {ind.id: ind for lg in LEAGUES for ind in rosters[lg]}
+    archived = {d["id"]: d for d in state.get("retired_archive", [])}
+    stats = {pid: empty_stats() for pid in list(people) + list(archived)}
+    history = {pid: [] for pid in stats}
+    career_elo = {}
+
+    # レートは対局記録の順に更新をやり直して、半荘ごとの推移を再現する
+    from .elo import update_elo_table
+    shadows = {}
+    for pid in stats:
+        sh = LeagueIndividual(pid, "D")
+        sh.stats = stats[pid]
+        shadows[pid] = sh
+    seasons_played = {pid: 0 for pid in stats}
+
+    current = state.get("current_season", 0)
+    for season in range(1, current + 1):
+        matches = _read(os.path.join(data_dir, "matches", f"season_{season}.json"), [])
+        for m in matches:
+            if not all(pid in shadows for pid in m["seats"]):
+                for seat, pid in enumerate(m["seats"]):
+                    if pid in shadows:
+                        shadows[pid].record_rounds(seat, m["rounds"])
+                continue
+            seats = [shadows[pid] for pid in m["seats"]]
+            for sh in seats:
+                sh.total_seasons = seasons_played[sh.id]
+            update_elo_table(seats, m["placement"])
+            for seat, sh in enumerate(seats):
+                sh.record_rounds(seat, m["rounds"])
+                sh.record_game(m["placement"][seat], m["points"][seat], season=season)
+        for pid in {pid for m in matches for pid in m["seats"] if pid in seasons_played}:
+            seasons_played[pid] += 1
+        for row in _read(os.path.join(data_dir, "standings", f"season_{season}.json"), []):
+            if row["id"] in history:
+                history[row["id"]].append([season, row["elo"]])
+                career_elo[(row["id"], season)] = row["elo"]
+
+    for pid, ind in people.items():
+        ind.stats = stats[pid]
+        ind.elo_history = history[pid]
+        ind.elo_trace = shadows[pid].elo_trace
+        for c in ind.career:
+            c.setdefault("elo", career_elo.get((pid, c["season"])))
+    for pid, d in archived.items():
+        d["stats"] = stats[pid]
+        d["elo_history"] = history[pid]
+        d["elo_trace"] = shadows[pid].elo_trace
+        for c in d.get("career", []):
+            c.setdefault("elo", career_elo.get((pid, c["season"])))
+
+
+def needs_backfill(rosters):
+    return any(ind.games and (not ind.stats["hands"] or not ind.elo_trace) for lg in LEAGUES for ind in rosters[lg])
