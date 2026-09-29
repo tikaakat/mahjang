@@ -31,6 +31,27 @@ PARAM_KEYS = [
 
 SHANTEN_UNIT = 12.0  # 1向聴の差を表す基準点
 
+# 調整用の係数（tools/measure_ai.py --tune キー=値 で上書きして効果を測る）
+TUNE = {
+    "riichi_bias": 0.3,     # リーチ判断の加点（大きいほどリーチしやすい）
+    "dora_scale": 2.0,      # 打牌評価でのドラの重み倍率
+    "call_min_han": 0,      # 役牌以外の鳴きに求める見込み翻数（0なら制限なし）
+    "def_scale": 1.3,       # 守備（危険牌を避ける度合い）の倍率
+    "fold_sh1": 0.7,        # 一向聴で降りる度合いの基準
+    # 判断のブレ。打牌評価の点差は1点未満のことが多いため、ブレが1点を超えると選択がほぼ無作為になり、
+    # 手が進まず流局が急増する（ブレ1点で流局率 +7pt、3点で +15pt）。0〜1点台で使う
+    "noise_k": 2.0,         # 技量0のときの判断のブレ（点）
+    "noise_pow": 1.0,       # 技量が上がるにつれてブレが減る速さ（大きいほど中位でも正確）
+    # 他家のリーチ・仕掛けを見落とす確率 = careless_k × ブレの大きさ²（上限0.7）。
+    # 技量の低さを「流局の増加」ではなく「放銃の増加」として表し、流局率を現実に保ちながら強さに差をつける
+    "careless_k": 0.5,
+}
+
+
+def noise_from_talent(talent):
+    """技量（0〜1）から、打牌評価に加える判断のブレの大きさ（点）を求める"""
+    return TUNE["noise_k"] * (1.0 - max(0.0, min(1.0, talent))) ** TUNE["noise_pow"]
+
 
 class MahjongAI:
     def __init__(self, params, skill=4, name="AI", noise=0.0, rng=None):
@@ -166,6 +187,8 @@ class MahjongAI:
             hand[t] += 1
         min_sh = min(sh_after.values())
 
+        # 技量が低いと、この打牌では他家の脅威を見落とす（守備を働かせない）
+        careless = bool(threats) and self.noise > 0 and self.rng.random() < min(0.7, TUNE["careless_k"] * self.noise ** 2)
         scored = []
         for t in candidates:
             sh = sh_after[t]
@@ -178,7 +201,7 @@ class MahjongAI:
             hand[t] += 1
 
             attack = -SHANTEN_UNIT * sh + (1.0 + self.p["speed_weight"]) * uk / 40.0
-            value = (self.p["dora_weight"] * feats["dora"] * 0.8
+            value = (self.p["dora_weight"] * TUNE["dora_scale"] * feats["dora"] * 0.8
                      + self.p["yakuhai_weight"] * feats["yakuhai"] * 0.6
                      + self.p["flush_weight"] * feats["flush"] * 1.5
                      + self.p["tanyao_weight"] * feats["tanyao"] * 1.0)
@@ -188,9 +211,10 @@ class MahjongAI:
                 value -= self.p["dora_weight"] * 0.8
 
             defense = 0.0
-            if threats:
+            if threats and not careless:
                 danger = sum(level * self._tile_danger(rs, seat, t, opp) for opp, level in threats)
-                defense = self.p["defense_weight"] * danger * 4.0 * self._fold_factor(rs, seat, sh, feats)
+                defense = (self.p["defense_weight"] * TUNE["def_scale"] * danger * 4.0
+                           * self._fold_factor(rs, seat, sh, feats))
 
             scored.append([attack + value - defense, t, sh, uk])
 
@@ -215,7 +239,7 @@ class MahjongAI:
         """1.0 = 完全にオリる、0 に近いほど押す"""
         if self.skill <= 2:
             return 1.0 if sh >= 1 else 0.3
-        base = {0: 0.35, 1: 0.7}.get(sh, 1.0)
+        base = {0: 0.35, 1: TUNE["fold_sh1"]}.get(sh, 1.0)
         power = min(1.0, self._estimated_han(rs, seat, feats) / 4.0)
         if sh == 0:
             power = min(1.0, power + 0.3)
@@ -281,7 +305,7 @@ class MahjongAI:
             if res:
                 dama_han = max(dama_han, 13 if res.yakuman else res.han)
 
-        score = self.p["riichi_weight"] / 10.0
+        score = self.p["riichi_weight"] / 10.0 + TUNE["riichi_bias"]
         if dama_han == 0:
             score += 0.6
         elif dama_han >= 4:
@@ -342,6 +366,14 @@ class MahjongAI:
                     continue
             elif new_sh >= cur_sh:
                 continue
+            if not is_yakuhai_pon and TUNE["call_min_han"] and new_sh > 0:
+                # 安手の鳴きを控える：ドラと役から見込める翻数が足りなければ、聴牌に届く鳴きだけ許す
+                han = {"tanyao": 1, "yakuhai": 1, "flush": 2}.get(path, 1)
+                han += sum(1 for t in (list(tiles) + [x for m in rs.melds[seat] for x in m.tiles]
+                                       + [x for x in range(NUM_KINDS) for _ in range(hand[x])])
+                           if t in rs.dora_tiles())
+                if han < TUNE["call_min_han"]:
+                    continue
 
             score = self.p["call_weight"] / 10.0
             if is_yakuhai_pon:
