@@ -1,0 +1,319 @@
+{
+ "current_season": 1,
+ "titleholders": {
+  "鳳凰位": {
+   "id": "A0-012",
+   "name": "海老原美月",
+   "since": 1
+  },
+  "十段位": {
+   "id": "C0-000",
+   "name": "松本俊介",
+   "since": 1
+  },
+  "王位": {
+   "id": "A0-011",
+   "name": "石橋一美",
+   "since": 1
+  },
+  "マスターズ": {
+   "id": "A0-004",
+   "name": "宮崎美月",
+   "since": 1
+  }
+ },
+ "title_history": [
+  {
+   "title": "鳳凰位",
+   "season": 1,
+   "event": "初代",
+   "winner_id": "A0-012",
+   "winner_name": "海老原美月",
+   "previous_id": null,
+   "previous_name": null,
+   "final_standings": [
+    {
+     "id": "A0-012",
+     "name": "海老原美月",
+     "points": 226.9
+    },
+    {
+     "id": "A0-015",
+     "name": "中西香織",
+     "points": 140.6
+    },
+    {
+     "id": "A0-014",
+     "name": "山田正人",
+     "points": -100.3
+    },
+    {
+     "id": "A0-000",
+     "name": "大山剛",
+     "points": -267.2
+    }
+   ]
+  },
+  {
+   "title": "十段位",
+   "season": 1,
+   "event": "初代",
+   "winner_id": "C0-000",
+   "winner_name": "松本俊介",
+   "previous_id": null,
+   "previous_name": null,
+   "final_standings": [
+    {
+     "id": "C0-000",
+     "name": "松本俊介",
+     "points": 101.0
+    },
+    {
+     "id": "B0-008",
+     "name": "横山美優",
+     "points": -20.4
+    },
+    {
+     "id": "C0-008",
+     "name": "谷川和彦",
+     "points": -34.5
+    },
+    {
+     "id": "A0-006",
+     "name": "大村麻衣",
+     "points": -46.1
+    }
+   ]
+  },
+  {
+   "title": "王位",
+   "season": 1,
+   "event": "初代",
+   "winner_id": "A0-011",
+   "winner_name": "石橋一美",
+   "previous_id": null,
+   "previous_name": null,
+   "final_standings": [
+    {
+     "id": "A0-011",
+     "name": "石橋一美",
+     "points": 66.0
+    },
+    {
+     "id": "A0-007",
+     "name": "南結愛",
+     "points": 32.2
+    },
+    {
+     "id": "A0-009",
+     "name": "大平久美子",
+     "points": -8.2
+    },
+    {
+     "id": "C0-019",
+     "name": "武田美穂",
+     "points": -90.0
+    }
+   ]
+  },
+  {
+   "title": "マスターズ",
+   "season": 1,
+   "event": "初代",
+   "winner_id": "A0-004",
+   "winner_name": "宮崎美月",
+   "previous_id": null,
+   "previous_name": null,
+   "final_standings": [
+    {
+     "id": "A0-004",
+     "name": "宮崎美月",
+     "points": 37.4
+    },
+    {
+     "id": "A0-010",
+     "name": "橋口尚弘",
+     "points": 29.9
+    },
+    {
+     "id": "A0-015",
+     "name": "中西香織",
+     "points": -23.5
+    },
+    {
+     "id": "A0-011",
+     "name": "石橋一美",
+     "points": -43.8
+    }
+   ]
+  }
+ ],
+ "retired_archive": [
+  {
+   "id": "D0-017",
+   "league": "D",
+   "params": {
+    "speed_weight": 3.535,
+    "dora_weight": 4.652,
+    "yakuhai_weight": 3.781,
+    "flush_weight": 3.22,
+    "tanyao_weight": 6.594,
+    "call_weight": 2.481,
+    "riichi_weight": 0.737,
+    "defense_weight": 7.947,
+    "push_weight": 4.378
+   },
+   "talent": 0.434,
+   "clan_root_id": "D0-017",
+   "display_name": "田島優子",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 53,
+   "age_multipliers": {
+    "speed_weight": 0.998,
+    "dora_weight": 1.04,
+    "yakuhai_weight": 0.981,
+    "flush_weight": 0.985,
+    "tanyao_weight": 0.905,
+    "call_weight": 1.003,
+    "riichi_weight": 0.971,
+    "defense_weight": 0.91,
+    "push_weight": 0.934,
+    "talent": 0.927
+   },
+   "consecutive_losing_seasons": 1,
+   "elo": 1305.76,
+   "peak_elo": 1500.0,
+   "volatility": 0.9,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": true,
+   "games": 15,
+   "placements": [
+    0,
+    1,
+    3,
+    11
+   ],
+   "total_points": -292.4,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 24,
+     "points": -247.6
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null,
+   "retired_season": 1
+  }
+ ],
+ "name_registry": {
+  "大山剛": 1,
+  "岡崎隼人": 1,
+  "谷本正義": 1,
+  "桜井美咲子": 1,
+  "宮崎美月": 1,
+  "岡崎美緒": 1,
+  "大村麻衣": 1,
+  "南結愛": 1,
+  "三浦祐輝": 1,
+  "大平久美子": 1,
+  "橋口尚弘": 1,
+  "石橋一美": 1,
+  "海老原美月": 1,
+  "西川美咲": 1,
+  "山田正人": 1,
+  "中西香織": 1,
+  "小野浩太": 1,
+  "藤本楓": 1,
+  "望月彩花": 1,
+  "大久保和彦": 1,
+  "大石健一": 1,
+  "須賀康弘": 1,
+  "田端勝也": 1,
+  "本多淳": 1,
+  "横山美優": 1,
+  "工藤昌弘": 1,
+  "石井尚樹": 1,
+  "戸田隆之": 1,
+  "中村友紀": 1,
+  "谷本結愛": 1,
+  "竹中陽向": 1,
+  "山根久美子": 1,
+  "松本俊介": 1,
+  "小林祐輝": 1,
+  "藤田拓也": 1,
+  "佐藤亮": 1,
+  "山岸彩": 1,
+  "大野深雪": 1,
+  "中野雄大": 1,
+  "山岸尚哉": 1,
+  "谷川和彦": 1,
+  "小林麻衣": 1,
+  "中野花子": 1,
+  "石井友紀": 1,
+  "小坂彩花": 1,
+  "山内凛": 1,
+  "小澤沙織": 1,
+  "伊藤真央": 1,
+  "松井亜紀子": 1,
+  "加藤久美子": 1,
+  "岡崎力": 1,
+  "武田美穂": 1,
+  "阿部尚志": 1,
+  "田端香織": 1,
+  "太田花子": 1,
+  "竹田拓也": 1,
+  "近藤凛": 1,
+  "上野秀一": 1,
+  "吉田優子": 1,
+  "武田沙織": 1,
+  "安藤颯": 1,
+  "小田島利明": 1,
+  "小林陽介": 1,
+  "田口杏子": 1,
+  "小田島正人": 1,
+  "藤原大和": 1,
+  "森本亜紀子": 1,
+  "佐々木健一": 1,
+  "遠山亜美": 1,
+  "田島優子": 1,
+  "伊藤正人": 1,
+  "森田香織": 1,
+  "長谷川颯太": 1,
+  "久保葵": 1,
+  "大槻陽向": 1,
+  "海野詩織": 1
+ },
+ "rules": {
+  "name": "日本プロ麻雀連盟 公式ルール",
+  "game_length": "south",
+  "start_score": 30000,
+  "return_score": 30000,
+  "uma": [
+   15,
+   5,
+   -5,
+   -15
+  ],
+  "ippatsu": false,
+  "ura_dora": false,
+  "kan_dora": false,
+  "kazoe_yakuman": false,
+  "double_yakuman": true,
+  "nagashi_mangan": true,
+  "agari_yame": false,
+  "tobi": false,
+  "renpuu_pair_fu": 2,
+  "tie_split_uma": true,
+  "riichi_min_score": 1000,
+  "noten_penalty": 3000,
+  "honba_ron": 300,
+  "pao": true,
+  "max_kans": 4
+ }
+}

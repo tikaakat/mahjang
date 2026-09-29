@@ -1,0 +1,4510 @@
+{
+ "A": [
+  {
+   "id": "A0-015",
+   "league": "A",
+   "params": {
+    "speed_weight": 5.393,
+    "dora_weight": 9.445,
+    "yakuhai_weight": 4.665,
+    "flush_weight": 1.335,
+    "tanyao_weight": 8.731,
+    "call_weight": 4.421,
+    "riichi_weight": 3.93,
+    "defense_weight": 8.944,
+    "push_weight": 1.125
+   },
+   "talent": 0.844,
+   "clan_root_id": "A0-015",
+   "display_name": "中西香織",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 43,
+   "age_multipliers": {
+    "speed_weight": 1.034,
+    "dora_weight": 0.974,
+    "yakuhai_weight": 1.036,
+    "flush_weight": 1.023,
+    "tanyao_weight": 0.989,
+    "call_weight": 1.017,
+    "riichi_weight": 1.064,
+    "defense_weight": 1.076,
+    "push_weight": 0.979,
+    "talent": 1.081
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1674.15,
+   "peak_elo": 1705.03,
+   "volatility": 1.77,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 51,
+   "placements": [
+    24,
+    13,
+    8,
+    6
+   ],
+   "total_points": 564.8,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 1,
+     "points": 258.0
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-000",
+   "league": "A",
+   "params": {
+    "speed_weight": 8.917,
+    "dora_weight": 4.729,
+    "yakuhai_weight": 7.367,
+    "flush_weight": 0.735,
+    "tanyao_weight": 1.766,
+    "call_weight": 1.278,
+    "riichi_weight": 8.584,
+    "defense_weight": 1.445,
+    "push_weight": 3.144
+   },
+   "talent": 0.881,
+   "clan_root_id": "A0-000",
+   "display_name": "大山剛",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 56,
+   "age_multipliers": {
+    "speed_weight": 0.98,
+    "dora_weight": 0.913,
+    "yakuhai_weight": 0.921,
+    "flush_weight": 1.014,
+    "tanyao_weight": 1.018,
+    "call_weight": 0.998,
+    "riichi_weight": 0.933,
+    "defense_weight": 0.994,
+    "push_weight": 0.942,
+    "talent": 0.929
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1538.22,
+   "peak_elo": 1561.33,
+   "volatility": 1.17,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 45,
+   "placements": [
+    9,
+    11,
+    15,
+    10
+   ],
+   "total_points": -94.5,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 2,
+     "points": 109.9
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-014",
+   "league": "A",
+   "params": {
+    "speed_weight": 8.749,
+    "dora_weight": 2.605,
+    "yakuhai_weight": 1.564,
+    "flush_weight": 8.769,
+    "tanyao_weight": 1.023,
+    "call_weight": 1.29,
+    "riichi_weight": 7.407,
+    "defense_weight": 8.806,
+    "push_weight": 3.137
+   },
+   "talent": 0.79,
+   "clan_root_id": "A0-014",
+   "display_name": "山田正人",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 46,
+   "age_multipliers": {
+    "speed_weight": 0.976,
+    "dora_weight": 0.981,
+    "yakuhai_weight": 1.014,
+    "flush_weight": 1.008,
+    "tanyao_weight": 0.947,
+    "call_weight": 0.929,
+    "riichi_weight": 0.95,
+    "defense_weight": 1.016,
+    "push_weight": 1.027,
+    "talent": 1.007
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1555.44,
+   "peak_elo": 1578.98,
+   "volatility": 1.57,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 43,
+   "placements": [
+    12,
+    11,
+    8,
+    12
+   ],
+   "total_points": -17.3,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 3,
+     "points": 73.3
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-012",
+   "league": "A",
+   "params": {
+    "speed_weight": 4.343,
+    "dora_weight": 9.337,
+    "yakuhai_weight": 0.973,
+    "flush_weight": 8.485,
+    "tanyao_weight": 5.59,
+    "call_weight": 8.145,
+    "riichi_weight": 5.538,
+    "defense_weight": 5.748,
+    "push_weight": 6.443
+   },
+   "talent": 0.775,
+   "clan_root_id": "A0-012",
+   "display_name": "海老原美月",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 28,
+   "age_multipliers": {
+    "speed_weight": 1.028,
+    "dora_weight": 1.054,
+    "yakuhai_weight": 1.071,
+    "flush_weight": 0.998,
+    "tanyao_weight": 1.049,
+    "call_weight": 0.983,
+    "riichi_weight": 1.026,
+    "defense_weight": 1.125,
+    "push_weight": 1.047,
+    "talent": 1.076
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1586.51,
+   "peak_elo": 1648.89,
+   "volatility": 1.24,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 41,
+   "placements": [
+    14,
+    11,
+    8,
+    8
+   ],
+   "total_points": 231.8,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 4,
+     "points": 54.2
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-007",
+   "league": "A",
+   "params": {
+    "speed_weight": 3.557,
+    "dora_weight": 4.927,
+    "yakuhai_weight": 6.472,
+    "flush_weight": 3.169,
+    "tanyao_weight": 0.905,
+    "call_weight": 1.525,
+    "riichi_weight": 1.758,
+    "defense_weight": 7.468,
+    "push_weight": 8.476
+   },
+   "talent": 0.825,
+   "clan_root_id": "A0-007",
+   "display_name": "南結愛",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 32,
+   "age_multipliers": {
+    "speed_weight": 1.099,
+    "dora_weight": 1.043,
+    "yakuhai_weight": 0.988,
+    "flush_weight": 1.056,
+    "tanyao_weight": 0.951,
+    "call_weight": 0.989,
+    "riichi_weight": 0.973,
+    "defense_weight": 0.951,
+    "push_weight": 1.046,
+    "talent": 1.062
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1613.09,
+   "peak_elo": 1632.84,
+   "volatility": 1.45,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 39,
+   "placements": [
+    13,
+    11,
+    4,
+    11
+   ],
+   "total_points": 212.4,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 5,
+     "points": 47.7
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-008",
+   "league": "A",
+   "params": {
+    "speed_weight": 4.752,
+    "dora_weight": 4.747,
+    "yakuhai_weight": 6.235,
+    "flush_weight": 6.812,
+    "tanyao_weight": 4.182,
+    "call_weight": 3.852,
+    "riichi_weight": 2.682,
+    "defense_weight": 9.636,
+    "push_weight": 5.002
+   },
+   "talent": 0.829,
+   "clan_root_id": "A0-008",
+   "display_name": "三浦祐輝",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 37,
+   "age_multipliers": {
+    "speed_weight": 1.086,
+    "dora_weight": 0.965,
+    "yakuhai_weight": 1.043,
+    "flush_weight": 0.96,
+    "tanyao_weight": 1.047,
+    "call_weight": 1.012,
+    "riichi_weight": 1.068,
+    "defense_weight": 1.057,
+    "push_weight": 1.051,
+    "talent": 0.962
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1443.06,
+   "peak_elo": 1553.7,
+   "volatility": 1.35,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 23,
+   "placements": [
+    7,
+    4,
+    4,
+    8
+   ],
+   "total_points": -17.9,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 6,
+     "points": 34.5
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-006",
+   "league": "A",
+   "params": {
+    "speed_weight": 0.987,
+    "dora_weight": 6.91,
+    "yakuhai_weight": 2.706,
+    "flush_weight": 6.793,
+    "tanyao_weight": 5.647,
+    "call_weight": 0.949,
+    "riichi_weight": 6.855,
+    "defense_weight": 9.111,
+    "push_weight": 8.894
+   },
+   "talent": 0.796,
+   "clan_root_id": "A0-006",
+   "display_name": "大村麻衣",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 46,
+   "age_multipliers": {
+    "speed_weight": 1.049,
+    "dora_weight": 0.962,
+    "yakuhai_weight": 0.913,
+    "flush_weight": 0.997,
+    "tanyao_weight": 0.983,
+    "call_weight": 0.995,
+    "riichi_weight": 0.988,
+    "defense_weight": 0.948,
+    "push_weight": 0.993,
+    "talent": 0.935
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1527.82,
+   "peak_elo": 1581.06,
+   "volatility": 1.75,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 36,
+   "placements": [
+    7,
+    11,
+    13,
+    5
+   ],
+   "total_points": -13.8,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 7,
+     "points": 20.9
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-009",
+   "league": "A",
+   "params": {
+    "speed_weight": 8.912,
+    "dora_weight": 5.061,
+    "yakuhai_weight": 1.952,
+    "flush_weight": 0.66,
+    "tanyao_weight": 2.222,
+    "call_weight": 7.419,
+    "riichi_weight": 8.409,
+    "defense_weight": 9.759,
+    "push_weight": 6.28
+   },
+   "talent": 0.863,
+   "clan_root_id": "A0-009",
+   "display_name": "大平久美子",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 43,
+   "age_multipliers": {
+    "speed_weight": 1.085,
+    "dora_weight": 1.094,
+    "yakuhai_weight": 0.995,
+    "flush_weight": 0.963,
+    "tanyao_weight": 1.01,
+    "call_weight": 0.975,
+    "riichi_weight": 1.077,
+    "defense_weight": 0.957,
+    "push_weight": 0.98,
+    "talent": 0.956
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1602.54,
+   "peak_elo": 1623.73,
+   "volatility": 1.49,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 38,
+   "placements": [
+    12,
+    10,
+    12,
+    4
+   ],
+   "total_points": 156.5,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 8,
+     "points": 20.6
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-004",
+   "league": "A",
+   "params": {
+    "speed_weight": 1.799,
+    "dora_weight": 9.247,
+    "yakuhai_weight": 7.897,
+    "flush_weight": 3.019,
+    "tanyao_weight": 4.454,
+    "call_weight": 2.443,
+    "riichi_weight": 7.757,
+    "defense_weight": 8.915,
+    "push_weight": 3.114
+   },
+   "talent": 0.8,
+   "clan_root_id": "A0-004",
+   "display_name": "宮崎美月",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 36,
+   "age_multipliers": {
+    "speed_weight": 1.004,
+    "dora_weight": 1.037,
+    "yakuhai_weight": 0.982,
+    "flush_weight": 0.961,
+    "tanyao_weight": 1.002,
+    "call_weight": 1.099,
+    "riichi_weight": 1.075,
+    "defense_weight": 0.995,
+    "push_weight": 1.034,
+    "talent": 1.049
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1625.94,
+   "peak_elo": 1625.94,
+   "volatility": 1.3,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 33,
+   "placements": [
+    11,
+    8,
+    7,
+    7
+   ],
+   "total_points": 129.8,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 9,
+     "points": 14.5
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-013",
+   "league": "A",
+   "params": {
+    "speed_weight": 9.04,
+    "dora_weight": 5.08,
+    "yakuhai_weight": 4.754,
+    "flush_weight": 5.151,
+    "tanyao_weight": 2.612,
+    "call_weight": 2.957,
+    "riichi_weight": 1.697,
+    "defense_weight": 6.455,
+    "push_weight": 4.9
+   },
+   "talent": 0.809,
+   "clan_root_id": "A0-013",
+   "display_name": "西川美咲",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 38,
+   "age_multipliers": {
+    "speed_weight": 1.071,
+    "dora_weight": 1.023,
+    "yakuhai_weight": 0.994,
+    "flush_weight": 0.96,
+    "tanyao_weight": 1.064,
+    "call_weight": 0.973,
+    "riichi_weight": 1.027,
+    "defense_weight": 0.982,
+    "push_weight": 1.032,
+    "talent": 1.031
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1473.91,
+   "peak_elo": 1552.84,
+   "volatility": 1.13,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 27,
+   "placements": [
+    7,
+    5,
+    7,
+    8
+   ],
+   "total_points": -58.0,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 10,
+     "points": -19.5
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-001",
+   "league": "A",
+   "params": {
+    "speed_weight": 8.893,
+    "dora_weight": 3.985,
+    "yakuhai_weight": 6.605,
+    "flush_weight": 5.291,
+    "tanyao_weight": 1.004,
+    "call_weight": 3.283,
+    "riichi_weight": 3.044,
+    "defense_weight": 0.568,
+    "push_weight": 9.917
+   },
+   "talent": 0.787,
+   "clan_root_id": "A0-001",
+   "display_name": "岡崎隼人",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 33,
+   "age_multipliers": {
+    "speed_weight": 1.062,
+    "dora_weight": 0.969,
+    "yakuhai_weight": 0.973,
+    "flush_weight": 1.008,
+    "tanyao_weight": 1.021,
+    "call_weight": 1.026,
+    "riichi_weight": 0.988,
+    "defense_weight": 1.099,
+    "push_weight": 0.986,
+    "talent": 1.012
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1516.08,
+   "peak_elo": 1527.65,
+   "volatility": 1.99,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 26,
+   "placements": [
+    4,
+    9,
+    6,
+    7
+   ],
+   "total_points": -38.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 11,
+     "points": -56.6
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-005",
+   "league": "A",
+   "params": {
+    "speed_weight": 5.52,
+    "dora_weight": 1.704,
+    "yakuhai_weight": 3.371,
+    "flush_weight": 6.353,
+    "tanyao_weight": 1.868,
+    "call_weight": 9.225,
+    "riichi_weight": 1.303,
+    "defense_weight": 6.535,
+    "push_weight": 8.033
+   },
+   "talent": 0.74,
+   "clan_root_id": "A0-005",
+   "display_name": "岡崎美緒",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 50,
+   "age_multipliers": {
+    "speed_weight": 1.042,
+    "dora_weight": 1.003,
+    "yakuhai_weight": 0.933,
+    "flush_weight": 1.04,
+    "tanyao_weight": 0.937,
+    "call_weight": 0.919,
+    "riichi_weight": 0.926,
+    "defense_weight": 1.05,
+    "push_weight": 0.915,
+    "talent": 0.971
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1471.65,
+   "peak_elo": 1509.47,
+   "volatility": 0.87,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 24,
+   "placements": [
+    5,
+    4,
+    9,
+    6
+   ],
+   "total_points": -114.7,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 12,
+     "points": -90.5
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-011",
+   "league": "A",
+   "params": {
+    "speed_weight": 2.65,
+    "dora_weight": 9.024,
+    "yakuhai_weight": 4.281,
+    "flush_weight": 7.629,
+    "tanyao_weight": 5.099,
+    "call_weight": 4.341,
+    "riichi_weight": 1.491,
+    "defense_weight": 2.002,
+    "push_weight": 6.907
+   },
+   "talent": 0.882,
+   "clan_root_id": "A0-011",
+   "display_name": "石橋一美",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 24,
+   "age_multipliers": {
+    "speed_weight": 0.971,
+    "dora_weight": 1.149,
+    "yakuhai_weight": 1.06,
+    "flush_weight": 1.08,
+    "tanyao_weight": 1.013,
+    "call_weight": 1.116,
+    "riichi_weight": 0.961,
+    "defense_weight": 0.96,
+    "push_weight": 1.058,
+    "talent": 0.991
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1613.91,
+   "peak_elo": 1699.41,
+   "volatility": 1.09,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 43,
+   "placements": [
+    14,
+    9,
+    12,
+    8
+   ],
+   "total_points": 162.2,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 16,
+     "points": -136.8
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-002",
+   "league": "A",
+   "params": {
+    "speed_weight": 4.137,
+    "dora_weight": 5.015,
+    "yakuhai_weight": 4.325,
+    "flush_weight": 2.135,
+    "tanyao_weight": 9.841,
+    "call_weight": 6.015,
+    "riichi_weight": 4.963,
+    "defense_weight": 6.809,
+    "push_weight": 2.818
+   },
+   "talent": 0.723,
+   "clan_root_id": "B0-002",
+   "display_name": "望月彩花",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 39,
+   "age_multipliers": {
+    "speed_weight": 1.086,
+    "dora_weight": 1.043,
+    "yakuhai_weight": 1.065,
+    "flush_weight": 1.058,
+    "tanyao_weight": 0.986,
+    "call_weight": 0.976,
+    "riichi_weight": 1.096,
+    "defense_weight": 1.047,
+    "push_weight": 0.97,
+    "talent": 1.054
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1608.23,
+   "peak_elo": 1624.76,
+   "volatility": 0.73,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 31,
+   "placements": [
+    14,
+    5,
+    9,
+    3
+   ],
+   "total_points": 344.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 1,
+     "points": 200.0
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-000",
+   "league": "A",
+   "params": {
+    "speed_weight": 8.261,
+    "dora_weight": 4.898,
+    "yakuhai_weight": 4.841,
+    "flush_weight": 4.242,
+    "tanyao_weight": 3.292,
+    "call_weight": 6.959,
+    "riichi_weight": 1.629,
+    "defense_weight": 9.372,
+    "push_weight": 1.745
+   },
+   "talent": 0.816,
+   "clan_root_id": "B0-000",
+   "display_name": "小野浩太",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 24,
+   "age_multipliers": {
+    "speed_weight": 1.041,
+    "dora_weight": 1.045,
+    "yakuhai_weight": 1.1,
+    "flush_weight": 1.136,
+    "tanyao_weight": 1.099,
+    "call_weight": 1.127,
+    "riichi_weight": 1.125,
+    "defense_weight": 1.006,
+    "push_weight": 1.09,
+    "talent": 0.98
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1619.42,
+   "peak_elo": 1633.18,
+   "volatility": 1.88,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 29,
+   "placements": [
+    13,
+    8,
+    5,
+    3
+   ],
+   "total_points": 331.2,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 2,
+     "points": 186.0
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-013",
+   "league": "A",
+   "params": {
+    "speed_weight": 7.309,
+    "dora_weight": 5.781,
+    "yakuhai_weight": 4.348,
+    "flush_weight": 6.671,
+    "tanyao_weight": 8.589,
+    "call_weight": 9.534,
+    "riichi_weight": 6.86,
+    "defense_weight": 9.817,
+    "push_weight": 9.058
+   },
+   "talent": 0.76,
+   "clan_root_id": "B0-013",
+   "display_name": "谷本結愛",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 48,
+   "age_multipliers": {
+    "speed_weight": 0.915,
+    "dora_weight": 0.917,
+    "yakuhai_weight": 0.956,
+    "flush_weight": 0.956,
+    "tanyao_weight": 1.038,
+    "call_weight": 0.957,
+    "riichi_weight": 0.92,
+    "defense_weight": 0.994,
+    "push_weight": 0.956,
+    "talent": 0.967
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1580.59,
+   "peak_elo": 1612.79,
+   "volatility": 1.39,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 24,
+   "placements": [
+    9,
+    7,
+    5,
+    3
+   ],
+   "total_points": 192.6,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 3,
+     "points": 135.4
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-015",
+   "league": "A",
+   "params": {
+    "speed_weight": 6.608,
+    "dora_weight": 5.045,
+    "yakuhai_weight": 5.588,
+    "flush_weight": 5.271,
+    "tanyao_weight": 9.857,
+    "call_weight": 3.209,
+    "riichi_weight": 8.31,
+    "defense_weight": 6.918,
+    "push_weight": 1.212
+   },
+   "talent": 0.716,
+   "clan_root_id": "B0-015",
+   "display_name": "山根久美子",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 33,
+   "age_multipliers": {
+    "speed_weight": 0.983,
+    "dora_weight": 0.986,
+    "yakuhai_weight": 1.026,
+    "flush_weight": 0.959,
+    "tanyao_weight": 1.052,
+    "call_weight": 1.075,
+    "riichi_weight": 1.039,
+    "defense_weight": 1.044,
+    "push_weight": 0.955,
+    "talent": 1.047
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1547.06,
+   "peak_elo": 1584.28,
+   "volatility": 1.08,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 31,
+   "placements": [
+    10,
+    8,
+    7,
+    6
+   ],
+   "total_points": 131.4,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 4,
+     "points": 85.3
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  }
+ ],
+ "B": [
+  {
+   "id": "B0-004",
+   "league": "B",
+   "params": {
+    "speed_weight": 5.865,
+    "dora_weight": 8.523,
+    "yakuhai_weight": 5.543,
+    "flush_weight": 4.09,
+    "tanyao_weight": 3.913,
+    "call_weight": 1.255,
+    "riichi_weight": 1.463,
+    "defense_weight": 4.645,
+    "push_weight": 6.81
+   },
+   "talent": 0.794,
+   "clan_root_id": "B0-004",
+   "display_name": "大石健一",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 57,
+   "age_multipliers": {
+    "speed_weight": 0.989,
+    "dora_weight": 0.908,
+    "yakuhai_weight": 0.934,
+    "flush_weight": 0.946,
+    "tanyao_weight": 1.025,
+    "call_weight": 0.952,
+    "riichi_weight": 0.97,
+    "defense_weight": 0.969,
+    "push_weight": 1.044,
+    "talent": 0.988
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1558.58,
+   "peak_elo": 1592.49,
+   "volatility": 1.73,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 31,
+   "placements": [
+    9,
+    9,
+    6,
+    7
+   ],
+   "total_points": 92.5,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 5,
+     "points": 30.9
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-011",
+   "league": "B",
+   "params": {
+    "speed_weight": 3.562,
+    "dora_weight": 1.107,
+    "yakuhai_weight": 2.857,
+    "flush_weight": 7.063,
+    "tanyao_weight": 8.541,
+    "call_weight": 5.58,
+    "riichi_weight": 1.459,
+    "defense_weight": 9.699,
+    "push_weight": 4.602
+   },
+   "talent": 0.714,
+   "clan_root_id": "B0-011",
+   "display_name": "戸田隆之",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 55,
+   "age_multipliers": {
+    "speed_weight": 0.917,
+    "dora_weight": 0.976,
+    "yakuhai_weight": 0.924,
+    "flush_weight": 1.016,
+    "tanyao_weight": 0.929,
+    "call_weight": 0.975,
+    "riichi_weight": 0.918,
+    "defense_weight": 1.017,
+    "push_weight": 0.999,
+    "talent": 0.939
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1548.83,
+   "peak_elo": 1554.87,
+   "volatility": 1.39,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 27,
+   "placements": [
+    7,
+    8,
+    7,
+    5
+   ],
+   "total_points": 46.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 6,
+     "points": 29.7
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-008",
+   "league": "B",
+   "params": {
+    "speed_weight": 5.555,
+    "dora_weight": 6.555,
+    "yakuhai_weight": 8.752,
+    "flush_weight": 1.321,
+    "tanyao_weight": 9.711,
+    "call_weight": 8.066,
+    "riichi_weight": 4.135,
+    "defense_weight": 9.319,
+    "push_weight": 4.508
+   },
+   "talent": 0.751,
+   "clan_root_id": "B0-008",
+   "display_name": "横山美優",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 20,
+   "age_multipliers": {
+    "speed_weight": 1.131,
+    "dora_weight": 1.017,
+    "yakuhai_weight": 1.025,
+    "flush_weight": 1.001,
+    "tanyao_weight": 1.129,
+    "call_weight": 0.996,
+    "riichi_weight": 1.122,
+    "defense_weight": 1.125,
+    "push_weight": 1.094,
+    "talent": 1.097
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1580.87,
+   "peak_elo": 1599.4,
+   "volatility": 0.75,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 33,
+   "placements": [
+    10,
+    8,
+    9,
+    6
+   ],
+   "total_points": 139.3,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 7,
+     "points": 24.1
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-001",
+   "league": "B",
+   "params": {
+    "speed_weight": 2.645,
+    "dora_weight": 0.796,
+    "yakuhai_weight": 7.235,
+    "flush_weight": 5.549,
+    "tanyao_weight": 4.836,
+    "call_weight": 9.038,
+    "riichi_weight": 9.066,
+    "defense_weight": 8.315,
+    "push_weight": 4.145
+   },
+   "talent": 0.719,
+   "clan_root_id": "B0-001",
+   "display_name": "藤本楓",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 36,
+   "age_multipliers": {
+    "speed_weight": 1.007,
+    "dora_weight": 1.073,
+    "yakuhai_weight": 0.981,
+    "flush_weight": 1.086,
+    "tanyao_weight": 1.062,
+    "call_weight": 0.996,
+    "riichi_weight": 1.025,
+    "defense_weight": 0.992,
+    "push_weight": 1.034,
+    "talent": 0.978
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1572.02,
+   "peak_elo": 1584.83,
+   "volatility": 1.78,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 25,
+   "placements": [
+    7,
+    8,
+    7,
+    3
+   ],
+   "total_points": 53.7,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 8,
+     "points": 19.8
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-010",
+   "league": "B",
+   "params": {
+    "speed_weight": 0.847,
+    "dora_weight": 7.377,
+    "yakuhai_weight": 1.08,
+    "flush_weight": 1.824,
+    "tanyao_weight": 4.247,
+    "call_weight": 3.094,
+    "riichi_weight": 4.487,
+    "defense_weight": 5.02,
+    "push_weight": 2.58
+   },
+   "talent": 0.749,
+   "clan_root_id": "B0-010",
+   "display_name": "石井尚樹",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 20,
+   "age_multipliers": {
+    "speed_weight": 1.1,
+    "dora_weight": 0.955,
+    "yakuhai_weight": 0.982,
+    "flush_weight": 1.103,
+    "tanyao_weight": 1.09,
+    "call_weight": 1.128,
+    "riichi_weight": 1.096,
+    "defense_weight": 1.076,
+    "push_weight": 1.124,
+    "talent": 0.975
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1486.26,
+   "peak_elo": 1523.33,
+   "volatility": 0.51,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 21,
+   "placements": [
+    4,
+    5,
+    6,
+    6
+   ],
+   "total_points": -88.8,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 9,
+     "points": -47.0
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-012",
+   "league": "B",
+   "params": {
+    "speed_weight": 1.746,
+    "dora_weight": 0.774,
+    "yakuhai_weight": 7.821,
+    "flush_weight": 6.405,
+    "tanyao_weight": 3.651,
+    "call_weight": 7.172,
+    "riichi_weight": 5.16,
+    "defense_weight": 8.897,
+    "push_weight": 0.709
+   },
+   "talent": 0.696,
+   "clan_root_id": "B0-012",
+   "display_name": "中村友紀",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 54,
+   "age_multipliers": {
+    "speed_weight": 0.979,
+    "dora_weight": 0.902,
+    "yakuhai_weight": 0.972,
+    "flush_weight": 0.979,
+    "tanyao_weight": 0.932,
+    "call_weight": 0.959,
+    "riichi_weight": 1.01,
+    "defense_weight": 0.981,
+    "push_weight": 0.917,
+    "talent": 1.038
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1462.24,
+   "peak_elo": 1500.0,
+   "volatility": 1.75,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 20,
+   "placements": [
+    3,
+    4,
+    8,
+    5
+   ],
+   "total_points": -82.2,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 10,
+     "points": -61.0
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-007",
+   "league": "B",
+   "params": {
+    "speed_weight": 7.436,
+    "dora_weight": 5.241,
+    "yakuhai_weight": 3.55,
+    "flush_weight": 6.584,
+    "tanyao_weight": 7.097,
+    "call_weight": 3.287,
+    "riichi_weight": 4.67,
+    "defense_weight": 5.529,
+    "push_weight": 3.059
+   },
+   "talent": 0.654,
+   "clan_root_id": "B0-007",
+   "display_name": "本多淳",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 55,
+   "age_multipliers": {
+    "speed_weight": 0.936,
+    "dora_weight": 0.987,
+    "yakuhai_weight": 0.931,
+    "flush_weight": 0.979,
+    "tanyao_weight": 0.959,
+    "call_weight": 1.003,
+    "riichi_weight": 0.916,
+    "defense_weight": 0.985,
+    "push_weight": 0.994,
+    "talent": 1.04
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1460.1,
+   "peak_elo": 1514.68,
+   "volatility": 0.56,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 22,
+   "placements": [
+    0,
+    12,
+    5,
+    5
+   ],
+   "total_points": -92.6,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 11,
+     "points": -67.0
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-006",
+   "league": "B",
+   "params": {
+    "speed_weight": 8.345,
+    "dora_weight": 0.775,
+    "yakuhai_weight": 6.034,
+    "flush_weight": 5.831,
+    "tanyao_weight": 4.832,
+    "call_weight": 7.163,
+    "riichi_weight": 7.655,
+    "defense_weight": 1.158,
+    "push_weight": 0.777
+   },
+   "talent": 0.647,
+   "clan_root_id": "B0-006",
+   "display_name": "田端勝也",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 40,
+   "age_multipliers": {
+    "speed_weight": 1.029,
+    "dora_weight": 0.986,
+    "yakuhai_weight": 1.004,
+    "flush_weight": 0.986,
+    "tanyao_weight": 1.098,
+    "call_weight": 1.031,
+    "riichi_weight": 0.984,
+    "defense_weight": 1.001,
+    "push_weight": 1.039,
+    "talent": 1.068
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1497.29,
+   "peak_elo": 1554.56,
+   "volatility": 1.46,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 25,
+   "placements": [
+    8,
+    2,
+    7,
+    8
+   ],
+   "total_points": -73.8,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 12,
+     "points": -74.1
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-005",
+   "league": "B",
+   "params": {
+    "speed_weight": 7.338,
+    "dora_weight": 4.366,
+    "yakuhai_weight": 7.582,
+    "flush_weight": 6.619,
+    "tanyao_weight": 3.597,
+    "call_weight": 2.213,
+    "riichi_weight": 8.125,
+    "defense_weight": 1.512,
+    "push_weight": 1.852
+   },
+   "talent": 0.793,
+   "clan_root_id": "B0-005",
+   "display_name": "須賀康弘",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 60,
+   "age_multipliers": {
+    "speed_weight": 0.922,
+    "dora_weight": 0.907,
+    "yakuhai_weight": 0.885,
+    "flush_weight": 0.853,
+    "tanyao_weight": 0.967,
+    "call_weight": 0.95,
+    "riichi_weight": 0.889,
+    "defense_weight": 0.968,
+    "push_weight": 0.883,
+    "talent": 0.965
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1462.62,
+   "peak_elo": 1504.15,
+   "volatility": 1.69,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 24,
+   "placements": [
+    2,
+    8,
+    7,
+    7
+   ],
+   "total_points": -108.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 13,
+     "points": -90.5
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-000",
+   "league": "B",
+   "params": {
+    "speed_weight": 0.528,
+    "dora_weight": 6.464,
+    "yakuhai_weight": 1.93,
+    "flush_weight": 8.78,
+    "tanyao_weight": 1.275,
+    "call_weight": 8.459,
+    "riichi_weight": 8.276,
+    "defense_weight": 7.938,
+    "push_weight": 7.491
+   },
+   "talent": 0.674,
+   "clan_root_id": "C0-000",
+   "display_name": "松本俊介",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 37,
+   "age_multipliers": {
+    "speed_weight": 0.954,
+    "dora_weight": 0.982,
+    "yakuhai_weight": 1.021,
+    "flush_weight": 0.997,
+    "tanyao_weight": 0.973,
+    "call_weight": 1.035,
+    "riichi_weight": 1.055,
+    "defense_weight": 0.968,
+    "push_weight": 1.061,
+    "talent": 1.079
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1644.55,
+   "peak_elo": 1708.95,
+   "volatility": 1.92,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 32,
+   "placements": [
+    14,
+    11,
+    5,
+    2
+   ],
+   "total_points": 370.6,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 1,
+     "points": 220.3
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-008",
+   "league": "B",
+   "params": {
+    "speed_weight": 3.461,
+    "dora_weight": 0.601,
+    "yakuhai_weight": 2.497,
+    "flush_weight": 4.305,
+    "tanyao_weight": 8.339,
+    "call_weight": 9.929,
+    "riichi_weight": 4.856,
+    "defense_weight": 9.477,
+    "push_weight": 8.121
+   },
+   "talent": 0.687,
+   "clan_root_id": "C0-008",
+   "display_name": "谷川和彦",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 34,
+   "age_multipliers": {
+    "speed_weight": 1.0,
+    "dora_weight": 0.999,
+    "yakuhai_weight": 1.034,
+    "flush_weight": 0.963,
+    "tanyao_weight": 1.006,
+    "call_weight": 1.045,
+    "riichi_weight": 1.04,
+    "defense_weight": 1.095,
+    "push_weight": 1.058,
+    "talent": 1.034
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1625.34,
+   "peak_elo": 1660.55,
+   "volatility": 0.94,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 30,
+   "placements": [
+    14,
+    6,
+    4,
+    6
+   ],
+   "total_points": 297.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 2,
+     "points": 193.7
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-017",
+   "league": "B",
+   "params": {
+    "speed_weight": 4.053,
+    "dora_weight": 4.189,
+    "yakuhai_weight": 7.93,
+    "flush_weight": 5.071,
+    "tanyao_weight": 4.812,
+    "call_weight": 8.704,
+    "riichi_weight": 9.544,
+    "defense_weight": 9.224,
+    "push_weight": 5.814
+   },
+   "talent": 0.589,
+   "clan_root_id": "C0-017",
+   "display_name": "加藤久美子",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 47,
+   "age_multipliers": {
+    "speed_weight": 1.025,
+    "dora_weight": 0.923,
+    "yakuhai_weight": 0.921,
+    "flush_weight": 1.04,
+    "tanyao_weight": 1.027,
+    "call_weight": 0.997,
+    "riichi_weight": 0.983,
+    "defense_weight": 1.037,
+    "push_weight": 1.04,
+    "talent": 0.978
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1493.11,
+   "peak_elo": 1569.14,
+   "volatility": 1.98,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 22,
+   "placements": [
+    6,
+    5,
+    7,
+    4
+   ],
+   "total_points": 98.6,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 3,
+     "points": 147.1
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-010",
+   "league": "B",
+   "params": {
+    "speed_weight": 3.173,
+    "dora_weight": 4.621,
+    "yakuhai_weight": 5.606,
+    "flush_weight": 1.567,
+    "tanyao_weight": 1.985,
+    "call_weight": 2.858,
+    "riichi_weight": 1.371,
+    "defense_weight": 6.647,
+    "push_weight": 8.119
+   },
+   "talent": 0.871,
+   "clan_root_id": "A0-010",
+   "display_name": "橋口尚弘",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 46,
+   "age_multipliers": {
+    "speed_weight": 1.017,
+    "dora_weight": 0.964,
+    "yakuhai_weight": 1.025,
+    "flush_weight": 0.95,
+    "tanyao_weight": 0.96,
+    "call_weight": 0.996,
+    "riichi_weight": 1.015,
+    "defense_weight": 1.03,
+    "push_weight": 0.927,
+    "talent": 0.989
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1616.69,
+   "peak_elo": 1623.89,
+   "volatility": 1.35,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 33,
+   "placements": [
+    8,
+    13,
+    5,
+    7
+   ],
+   "total_points": 61.0,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 15,
+     "points": -122.2
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-002",
+   "league": "B",
+   "params": {
+    "speed_weight": 8.222,
+    "dora_weight": 0.561,
+    "yakuhai_weight": 8.438,
+    "flush_weight": 7.291,
+    "tanyao_weight": 9.002,
+    "call_weight": 2.12,
+    "riichi_weight": 4.438,
+    "defense_weight": 3.685,
+    "push_weight": 5.743
+   },
+   "talent": 0.75,
+   "clan_root_id": "A0-002",
+   "display_name": "谷本正義",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 28,
+   "age_multipliers": {
+    "speed_weight": 1.129,
+    "dora_weight": 1.074,
+    "yakuhai_weight": 0.97,
+    "flush_weight": 1.139,
+    "tanyao_weight": 1.129,
+    "call_weight": 1.002,
+    "riichi_weight": 1.048,
+    "defense_weight": 1.141,
+    "push_weight": 1.126,
+    "talent": 1.042
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1399.74,
+   "peak_elo": 1541.21,
+   "volatility": 1.15,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 23,
+   "placements": [
+    4,
+    2,
+    8,
+    9
+   ],
+   "total_points": -168.4,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 14,
+     "points": -117.3
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "A0-003",
+   "league": "B",
+   "params": {
+    "speed_weight": 4.024,
+    "dora_weight": 5.925,
+    "yakuhai_weight": 7.995,
+    "flush_weight": 7.031,
+    "tanyao_weight": 5.441,
+    "call_weight": 5.351,
+    "riichi_weight": 2.494,
+    "defense_weight": 6.237,
+    "push_weight": 9.788
+   },
+   "talent": 0.761,
+   "clan_root_id": "A0-003",
+   "display_name": "桜井美咲子",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 30,
+   "age_multipliers": {
+    "speed_weight": 1.094,
+    "dora_weight": 0.996,
+    "yakuhai_weight": 1.007,
+    "flush_weight": 0.982,
+    "tanyao_weight": 1.069,
+    "call_weight": 1.016,
+    "riichi_weight": 1.016,
+    "defense_weight": 0.977,
+    "push_weight": 1.085,
+    "talent": 1.005
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1466.72,
+   "peak_elo": 1533.34,
+   "volatility": 0.58,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 25,
+   "placements": [
+    5,
+    6,
+    6,
+    8
+   ],
+   "total_points": -93.7,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 13,
+     "points": -90.7
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-011",
+   "league": "B",
+   "params": {
+    "speed_weight": 1.947,
+    "dora_weight": 4.249,
+    "yakuhai_weight": 9.225,
+    "flush_weight": 1.863,
+    "tanyao_weight": 9.944,
+    "call_weight": 3.725,
+    "riichi_weight": 9.076,
+    "defense_weight": 4.782,
+    "push_weight": 3.863
+   },
+   "talent": 0.641,
+   "clan_root_id": "C0-011",
+   "display_name": "石井友紀",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 44,
+   "age_multipliers": {
+    "speed_weight": 0.964,
+    "dora_weight": 1.085,
+    "yakuhai_weight": 1.056,
+    "flush_weight": 0.956,
+    "tanyao_weight": 1.026,
+    "call_weight": 1.056,
+    "riichi_weight": 1.064,
+    "defense_weight": 0.957,
+    "push_weight": 1.089,
+    "talent": 1.078
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1514.62,
+   "peak_elo": 1573.0,
+   "volatility": 1.6,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 20,
+   "placements": [
+    5,
+    7,
+    4,
+    4
+   ],
+   "total_points": 60.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 4,
+     "points": 142.4
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  }
+ ],
+ "C": [
+  {
+   "id": "C0-019",
+   "league": "C",
+   "params": {
+    "speed_weight": 3.8,
+    "dora_weight": 5.48,
+    "yakuhai_weight": 8.756,
+    "flush_weight": 9.808,
+    "tanyao_weight": 3.974,
+    "call_weight": 1.439,
+    "riichi_weight": 5.077,
+    "defense_weight": 7.737,
+    "push_weight": 9.53
+   },
+   "talent": 0.57,
+   "clan_root_id": "C0-019",
+   "display_name": "武田美穂",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 42,
+   "age_multipliers": {
+    "speed_weight": 1.06,
+    "dora_weight": 1.01,
+    "yakuhai_weight": 1.019,
+    "flush_weight": 0.99,
+    "tanyao_weight": 1.088,
+    "call_weight": 1.088,
+    "riichi_weight": 1.002,
+    "defense_weight": 1.031,
+    "push_weight": 1.039,
+    "talent": 0.988
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1449.16,
+   "peak_elo": 1599.96,
+   "volatility": 0.78,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 30,
+   "placements": [
+    8,
+    7,
+    5,
+    10
+   ],
+   "total_points": -37.2,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 5,
+     "points": 79.7
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-003",
+   "league": "C",
+   "params": {
+    "speed_weight": 4.371,
+    "dora_weight": 6.99,
+    "yakuhai_weight": 6.228,
+    "flush_weight": 1.55,
+    "tanyao_weight": 5.359,
+    "call_weight": 4.826,
+    "riichi_weight": 2.844,
+    "defense_weight": 9.954,
+    "push_weight": 0.858
+   },
+   "talent": 0.688,
+   "clan_root_id": "C0-003",
+   "display_name": "佐藤亮",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 46,
+   "age_multipliers": {
+    "speed_weight": 0.921,
+    "dora_weight": 1.044,
+    "yakuhai_weight": 0.967,
+    "flush_weight": 0.928,
+    "tanyao_weight": 0.906,
+    "call_weight": 0.917,
+    "riichi_weight": 1.049,
+    "defense_weight": 0.91,
+    "push_weight": 1.023,
+    "talent": 0.985
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1519.56,
+   "peak_elo": 1581.89,
+   "volatility": 1.06,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 24,
+   "placements": [
+    6,
+    7,
+    6,
+    5
+   ],
+   "total_points": 38.4,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 6,
+     "points": 74.8
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-012",
+   "league": "C",
+   "params": {
+    "speed_weight": 2.007,
+    "dora_weight": 9.436,
+    "yakuhai_weight": 1.733,
+    "flush_weight": 0.525,
+    "tanyao_weight": 8.857,
+    "call_weight": 5.184,
+    "riichi_weight": 9.658,
+    "defense_weight": 4.119,
+    "push_weight": 9.206
+   },
+   "talent": 0.696,
+   "clan_root_id": "C0-012",
+   "display_name": "小坂彩花",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 64,
+   "age_multipliers": {
+    "speed_weight": 0.896,
+    "dora_weight": 0.97,
+    "yakuhai_weight": 0.897,
+    "flush_weight": 0.908,
+    "tanyao_weight": 0.981,
+    "call_weight": 0.94,
+    "riichi_weight": 0.975,
+    "defense_weight": 0.872,
+    "push_weight": 0.864,
+    "talent": 0.948
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1553.48,
+   "peak_elo": 1595.93,
+   "volatility": 0.58,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 29,
+   "placements": [
+    8,
+    11,
+    3,
+    7
+   ],
+   "total_points": 85.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 7,
+     "points": 44.7
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-018",
+   "league": "C",
+   "params": {
+    "speed_weight": 1.863,
+    "dora_weight": 8.831,
+    "yakuhai_weight": 2.77,
+    "flush_weight": 6.416,
+    "tanyao_weight": 9.83,
+    "call_weight": 8.367,
+    "riichi_weight": 0.813,
+    "defense_weight": 2.199,
+    "push_weight": 7.528
+   },
+   "talent": 0.582,
+   "clan_root_id": "C0-018",
+   "display_name": "岡崎力",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 61,
+   "age_multipliers": {
+    "speed_weight": 1.0,
+    "dora_weight": 0.922,
+    "yakuhai_weight": 0.96,
+    "flush_weight": 1.004,
+    "tanyao_weight": 0.93,
+    "call_weight": 0.915,
+    "riichi_weight": 0.89,
+    "defense_weight": 0.913,
+    "push_weight": 0.979,
+    "talent": 0.904
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1449.39,
+   "peak_elo": 1562.45,
+   "volatility": 1.31,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 20,
+   "placements": [
+    5,
+    4,
+    5,
+    6
+   ],
+   "total_points": -60.0,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 8,
+     "points": 24.1
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-002",
+   "league": "C",
+   "params": {
+    "speed_weight": 5.328,
+    "dora_weight": 9.575,
+    "yakuhai_weight": 5.078,
+    "flush_weight": 4.992,
+    "tanyao_weight": 2.237,
+    "call_weight": 3.539,
+    "riichi_weight": 6.593,
+    "defense_weight": 7.48,
+    "push_weight": 3.329
+   },
+   "talent": 0.668,
+   "clan_root_id": "C0-002",
+   "display_name": "藤田拓也",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 48,
+   "age_multipliers": {
+    "speed_weight": 1.005,
+    "dora_weight": 0.99,
+    "yakuhai_weight": 0.972,
+    "flush_weight": 0.904,
+    "tanyao_weight": 0.913,
+    "call_weight": 1.03,
+    "riichi_weight": 1.019,
+    "defense_weight": 1.042,
+    "push_weight": 0.922,
+    "talent": 0.931
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1444.98,
+   "peak_elo": 1558.31,
+   "volatility": 1.43,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 19,
+   "placements": [
+    3,
+    7,
+    3,
+    6
+   ],
+   "total_points": -28.4,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 9,
+     "points": 19.5
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-015",
+   "league": "C",
+   "params": {
+    "speed_weight": 7.969,
+    "dora_weight": 4.423,
+    "yakuhai_weight": 2.702,
+    "flush_weight": 7.691,
+    "tanyao_weight": 6.055,
+    "call_weight": 9.79,
+    "riichi_weight": 5.764,
+    "defense_weight": 4.983,
+    "push_weight": 9.219
+   },
+   "talent": 0.628,
+   "clan_root_id": "C0-015",
+   "display_name": "伊藤真央",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 21,
+   "age_multipliers": {
+    "speed_weight": 1.027,
+    "dora_weight": 1.025,
+    "yakuhai_weight": 1.049,
+    "flush_weight": 1.063,
+    "tanyao_weight": 1.121,
+    "call_weight": 1.14,
+    "riichi_weight": 0.997,
+    "defense_weight": 0.961,
+    "push_weight": 1.128,
+    "talent": 1.033
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1494.02,
+   "peak_elo": 1546.56,
+   "volatility": 0.58,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 22,
+   "placements": [
+    5,
+    5,
+    8,
+    4
+   ],
+   "total_points": -26.6,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 10,
+     "points": -5.6
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-004",
+   "league": "C",
+   "params": {
+    "speed_weight": 5.799,
+    "dora_weight": 9.079,
+    "yakuhai_weight": 6.256,
+    "flush_weight": 9.388,
+    "tanyao_weight": 1.245,
+    "call_weight": 3.769,
+    "riichi_weight": 3.635,
+    "defense_weight": 7.967,
+    "push_weight": 1.092
+   },
+   "talent": 0.587,
+   "clan_root_id": "C0-004",
+   "display_name": "山岸彩",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 36,
+   "age_multipliers": {
+    "speed_weight": 0.967,
+    "dora_weight": 0.988,
+    "yakuhai_weight": 1.053,
+    "flush_weight": 0.975,
+    "tanyao_weight": 1.019,
+    "call_weight": 1.042,
+    "riichi_weight": 0.957,
+    "defense_weight": 0.959,
+    "push_weight": 0.981,
+    "talent": 1.004
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1434.61,
+   "peak_elo": 1530.97,
+   "volatility": 1.57,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 19,
+   "placements": [
+    5,
+    2,
+    5,
+    7
+   ],
+   "total_points": -91.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 11,
+     "points": -28.6
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-010",
+   "league": "C",
+   "params": {
+    "speed_weight": 9.259,
+    "dora_weight": 4.513,
+    "yakuhai_weight": 9.411,
+    "flush_weight": 4.523,
+    "tanyao_weight": 9.818,
+    "call_weight": 6.139,
+    "riichi_weight": 3.183,
+    "defense_weight": 2.081,
+    "push_weight": 3.804
+   },
+   "talent": 0.558,
+   "clan_root_id": "C0-010",
+   "display_name": "中野花子",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 51,
+   "age_multipliers": {
+    "speed_weight": 1.031,
+    "dora_weight": 0.902,
+    "yakuhai_weight": 1.004,
+    "flush_weight": 0.96,
+    "tanyao_weight": 0.976,
+    "call_weight": 0.997,
+    "riichi_weight": 0.914,
+    "defense_weight": 1.021,
+    "push_weight": 0.988,
+    "talent": 0.9
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1445.48,
+   "peak_elo": 1551.56,
+   "volatility": 1.06,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 21,
+   "placements": [
+    6,
+    3,
+    3,
+    9
+   ],
+   "total_points": -77.7,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 12,
+     "points": -42.7
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-001",
+   "league": "C",
+   "params": {
+    "speed_weight": 4.161,
+    "dora_weight": 6.878,
+    "yakuhai_weight": 9.99,
+    "flush_weight": 1.412,
+    "tanyao_weight": 1.752,
+    "call_weight": 3.428,
+    "riichi_weight": 2.42,
+    "defense_weight": 7.047,
+    "push_weight": 2.57
+   },
+   "talent": 0.526,
+   "clan_root_id": "C0-001",
+   "display_name": "小林祐輝",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 30,
+   "age_multipliers": {
+    "speed_weight": 0.973,
+    "dora_weight": 1.033,
+    "yakuhai_weight": 0.983,
+    "flush_weight": 1.061,
+    "tanyao_weight": 1.016,
+    "call_weight": 0.977,
+    "riichi_weight": 1.069,
+    "defense_weight": 0.951,
+    "push_weight": 1.072,
+    "talent": 1.081
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1428.3,
+   "peak_elo": 1535.07,
+   "volatility": 1.68,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 22,
+   "placements": [
+    3,
+    6,
+    6,
+    7
+   ],
+   "total_points": -100.5,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 13,
+     "points": -43.2
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-006",
+   "league": "C",
+   "params": {
+    "speed_weight": 2.984,
+    "dora_weight": 6.313,
+    "yakuhai_weight": 7.821,
+    "flush_weight": 8.399,
+    "tanyao_weight": 4.353,
+    "call_weight": 3.521,
+    "riichi_weight": 8.292,
+    "defense_weight": 6.211,
+    "push_weight": 8.785
+   },
+   "talent": 0.506,
+   "clan_root_id": "C0-006",
+   "display_name": "中野雄大",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 36,
+   "age_multipliers": {
+    "speed_weight": 1.006,
+    "dora_weight": 1.035,
+    "yakuhai_weight": 1.083,
+    "flush_weight": 1.014,
+    "tanyao_weight": 0.954,
+    "call_weight": 0.953,
+    "riichi_weight": 1.049,
+    "defense_weight": 0.994,
+    "push_weight": 0.998,
+    "talent": 1.053
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1500.94,
+   "peak_elo": 1520.82,
+   "volatility": 0.53,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 21,
+   "placements": [
+    3,
+    6,
+    9,
+    3
+   ],
+   "total_points": -52.5,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 14,
+     "points": -57.1
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-009",
+   "league": "C",
+   "params": {
+    "speed_weight": 8.27,
+    "dora_weight": 1.968,
+    "yakuhai_weight": 4.611,
+    "flush_weight": 9.597,
+    "tanyao_weight": 7.085,
+    "call_weight": 3.764,
+    "riichi_weight": 3.152,
+    "defense_weight": 1.197,
+    "push_weight": 2.63
+   },
+   "talent": 0.642,
+   "clan_root_id": "C0-009",
+   "display_name": "小林麻衣",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 41,
+   "age_multipliers": {
+    "speed_weight": 1.036,
+    "dora_weight": 1.061,
+    "yakuhai_weight": 0.956,
+    "flush_weight": 0.968,
+    "tanyao_weight": 1.039,
+    "call_weight": 0.983,
+    "riichi_weight": 0.969,
+    "defense_weight": 1.093,
+    "push_weight": 1.036,
+    "talent": 1.038
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1419.13,
+   "peak_elo": 1522.59,
+   "volatility": 0.34,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 19,
+   "placements": [
+    3,
+    3,
+    6,
+    7
+   ],
+   "total_points": -159.2,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 15,
+     "points": -76.7
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-005",
+   "league": "C",
+   "params": {
+    "speed_weight": 5.061,
+    "dora_weight": 7.191,
+    "yakuhai_weight": 7.574,
+    "flush_weight": 9.197,
+    "tanyao_weight": 8.978,
+    "call_weight": 1.076,
+    "riichi_weight": 6.473,
+    "defense_weight": 1.117,
+    "push_weight": 2.063
+   },
+   "talent": 0.531,
+   "clan_root_id": "C0-005",
+   "display_name": "大野深雪",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 61,
+   "age_multipliers": {
+    "speed_weight": 0.869,
+    "dora_weight": 0.906,
+    "yakuhai_weight": 0.947,
+    "flush_weight": 1.013,
+    "tanyao_weight": 0.929,
+    "call_weight": 0.962,
+    "riichi_weight": 0.942,
+    "defense_weight": 0.99,
+    "push_weight": 0.866,
+    "talent": 0.865
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1458.64,
+   "peak_elo": 1508.27,
+   "volatility": 1.23,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 19,
+   "placements": [
+    4,
+    2,
+    6,
+    7
+   ],
+   "total_points": -142.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 16,
+     "points": -113.2
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-004",
+   "league": "C",
+   "params": {
+    "speed_weight": 1.166,
+    "dora_weight": 3.926,
+    "yakuhai_weight": 8.836,
+    "flush_weight": 9.543,
+    "tanyao_weight": 7.564,
+    "call_weight": 6.973,
+    "riichi_weight": 6.429,
+    "defense_weight": 3.515,
+    "push_weight": 9.929
+   },
+   "talent": 0.621,
+   "clan_root_id": "D0-004",
+   "display_name": "近藤凛",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 24,
+   "age_multipliers": {
+    "speed_weight": 1.03,
+    "dora_weight": 0.962,
+    "yakuhai_weight": 1.046,
+    "flush_weight": 1.085,
+    "tanyao_weight": 0.966,
+    "call_weight": 1.091,
+    "riichi_weight": 1.049,
+    "defense_weight": 1.032,
+    "push_weight": 1.056,
+    "talent": 1.023
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1565.37,
+   "peak_elo": 1589.96,
+   "volatility": 0.6,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 21,
+   "placements": [
+    7,
+    7,
+    4,
+    3
+   ],
+   "total_points": 174.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 1,
+     "points": 115.2
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-008",
+   "league": "C",
+   "params": {
+    "speed_weight": 8.784,
+    "dora_weight": 4.873,
+    "yakuhai_weight": 3.472,
+    "flush_weight": 7.169,
+    "tanyao_weight": 3.211,
+    "call_weight": 6.619,
+    "riichi_weight": 3.215,
+    "defense_weight": 3.08,
+    "push_weight": 9.704
+   },
+   "talent": 0.584,
+   "clan_root_id": "D0-008",
+   "display_name": "安藤颯",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 65,
+   "age_multipliers": {
+    "speed_weight": 0.86,
+    "dora_weight": 0.958,
+    "yakuhai_weight": 1.004,
+    "flush_weight": 0.994,
+    "tanyao_weight": 0.98,
+    "call_weight": 0.933,
+    "riichi_weight": 0.943,
+    "defense_weight": 0.924,
+    "push_weight": 0.897,
+    "talent": 0.989
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1509.95,
+   "peak_elo": 1581.56,
+   "volatility": 2.0,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 19,
+   "placements": [
+    8,
+    3,
+    3,
+    5
+   ],
+   "total_points": 71.0,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 2,
+     "points": 90.0
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-002",
+   "league": "C",
+   "params": {
+    "speed_weight": 4.825,
+    "dora_weight": 5.873,
+    "yakuhai_weight": 3.589,
+    "flush_weight": 2.024,
+    "tanyao_weight": 1.44,
+    "call_weight": 9.177,
+    "riichi_weight": 9.758,
+    "defense_weight": 6.022,
+    "push_weight": 5.41
+   },
+   "talent": 0.598,
+   "clan_root_id": "D0-002",
+   "display_name": "太田花子",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 36,
+   "age_multipliers": {
+    "speed_weight": 1.004,
+    "dora_weight": 1.054,
+    "yakuhai_weight": 1.084,
+    "flush_weight": 1.067,
+    "tanyao_weight": 1.082,
+    "call_weight": 1.088,
+    "riichi_weight": 1.037,
+    "defense_weight": 0.985,
+    "push_weight": 0.957,
+    "talent": 1.018
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1546.86,
+   "peak_elo": 1565.4,
+   "volatility": 1.73,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 22,
+   "placements": [
+    6,
+    8,
+    4,
+    4
+   ],
+   "total_points": 89.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 3,
+     "points": 79.3
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-019",
+   "league": "C",
+   "params": {
+    "speed_weight": 1.391,
+    "dora_weight": 3.299,
+    "yakuhai_weight": 3.839,
+    "flush_weight": 0.926,
+    "tanyao_weight": 6.741,
+    "call_weight": 9.705,
+    "riichi_weight": 4.079,
+    "defense_weight": 4.998,
+    "push_weight": 6.724
+   },
+   "talent": 0.573,
+   "clan_root_id": "D0-019",
+   "display_name": "森田香織",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 27,
+   "age_multipliers": {
+    "speed_weight": 1.067,
+    "dora_weight": 1.047,
+    "yakuhai_weight": 1.075,
+    "flush_weight": 0.964,
+    "tanyao_weight": 1.128,
+    "call_weight": 1.005,
+    "riichi_weight": 1.128,
+    "defense_weight": 1.032,
+    "push_weight": 1.003,
+    "talent": 1.117
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1452.25,
+   "peak_elo": 1577.42,
+   "volatility": 1.67,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 17,
+   "placements": [
+    5,
+    3,
+    3,
+    6
+   ],
+   "total_points": -20.5,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 4,
+     "points": 73.3
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-003",
+   "league": "C",
+   "params": {
+    "speed_weight": 6.693,
+    "dora_weight": 6.39,
+    "yakuhai_weight": 1.198,
+    "flush_weight": 7.627,
+    "tanyao_weight": 3.63,
+    "call_weight": 5.94,
+    "riichi_weight": 5.014,
+    "defense_weight": 5.662,
+    "push_weight": 3.748
+   },
+   "talent": 0.609,
+   "clan_root_id": "B0-003",
+   "display_name": "大久保和彦",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 60,
+   "age_multipliers": {
+    "speed_weight": 0.976,
+    "dora_weight": 0.951,
+    "yakuhai_weight": 0.892,
+    "flush_weight": 1.017,
+    "tanyao_weight": 1.011,
+    "call_weight": 0.879,
+    "riichi_weight": 0.966,
+    "defense_weight": 0.944,
+    "push_weight": 0.992,
+    "talent": 0.927
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1366.13,
+   "peak_elo": 1500.0,
+   "volatility": 0.8,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 19,
+   "placements": [
+    2,
+    2,
+    5,
+    10
+   ],
+   "total_points": -233.4,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 16,
+     "points": -143.3
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-014",
+   "league": "C",
+   "params": {
+    "speed_weight": 8.532,
+    "dora_weight": 6.594,
+    "yakuhai_weight": 8.932,
+    "flush_weight": 8.459,
+    "tanyao_weight": 7.883,
+    "call_weight": 6.257,
+    "riichi_weight": 0.817,
+    "defense_weight": 7.981,
+    "push_weight": 0.651
+   },
+   "talent": 0.617,
+   "clan_root_id": "B0-014",
+   "display_name": "竹中陽向",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 63,
+   "age_multipliers": {
+    "speed_weight": 0.855,
+    "dora_weight": 0.903,
+    "yakuhai_weight": 0.929,
+    "flush_weight": 1.0,
+    "tanyao_weight": 0.965,
+    "call_weight": 0.94,
+    "riichi_weight": 1.005,
+    "defense_weight": 0.929,
+    "push_weight": 0.986,
+    "talent": 0.863
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1419.35,
+   "peak_elo": 1500.0,
+   "volatility": 1.0,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 19,
+   "placements": [
+    3,
+    3,
+    5,
+    8
+   ],
+   "total_points": -175.8,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 15,
+     "points": -131.5
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "B0-009",
+   "league": "C",
+   "params": {
+    "speed_weight": 7.346,
+    "dora_weight": 8.428,
+    "yakuhai_weight": 5.688,
+    "flush_weight": 3.193,
+    "tanyao_weight": 4.19,
+    "call_weight": 4.839,
+    "riichi_weight": 4.981,
+    "defense_weight": 4.442,
+    "push_weight": 4.627
+   },
+   "talent": 0.625,
+   "clan_root_id": "B0-009",
+   "display_name": "工藤昌弘",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 25,
+   "age_multipliers": {
+    "speed_weight": 1.111,
+    "dora_weight": 1.014,
+    "yakuhai_weight": 0.954,
+    "flush_weight": 0.963,
+    "tanyao_weight": 1.049,
+    "call_weight": 1.084,
+    "riichi_weight": 1.137,
+    "defense_weight": 1.091,
+    "push_weight": 1.046,
+    "talent": 1.066
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1439.27,
+   "peak_elo": 1524.67,
+   "volatility": 0.77,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 20,
+   "placements": [
+    2,
+    6,
+    6,
+    6
+   ],
+   "total_points": -98.6,
+   "career": [
+    {
+     "season": 1,
+     "league": "B",
+     "rank": 14,
+     "points": -96.8
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-023",
+   "league": "C",
+   "params": {
+    "speed_weight": 8.577,
+    "dora_weight": 0.536,
+    "yakuhai_weight": 6.076,
+    "flush_weight": 7.407,
+    "tanyao_weight": 8.62,
+    "call_weight": 6.949,
+    "riichi_weight": 8.684,
+    "defense_weight": 3.426,
+    "push_weight": 3.937
+   },
+   "talent": 0.563,
+   "clan_root_id": "D0-023",
+   "display_name": "海野詩織",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 33,
+   "age_multipliers": {
+    "speed_weight": 1.054,
+    "dora_weight": 1.086,
+    "yakuhai_weight": 1.035,
+    "flush_weight": 0.96,
+    "tanyao_weight": 1.046,
+    "call_weight": 0.97,
+    "riichi_weight": 0.977,
+    "defense_weight": 0.951,
+    "push_weight": 0.976,
+    "talent": 1.011
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1520.88,
+   "peak_elo": 1565.63,
+   "volatility": 1.88,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 22,
+   "placements": [
+    7,
+    5,
+    4,
+    6
+   ],
+   "total_points": 37.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 5,
+     "points": 72.0
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  }
+ ],
+ "D": [
+  {
+   "id": "D0-013",
+   "league": "D",
+   "params": {
+    "speed_weight": 1.469,
+    "dora_weight": 7.804,
+    "yakuhai_weight": 8.947,
+    "flush_weight": 0.874,
+    "tanyao_weight": 3.475,
+    "call_weight": 6.711,
+    "riichi_weight": 8.387,
+    "defense_weight": 8.889,
+    "push_weight": 5.43
+   },
+   "talent": 0.511,
+   "clan_root_id": "D0-013",
+   "display_name": "藤原大和",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 33,
+   "age_multipliers": {
+    "speed_weight": 0.953,
+    "dora_weight": 0.973,
+    "yakuhai_weight": 1.001,
+    "flush_weight": 1.087,
+    "tanyao_weight": 1.016,
+    "call_weight": 0.998,
+    "riichi_weight": 1.084,
+    "defense_weight": 1.082,
+    "push_weight": 1.04,
+    "talent": 1.019
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1528.88,
+   "peak_elo": 1585.87,
+   "volatility": 1.93,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 20,
+   "placements": [
+    4,
+    9,
+    2,
+    5
+   ],
+   "total_points": 19.3,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 6,
+     "points": 59.7
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-003",
+   "league": "D",
+   "params": {
+    "speed_weight": 4.26,
+    "dora_weight": 7.865,
+    "yakuhai_weight": 9.596,
+    "flush_weight": 7.533,
+    "tanyao_weight": 9.741,
+    "call_weight": 4.966,
+    "riichi_weight": 8.14,
+    "defense_weight": 7.502,
+    "push_weight": 1.776
+   },
+   "talent": 0.413,
+   "clan_root_id": "D0-003",
+   "display_name": "竹田拓也",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 36,
+   "age_multipliers": {
+    "speed_weight": 1.078,
+    "dora_weight": 0.991,
+    "yakuhai_weight": 0.963,
+    "flush_weight": 1.038,
+    "tanyao_weight": 0.959,
+    "call_weight": 1.082,
+    "riichi_weight": 0.976,
+    "defense_weight": 1.002,
+    "push_weight": 1.061,
+    "talent": 0.961
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1492.25,
+   "peak_elo": 1550.51,
+   "volatility": 1.33,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 16,
+   "placements": [
+    4,
+    3,
+    8,
+    1
+   ],
+   "total_points": 2.6,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 7,
+     "points": 58.9
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-014",
+   "league": "D",
+   "params": {
+    "speed_weight": 7.172,
+    "dora_weight": 5.166,
+    "yakuhai_weight": 3.17,
+    "flush_weight": 8.843,
+    "tanyao_weight": 1.061,
+    "call_weight": 9.566,
+    "riichi_weight": 3.789,
+    "defense_weight": 5.727,
+    "push_weight": 5.8
+   },
+   "talent": 0.555,
+   "clan_root_id": "D0-014",
+   "display_name": "森本亜紀子",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 28,
+   "age_multipliers": {
+    "speed_weight": 1.02,
+    "dora_weight": 0.955,
+    "yakuhai_weight": 1.013,
+    "flush_weight": 0.962,
+    "tanyao_weight": 1.031,
+    "call_weight": 1.144,
+    "riichi_weight": 1.087,
+    "defense_weight": 1.149,
+    "push_weight": 1.14,
+    "talent": 1.011
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1481.63,
+   "peak_elo": 1564.49,
+   "volatility": 1.52,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 18,
+   "placements": [
+    4,
+    5,
+    5,
+    4
+   ],
+   "total_points": -49.3,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 8,
+     "points": 47.8
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-015",
+   "league": "D",
+   "params": {
+    "speed_weight": 7.797,
+    "dora_weight": 6.228,
+    "yakuhai_weight": 2.659,
+    "flush_weight": 5.442,
+    "tanyao_weight": 1.317,
+    "call_weight": 5.569,
+    "riichi_weight": 2.085,
+    "defense_weight": 6.663,
+    "push_weight": 9.163
+   },
+   "talent": 0.561,
+   "clan_root_id": "D0-015",
+   "display_name": "佐々木健一",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 58,
+   "age_multipliers": {
+    "speed_weight": 0.938,
+    "dora_weight": 0.952,
+    "yakuhai_weight": 1.035,
+    "flush_weight": 1.043,
+    "tanyao_weight": 0.912,
+    "call_weight": 0.968,
+    "riichi_weight": 0.943,
+    "defense_weight": 0.931,
+    "push_weight": 0.903,
+    "talent": 1.037
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1488.84,
+   "peak_elo": 1546.44,
+   "volatility": 0.59,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 20,
+   "placements": [
+    5,
+    3,
+    8,
+    4
+   ],
+   "total_points": 0.7,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 9,
+     "points": 43.3
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-016",
+   "league": "D",
+   "params": {
+    "speed_weight": 4.023,
+    "dora_weight": 8.25,
+    "yakuhai_weight": 9.656,
+    "flush_weight": 6.881,
+    "tanyao_weight": 9.923,
+    "call_weight": 5.231,
+    "riichi_weight": 9.352,
+    "defense_weight": 3.24,
+    "push_weight": 2.414
+   },
+   "talent": 0.483,
+   "clan_root_id": "D0-016",
+   "display_name": "遠山亜美",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 33,
+   "age_multipliers": {
+    "speed_weight": 1.02,
+    "dora_weight": 0.98,
+    "yakuhai_weight": 0.969,
+    "flush_weight": 1.086,
+    "tanyao_weight": 1.056,
+    "call_weight": 0.999,
+    "riichi_weight": 0.963,
+    "defense_weight": 0.976,
+    "push_weight": 1.04,
+    "talent": 1.069
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1472.85,
+   "peak_elo": 1526.65,
+   "volatility": 1.55,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 17,
+   "placements": [
+    3,
+    4,
+    6,
+    4
+   ],
+   "total_points": 8.7,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 10,
+     "points": 41.8
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-001",
+   "league": "D",
+   "params": {
+    "speed_weight": 3.235,
+    "dora_weight": 2.012,
+    "yakuhai_weight": 9.326,
+    "flush_weight": 9.126,
+    "tanyao_weight": 2.483,
+    "call_weight": 9.963,
+    "riichi_weight": 2.8,
+    "defense_weight": 6.316,
+    "push_weight": 8.188
+   },
+   "talent": 0.613,
+   "clan_root_id": "D0-001",
+   "display_name": "田端香織",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 57,
+   "age_multipliers": {
+    "speed_weight": 0.982,
+    "dora_weight": 0.987,
+    "yakuhai_weight": 0.966,
+    "flush_weight": 0.947,
+    "tanyao_weight": 0.99,
+    "call_weight": 0.997,
+    "riichi_weight": 1.015,
+    "defense_weight": 0.908,
+    "push_weight": 1.05,
+    "talent": 0.987
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1515.3,
+   "peak_elo": 1540.86,
+   "volatility": 0.48,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 20,
+   "placements": [
+    5,
+    6,
+    5,
+    4
+   ],
+   "total_points": 14.6,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 11,
+     "points": 32.2
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-007",
+   "league": "D",
+   "params": {
+    "speed_weight": 3.995,
+    "dora_weight": 9.678,
+    "yakuhai_weight": 7.533,
+    "flush_weight": 4.683,
+    "tanyao_weight": 1.081,
+    "call_weight": 5.403,
+    "riichi_weight": 2.484,
+    "defense_weight": 2.618,
+    "push_weight": 2.245
+   },
+   "talent": 0.563,
+   "clan_root_id": "D0-007",
+   "display_name": "武田沙織",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 65,
+   "age_multipliers": {
+    "speed_weight": 0.944,
+    "dora_weight": 0.954,
+    "yakuhai_weight": 0.865,
+    "flush_weight": 0.945,
+    "tanyao_weight": 0.99,
+    "call_weight": 0.973,
+    "riichi_weight": 1.015,
+    "defense_weight": 0.963,
+    "push_weight": 1.005,
+    "talent": 0.966
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1521.74,
+   "peak_elo": 1567.32,
+   "volatility": 1.46,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 20,
+   "placements": [
+    5,
+    6,
+    6,
+    3
+   ],
+   "total_points": 19.4,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 12,
+     "points": 29.5
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-005",
+   "league": "D",
+   "params": {
+    "speed_weight": 1.048,
+    "dora_weight": 3.313,
+    "yakuhai_weight": 9.502,
+    "flush_weight": 7.944,
+    "tanyao_weight": 9.312,
+    "call_weight": 1.284,
+    "riichi_weight": 5.291,
+    "defense_weight": 7.194,
+    "push_weight": 8.959
+   },
+   "talent": 0.554,
+   "clan_root_id": "D0-005",
+   "display_name": "上野秀一",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 38,
+   "age_multipliers": {
+    "speed_weight": 1.055,
+    "dora_weight": 0.994,
+    "yakuhai_weight": 1.073,
+    "flush_weight": 1.086,
+    "tanyao_weight": 1.088,
+    "call_weight": 0.992,
+    "riichi_weight": 1.044,
+    "defense_weight": 1.057,
+    "push_weight": 0.984,
+    "talent": 0.999
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1492.08,
+   "peak_elo": 1519.76,
+   "volatility": 0.32,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 16,
+   "placements": [
+    3,
+    6,
+    3,
+    4
+   ],
+   "total_points": 0.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 13,
+     "points": 17.1
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-020",
+   "league": "D",
+   "params": {
+    "speed_weight": 2.412,
+    "dora_weight": 8.012,
+    "yakuhai_weight": 7.398,
+    "flush_weight": 9.929,
+    "tanyao_weight": 7.069,
+    "call_weight": 8.441,
+    "riichi_weight": 5.809,
+    "defense_weight": 8.855,
+    "push_weight": 2.56
+   },
+   "talent": 0.477,
+   "clan_root_id": "D0-020",
+   "display_name": "長谷川颯太",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 32,
+   "age_multipliers": {
+    "speed_weight": 0.955,
+    "dora_weight": 1.076,
+    "yakuhai_weight": 1.04,
+    "flush_weight": 1.098,
+    "tanyao_weight": 1.006,
+    "call_weight": 0.994,
+    "riichi_weight": 0.991,
+    "defense_weight": 1.075,
+    "push_weight": 1.014,
+    "talent": 1.024
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1531.65,
+   "peak_elo": 1562.88,
+   "volatility": 0.97,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 26,
+   "placements": [
+    5,
+    9,
+    8,
+    4
+   ],
+   "total_points": 5.4,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 14,
+     "points": 16.5
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-018",
+   "league": "D",
+   "params": {
+    "speed_weight": 2.684,
+    "dora_weight": 4.628,
+    "yakuhai_weight": 9.795,
+    "flush_weight": 1.25,
+    "tanyao_weight": 1.873,
+    "call_weight": 3.385,
+    "riichi_weight": 4.047,
+    "defense_weight": 1.024,
+    "push_weight": 6.344
+   },
+   "talent": 0.569,
+   "clan_root_id": "D0-018",
+   "display_name": "伊藤正人",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 57,
+   "age_multipliers": {
+    "speed_weight": 1.043,
+    "dora_weight": 1.017,
+    "yakuhai_weight": 0.925,
+    "flush_weight": 0.928,
+    "tanyao_weight": 0.947,
+    "call_weight": 0.99,
+    "riichi_weight": 1.048,
+    "defense_weight": 1.016,
+    "push_weight": 0.972,
+    "talent": 0.97
+   },
+   "consecutive_losing_seasons": 1,
+   "elo": 1456.38,
+   "peak_elo": 1522.87,
+   "volatility": 1.73,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 15,
+   "placements": [
+    4,
+    2,
+    4,
+    5
+   ],
+   "total_points": -61.1,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 15,
+     "points": -18.4
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-010",
+   "league": "D",
+   "params": {
+    "speed_weight": 1.663,
+    "dora_weight": 2.328,
+    "yakuhai_weight": 3.978,
+    "flush_weight": 5.254,
+    "tanyao_weight": 2.87,
+    "call_weight": 4.294,
+    "riichi_weight": 5.726,
+    "defense_weight": 4.688,
+    "push_weight": 1.891
+   },
+   "talent": 0.476,
+   "clan_root_id": "D0-010",
+   "display_name": "小林陽介",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 20,
+   "age_multipliers": {
+    "speed_weight": 1.015,
+    "dora_weight": 1.005,
+    "yakuhai_weight": 1.018,
+    "flush_weight": 0.975,
+    "tanyao_weight": 0.995,
+    "call_weight": 1.135,
+    "riichi_weight": 1.146,
+    "defense_weight": 1.008,
+    "push_weight": 1.103,
+    "talent": 1.071
+   },
+   "consecutive_losing_seasons": 1,
+   "elo": 1447.9,
+   "peak_elo": 1554.55,
+   "volatility": 1.71,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 21,
+   "placements": [
+    4,
+    5,
+    7,
+    5
+   ],
+   "total_points": -65.5,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 16,
+     "points": -30.7
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-009",
+   "league": "D",
+   "params": {
+    "speed_weight": 5.44,
+    "dora_weight": 6.337,
+    "yakuhai_weight": 5.868,
+    "flush_weight": 7.424,
+    "tanyao_weight": 7.852,
+    "call_weight": 6.421,
+    "riichi_weight": 2.94,
+    "defense_weight": 2.694,
+    "push_weight": 6.605
+   },
+   "talent": 0.533,
+   "clan_root_id": "D0-009",
+   "display_name": "小田島利明",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 61,
+   "age_multipliers": {
+    "speed_weight": 0.867,
+    "dora_weight": 0.861,
+    "yakuhai_weight": 0.908,
+    "flush_weight": 0.922,
+    "tanyao_weight": 0.887,
+    "call_weight": 0.877,
+    "riichi_weight": 0.967,
+    "defense_weight": 0.852,
+    "push_weight": 0.969,
+    "talent": 0.853
+   },
+   "consecutive_losing_seasons": 1,
+   "elo": 1475.55,
+   "peak_elo": 1507.53,
+   "volatility": 0.71,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 15,
+   "placements": [
+    2,
+    4,
+    5,
+    4
+   ],
+   "total_points": -63.9,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 17,
+     "points": -34.5
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-012",
+   "league": "D",
+   "params": {
+    "speed_weight": 9.46,
+    "dora_weight": 3.296,
+    "yakuhai_weight": 4.735,
+    "flush_weight": 4.849,
+    "tanyao_weight": 5.106,
+    "call_weight": 3.983,
+    "riichi_weight": 2.873,
+    "defense_weight": 3.495,
+    "push_weight": 1.68
+   },
+   "talent": 0.612,
+   "clan_root_id": "D0-012",
+   "display_name": "小田島正人",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 53,
+   "age_multipliers": {
+    "speed_weight": 1.035,
+    "dora_weight": 1.035,
+    "yakuhai_weight": 0.986,
+    "flush_weight": 0.948,
+    "tanyao_weight": 0.96,
+    "call_weight": 0.953,
+    "riichi_weight": 0.973,
+    "defense_weight": 0.982,
+    "push_weight": 0.947,
+    "talent": 1.019
+   },
+   "consecutive_losing_seasons": 1,
+   "elo": 1480.23,
+   "peak_elo": 1524.59,
+   "volatility": 1.56,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 15,
+   "placements": [
+    2,
+    5,
+    5,
+    3
+   ],
+   "total_points": -70.5,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 18,
+     "points": -42.6
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-021",
+   "league": "D",
+   "params": {
+    "speed_weight": 4.663,
+    "dora_weight": 2.605,
+    "yakuhai_weight": 6.044,
+    "flush_weight": 1.778,
+    "tanyao_weight": 5.705,
+    "call_weight": 0.636,
+    "riichi_weight": 6.381,
+    "defense_weight": 8.933,
+    "push_weight": 5.919
+   },
+   "talent": 0.553,
+   "clan_root_id": "D0-021",
+   "display_name": "久保葵",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 56,
+   "age_multipliers": {
+    "speed_weight": 0.903,
+    "dora_weight": 0.945,
+    "yakuhai_weight": 0.919,
+    "flush_weight": 0.905,
+    "tanyao_weight": 0.921,
+    "call_weight": 1.002,
+    "riichi_weight": 1.045,
+    "defense_weight": 1.011,
+    "push_weight": 1.049,
+    "talent": 0.98
+   },
+   "consecutive_losing_seasons": 1,
+   "elo": 1471.02,
+   "peak_elo": 1516.73,
+   "volatility": 1.74,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 16,
+   "placements": [
+    3,
+    4,
+    5,
+    4
+   ],
+   "total_points": -49.2,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 19,
+     "points": -65.1
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-011",
+   "league": "D",
+   "params": {
+    "speed_weight": 7.224,
+    "dora_weight": 3.791,
+    "yakuhai_weight": 1.374,
+    "flush_weight": 6.616,
+    "tanyao_weight": 1.285,
+    "call_weight": 8.116,
+    "riichi_weight": 5.202,
+    "defense_weight": 2.829,
+    "push_weight": 8.861
+   },
+   "talent": 0.433,
+   "clan_root_id": "D0-011",
+   "display_name": "田口杏子",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 29,
+   "age_multipliers": {
+    "speed_weight": 1.106,
+    "dora_weight": 0.95,
+    "yakuhai_weight": 0.952,
+    "flush_weight": 0.959,
+    "tanyao_weight": 1.006,
+    "call_weight": 1.107,
+    "riichi_weight": 1.12,
+    "defense_weight": 1.105,
+    "push_weight": 1.099,
+    "talent": 1.062
+   },
+   "consecutive_losing_seasons": 1,
+   "elo": 1461.2,
+   "peak_elo": 1524.66,
+   "volatility": 1.45,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 17,
+   "placements": [
+    3,
+    5,
+    4,
+    5
+   ],
+   "total_points": -61.0,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 20,
+     "points": -68.2
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-022",
+   "league": "D",
+   "params": {
+    "speed_weight": 0.872,
+    "dora_weight": 1.0,
+    "yakuhai_weight": 4.842,
+    "flush_weight": 4.435,
+    "tanyao_weight": 0.501,
+    "call_weight": 1.542,
+    "riichi_weight": 4.613,
+    "defense_weight": 5.013,
+    "push_weight": 5.058
+   },
+   "talent": 0.525,
+   "clan_root_id": "D0-022",
+   "display_name": "大槻陽向",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 45,
+   "age_multipliers": {
+    "speed_weight": 0.927,
+    "dora_weight": 1.029,
+    "yakuhai_weight": 0.979,
+    "flush_weight": 1.027,
+    "tanyao_weight": 1.01,
+    "call_weight": 1.002,
+    "riichi_weight": 0.93,
+    "defense_weight": 0.908,
+    "push_weight": 1.042,
+    "talent": 0.919
+   },
+   "consecutive_losing_seasons": 1,
+   "elo": 1451.95,
+   "peak_elo": 1500.73,
+   "volatility": 0.95,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 19,
+   "placements": [
+    2,
+    6,
+    4,
+    7
+   ],
+   "total_points": -127.3,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 21,
+     "points": -85.2
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-000",
+   "league": "D",
+   "params": {
+    "speed_weight": 7.616,
+    "dora_weight": 1.944,
+    "yakuhai_weight": 8.09,
+    "flush_weight": 1.848,
+    "tanyao_weight": 7.439,
+    "call_weight": 2.224,
+    "riichi_weight": 2.716,
+    "defense_weight": 4.278,
+    "push_weight": 3.691
+   },
+   "talent": 0.411,
+   "clan_root_id": "D0-000",
+   "display_name": "阿部尚志",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 39,
+   "age_multipliers": {
+    "speed_weight": 1.079,
+    "dora_weight": 1.029,
+    "yakuhai_weight": 0.966,
+    "flush_weight": 0.991,
+    "tanyao_weight": 0.983,
+    "call_weight": 1.093,
+    "riichi_weight": 1.081,
+    "defense_weight": 1.089,
+    "push_weight": 1.076,
+    "talent": 1.063
+   },
+   "consecutive_losing_seasons": 1,
+   "elo": 1430.32,
+   "peak_elo": 1512.32,
+   "volatility": 1.63,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 16,
+   "placements": [
+    2,
+    2,
+    8,
+    4
+   ],
+   "total_points": -120.8,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 22,
+     "points": -88.5
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "D0-006",
+   "league": "D",
+   "params": {
+    "speed_weight": 5.587,
+    "dora_weight": 6.788,
+    "yakuhai_weight": 1.688,
+    "flush_weight": 4.392,
+    "tanyao_weight": 5.817,
+    "call_weight": 6.863,
+    "riichi_weight": 1.3,
+    "defense_weight": 7.163,
+    "push_weight": 8.41
+   },
+   "talent": 0.491,
+   "clan_root_id": "D0-006",
+   "display_name": "吉田優子",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 52,
+   "age_multipliers": {
+    "speed_weight": 0.995,
+    "dora_weight": 0.953,
+    "yakuhai_weight": 0.967,
+    "flush_weight": 0.983,
+    "tanyao_weight": 0.902,
+    "call_weight": 0.932,
+    "riichi_weight": 1.042,
+    "defense_weight": 0.984,
+    "push_weight": 0.912,
+    "talent": 0.937
+   },
+   "consecutive_losing_seasons": 1,
+   "elo": 1421.35,
+   "peak_elo": 1500.0,
+   "volatility": 1.4,
+   "seasons_in_league": 1,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 16,
+   "placements": [
+    3,
+    2,
+    2,
+    9
+   ],
+   "total_points": -156.4,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 23,
+     "points": -95.8
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-014",
+   "league": "D",
+   "params": {
+    "speed_weight": 9.214,
+    "dora_weight": 0.761,
+    "yakuhai_weight": 2.474,
+    "flush_weight": 9.711,
+    "tanyao_weight": 8.473,
+    "call_weight": 3.323,
+    "riichi_weight": 4.673,
+    "defense_weight": 6.537,
+    "push_weight": 9.157
+   },
+   "talent": 0.523,
+   "clan_root_id": "C0-014",
+   "display_name": "小澤沙織",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 28,
+   "age_multipliers": {
+    "speed_weight": 1.06,
+    "dora_weight": 0.955,
+    "yakuhai_weight": 1.099,
+    "flush_weight": 1.149,
+    "tanyao_weight": 1.005,
+    "call_weight": 0.962,
+    "riichi_weight": 1.121,
+    "defense_weight": 1.024,
+    "push_weight": 1.1,
+    "talent": 1.136
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1415.18,
+   "peak_elo": 1500.0,
+   "volatility": 0.62,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 20,
+   "placements": [
+    3,
+    2,
+    7,
+    8
+   ],
+   "total_points": -211.8,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 20,
+     "points": -172.8
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-013",
+   "league": "D",
+   "params": {
+    "speed_weight": 9.232,
+    "dora_weight": 2.311,
+    "yakuhai_weight": 4.019,
+    "flush_weight": 9.415,
+    "tanyao_weight": 7.535,
+    "call_weight": 9.27,
+    "riichi_weight": 1.165,
+    "defense_weight": 4.286,
+    "push_weight": 3.722
+   },
+   "talent": 0.639,
+   "clan_root_id": "C0-013",
+   "display_name": "山内凛",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 48,
+   "age_multipliers": {
+    "speed_weight": 0.944,
+    "dora_weight": 0.961,
+    "yakuhai_weight": 1.017,
+    "flush_weight": 0.986,
+    "tanyao_weight": 1.045,
+    "call_weight": 1.01,
+    "riichi_weight": 1.041,
+    "defense_weight": 0.927,
+    "push_weight": 0.982,
+    "talent": 0.967
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1437.44,
+   "peak_elo": 1500.73,
+   "volatility": 1.87,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 22,
+   "placements": [
+    2,
+    6,
+    6,
+    8
+   ],
+   "total_points": -176.9,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 19,
+     "points": -162.4
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-016",
+   "league": "D",
+   "params": {
+    "speed_weight": 7.142,
+    "dora_weight": 2.894,
+    "yakuhai_weight": 3.895,
+    "flush_weight": 3.837,
+    "tanyao_weight": 5.109,
+    "call_weight": 8.396,
+    "riichi_weight": 9.678,
+    "defense_weight": 9.311,
+    "push_weight": 2.368
+   },
+   "talent": 0.529,
+   "clan_root_id": "C0-016",
+   "display_name": "松井亜紀子",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 34,
+   "age_multipliers": {
+    "speed_weight": 1.096,
+    "dora_weight": 1.032,
+    "yakuhai_weight": 1.084,
+    "flush_weight": 1.096,
+    "tanyao_weight": 1.072,
+    "call_weight": 1.025,
+    "riichi_weight": 0.998,
+    "defense_weight": 0.952,
+    "push_weight": 1.047,
+    "talent": 1.003
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1395.01,
+   "peak_elo": 1500.73,
+   "volatility": 1.87,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 20,
+   "placements": [
+    1,
+    5,
+    6,
+    8
+   ],
+   "total_points": -202.0,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 18,
+     "points": -127.8
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  },
+  {
+   "id": "C0-007",
+   "league": "D",
+   "params": {
+    "speed_weight": 7.17,
+    "dora_weight": 3.686,
+    "yakuhai_weight": 2.564,
+    "flush_weight": 6.415,
+    "tanyao_weight": 9.66,
+    "call_weight": 4.063,
+    "riichi_weight": 3.612,
+    "defense_weight": 8.858,
+    "push_weight": 2.069
+   },
+   "talent": 0.543,
+   "clan_root_id": "C0-007",
+   "display_name": "山岸尚哉",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 64,
+   "age_multipliers": {
+    "speed_weight": 0.977,
+    "dora_weight": 0.976,
+    "yakuhai_weight": 0.877,
+    "flush_weight": 0.915,
+    "tanyao_weight": 0.932,
+    "call_weight": 0.899,
+    "riichi_weight": 1.008,
+    "defense_weight": 0.901,
+    "push_weight": 0.964,
+    "talent": 1.017
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1420.51,
+   "peak_elo": 1500.0,
+   "volatility": 0.48,
+   "seasons_in_league": 0,
+   "total_seasons": 1,
+   "retired": false,
+   "games": 19,
+   "placements": [
+    2,
+    4,
+    5,
+    8
+   ],
+   "total_points": -167.8,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 17,
+     "points": -116.2
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null
+  }
+ ]
+}
