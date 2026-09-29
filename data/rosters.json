@@ -72,7 +72,10 @@
     "win_value": 314100,
     "dealin_value": 122700,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1356800,
+    "score_max": 62400,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -874,7 +877,10 @@
     "win_value": 478900,
     "dealin_value": 185000,
     "max_value": 32000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 1799800,
+    "score_max": 73200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -1741,7 +1747,10 @@
     "win_value": 334200,
     "dealin_value": 225100,
     "max_value": 32000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 1290500,
+    "score_max": 80700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -2548,7 +2557,10 @@
     "win_value": 294700,
     "dealin_value": 150200,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1257700,
+    "score_max": 50400,
+    "busts": 1
    },
    "elo_history": [
     [
@@ -3360,7 +3372,10 @@
     "win_value": 332800,
     "dealin_value": 106200,
     "max_value": 32000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 1317400,
+    "score_max": 70100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -4172,7 +4187,10 @@
     "win_value": 187100,
     "dealin_value": 78800,
     "max_value": 32000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 687100,
+    "score_max": 57800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -4763,7 +4781,10 @@
     "win_value": 233400,
     "dealin_value": 124900,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1051200,
+    "score_max": 59700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -5570,7 +5591,10 @@
     "win_value": 273500,
     "dealin_value": 149700,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1186500,
+    "score_max": 62500,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -6387,7 +6411,10 @@
     "win_value": 285100,
     "dealin_value": 133500,
     "max_value": 32000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 1054800,
+    "score_max": 61100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -7139,7 +7166,10 @@
     "win_value": 139800,
     "dealin_value": 109300,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 777000,
+    "score_max": 53600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -7812,7 +7842,10 @@
     "win_value": 156300,
     "dealin_value": 120600,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 771900,
+    "score_max": 49100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -8467,7 +8500,10 @@
     "win_value": 130200,
     "dealin_value": 79000,
     "max_value": 24000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 650300,
+    "score_max": 55800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -9086,7 +9122,10 @@
     "win_value": 198000,
     "dealin_value": 173000,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 706300,
+    "score_max": 63100,
+    "busts": 1
    },
    "elo_history": [
     [
@@ -9718,7 +9757,10 @@
     "win_value": 268300,
     "dealin_value": 76200,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1129100,
+    "score_max": 77700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -10505,7 +10547,10 @@
     "win_value": 233900,
     "dealin_value": 60300,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1041200,
+    "score_max": 77000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -11244,7 +11289,10 @@
     "win_value": 169400,
     "dealin_value": 81900,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 812600,
+    "score_max": 52500,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -11878,7 +11926,10 @@
     "win_value": 257200,
     "dealin_value": 87100,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1001400,
+    "score_max": 61000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -12652,7 +12703,10 @@
     "win_value": 128800,
     "dealin_value": 105600,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 626600,
+    "score_max": 62600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -13233,7 +13287,10 @@
     "win_value": 248700,
     "dealin_value": 162600,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1001000,
+    "score_max": 66200,
+    "busts": 1
    },
    "elo_history": [
     [
@@ -13990,7 +14047,10 @@
     "win_value": 336900,
     "dealin_value": 205500,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1377200,
+    "score_max": 59100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -14817,7 +14877,10 @@
     "win_value": 180000,
     "dealin_value": 124000,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 977500,
+    "score_max": 87900,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -15594,7 +15657,10 @@
     "win_value": 150400,
     "dealin_value": 92500,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 821100,
+    "score_max": 53000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -16292,7 +16358,10 @@
     "win_value": 248700,
     "dealin_value": 146000,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1074300,
+    "score_max": 66300,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -17064,7 +17133,10 @@
     "win_value": 139400,
     "dealin_value": 72300,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 743700,
+    "score_max": 52100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -17731,7 +17803,10 @@
     "win_value": 114900,
     "dealin_value": 41900,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 576200,
+    "score_max": 53100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -18296,7 +18371,10 @@
     "win_value": 108000,
     "dealin_value": 55900,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 567800,
+    "score_max": 43900,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -18833,7 +18911,10 @@
     "win_value": 82600,
     "dealin_value": 58700,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 612400,
+    "score_max": 36600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -19411,7 +19492,10 @@
     "win_value": 119500,
     "dealin_value": 101100,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 701200,
+    "score_max": 51000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -20058,7 +20142,10 @@
     "win_value": 158200,
     "dealin_value": 136900,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 681900,
+    "score_max": 46800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -20692,7 +20779,10 @@
     "win_value": 303300,
     "dealin_value": 100200,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 1120600,
+    "score_max": 60700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -21464,7 +21554,10 @@
     "win_value": 242600,
     "dealin_value": 82300,
     "max_value": 32000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 1067100,
+    "score_max": 65600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -22211,7 +22304,10 @@
     "win_value": 202500,
     "dealin_value": 62000,
     "max_value": 48000,
-    "yakuman": 1
+    "yakuman": 1,
+    "score_sum": 738600,
+    "score_max": 94600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -22794,7 +22890,10 @@
     "win_value": 140200,
     "dealin_value": 68400,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 630100,
+    "score_max": 59800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -23343,7 +23442,10 @@
     "win_value": 87300,
     "dealin_value": 58600,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 561400,
+    "score_max": 51100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -23885,7 +23987,10 @@
     "win_value": 60400,
     "dealin_value": 59000,
     "max_value": 24000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 479200,
+    "score_max": 42200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -24394,7 +24499,10 @@
     "win_value": 74200,
     "dealin_value": 52000,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 471600,
+    "score_max": 50200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -24903,7 +25011,10 @@
     "win_value": 137700,
     "dealin_value": 57700,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 887800,
+    "score_max": 46600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -25665,7 +25776,10 @@
     "win_value": 116200,
     "dealin_value": 48600,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 738400,
+    "score_max": 55300,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -26289,7 +26403,10 @@
     "win_value": 181800,
     "dealin_value": 63500,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 900100,
+    "score_max": 47000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -27043,7 +27160,10 @@
     "win_value": 49300,
     "dealin_value": 50500,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 560000,
+    "score_max": 43500,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -27590,7 +27710,10 @@
     "win_value": 97900,
     "dealin_value": 32000,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 566600,
+    "score_max": 42700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -28099,7 +28222,10 @@
     "win_value": 56800,
     "dealin_value": 68700,
     "max_value": 7900,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 633400,
+    "score_max": 39200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -28677,7 +28803,10 @@
     "win_value": 113000,
     "dealin_value": 33500,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 523900,
+    "score_max": 50300,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -29186,7 +29315,10 @@
     "win_value": 67300,
     "dealin_value": 63900,
     "max_value": 16000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 597300,
+    "score_max": 56400,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -29756,7 +29888,10 @@
     "win_value": 49300,
     "dealin_value": 40100,
     "max_value": 6400,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 619500,
+    "score_max": 39100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -30344,7 +30479,10 @@
     "win_value": 54600,
     "dealin_value": 41200,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 592500,
+    "score_max": 44700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -30904,7 +31042,10 @@
     "win_value": 80400,
     "dealin_value": 83000,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 485800,
+    "score_max": 45900,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -31418,7 +31559,10 @@
     "win_value": 86600,
     "dealin_value": 68700,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 492900,
+    "score_max": 45100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -31927,7 +32071,10 @@
     "win_value": 150700,
     "dealin_value": 63900,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 729100,
+    "score_max": 53000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -32502,7 +32649,10 @@
     "win_value": 87300,
     "dealin_value": 69300,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 606000,
+    "score_max": 50100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -33031,7 +33181,10 @@
     "win_value": 106200,
     "dealin_value": 66100,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 699100,
+    "score_max": 57800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -33634,7 +33787,10 @@
     "win_value": 68700,
     "dealin_value": 68600,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 504500,
+    "score_max": 48900,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -34122,7 +34278,10 @@
     "win_value": 108100,
     "dealin_value": 66400,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 677100,
+    "score_max": 52900,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -34727,7 +34886,10 @@
     "win_value": 74200,
     "dealin_value": 48200,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 502200,
+    "score_max": 37200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -35241,7 +35403,10 @@
     "win_value": 35900,
     "dealin_value": 27600,
     "max_value": 6400,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 508000,
+    "score_max": 46000,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -35788,7 +35953,10 @@
     "win_value": 73100,
     "dealin_value": 80000,
     "max_value": 7700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 573100,
+    "score_max": 44800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -36366,7 +36534,10 @@
     "win_value": 60600,
     "dealin_value": 76800,
     "max_value": 9600,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 488200,
+    "score_max": 41000,
+    "busts": 1
    },
    "elo_history": [
     [
@@ -36913,7 +37084,10 @@
     "win_value": 70100,
     "dealin_value": 29400,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 599300,
+    "score_max": 41400,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -37460,7 +37634,10 @@
     "win_value": 40900,
     "dealin_value": 25400,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 462600,
+    "score_max": 47100,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -37900,7 +38077,10 @@
     "win_value": 42400,
     "dealin_value": 47600,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 490700,
+    "score_max": 37600,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -38391,7 +38571,10 @@
     "win_value": 87700,
     "dealin_value": 25300,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 610700,
+    "score_max": 49800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -38938,7 +39121,10 @@
     "win_value": 100100,
     "dealin_value": 46400,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 543700,
+    "score_max": 78700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -39421,7 +39607,10 @@
     "win_value": 84500,
     "dealin_value": 51000,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 594600,
+    "score_max": 43700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -39978,7 +40167,10 @@
     "win_value": 65600,
     "dealin_value": 29500,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 594400,
+    "score_max": 44400,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -40535,7 +40727,10 @@
     "win_value": 73800,
     "dealin_value": 10500,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 485100,
+    "score_max": 44700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -40990,7 +41185,10 @@
     "win_value": 101700,
     "dealin_value": 45900,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 765400,
+    "score_max": 38200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -41695,7 +41893,10 @@
     "win_value": 56900,
     "dealin_value": 49900,
     "max_value": 7700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 418900,
+    "score_max": 44200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -42112,7 +42313,10 @@
     "win_value": 77300,
     "dealin_value": 47000,
     "max_value": 18000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 594500,
+    "score_max": 41400,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -42677,7 +42881,10 @@
     "win_value": 47300,
     "dealin_value": 28800,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 421100,
+    "score_max": 39200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -43099,7 +43306,10 @@
     "win_value": 26200,
     "dealin_value": 21900,
     "max_value": 6400,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 394500,
+    "score_max": 40700,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -43521,7 +43731,10 @@
     "win_value": 51500,
     "dealin_value": 43300,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 450800,
+    "score_max": 41500,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -43971,7 +44184,10 @@
     "win_value": 44700,
     "dealin_value": 22200,
     "max_value": 12000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 484000,
+    "score_max": 44800,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -44444,7 +44660,10 @@
     "win_value": 48500,
     "dealin_value": 48900,
     "max_value": 11700,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 507700,
+    "score_max": 42200,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -44968,7 +45187,10 @@
     "win_value": 20200,
     "dealin_value": 28800,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 419200,
+    "score_max": 39900,
+    "busts": 0
    },
    "elo_history": [
     [
@@ -45423,7 +45645,10 @@
     "win_value": 43700,
     "dealin_value": 58000,
     "max_value": 8000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 413600,
+    "score_max": 42500,
+    "busts": 0
    },
    "elo_history": [
     [

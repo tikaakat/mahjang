@@ -56,8 +56,7 @@ def simulate_hanchan(job):
         "final_scores": result["final_scores"], "placement": result["placement"], "points": result["points"],
         "rounds": [{"round": r["round"], "honba": r["honba"], **summarize_round(r)} for r in result["rounds"]],
     }
-    if keep_kifu:
-        out["kifu"] = compact_kifu(result["rounds"])
+    out["kifu"] = compact_kifu(result["rounds"])   # 牌譜は全半荘ぶん残す（keep_kifu は互換のため受け取るだけ）
     return out
 
 
@@ -132,7 +131,8 @@ def play_sessions(sessions, rng):
     for (s_idx, seats, event), res in zip(meta, results):
         update_elo_table(seats, res["placement"])
         for s, ind in enumerate(seats):
-            ind.record_game(res["placement"][s], res["points"][s], season=event.get("season"))
+            ind.record_game(res["placement"][s], res["points"][s], season=event.get("season"),
+                            score=res["final_scores"][s])
             ind.record_rounds(s, res["rounds"])
         record = {"event": event, "seats": [ind.id for ind in seats],
                   "names": [ind.display_name for ind in seats], **res}

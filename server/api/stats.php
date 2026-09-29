@@ -41,7 +41,7 @@ switch ($type) {
         json_out(['ok' => true, 'rows' => q($pdo, $sql, $b)]);
 
     case 'yakuman':
-        $sql = "SELECT r.game_id, g.season, g.kind, g.league, g.title, g.stage, r.round_name, r.type, r.yaku, r.value,
+        $sql = "SELECT r.game_id, r.idx, g.season, g.kind, g.league, g.title, g.stage, r.round_name, r.type, r.yaku, r.value,
                        r.winner_id, pw.name AS winner_name, r.loser_id, pl.name AS loser_name, g.has_kifu
                 FROM rounds r JOIN games g ON g.id = r.game_id
                 LEFT JOIN players pw ON pw.id = r.winner_id LEFT JOIN players pl ON pl.id = r.loser_id
@@ -49,7 +49,7 @@ switch ($type) {
         json_out(['ok' => true, 'rows' => q($pdo, $sql, $bind)]);
 
     case 'big_hands':
-        $sql = "SELECT r.game_id, g.season, g.kind, g.league, g.title, r.round_name, r.type, r.label, r.han, r.fu,
+        $sql = "SELECT r.game_id, r.idx, g.has_kifu, g.season, g.kind, g.league, g.title, r.round_name, r.type, r.label, r.han, r.fu,
                        r.yaku, r.value, r.winner_id, pw.name AS winner_name, pl.name AS loser_name
                 FROM rounds r JOIN games g ON g.id = r.game_id
                 LEFT JOIN players pw ON pw.id = r.winner_id LEFT JOIN players pl ON pl.id = r.loser_id

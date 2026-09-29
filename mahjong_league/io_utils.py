@@ -131,7 +131,7 @@ def backfill_history(data_dir, rosters, state):
             update_elo_table(seats, m["placement"])
             for seat, sh in enumerate(seats):
                 sh.record_rounds(seat, m["rounds"])
-                sh.record_game(m["placement"][seat], m["points"][seat], season=season)
+                sh.record_game(m["placement"][seat], m["points"][seat], season=season, score=m["final_scores"][seat])
         for pid in {pid for m in matches for pid in m["seats"] if pid in seasons_played}:
             seasons_played[pid] += 1
         apply_match_index(people_all, matches)
@@ -162,5 +162,6 @@ def backfill_history(data_dir, rosters, state):
 
 
 def needs_backfill(rosters):
-    return any(ind.games and (not ind.stats["hands"] or not ind.elo_trace or not ind.recent_games)
+    return any(ind.games and (not ind.stats["hands"] or not ind.elo_trace or not ind.recent_games
+                              or ind.stats.get("score_max") is None)
                for lg in LEAGUES for ind in rosters[lg])

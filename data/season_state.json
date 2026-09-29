@@ -222,7 +222,10 @@
     "win_value": 4100,
     "dealin_value": 27300,
     "max_value": 2000,
-    "yakuman": 0
+    "yakuman": 0,
+    "score_sum": 342600,
+    "score_max": 28200,
+    "busts": 0
    },
    "elo_history": [
     [

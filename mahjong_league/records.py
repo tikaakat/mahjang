@@ -4,9 +4,8 @@
   - 季ごとの表彰（半荘数・トップ数・平均着順・獲得ポイント・和了率・放銃率・最高打点・役満・連続連対・期末レート）
 """
 RECENT_GAMES_MAX = 30
-AWARD_TOP_N = 20
-MIN_GAMES_FOR_RATE = 16     # 平均着順の対象（半荘数）
-MIN_HANDS_FOR_RATE = 150    # 和了率・放銃率の対象（局数）
+MIN_GAMES_FOR_RATE = 12     # 平均着順の対象（半荘数。Dリーグの年間半荘数と同じ）
+MIN_HANDS_FOR_RATE = 100    # 和了率・放銃率の対象（局数）
 
 
 def event_label(ev):
@@ -89,7 +88,7 @@ def compute_awards(season, matches, names, final_elo):
     def top(key, reverse=True, cond=lambda a: True):
         pool = [a for a in people if cond(a) and a.get(key) is not None]
         pool.sort(key=lambda a: (a[key], a["games"]), reverse=reverse)
-        return pool[:AWARD_TOP_N]
+        return pool
 
     return {
         "season": season,

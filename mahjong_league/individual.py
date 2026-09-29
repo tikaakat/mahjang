@@ -10,7 +10,8 @@ ELO_TRACE_MAX = 400
 
 def empty_stats():
     return {"hands": 0, "wins": 0, "tsumo": 0, "dealins": 0, "riichi": 0, "draws": 0, "draw_tenpai": 0,
-            "win_value": 0, "dealin_value": 0, "max_value": 0, "yakuman": 0}
+            "win_value": 0, "dealin_value": 0, "max_value": 0, "yakuman": 0,
+            "score_sum": 0, "score_max": None, "busts": 0}   # 半荘の最終持ち点の合計・最高、飛び（0点未満）回数
 
 
 class LeagueIndividual:
@@ -94,8 +95,13 @@ class LeagueIndividual:
             if r["type"] in ("draw", "nagashi"):
                 st["draws"] += 1
 
-    def record_game(self, placement, points, season=None):
+    def record_game(self, placement, points, season=None, score=None):
         self.games += 1
+        if score is not None:
+            st = self.stats
+            st["score_sum"] += score
+            st["score_max"] = score if st["score_max"] is None else max(st["score_max"], score)
+            st["busts"] += score < 0
         if season is not None:
             self.elo_trace.append([season, self.games, round(self.elo, 1)])
             del self.elo_trace[:-ELO_TRACE_MAX]
