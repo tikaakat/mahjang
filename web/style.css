@@ -159,7 +159,8 @@ input[type="text"], input[type="search"], input:not([type]), select {
 .tile.sm small { font-size: 6px; }
 .tile.side { transform: rotate(90deg); margin: 0 5px; }
 .tile.called { opacity: 0.35; }
-.tile.tsumogiri { filter: brightness(0.88); }
+/* ツモ切りの牌は少しグレーにして手出しと区別する */
+.tile.tsumogiri { background: #c3c0b6; filter: saturate(0.6); }
 .tile.hi { outline: 2px solid var(--amber); outline-offset: 1px; }
 .tile.back { background: var(--tile-edge); }
 .meld { display: inline-flex; gap: 1px; margin-left: 8px; }
@@ -179,6 +180,60 @@ input[type="text"], input[type="search"], input:not([type]), select {
 .controls button { background: var(--navy-800); border: 1px solid var(--navy-700); color: var(--cyan); font-size: 0.85rem; padding: 5px 10px; cursor: pointer; }
 .controls .status { flex: 1 1 200px; font-size: 0.78rem; }
 .result-box { border-left: 3px solid var(--amber); padding: 8px 12px; background: var(--navy-800); margin-top: 8px; font-size: 0.8rem; }
+
+/* ---------- 牌譜：正方形の雀卓 ----------
+   盤面をコンテナにして、牌の大きさを盤面の幅（cqw）に比例させる。
+   各家の要素は「自分が下」の配置で描き、.mb-seat ごと盤面の中心で回転させる */
+.mboard {
+  container-type: inline-size; position: relative; width: 100%; max-width: 720px; aspect-ratio: 1 / 1; margin: 0 auto;
+  background: radial-gradient(ellipse at center, #1f7a4c 0%, #145a37 75%, #0f4a2d 100%);
+  border: 2px solid #0b3a23; box-shadow: 0 0 0 1px var(--navy-700), inset 0 0 30px rgba(0,0,0,0.35); overflow: hidden;
+}
+.mb-seat { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.mboard .tile {
+  --tw: 4.1cqw; width: var(--tw); height: calc(var(--tw) * 1.36); font-size: calc(var(--tw) * 0.6);
+  border-radius: calc(var(--tw) * 0.12); box-shadow: 0 calc(var(--tw) * 0.08) 0 var(--tile-edge); border-width: 1px;
+}
+.mboard .tile small { font-size: calc(var(--tw) * 0.3); bottom: 0; }
+.mboard .tile .n { transform: translateY(calc(var(--tw) * -0.12)); }
+.mboard .tile.side { margin: 0 calc(var(--tw) * 0.18); }
+.mboard .tiles { gap: 0.15cqw; flex-wrap: nowrap; }
+.mb-river {
+  position: absolute; left: 37.4cqw; top: 63.4cqw; width: 30cqw;
+  display: grid; grid-template-columns: repeat(6, max-content); gap: 0.1cqw; align-items: end;
+}
+.mb-hand {
+  position: absolute; left: 8.5cqw; right: 8.5cqw; bottom: 1cqw; display: flex; align-items: flex-end; justify-content: center; gap: 1.2cqw;
+}
+.mb-hand .tile { --tw: 4.3cqw; }
+.mb-hand .gap { width: 0.9cqw; }
+.mb-melds { display: flex; gap: 0.6cqw; }
+.mb-melds .meld { margin-left: 0; gap: 0.1cqw; }
+.mb-melds .tile { --tw: 3.6cqw; }
+.mb-label {
+  position: absolute; left: 37.4cqw; width: 25.2cqw; top: 57.6cqw; height: 5cqw; display: flex; align-items: center; justify-content: center; gap: 0.8cqw;
+  font-size: 2.1cqw; color: var(--text-main); white-space: nowrap; overflow: hidden;
+}
+.mb-label .wind { color: var(--amber); font-weight: 700; }
+.mb-label .wind.oya { color: var(--navy-950); background: var(--amber); padding: 0 0.5cqw; border-radius: 0.3cqw; }
+.mb-label .nm { overflow: hidden; text-overflow: ellipsis; max-width: 9.5cqw; }
+.mb-label .sc { font-variant-numeric: tabular-nums; color: var(--cyan); }
+.mb-label.turn .nm { color: var(--cyan); font-weight: 700; }
+.mb-label .stick { position: absolute; left: 20%; right: 20%; top: 0.2cqw; height: 0.7cqw; border-radius: 0.4cqw; background: #f4f4f4; }
+.mb-label .stick::after { content: ""; position: absolute; left: 50%; top: 50%; width: 0.5cqw; height: 0.5cqw; margin: -0.25cqw; border-radius: 50%; background: #d9453b; }
+.mb-center {
+  position: absolute; z-index: 1; left: 37.4cqw; top: 37.4cqw; width: 25.2cqw; height: 25.2cqw; background: rgba(6,10,20,0.82);
+  border: 1px solid #0b3a23; border-radius: 1cqw; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6cqw;
+  padding: 5.4cqw; color: var(--text-main); text-align: center; line-height: 1.2;
+}
+.mb-center .rd { font-size: 2.8cqw; font-weight: 700; color: var(--amber); }
+.mb-center .rd small { font-size: 1.8cqw; margin-left: 0.5cqw; color: var(--text-main); }
+.mb-center .rest { font-size: 1.9cqw; }
+.mb-center .rest b { font-family: 'Orbitron', sans-serif; font-size: 3cqw; color: #ffe066; margin: 0 0.5cqw; }
+.mb-center .dora { display: flex; align-items: center; gap: 0.6cqw; font-size: 1.5cqw; color: var(--text-dim); }
+.mb-center .dora .tile { --tw: 2.8cqw; }
+.mb-center .kyo { font-size: 1.5cqw; color: var(--text-dim); }
+.mboard .tile.hi { outline-width: 0.35cqw; outline-offset: 0; }
 
 /* ---------- 一門 ---------- */
 .tree ul { list-style: none; padding-left: 16px; margin: 0; border-left: 1px dashed var(--navy-700); }

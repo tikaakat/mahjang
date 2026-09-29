@@ -834,7 +834,7 @@ function replay(round, step) {
 }
 async function viewKifu(id) {
   const k = await getJSON(`kifu/${id}.json`);
-  const state = { r: 0, step: 0, timer: null };
+  const state = { r: 0, step: 0, timer: null, view: 0 };
   const winds = ["東", "南", "西", "北"];
   const draw = () => {
     const box = document.getElementById("kifu");
@@ -842,24 +842,38 @@ async function viewKifu(id) {
     const round = k.rounds[state.r];
     const st = replay(round, state.step);
     const done = state.step >= round.seq.length;
+    // 雀卓を上から見た正方形の盤面。各家の手牌・河を「自分の席が下」の向きで描き、席の位置まで回転させる
+    // （下＝視点の家、右＝下家、上＝対面、左＝上家）
+    const lastDiscard = st.last && st.last.kind === "discard" ? st.last : null;
+    const remaining = 70 - round.seq.slice(0, state.step).filter((e) => e[0] === "t").length;
     const seats = [0, 1, 2, 3].map((s) => {
+      const pos = (s - state.view + 4) % 4;
       const hand = [...st.hands[s]];
       let drawn = null;
       if (st.last && st.last.kind === "draw" && st.last.a === s) { drawn = st.last.t; hand.splice(hand.indexOf(drawn), 1); }
       hand.sort((a, b) => a - b);
-      const river = st.rivers[s].map((d, i) => tile(d.t, `${d.riichi ? "side" : ""} ${d.called ? "called" : ""} ${d.tg ? "tsumogiri" : ""} ${st.last && st.last.kind === "discard" && st.last.a === s && i === st.rivers[s].length - 1 ? "hi" : ""}`, true)).join("");
-      return `<div class="seat ${st.actor === s && !done ? "turn" : ""}">
-        <div class="seat-head"><span class="wind">${winds[(s - round.oya + 4) % 4]}</span><b>${esc(k.names[s])}</b>${st.riichi[s] ? '<span class="chip gold">リーチ</span>' : ""}<span class="score">${round.scores[s].toLocaleString()}</span></div>
-        <div class="row"><span class="tiles">${hand.map((t) => tile(t)).join("")}${drawn !== null ? `<span style="width:8px"></span>${tile(drawn, "hi")}` : ""}</span>${st.melds[s].map((m) => meldHTML(m)).join("")}</div>
-        <div class="river">${river}</div></div>`;
+      const river = st.rivers[s].map((d, i) => tile(d.t, `${d.riichi ? "side" : ""} ${d.called ? "called" : ""} ${d.tg ? "tsumogiri" : ""} ${lastDiscard && lastDiscard.a === s && i === st.rivers[s].length - 1 ? "hi" : ""}`)).join("");
+      const wind = winds[(s - round.oya + 4) % 4];
+      return `<div class="mb-seat" style="transform:rotate(${-90 * pos}deg)">
+        <div class="mb-label ${st.actor === s && !done ? "turn" : ""}"><span class="wind${wind === "東" ? " oya" : ""}">${wind}</span>
+          <span class="nm">${esc(k.names[s])}</span><span class="sc">${round.scores[s].toLocaleString()}</span>${st.riichi[s] ? '<span class="stick"></span>' : ""}</div>
+        <div class="mb-river">${river}</div>
+        <div class="mb-hand"><span class="tiles">${hand.map((t) => tile(t)).join("")}${drawn !== null ? `<span class="gap"></span>${tile(drawn, "hi")}` : ""}</span>
+          <span class="mb-melds">${st.melds[s].map((m) => meldHTML(m, false)).join("")}</span></div>
+      </div>`;
     }).join("");
+    const center = `<div class="mb-center"><div class="rd">${round.round}${round.honba ? `<small>${round.honba}本場</small>` : ""}</div>
+      <div class="rest">残り<b>${Math.max(0, remaining)}</b>枚</div>
+      <div class="dora"><span>ドラ表示</span>${tile(round.dora)}</div>
+      ${round.kyotaku ? `<div class="kyo">供託 ${round.kyotaku}</div>` : ""}</div>`;
     const res = done ? `<div class="result-box">${roundLine(round.result, k.names)}
         ${round.result.hand ? `<div style="margin-top:6px">${tilesHTML(round.result.hand.closed)}${round.result.hand.melds.map((m) => meldHTML(m)).join("")}</div>` : ""}
         <div class="dim small">${round.result.deltas.map((d, i) => `${esc(k.names[i])} ${d > 0 ? "+" : ""}${d}`).join(" / ")}</div></div>` : "";
-    box.innerHTML = `<div class="row" style="margin-bottom:8px; font-size:0.8rem;"><b>${round.round}${round.honba ? ` ${round.honba}本場` : ""}</b>
-        <span class="dim">供託${round.kyotaku}</span><span class="dim">ドラ表示</span>${tile(round.dora, "", true)}
-        <span class="spacer"></span><select id="kround">${k.rounds.map((r, i) => `<option value="${i}" ${i === state.r ? "selected" : ""}>${r.round}${r.honba ? ` ${r.honba}本場` : ""}</option>`).join("")}</select></div>
-      <div class="board">${seats}</div>${res}
+    box.innerHTML = `<div class="row" style="margin-bottom:8px; font-size:0.8rem;">
+        <select id="kround" aria-label="局">${k.rounds.map((r, i) => `<option value="${i}" ${i === state.r ? "selected" : ""}>${r.round}${r.honba ? ` ${r.honba}本場` : ""}</option>`).join("")}</select>
+        <span class="spacer"></span><span class="dim">視点</span>
+        <select id="kview" aria-label="視点">${k.names.map((n, i) => `<option value="${i}" ${i === state.view ? "selected" : ""}>${esc(n)}</option>`).join("")}</select></div>
+      <div class="mboard">${seats}${center}</div>${res}
       <div class="controls">
         <button data-k="first" aria-label="局の最初へ">⏮</button><button data-k="prev" aria-label="1手戻る">◀</button>
         <button data-k="play">${state.timer ? "停止" : "再生"}</button>
@@ -868,6 +882,7 @@ async function viewKifu(id) {
         <button data-k="nextround">次の局 →</button>
       </div>`;
     document.getElementById("kround").onchange = (e) => { state.r = Number(e.target.value); state.step = 0; draw(); };
+    document.getElementById("kview").onchange = (e) => { state.view = Number(e.target.value); draw(); };
     box.querySelectorAll(".controls button").forEach((b) => { b.onclick = () => act(b.dataset.k); });
   };
   const act = (kind) => {
