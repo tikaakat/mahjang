@@ -265,3 +265,6 @@ input[type="text"], input[type="search"], input:not([type]), select {
 .dg-value small { font-size: 0.7em; margin-left: 2px; color: var(--text-dim); }
 .controls button:disabled { color: var(--text-dim); cursor: default; }
 .mboard { cursor: pointer; }
+.tile.aka { box-shadow: 0 2px 0 #c0392b; }
+.tile.aka.m .n, .tile.aka.m small { color: #c0392b; }
+.mb-center .dora .tiles, .mb-center .dora { flex-wrap: wrap; justify-content: center; }

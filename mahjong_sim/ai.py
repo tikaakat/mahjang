@@ -182,6 +182,10 @@ class MahjongAI:
                      + self.p["yakuhai_weight"] * feats["yakuhai"] * 0.6
                      + self.p["flush_weight"] * feats["flush"] * 1.5
                      + self.p["tanyao_weight"] * feats["tanyao"] * 1.0)
+            # 赤5を手放す打牌（手に残る5が赤だけのとき）はドラ1枚を捨てるのと同じ扱い
+            if getattr(rs, "rules", None) is not None and rs.rules.aka and rs.red_in_hand(seat, t) \
+                    and hand[t] <= rs.hand_red[seat][t // 9]:
+                value -= self.p["dora_weight"] * 0.8
 
             defense = 0.0
             if threats:

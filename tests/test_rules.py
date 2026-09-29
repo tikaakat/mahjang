@@ -136,5 +136,30 @@ class GameTest(unittest.TestCase):
             self.assertAlmostEqual(sum(result["points"]), 0.0, places=5)
 
 
+class TitleRulesTest(unittest.TestCase):
+    def test_sinking_uma_depends_on_players_above_start(self):
+        from mahjong_sim.rules import HOUOU_RULES
+        self.assertEqual(final_placement([35000, 31000, 29000, 25000], HOUOU_RULES)["points"], [13.0, 5.0, -5.0, -13.0])
+        self.assertEqual(final_placement([45000, 25000, 25000, 25000], HOUOU_RULES)["points"], [27.0, -9.0, -9.0, -9.0])
+        self.assertEqual(final_placement([33000, 32000, 31000, 24000], HOUOU_RULES)["points"], [11.0, 5.0, 2.0, -18.0])
+
+    def test_oka_and_big_uma(self):
+        from mahjong_sim.rules import REIKI_RULES
+        self.assertEqual(final_placement([40000, 30000, 20000, 10000], REIKI_RULES)["points"], [60.0, 10.0, -20.0, -50.0])
+
+    def test_win_loss_counts_only_first_and_last(self):
+        from mahjong_sim.rules import OURYU_RULES
+        self.assertEqual(final_placement([40000, 30000, 29000, 21000], OURYU_RULES)["points"], [1.0, 0.0, 0.0, -1.0])
+
+    def test_every_title_ruleset_plays_a_full_game(self):
+        from mahjong_sim.rules import RULESETS
+        for key, rules in RULESETS.items():
+            rng = random.Random(3)
+            agents = [MahjongAI(BENCHMARK_PARAMS, skill=4, rng=rng) for _ in range(4)]
+            result = Game(agents, rules=rules, rng=rng).run()
+            self.assertEqual(sum(result["final_scores"]), 4 * rules.start_score, key)
+            self.assertAlmostEqual(sum(result["points"]), 0.0, places=5, msg=key)
+
+
 if __name__ == "__main__":
     unittest.main()

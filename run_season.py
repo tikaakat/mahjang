@@ -4,7 +4,7 @@ MAHJONG LEAGUE：1シーズン（1年）分を進める。
   1. Dリーグの欠員を新弟子で補充（師弟制度）
   2. 年齢バフの再抽選
   3. 鳳凰戦（A〜Dリーグ）…鳳凰位保持者はAリーグ免除
-  4. タイトル戦：鳳凰位決定戦・十段戦・王位戦・マスターズ
+  4. タイトル戦：鳳凰位決定戦・麒麟戦・霊亀戦・応龍戦
   5. 昇降級・引退・成長、保存
 """
 import argparse
@@ -13,7 +13,7 @@ import os
 import random
 
 from mahjong_sim.ai import PARAM_KEYS
-from mahjong_sim.rules import RENMEI
+from mahjong_sim.rules import RULESETS, TITLE_RULE
 from mahjong_league.buffs import roll_age_multipliers
 from mahjong_league.league import (
     LEAGUES, bootstrap_rosters, run_league, relegate_and_retire, recruit_d_league, develop, SECTIONS,
@@ -84,18 +84,18 @@ def run_one_season(rosters, state, rng, sections_scale=1.0, created_requests=Non
         league_rank[houou_holder.id] = (0, -1)
     all_members = list(by_id.values())
 
-    holder = _holder(state, "十段位", by_id)
-    res, recs = contest_title("十段位", jyudan_entrants(all_members, holder and holder.id), holder, season, rng,
+    holder = _holder(state, "麒麟位", by_id)
+    res, recs = contest_title("麒麟位", jyudan_entrants(all_members, holder and holder.id), holder, season, rng,
                               mode="seeded")
     titles.append(res); matches += recs
 
-    holder = _holder(state, "王位", by_id)
-    res, recs = contest_title("王位", open_entrants(all_members, holder and holder.id, titleholder_ids, league_rank),
+    holder = _holder(state, "霊亀位", by_id)
+    res, recs = contest_title("霊亀位", open_entrants(all_members, holder and holder.id, titleholder_ids, league_rank),
                               holder, season, rng, mode="random")
     titles.append(res); matches += recs
 
-    holder = _holder(state, "マスターズ", by_id)
-    res, recs = contest_title("マスターズ", open_entrants(all_members, holder and holder.id, titleholder_ids, league_rank),
+    holder = _holder(state, "応龍位", by_id)
+    res, recs = contest_title("応龍位", open_entrants(all_members, holder and holder.id, titleholder_ids, league_rank),
                               holder, season, rng, mode="random", games_per_table=2)
     titles.append(res); matches += recs
 
@@ -171,7 +171,8 @@ def main():
         random.seed(args.seed)
 
     state = load_season_state(args.data_dir)
-    state["rules"] = RENMEI.to_dict()
+    state["rules"] = {key: rules.to_dict() for key, rules in RULESETS.items()}
+    state["title_rules"] = TITLE_RULE
     rosters = load_rosters(args.data_dir)
     if rosters is None:
         print("初回起動：ロスターを新規作成します")

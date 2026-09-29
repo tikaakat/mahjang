@@ -7,7 +7,7 @@
 公式サイトで要確認のため設定で切り替えられるようにしている項目:
   流し満貫、オーラス親のアガリ止め・テンパイ止め、連風牌の雀頭符、同点時の順位点の扱い
 """
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, replace
 
 
 @dataclass(frozen=True)
@@ -32,6 +32,9 @@ class RuleSet:
     honba_ron: int = 300
     pao: bool = True                     # 大三元・大四喜・四槓子の責任払い
     max_kans: int = 4
+    aka: bool = False                    # 赤ドラ（赤五萬・赤五筒・赤五索 各1枚）
+    uma_mode: str = "fixed"              # "fixed"=uma の定額 / "sinking"=沈みウマ / "win_loss"=1着+1・4着-1のみ（101方式）
+    draw_renchan: bool = True            # 流局時に親が聴牌なら連荘（False なら和了連荘のみ）
 
     def to_dict(self):
         d = asdict(self)
@@ -40,6 +43,28 @@ class RuleSet:
 
 
 RENMEI = RuleSet()
+
+# 沈みウマ（日本プロ麻雀連盟 公式ルール）：原点（30000点）以上の「浮き」の人数で順位点が変わる
+SINKING_UMA = {1: (12, -1, -3, -8), 2: (8, 4, -4, -8), 3: (8, 3, 1, -12)}
+
+# タイトル戦ごとのルール
+HOUOU_RULES = replace(RENMEI, name="鳳凰戦ルール（一発・裏・赤なし、沈みウマ）", uma_mode="sinking")
+KIRIN_RULES = replace(RENMEI, name="麒麟戦ルール（一発・裏あり／赤なし、定額ウマ）",
+                      ippatsu=True, ura_dora=True, kan_dora=True, kazoe_yakuman=True)
+REIKI_RULES = replace(RENMEI, name="霊亀戦ルール（一発・裏・赤あり、オカ・大きなウマ）",
+                      start_score=25000, return_score=30000, uma=(30, 10, -10, -30),
+                      ippatsu=True, ura_dora=True, kan_dora=True, aka=True, kazoe_yakuman=True,
+                      agari_yame=True, tie_split_uma=False)
+OURYU_RULES = replace(RENMEI, name="応龍戦ルール（ノーウマ・ノーテン罰符なし、101方式）",
+                      uma=(1, 0, 0, -1), uma_mode="win_loss", noten_penalty=0, nagashi_mangan=False,
+                      draw_renchan=False)
+RULESETS = {"houou": HOUOU_RULES, "kirin": KIRIN_RULES, "reiki": REIKI_RULES, "ouryu": OURYU_RULES}
+# タイトル → ルール。鳳凰戦（リーグ・決定戦）と新人リーグは鳳凰戦ルール
+TITLE_RULE = {"鳳凰位": "houou", "麒麟位": "kirin", "霊亀位": "reiki", "応龍位": "ouryu"}
+
+
+def rule_key_for_event(event):
+    return event.get("rule") or TITLE_RULE.get(event.get("title"), "houou")
 
 # 以前の自作ルール相当（天鳳風）。テストやデバッグ用
 TENHOU_LIKE = RuleSet(

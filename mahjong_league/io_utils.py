@@ -81,6 +81,7 @@ def save_site_index(data_dir, state, rosters):
         "titleholders": state["titleholders"],
         "title_history": [{k: v for k, v in h.items() if k != "stages"} for h in state["title_history"]],
         "rules": state.get("rules"),
+        "title_rules": state.get("title_rules"),
         "leagues": {lg: [ind.id for ind in rosters[lg]] for lg in LEAGUES},
     })
 

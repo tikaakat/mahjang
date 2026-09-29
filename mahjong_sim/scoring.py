@@ -62,6 +62,7 @@ class WinContext:
     dora_indicators: list = field(default_factory=list)
     ura_indicators: list = field(default_factory=list)
     rules: object = RENMEI
+    aka: int = 0                     # 赤ドラの枚数
 
 
 @dataclass
@@ -453,6 +454,8 @@ def evaluate_win(ctx):
                 yaku.append(("ドラ", dora))
             if ura:
                 yaku.append(("裏ドラ", ura))
+            if ctx.aka:
+                yaku.append(("赤ドラ", ctx.aka))
             han = sum(h for _, h in yaku)
         res = WinResult(han=han, fu=fu, yaku=yaku, yakuman=ym,
                         base=base_points(han, fu, ym, rules), yakuman_names=ym_names)

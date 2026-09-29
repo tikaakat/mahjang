@@ -6,17 +6,17 @@
    "name": "海老原美月",
    "since": 1
   },
-  "十段位": {
+  "麒麟位": {
    "id": "C0-000",
    "name": "松本俊介",
    "since": 1
   },
-  "王位": {
+  "霊亀位": {
    "id": "A0-011",
    "name": "石橋一美",
    "since": 1
   },
-  "マスターズ": {
+  "応龍位": {
    "id": "A0-004",
    "name": "宮崎美月",
    "since": 1
@@ -55,7 +55,7 @@
    ]
   },
   {
-   "title": "十段位",
+   "title": "麒麟位",
    "season": 1,
    "event": "初代",
    "winner_id": "C0-000",
@@ -86,7 +86,7 @@
    ]
   },
   {
-   "title": "王位",
+   "title": "霊亀位",
    "season": 1,
    "event": "初代",
    "winner_id": "A0-011",
@@ -117,7 +117,7 @@
    ]
   },
   {
-   "title": "マスターズ",
+   "title": "応龍位",
    "season": 1,
    "event": "初代",
    "winner_id": "A0-004",
@@ -470,7 +470,7 @@
     {
      "id": "1-0339",
      "season": 1,
-     "label": "王位 1回戦",
+     "label": "霊亀位 1回戦",
      "placement": 3,
      "points": -8.0,
      "score": 27000,
@@ -483,7 +483,7 @@
     {
      "id": "1-0389",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 4,
      "points": -18.3,
      "score": 26700,
@@ -496,7 +496,7 @@
     {
      "id": "1-0390",
      "season": 1,
-     "label": "マスターズ 1回戦",
+     "label": "応龍位 1回戦",
      "placement": 4,
      "points": -18.5,
      "score": 26500,
@@ -660,30 +660,161 @@
   "海野詩織": 1
  },
  "rules": {
-  "name": "日本プロ麻雀連盟 公式ルール",
-  "game_length": "south",
-  "start_score": 30000,
-  "return_score": 30000,
-  "uma": [
-   15,
-   5,
-   -5,
-   -15
-  ],
-  "ippatsu": false,
-  "ura_dora": false,
-  "kan_dora": false,
-  "kazoe_yakuman": false,
-  "double_yakuman": true,
-  "nagashi_mangan": true,
-  "agari_yame": false,
-  "tobi": false,
-  "renpuu_pair_fu": 2,
-  "tie_split_uma": true,
-  "riichi_min_score": 1000,
-  "noten_penalty": 3000,
-  "honba_ron": 300,
-  "pao": true,
-  "max_kans": 4
+  "houou": {
+   "name": "鳳凰戦ルール（一発・裏・赤なし、沈みウマ）",
+   "game_length": "south",
+   "start_score": 30000,
+   "return_score": 30000,
+   "uma": [
+    15,
+    5,
+    -5,
+    -15
+   ],
+   "ippatsu": false,
+   "ura_dora": false,
+   "kan_dora": false,
+   "kazoe_yakuman": false,
+   "double_yakuman": true,
+   "nagashi_mangan": true,
+   "agari_yame": false,
+   "tobi": false,
+   "renpuu_pair_fu": 2,
+   "tie_split_uma": true,
+   "riichi_min_score": 1000,
+   "noten_penalty": 3000,
+   "honba_ron": 300,
+   "pao": true,
+   "max_kans": 4,
+   "aka": false,
+   "uma_mode": "sinking",
+   "draw_renchan": true
+  },
+  "kirin": {
+   "name": "麒麟戦ルール（一発・裏あり／赤なし、定額ウマ）",
+   "game_length": "south",
+   "start_score": 30000,
+   "return_score": 30000,
+   "uma": [
+    15,
+    5,
+    -5,
+    -15
+   ],
+   "ippatsu": true,
+   "ura_dora": true,
+   "kan_dora": true,
+   "kazoe_yakuman": true,
+   "double_yakuman": true,
+   "nagashi_mangan": true,
+   "agari_yame": false,
+   "tobi": false,
+   "renpuu_pair_fu": 2,
+   "tie_split_uma": true,
+   "riichi_min_score": 1000,
+   "noten_penalty": 3000,
+   "honba_ron": 300,
+   "pao": true,
+   "max_kans": 4,
+   "aka": false,
+   "uma_mode": "fixed",
+   "draw_renchan": true
+  },
+  "reiki": {
+   "name": "霊亀戦ルール（一発・裏・赤あり、オカ・大きなウマ）",
+   "game_length": "south",
+   "start_score": 25000,
+   "return_score": 30000,
+   "uma": [
+    30,
+    10,
+    -10,
+    -30
+   ],
+   "ippatsu": true,
+   "ura_dora": true,
+   "kan_dora": true,
+   "kazoe_yakuman": true,
+   "double_yakuman": true,
+   "nagashi_mangan": true,
+   "agari_yame": true,
+   "tobi": false,
+   "renpuu_pair_fu": 2,
+   "tie_split_uma": false,
+   "riichi_min_score": 1000,
+   "noten_penalty": 3000,
+   "honba_ron": 300,
+   "pao": true,
+   "max_kans": 4,
+   "aka": true,
+   "uma_mode": "fixed",
+   "draw_renchan": true
+  },
+  "ouryu": {
+   "name": "応龍戦ルール（ノーウマ・ノーテン罰符なし、101方式）",
+   "game_length": "south",
+   "start_score": 30000,
+   "return_score": 30000,
+   "uma": [
+    1,
+    0,
+    0,
+    -1
+   ],
+   "ippatsu": false,
+   "ura_dora": false,
+   "kan_dora": false,
+   "kazoe_yakuman": false,
+   "double_yakuman": true,
+   "nagashi_mangan": false,
+   "agari_yame": false,
+   "tobi": false,
+   "renpuu_pair_fu": 2,
+   "tie_split_uma": true,
+   "riichi_min_score": 1000,
+   "noten_penalty": 0,
+   "honba_ron": 300,
+   "pao": true,
+   "max_kans": 4,
+   "aka": false,
+   "uma_mode": "win_loss",
+   "draw_renchan": false
+  },
+  "legacy": {
+   "name": "旧ルール（第1季：連盟公式・定額ウマ）",
+   "game_length": "south",
+   "start_score": 30000,
+   "return_score": 30000,
+   "uma": [
+    15,
+    5,
+    -5,
+    -15
+   ],
+   "ippatsu": false,
+   "ura_dora": false,
+   "kan_dora": false,
+   "kazoe_yakuman": false,
+   "double_yakuman": true,
+   "nagashi_mangan": true,
+   "agari_yame": false,
+   "tobi": false,
+   "renpuu_pair_fu": 2,
+   "tie_split_uma": true,
+   "riichi_min_score": 1000,
+   "noten_penalty": 3000,
+   "honba_ron": 300,
+   "pao": true,
+   "max_kans": 4,
+   "aka": false,
+   "uma_mode": "fixed",
+   "draw_renchan": true
+  }
+ },
+ "title_rules": {
+  "鳳凰位": "houou",
+  "麒麟位": "kirin",
+  "霊亀位": "reiki",
+  "応龍位": "ouryu"
  }
 }

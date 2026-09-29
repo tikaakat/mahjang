@@ -13,6 +13,8 @@ from .shanten import shanten, winning_tiles
 from .scoring import Meld, WinContext, evaluate_win
 from .rules import RENMEI
 
+AKA_KINDS = (4, 13, 22)   # 赤ドラになりうる牌（五萬・五筒・五索）。各1枚が赤
+
 ROUND_NAMES = ["東1局", "東2局", "東3局", "東4局", "南1局", "南2局", "南3局", "南4局"]
 
 
@@ -28,10 +30,17 @@ class RoundState:
         self.honba = honba
         self.riichi_sticks = riichi_sticks
 
+        self.rules = rules
         wall = new_wall(rng)
+        red = [False] * len(wall)
+        if rules.aka:
+            for k in AKA_KINDS:
+                red[wall.index(k)] = True
         self.dead_wall = wall[:14]
         self.live_wall = wall[14:]
+        self.live_red = red[14:]                       # live_wall と同じ並びで「赤5か」
         self.rinshan = self.dead_wall[:4]
+        self.rinshan_red = red[:4]
         self.dora_indicators = [self.dead_wall[4]]
         self.ura_indicators = [self.dead_wall[5]]
         self.kan_count = 0
@@ -51,15 +60,48 @@ class RoundState:
         self.any_call = False
         self.discard_counts = [0] * 4
         self.events = []                               # 牌譜（簡易mjai形式）
+        self.hand_red = [[0, 0, 0] for _ in range(4)]  # 手牌中の赤5の枚数（萬・筒・索）
+        self.meld_red = [0] * 4                        # 副露中の赤5の枚数
 
         for _ in range(13):
             for i in range(4):
                 seat = (dealer + i) % 4
-                self.hands[seat][self.live_wall.pop()] += 1
+                t, r = self.live_wall.pop(), self.live_red.pop()
+                self.hands[seat][t] += 1
+                if r:
+                    self.hand_red[seat][t // 9] += 1
         self.events.append({"type": "start_kyoku", "bakaze": self.round_wind, "kyoku": round_index % 4 + 1,
                             "honba": honba, "kyotaku": riichi_sticks, "oya": dealer,
                             "dora_marker": self.dora_indicators[0], "scores": list(scores),
-                            "tehais": [[t for t in range(NUM_KINDS) for _ in range(self.hands[s][t])] for s in range(4)]})
+                            "tehais": [[t for t in range(NUM_KINDS) for _ in range(self.hands[s][t])] for s in range(4)],
+                            "aka": [[k for k in AKA_KINDS if self.hand_red[s][k // 9]] for s in range(4)]})
+
+    # ---------------- 赤ドラ・槓ドラ ----------------
+    def aka_count(self, seat):
+        return sum(self.hand_red[seat]) + self.meld_red[seat]
+
+    def red_in_hand(self, seat, t):
+        return t in AKA_KINDS and self.hand_red[seat][t // 9] > 0
+
+    def take_red(self, seat, t, prefer_red):
+        """手牌から t を1枚出すとき、それが赤5かを決めて手牌の赤の枚数を減らす。
+        prefer_red=False（打牌）は普通の5を先に出し、True（鳴き・槓）は赤を先に使う"""
+        if not self.red_in_hand(seat, t):
+            return False
+        red = prefer_red or self.hands[seat][t] <= self.hand_red[seat][t // 9]
+        if red:
+            self.hand_red[seat][t // 9] -= 1
+        return red
+
+    def reveal_kan_dora(self):
+        """槓のたびに新しいドラ表示牌（と裏ドラ表示牌）をめくる"""
+        if not self.rules.kan_dora:
+            return
+        k = len(self.dora_indicators)
+        if 5 + 2 * k < len(self.dead_wall):
+            self.dora_indicators.append(self.dead_wall[4 + 2 * k])
+            self.ura_indicators.append(self.dead_wall[5 + 2 * k])
+            self.events.append({"type": "dora", "dora_marker": self.dora_indicators[-1]})
 
     # ---------------- 公開情報のヘルパー ----------------
     def seat_wind(self, seat):
@@ -95,8 +137,9 @@ class RoundState:
         return len(self.melds[seat])
 
     # ---------------- 和了判定 ----------------
-    def win_result(self, seat, tile, is_tsumo, rinshan=False, chankan=False):
+    def win_result(self, seat, tile, is_tsumo, rinshan=False, chankan=False, ron_red=False):
         counts = list(self.hands[seat])
+        aka = (self.aka_count(seat) + (1 if ron_red and not is_tsumo else 0)) if self.rules.aka else 0
         if not is_tsumo:
             counts[tile] += 1
         first_turn = self.discard_counts[seat] == 0 and not self.any_call and is_tsumo
@@ -112,7 +155,7 @@ class RoundState:
             tenhou=first_turn and seat == self.dealer,
             chiihou=first_turn and seat != self.dealer,
             dora_indicators=self.dora_indicators, ura_indicators=self.ura_indicators,
-            rules=self.rules,
+            rules=self.rules, aka=aka,
         )
         return evaluate_win(ctx)
 
@@ -188,18 +231,22 @@ class Game:
 
         while True:
             drawn = None
+            drawn_red = False
             is_rinshan = False
             if draw_mode == "live":
                 if not rs.live_wall:
                     return self._exhaustive_draw(rs)
-                drawn = rs.live_wall.pop()
+                drawn, drawn_red = rs.live_wall.pop(), rs.live_red.pop()
             elif draw_mode == "rinshan":
-                drawn = rs.rinshan.pop()
+                drawn, drawn_red = rs.rinshan.pop(), rs.rinshan_red.pop()
                 rs.live_wall.pop(0)  # 王牌を14枚に保つため、海底側が1枚繰り上がる
+                rs.live_red.pop(0)
                 is_rinshan = True
             if drawn is not None:
                 rs.hands[current][drawn] += 1
-                rs.events.append({"type": "tsumo", "actor": current, "pai": drawn})
+                if drawn_red:
+                    rs.hand_red[current][drawn // 9] += 1
+                rs.events.append({"type": "tsumo", "actor": current, "pai": drawn, "red": drawn_red})
                 res = rs.win_result(current, drawn, is_tsumo=True, rinshan=is_rinshan)
                 if res and self.agents[current].decide_tsumo(rs, current, drawn, res):
                     return self._settle_tsumo(rs, current, drawn, res)
@@ -225,10 +272,10 @@ class Game:
                 if declare and not self._can_riichi(rs, current, discard):
                     declare = False
             forbidden = set()
-            self._do_discard(rs, current, discard, drawn, declare)
+            self._do_discard(rs, current, discard, drawn, declare, drawn_red)
 
             # ---- ロン判定（頭ハネ） ----
-            result = self._check_ron(rs, current, discard)
+            result = self._check_ron(rs, current, discard, red=rs.discards[current][-1]["red"])
             if result:
                 return result
 
@@ -257,9 +304,15 @@ class Game:
             current = (current + 1) % 4
             draw_mode = "live"
 
-    def _do_discard(self, rs, seat, discard, drawn, declare):
+    def _do_discard(self, rs, seat, discard, drawn, declare, drawn_red=False):
+        if discard == drawn and drawn_red and rs.red_in_hand(seat, discard):
+            rs.hand_red[seat][discard // 9] -= 1       # ツモ切りした赤5
+            red = True
+        else:
+            red = rs.take_red(seat, discard, prefer_red=False)
         rs.hands[seat][discard] -= 1
-        rs.discards[seat].append({"tile": discard, "tsumogiri": discard == drawn, "riichi": declare, "called": False})
+        rs.discards[seat].append({"tile": discard, "tsumogiri": discard == drawn, "riichi": declare, "called": False,
+                                  "red": red})
         rs.discard_sets[seat].add(discard)
         rs.temp_furiten[seat] = False
         if not is_yaochu(discard):
@@ -273,9 +326,9 @@ class Game:
             rs.events.append({"type": "reach", "actor": seat})
             self._say(f"  {seat}家 リーチ（宣言牌 {tile_name(discard)}）")
         rs.discard_counts[seat] += 1
-        rs.events.append({"type": "dahai", "actor": seat, "pai": discard, "tsumogiri": discard == drawn})
+        rs.events.append({"type": "dahai", "actor": seat, "pai": discard, "tsumogiri": discard == drawn, "red": red})
 
-    def _check_ron(self, rs, discarder, tile, chankan=False):
+    def _check_ron(self, rs, discarder, tile, chankan=False, red=False):
         for i in range(1, 4):
             seat = (discarder + i) % 4
             if shanten(rs.hands[seat], rs.meld_count(seat)) != 0:
@@ -283,7 +336,8 @@ class Game:
             waits = winning_tiles(rs.hands[seat], rs.meld_count(seat))
             if tile not in waits:
                 continue
-            res = None if rs.is_furiten(seat) else rs.win_result(seat, tile, is_tsumo=False, chankan=chankan)
+            res = None if rs.is_furiten(seat) else rs.win_result(seat, tile, is_tsumo=False, chankan=chankan,
+                                                                 ron_red=red)
             if res and self.agents[seat].decide_ron(rs, seat, tile, discarder, res):
                 return self._settle_ron(rs, seat, discarder, tile, res)
             rs.temp_furiten[seat] = True
@@ -334,22 +388,27 @@ class Game:
             return None
         kind, t = choice
         if kind == "ankan":
+            red = rs.take_red(seat, t, prefer_red=True)
+            rs.meld_red[seat] += red
             rs.hands[seat][t] -= 4
             rs.melds[seat].append(Meld("ankan", (t, t, t, t), None, seat))
         else:
             # 槍槓の判定
+            red = rs.take_red(seat, t, prefer_red=True)
             rs.hands[seat][t] -= 1
-            rs.events.append({"type": "kakan", "actor": seat, "pai": t})
-            res = self._check_ron(rs, seat, t, chankan=True)
+            rs.events.append({"type": "kakan", "actor": seat, "pai": t, "red": red})
+            res = self._check_ron(rs, seat, t, chankan=True, red=red)
             if res:
                 rs._chankan_result = res
                 return "chankan"
             idx = next(i for i, m in enumerate(rs.melds[seat]) if m.kind == "pon" and m.base == t)
             old = rs.melds[seat][idx]
             rs.melds[seat][idx] = Meld("kakan", (t, t, t, t), old.called_tile, old.from_seat)
+            rs.meld_red[seat] += red
         if kind == "ankan":
-            rs.events.append({"type": "ankan", "actor": seat, "pai": t})
+            rs.events.append({"type": "ankan", "actor": seat, "pai": t, "red": red})
         rs.kan_count += 1
+        rs.reveal_kan_dora()
         rs.any_call = True
         rs.ippatsu = [False] * 4
         self._check_pao(rs, seat, None)
@@ -374,6 +433,7 @@ class Game:
                 self._make_meld(rs, seat, kind, tiles, tile, discarder)
                 if kind == "minkan":
                     rs.kan_count += 1
+                    rs.reveal_kan_dora()
                 return seat, kind, {tile}
         seat = (discarder + 1) % 4
         if tile < 27 and not rs.riichi[seat]:
@@ -404,11 +464,17 @@ class Game:
     def _make_meld(self, rs, seat, kind, tiles, called_tile, from_seat):
         used = list(tiles)
         used.remove(called_tile)
+        called_red = rs.discards[from_seat][-1].get("red", False)
+        consumed_red = False
         for t in used:
+            if not consumed_red and rs.take_red(seat, t, prefer_red=True):
+                consumed_red = True
             rs.hands[seat][t] -= 1
+        rs.meld_red[seat] += called_red + consumed_red
         rs.melds[seat].append(Meld(kind, tuple(tiles), called_tile, from_seat))
         rs.events.append({"type": {"chi": "chi", "pon": "pon", "minkan": "daiminkan"}[kind],
-                          "actor": seat, "target": from_seat, "pai": called_tile, "consumed": used})
+                          "actor": seat, "target": from_seat, "pai": called_tile, "consumed": used,
+                          "red": called_red, "consumed_red": consumed_red})
         self._check_pao(rs, seat, from_seat)
         label = {"chi": "チー", "pon": "ポン", "minkan": "大明槓"}[kind]
         self._say(f"  {seat}家 {label} {' '.join(tile_name(t) for t in tiles)}")
@@ -507,7 +573,8 @@ class Game:
         rs.events.append({"type": "ryukyoku", "tenpai": tenpai, "deltas": deltas, "nagashi": nagashi})
         self._say(f"  {'流し満貫 ' + str(nagashi) if nagashi else '流局'} 聴牌={tenpai} → {deltas}")
         return {"type": kind, "winner": None, "loser": None, "tenpai": tenpai, "nagashi": nagashi,
-                "deltas": deltas, "dealer_keeps": tenpai[rs.dealer], "riichi": list(rs.riichi)}
+                "deltas": deltas, "dealer_keeps": tenpai[rs.dealer] and self.rules.draw_renchan,
+                "riichi": list(rs.riichi)}
 
     def _apply(self, deltas):
         for s in range(4):
@@ -515,9 +582,18 @@ class Game:
 
 
 def final_placement(scores, rules):
-    """着順とポイント（(素点-返し)/1000 + 順位点 + オカ）。同点は順位点を等分（rules.tie_split_uma）"""
+    """
+    着順とポイント。同点は順位点を等分（rules.tie_split_uma）
+      fixed   : (素点-返し)/1000 + 順位点 + オカ
+      sinking : 同上。順位点は原点以上（浮き）の人数で決まる沈みウマ
+      win_loss: 1着 +1・4着 -1 のみ（素点は含めない。101方式）
+    """
     order = sorted(range(4), key=lambda s: (-scores[s], s))
     oka = (rules.return_score - rules.start_score) * 4 // 1000
+    uma = rules.uma
+    if rules.uma_mode == "sinking":
+        from .rules import SINKING_UMA
+        uma = SINKING_UMA.get(sum(1 for x in scores if x >= rules.return_score), (0, 0, 0, 0))
     placement = [0] * 4
     bonus = [0.0] * 4
     i = 0
@@ -526,10 +602,13 @@ def final_placement(scores, rules):
         if rules.tie_split_uma:
             while j + 1 < 4 and scores[order[j + 1]] == scores[order[i]]:
                 j += 1
-        share = (sum(rules.uma[i:j + 1]) + (oka if i == 0 else 0)) / (j - i + 1)
+        share = (sum(uma[i:j + 1]) + (oka if i == 0 else 0)) / (j - i + 1)
         for k in range(i, j + 1):
             placement[order[k]] = i + 1 if rules.tie_split_uma else k + 1
             bonus[order[k]] = share
         i = j + 1
-    points = [round((scores[s] - rules.return_score) / 1000 + bonus[s], 1) for s in range(4)]
+    if rules.uma_mode == "win_loss":
+        points = [round(bonus[s], 2) for s in range(4)]
+    else:
+        points = [round((scores[s] - rules.return_score) / 1000 + bonus[s], 1) for s in range(4)]
     return {"placement": placement, "points": points}

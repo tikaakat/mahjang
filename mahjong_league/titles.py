@@ -2,9 +2,10 @@
 タイトル戦（日本プロ麻雀連盟のタイトル戦を参考にした4人打ち版）
 
 - 鳳凰位  : 鳳凰戦Aリーグの上位3名＋前年鳳凰位による決定戦（半荘16回戦）。保持者はAリーグ免除
-- 十段位  : レート（Elo）上位32名によるシード付きトーナメント（オセロの白虎戦に相当）
-- 王位    : 全雀士参加の抽選トーナメント。上位リーグ・タイトル保持者ほど後の回戦から登場（玄武戦に相当）
-- マスターズ: 全雀士参加の抽選トーナメント。各卓2半荘の合計で勝ち上がる（玄武戦に相当）
+- 麒麟位  : レート（Elo）上位32名によるシード付きトーナメント（オセロの白虎戦に相当）
+- 霊亀位  : 全雀士参加の抽選トーナメント。上位リーグ・タイトル保持者ほど後の回戦から登場（玄武戦に相当）
+- 応龍位  : 全雀士参加の抽選トーナメント。各卓2半荘の合計で勝ち上がる（玄武戦に相当）
+ルールはタイトルごとに異なる（mahjong_sim/rules.py の TITLE_RULE）。
 
 トーナメントは各卓4名・合計ポイント上位2名が勝ち上がる。前年の保持者は決勝シード。
 保持者がいる場合は、ベスト4による「挑戦者決定戦」（上位3名通過）を経て、保持者を加えた4名で決勝を行う。
@@ -13,15 +14,25 @@ import random
 
 from .tables import play_session, play_sessions
 
-TITLES = ("鳳凰位", "十段位", "王位", "マスターズ")
+TITLES = ("鳳凰位", "麒麟位", "霊亀位", "応龍位")
 
 HOUOU_FINAL_GAMES = 16
-FINAL_GAMES = {"十段位": 5, "王位": 5, "マスターズ": 4}
+FINAL_GAMES = {"麒麟位": 5, "霊亀位": 5, "応龍位": 4}
 CHALLENGER_DECISION_GAMES = 3
 
 
-def _tiebreak_rank(members, totals, prio):
-    return sorted(members, key=lambda ind: (-totals[ind.id], prio.get(ind.id, 999), -ind.elo))
+def _raw_totals(records):
+    """素点の合計（(持ち点-30000)/1000 の和）。応龍戦（1着+1・4着-1のみ）で同点が多いため、次の順位基準に使う"""
+    raw = {}
+    for m in records:
+        for pid, sc in zip(m["seats"], m["final_scores"]):
+            raw[pid] = round(raw.get(pid, 0.0) + (sc - 30000) / 1000, 1)
+    return raw
+
+
+def _tiebreak_rank(members, totals, prio, raw=None):
+    raw = raw or {}
+    return sorted(members, key=lambda ind: (-totals[ind.id], -raw.get(ind.id, 0.0), prio.get(ind.id, 999), -ind.elo))
 
 
 def _snake_tables(players, n_tables):
@@ -39,7 +50,7 @@ def run_final(title, finalists, season, rng, games, prio, stage_name="決勝"):
         finalists, games, {"kind": "title", "title": title, "season": season, "stage": stage_name},
         rng=rng, keep_kifu=True,
     )
-    ranked = _tiebreak_rank(finalists, totals, prio)
+    ranked = _tiebreak_rank(finalists, totals, prio, _raw_totals(records))
     return ranked, totals, records
 
 
@@ -101,12 +112,14 @@ def _play_stage(title, season, rng, players, n_tables, mode, prio, name, games, 
     sessions = [(table, games, {"kind": "title", "title": title, "season": season, "stage": name, "table": t_idx + 1},
                  False) for t_idx, table in enumerate(tables)]
     for t_idx, (table, (totals, recs)) in enumerate(zip(tables, play_sessions(sessions, rng))):
-        ranked = _tiebreak_rank(table, totals, prio)
+        raw = _raw_totals(recs)
+        ranked = _tiebreak_rank(table, totals, prio, raw)
         n_adv = advance_last if t_idx == len(tables) - 1 else 2
         advancers += ranked[:n_adv]
         stage["tables"].append({
             "members": [ind.id for ind in ranked],
             "totals": {ind.id: totals[ind.id] for ind in ranked},
+            "raw": {ind.id: raw.get(ind.id, 0.0) for ind in ranked},
             "advanced": [ind.id for ind in ranked[:n_adv]],
         })
         records += recs
@@ -125,7 +138,7 @@ def contest_title(title, entrants, holder, season, rng, mode="random", games_per
         ranked, totals, recs = run_final(title, best4, season, rng, CHALLENGER_DECISION_GAMES, prio,
                                          stage_name="挑戦者決定戦")
         stages.append({"name": "挑戦者決定戦", "games": CHALLENGER_DECISION_GAMES, "tables": [{
-            "members": [ind.id for ind in ranked], "totals": totals,
+            "members": [ind.id for ind in ranked], "totals": totals, "raw": _raw_totals(recs),
             "advanced": [ind.id for ind in ranked[:3]],
         }]})
         records += recs
@@ -135,10 +148,11 @@ def contest_title(title, entrants, holder, season, rng, mode="random", games_per
         finalists = best4
     ranked, totals, recs = run_final(title, finalists, season, rng, FINAL_GAMES[title], prio)
     records += recs
+    raw = _raw_totals(recs)
     stages.append({"name": "決勝", "games": FINAL_GAMES[title], "tables": [{
-        "members": [ind.id for ind in ranked], "totals": totals, "advanced": [ranked[0].id],
+        "members": [ind.id for ind in ranked], "totals": totals, "raw": raw, "advanced": [ranked[0].id],
     }]})
-    return _result(title, season, holder, ranked, totals, stages), records
+    return _result(title, season, holder, ranked, totals, stages, raw), records
 
 
 def run_houou_final(a_ranked, holder, season, rng):
@@ -148,13 +162,15 @@ def run_houou_final(a_ranked, holder, season, rng):
     prio = {ind.id: i for i, ind in enumerate(finalists)}
     ranked, totals, records = run_final("鳳凰位", finalists, season, rng, HOUOU_FINAL_GAMES, prio,
                                         stage_name="鳳凰位決定戦")
+    raw = _raw_totals(records)
     stages = [{"name": "鳳凰位決定戦", "games": HOUOU_FINAL_GAMES, "tables": [{
-        "members": [ind.id for ind in ranked], "totals": totals, "advanced": [ranked[0].id],
+        "members": [ind.id for ind in ranked], "totals": totals, "raw": raw, "advanced": [ranked[0].id],
     }]}]
-    return _result("鳳凰位", season, holder, ranked, totals, stages), records
+    return _result("鳳凰位", season, holder, ranked, totals, stages, raw), records
 
 
-def _result(title, season, holder, ranked, totals, stages):
+def _result(title, season, holder, ranked, totals, stages, raw=None):
+    raw = raw or {}
     winner = ranked[0]
     if holder is None:
         event = "初代"
@@ -167,19 +183,20 @@ def _result(title, season, holder, ranked, totals, stages):
         "winner_id": winner.id, "winner_name": winner.display_name,
         "previous_id": holder.id if holder else None,
         "previous_name": holder.display_name if holder else None,
-        "final_standings": [{"id": ind.id, "name": ind.display_name, "points": totals[ind.id]} for ind in ranked],
+        "final_standings": [{"id": ind.id, "name": ind.display_name, "points": totals[ind.id],
+                             "raw": raw.get(ind.id)} for ind in ranked],
         "stages": stages,
     }
 
 
 def jyudan_entrants(all_members, holder_id, top_n=32):
-    """十段戦：レート上位 top_n 名（保持者を除く）。シード順＝レート順"""
+    """麒麟戦：レート上位 top_n 名（保持者を除く）。シード順＝レート順"""
     pool = [ind for ind in all_members if ind.id != holder_id]
     return sorted(pool, key=lambda ind: -ind.elo)[:top_n]
 
 
 def open_entrants(all_members, holder_id, titleholder_ids, league_rank):
-    """王位戦・マスターズ：全雀士。優先度＝タイトル保持者 → 所属リーグ・順位 → レート"""
+    """霊亀戦・応龍戦：全雀士。優先度＝タイトル保持者 → 所属リーグ・順位 → レート"""
     pool = [ind for ind in all_members if ind.id != holder_id]
     return sorted(pool, key=lambda ind: (0 if ind.id in titleholder_ids else 1,
                                          league_rank.get(ind.id, (9, 999)), -ind.elo))
