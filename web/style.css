@@ -270,3 +270,8 @@ input[type="text"], input[type="search"], input:not([type]), select {
 .tile.aka { box-shadow: 0 2px 0 #c0392b; }
 .tile.aka.m .n, .tile.aka.m small { color: #c0392b; }
 .mb-center .dora .tiles, .mb-center .dora { flex-wrap: wrap; justify-content: center; }
+
+/* 個体ページの段位の枠 */
+.dan-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 8px 0 2px; }
+.dan-box { display: inline-block; font-size: 0.9rem; color: var(--amber); border: 1px solid var(--amber); padding: 3px 16px; border-radius: 6px; }
+.crown.big { font-size: 0.78rem; padding: 3px 10px; margin-left: 0; border-radius: 6px; }

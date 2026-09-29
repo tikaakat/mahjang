@@ -4,8 +4,8 @@
 const BASE = window.MAHJONG_DATA_BASE || "data/";
 const API = window.MAHJONG_API_BASE || "api/";
 const LEAGUES = ["A", "B", "C", "D"];
-const LEAGUE_CAPACITY = { A: 16, B: 16, C: 20, D: 24 }; // mahjong_league/league.py と一致させること
-const LEAGUE_ZONES = { A: { down: 3 }, B: { up: 3, down: 3 }, C: { up: 3, down: 4 }, D: { up: 4 } };
+const LEAGUE_CAPACITY = { A: 12, B: 16, C: 20, D: 28 }; // mahjong_league/league.py と一致させること
+const LEAGUE_ZONES = { A: { down: 2 }, B: { up: 2, down: 3 }, C: { up: 3, down: 4 }, D: { up: 4 } };
 const TITLES = ["鳳凰位", "麒麟位", "霊亀位", "応龍位"];
 const TITLE_SHORT = { "鳳凰位": "鳳凰", "麒麟位": "麒麟", "霊亀位": "霊亀", "応龍位": "応龍" };
 const TITLE_EVENT_NAME = { "鳳凰位": "鳳凰位決定戦", "麒麟位": "麒麟戦", "霊亀位": "霊亀戦", "応龍位": "応龍戦" };
@@ -172,6 +172,17 @@ let DANS = {};
 function setDans(players, idx) {
   DANS = {};
   for (const p of players) DANS[p.id] = danOf(p, idx.title_history || []);
+}
+// 個体ページの見出しに出す段位の枠（タイトル保持者はタイトルも並べる）
+function danBlock(id) {
+  const d = DANS[id];
+  if (!d) return "";
+  const titles = TITLES.filter((t) => (HOLDERS[id] || []).includes(t));
+  const next = d.level >= DAN_NAMES.length - 1 ? "最高段位"
+    : d.level === 7 && d.pts >= DAN_THRESHOLDS[8] ? "九段にはタイトル獲得が必要"
+    : `次の${DAN_NAMES[d.level + 1]}まで あと${DAN_THRESHOLDS[d.level + 1] - d.pts}pt`;
+  return `<div class="dan-row">${titles.map((t) => `<span class="crown big">${esc(t)}</span>`).join("")}<span class="dan-box">${d.name}</span></div>
+      <div class="dim small">昇段ポイント ${d.pts}pt（${next}）</div>`;
 }
 // 名前の右に付ける表示：タイトル保持者はタイトル（橙のハイライト）、それ以外は段位（橙の枠・橙の文字）
 function nameTag(id) {
@@ -912,6 +923,7 @@ async function viewIndividual(id) {
       <div style="margin-bottom:6px;">${p.retired ? `<span class="dim small">（第${p.retired_season ?? "?"}季に引退）</span>` : leagueTag(p.league + "リーグ")}</div>
       <h3 style="margin:0; font-size:1.1rem; font-family:'Noto Sans JP',sans-serif;">${esc(p.display_name)}${nameTag(p.id)}</h3>
       <div class="dim" style="font-size:0.75rem; margin-top:2px;">通算${p.total_seasons}季　${ageOf(p)}歳${p.created ? `　<span class="chip cyan">投稿キャラ${p.creator ? `（${esc(p.creator)}）` : ""}</span>` : ""}</div>
+      ${danBlock(p.id)}
       <div style="margin-top:6px;">レート <span class="elo-val" style="font-size:1.1rem;">${Math.round(p.elo)}</span>
         <span style="font-size:0.72rem; color:var(--amber); margin-left:8px;">最高 ${Math.round(p.peak_elo)}</span></div>
       <div style="margin-top:8px;"><button id="ind-fav-toggle" class="fav-toggle" data-fav="${esc(p.id)}">☆ お気に入りに追加</button></div>
@@ -1446,8 +1458,8 @@ async function rulesHtml() {
     半荘戦。途中流局なし、飛びなし、ダブロンなし（頭ハネ）、喰いタン・後付けあり、役満の複合あり、
     責任払いあり（大三元・大四喜・四槓子）。第1季は全タイトルとも旧ルール（一発・裏・赤なし、定額ウマ +15/+5/−5/−15）で行われました。
     ${sec("鳳凰戦（リーグ）")}
-    A16・B16・C20・D24名の通年リーグ。1節4半荘（A5節・B4節・C4節・D3節）の合計ポイントで順位を決めます。
-    昇降級は A⇔B 3名、B⇔C 3名、C⇔D 4名。Aリーグ上位3名は鳳凰位決定戦へ。鳳凰位はAリーグ免除です。
+    A12・B16・C20・D28名の通年リーグ。1節4半荘（A5節・B4節・C4節・D3節）の合計ポイントで順位を決めます。
+    昇降級は A⇔B 2名、B⇔C 3名、C⇔D 4名。Aリーグ上位3名は鳳凰位決定戦へ。鳳凰位はAリーグ免除です。
     ${sec("タイトル戦")}
     ${TITLES.map((t) => `<div><b style="color:var(--amber);">${TITLE_EVENT_NAME[t]}</b>：${TITLE_DESC[t]}</div>`).join("")}
     <div class="dim small" style="margin-top:4px;">トーナメントでは保持者と上位リーグの雀士が後の回戦から登場します。前年の保持者は、挑戦者決定戦の勝者3名と決勝を打ちます。</div>
