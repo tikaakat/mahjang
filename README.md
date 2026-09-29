@@ -97,7 +97,7 @@ pip install -r requirements-dev.txt && python -m unittest discover -s tests -v
 `config.php`・`lib.php`・`schema.sql` は `.htaccess` で直接アクセスを拒否している。投稿は1IPあたり1日3件、全体で1日60件まで（`config.php` で変更可）。
 
 ## GitHub Actions
-`.github/workflows/season.yml` は、毎日UTC 21:00または手動実行で次の順に1期ずつ進める。
+`.github/workflows/season.yml` は、手動実行で次の順に1期ずつ進める（定期実行は現在停止中。ワークフロー内の `schedule` のコメントを外すと毎日UTC 21:00に実行）。
 1. 投稿の取得
 2. 新人リーグ
 3. 本戦（`run_season.py`）

@@ -15,8 +15,9 @@ on:
         description: "リーグの節数の倍率（1.0=標準、0.5=半分）"
         required: false
         default: "1.0"
-  schedule:
-    - cron: "0 21 * * *"
+  # 定期実行は準備が整うまで止めている。再開するときは下の2行のコメントを外す
+  # schedule:
+  #   - cron: "0 21 * * *"
 
 permissions:
   contents: write
