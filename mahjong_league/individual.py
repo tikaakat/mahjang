@@ -47,6 +47,8 @@ class LeagueIndividual:
         self.stats = empty_stats()        # 局単位の通算成績（和了率・放銃率などの元データ）
         self.elo_history = []             # [[期, 期末レート], ...]
         self.elo_trace = []               # [[期, 通算半荘数, レート], ...] 半荘ごと（直近 ELO_TRACE_MAX 件）
+        self.recent_games = []            # 最近の対局（records.apply_match_index が更新）
+        self.opponents = {}               # {相手id: [同卓数, 自分が上位, 自分が下位]}
         self.created = False              # キャラクリエイトで生まれた雀士か
         self.submission_id = None         # サイトの投稿ID
         self.creator = None               # 投稿者の表示名（任意）
@@ -114,6 +116,7 @@ class LeagueIndividual:
             "total_points": self.total_points, "career": self.career,
             "created": self.created, "submission_id": self.submission_id, "creator": self.creator,
             "stats": self.stats, "elo_history": self.elo_history, "elo_trace": self.elo_trace,
+            "recent_games": self.recent_games, "opponents": self.opponents,
         }
 
     @staticmethod
@@ -142,4 +145,6 @@ class LeagueIndividual:
         ind.stats = {**empty_stats(), **(d.get("stats") or {})}
         ind.elo_history = d.get("elo_history", [])
         ind.elo_trace = d.get("elo_trace", [])
+        ind.recent_games = d.get("recent_games", [])
+        ind.opponents = d.get("opponents", {})
         return ind

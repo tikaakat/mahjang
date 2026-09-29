@@ -26,6 +26,7 @@ from mahjong_league.io_utils import (
     load_rosters, save_rosters, load_season_state, save_season_state, save_season_files, save_site_index,
     backfill_history, needs_backfill,
 )
+from mahjong_league.records import apply_match_index, compute_awards
 
 
 def _holder(state, title, by_id):
@@ -109,6 +110,7 @@ def run_one_season(rosters, state, rng, sections_scale=1.0, created_requests=Non
 
     for i, m in enumerate(matches, 1):
         m["id"] = f"{season}-{i:04d}"
+    apply_match_index(by_id, matches)
 
     # ---------------- 成績表・昇降級 ----------------
     new_titleholder_ids = {v["id"] for v in state["titleholders"].values() if v}
@@ -137,8 +139,10 @@ def run_one_season(rosters, state, rng, sections_scale=1.0, created_requests=Non
                 "new": ind.total_seasons == 0,
             })
             ind.career.append({"season": season, "league": lg, "rank": rank, "points": st["points"],
-                               "elo": round(ind.elo, 1)})
+                               "elo": round(ind.elo, 1), "movement": movement})
 
+    awards = compute_awards(season, matches, {ind.id: ind.display_name for ind in all_members},
+                            {ind.id: round(ind.elo, 1) for ind in all_members})
     for ind in all_members:
         ind.elo_history.append([season, round(ind.elo, 1)])
     for ind in retired:
@@ -150,7 +154,7 @@ def run_one_season(rosters, state, rng, sections_scale=1.0, created_requests=Non
     if retired:
         print(f"  引退: {', '.join(ind.display_name for ind in retired)}")
     state["current_season"] = season
-    return new_rosters, standings, matches, titles
+    return new_rosters, standings, matches, titles, awards
 
 
 def main():
@@ -176,7 +180,7 @@ def main():
         state["name_registry"] = registry.to_dict()
 
     if needs_backfill(rosters):
-        print("通算の局成績・レート推移を過去の対局記録から作り直します")
+        print("通算の局成績・レート推移・対局の索引・表彰を過去の対局記録から作り直します")
         backfill_history(args.data_dir, rosters, state)
 
     # 新人リーグ（run_newcomer_league.py）の勝者。最初に処理する期にだけ適用し、読んだら消す
@@ -188,10 +192,10 @@ def main():
         os.remove(winners_path)
 
     for i in range(args.seasons):
-        rosters, standings, matches, titles = run_one_season(
+        rosters, standings, matches, titles, awards = run_one_season(
             rosters, state, rng, args.sections_scale, created_requests=created_requests if i == 0 else None)
         save_rosters(args.data_dir, rosters)
-        save_season_files(args.data_dir, state["current_season"], standings, matches, titles)
+        save_season_files(args.data_dir, state["current_season"], standings, matches, titles, awards)
         save_season_state(args.data_dir, state)
         save_site_index(args.data_dir, state, rosters)
         print(f"第{state['current_season']}期 完了・保存しました\n", flush=True)

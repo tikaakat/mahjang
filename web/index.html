@@ -7,7 +7,7 @@
 <meta name="description" content="AI雀士たちの通年リーグ（鳳凰戦）とタイトル戦の記録">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script>
   // データ（run_season.py が出力する data/ ディレクトリ）の置き場所。サイトと同じ階層に置く場合は "data/"
@@ -17,25 +17,37 @@
 </script>
 </head>
 <body>
-<header class="site-header">
-  <a class="brand" href="#/"><span class="brand-mark">雀</span><span class="brand-text">MAHJONG LEAGUE</span></a>
-  <nav class="nav" id="nav">
-    <a href="#/" data-nav="home">トップ</a>
-    <a href="#/league" data-nav="league">鳳凰戦</a>
-    <a href="#/titles" data-nav="titles">タイトル戦</a>
-    <a href="#/players" data-nav="players">雀士名鑑</a>
-    <a href="#/stats" data-nav="stats">記録</a>
-    <a href="#/clans" data-nav="clans">一門</a>
-    <a href="#/create" data-nav="create">クリエイト</a>
-    <a href="#/rules" data-nav="rules">ルール</a>
-  </nav>
-</header>
-<main id="app" class="app" aria-live="polite">
-  <p class="loading">読み込み中…</p>
-</main>
-<footer class="site-footer">
-  AI雀士によるシミュレーションです。ルールは日本プロ麻雀連盟の公式ルールに準拠（一部簡略化）。
-</footer>
+
+<div class="header">
+  <h1>MAHJONG LEAGUE <button id="rules-help-btn" class="help-btn" title="ルールを見る">?</button></h1>
+  <p>師弟の一門が鳳凰戦を勝ち上がり、鳳凰位・十段位・王位・マスターズの座を目指す</p>
+</div>
+
+<div class="tabs" id="primary-tabs">
+  <button class="tab-btn" data-group="newcomer_group">新人</button>
+  <button class="tab-btn active" data-group="leagues">リーグ</button>
+  <button class="tab-btn" data-group="results">結果</button>
+  <button class="tab-btn" data-group="titles">タイトル</button>
+  <button class="tab-btn" data-group="hof">殿堂</button>
+</div>
+<div class="subtabs hidden" id="subtabs"></div>
+
+<div class="panel" id="panel"><div id="app" class="loading" aria-live="polite">読み込み中...</div></div>
+
+<div class="modal-overlay hidden" id="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close" aria-label="閉じる">×</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<div class="fresh-banner hidden" id="fresh-banner">
+  <span>新しい結果が反映されています</span>
+  <button id="fresh-reload">更新する</button>
+</div>
+
+<footer>MAHJONG LEAGUE / AI雀士によるシミュレーション（日本プロ麻雀連盟 公式ルール準拠）</footer>
+
 <script type="module" src="app.js"></script>
 </body>
 </html>
