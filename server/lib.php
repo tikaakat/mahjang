@@ -16,7 +16,12 @@ set_exception_handler(function (Throwable $e) {
     error_log('[mahjong] ' . $e);
     $msg = $e instanceof PDOException ? 'データベースに接続できないか、SQLでエラーが発生しました（config.php の接続情報を確認してください）'
                                       : 'サーバー内部でエラーが発生しました';
-    json_out(['ok' => false, 'error' => $msg], 500);
+    $out = ['ok' => false, 'error' => $msg];
+    // キー付きで呼ばれる管理用ページでは、原因の特定のため詳細も返す（パスワードは含まれない）
+    if (defined('SHOW_ERROR_DETAIL')) {
+        $out['detail'] = $e->getMessage();
+    }
+    json_out($out, 500);
 });
 
 function config(): array {
@@ -56,6 +61,9 @@ function require_key(): void {
     $key = (string)($_GET['key'] ?? '');
     if ($key === '' || !hash_equals((string)config()['secret_key'], $key)) {
         json_out(['ok' => false, 'error' => 'forbidden'], 403);
+    }
+    if (!defined('SHOW_ERROR_DETAIL')) {
+        define('SHOW_ERROR_DETAIL', true);
     }
 }
 
