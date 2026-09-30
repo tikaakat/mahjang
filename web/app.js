@@ -197,9 +197,19 @@ function danHistoryHtml(p, idx) {
   if (!h.promotions.length) {
     html += `<div class="dim small" style="padding:4px 0;">まだ昇段していません（${DAN_NAMES[h.level]}・累計${h.total}pt）</div>`;
   } else {
-    const rows = [...h.promotions].reverse().map((m) => `<div class="list-row"><span><b style="color:var(--amber);">${DAN_NAMES[m.from]} → ${DAN_NAMES[m.to]}</b>
-        <span class="dim small">第${m.season}季</span><br><span class="dim small">${itemsText(m.items)}で累計${m.total}pt（${DAN_NAMES[m.to]}は${DAN_THRESHOLDS[m.to]}pt〜）</span></span></div>`);
-    html += collapsibleList(rows, 5, "件");
+    // 段位ごとに1行。新しい（高い）段位を上に並べる。一度に複数段上がった場合も、飛ばした段位を1行ずつ出す
+    const levels = [];
+    for (const m of h.promotions) for (let lvl = m.to; lvl > m.from; lvl--) levels.push({ lvl, m });
+    levels.sort((x, y) => y.lvl - x.lvl);
+    const rows = levels.map(({ lvl, m }) => {
+      const reason = `${itemsText(m.items)}で累計${m.total}pt（${DAN_NAMES[lvl]}は${DAN_THRESHOLDS[lvl]}pt〜）`;
+      const note = lvl === m.to ? `${DAN_NAMES[m.from]}から昇段` : `${DAN_NAMES[m.to]}と同時に昇段（${DAN_NAMES[m.from]}から一度に上がった）`;
+      return `<div class="list-row"><span><b style="color:var(--amber);">${DAN_NAMES[lvl]}</b>
+        <span class="dim small">第${m.season}季・${note}</span><br><span class="dim small">${reason}</span></span></div>`;
+    });
+    const first = h.rows[0] ? `第${h.rows[0].season}季に入門` : "入門時";
+    rows.push(`<div class="list-row"><span><b style="color:var(--amber);">初段</b> <span class="dim small">${first}・初段からスタート</span></span></div>`);
+    html += collapsibleList(rows, 5, "段");
   }
   if (h.capped) html += `<div class="note">九段の条件（${DAN_THRESHOLDS[8]}pt）に達していますが、九段にはタイトル獲得経験が必要なため、八段のままです。</div>`;
   if (h.rows.length) {
