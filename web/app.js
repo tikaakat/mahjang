@@ -146,32 +146,68 @@ function setHolders(idx) {
 const DAN_NAMES = ["初段", "二段", "三段", "四段", "五段", "六段", "七段", "八段", "九段"];
 const DAN_THRESHOLDS = [0, 3, 7, 12, 18, 26, 36, 50, 70];
 const LEAGUE_ENTRY_POINTS = { A: 6, B: 4, C: 2, D: 1 };
-function danPoints(p, titleHistory) {
-  let pts = 0;
+// 季ごとの昇段ポイントの内訳から、段位の推移（昇段履歴）を組み立てる
+function danHistory(p, titleHistory) {
+  const bySeason = new Map();
+  const add = (season, label, pts) => {
+    if (!bySeason.has(season)) bySeason.set(season, { items: [], titles: 0 });
+    bySeason.get(season).items.push({ label, pts });
+    return bySeason.get(season);
+  };
   for (const c of p.career || []) {
-    pts += LEAGUE_ENTRY_POINTS[c.league] || 0;
-    if (c.rank === 1) pts += c.league === "A" ? 4 : 2;
-    else if (c.rank && c.rank <= 3) pts += c.league === "A" ? 2 : 1;
+    add(c.season, `${c.league}リーグ参加`, LEAGUE_ENTRY_POINTS[c.league] || 0);
+    if (c.rank === 1) add(c.season, `${c.league}リーグ1位`, c.league === "A" ? 4 : 2);
+    else if (c.rank && c.rank <= 3) add(c.season, `${c.league}リーグ${c.rank}位`, c.league === "A" ? 2 : 1);
   }
-  let titles = 0;
   for (const h of titleHistory) {
     if (h.winner_id !== p.id) continue;
-    titles += 1;
-    pts += titleName(h.title) === "鳳凰位" ? 8 : 5;
+    const t = titleName(h.title);
+    add(h.season, `${t}${{ "初代": "獲得", "奪取": "奪取", "防衛": "防衛" }[h.event] || "獲得"}`, t === "鳳凰位" ? 8 : 5).titles += 1;
   }
-  return { pts, titles };
+  const rows = [], promotions = [];
+  let total = 0, titles = 0, level = 0, capped = false;
+  for (const season of [...bySeason.keys()].sort((x, y) => x - y)) {
+    const g = bySeason.get(season);
+    const sum = g.items.reduce((a, i) => a + i.pts, 0);
+    total += sum;
+    titles += g.titles;
+    let lvl = 0;
+    DAN_THRESHOLDS.forEach((t, i) => { if (total >= t) lvl = i; });
+    capped = false;
+    if (lvl === DAN_NAMES.length - 1 && !titles) { lvl = DAN_NAMES.length - 2; capped = true; } // 九段はタイトル経験者のみ
+    if (lvl > level) { promotions.push({ season, from: level, to: lvl, total, items: g.items }); level = lvl; }
+    rows.push({ season, items: g.items, sum, total, level });
+  }
+  return { rows, promotions, total, level, titles, capped };
 }
 function danOf(p, titleHistory) {
-  const { pts, titles } = danPoints(p, titleHistory);
-  let level = 0;
-  DAN_THRESHOLDS.forEach((t, i) => { if (pts >= t) level = i; });
-  if (level === 8 && !titles) level = 7;
-  return { level, name: DAN_NAMES[level], pts };
+  const h = danHistory(p, titleHistory);
+  return { level: h.level, name: DAN_NAMES[h.level], pts: h.total };
 }
 let DANS = {};
 function setDans(players, idx) {
   DANS = {};
   for (const p of players) DANS[p.id] = danOf(p, idx.title_history || []);
+}
+// 昇段履歴と昇段理由（個体ページ）
+function danHistoryHtml(p, idx) {
+  const h = danHistory(p, idx.title_history || []);
+  const itemsText = (items) => items.map((i) => `${esc(i.label)} +${i.pts}`).join("、");
+  let html = `<div class="note">初段からスタートし、九段が最高です。段位は下がりません（規定は「？」のルール画面）。</div>`;
+  if (!h.promotions.length) {
+    html += `<div class="dim small" style="padding:4px 0;">まだ昇段していません（${DAN_NAMES[h.level]}・累計${h.total}pt）</div>`;
+  } else {
+    const rows = [...h.promotions].reverse().map((m) => `<div class="list-row"><span><b style="color:var(--amber);">${DAN_NAMES[m.from]} → ${DAN_NAMES[m.to]}</b>
+        <span class="dim small">第${m.season}季</span><br><span class="dim small">${itemsText(m.items)}で累計${m.total}pt（${DAN_NAMES[m.to]}は${DAN_THRESHOLDS[m.to]}pt〜）</span></span></div>`);
+    html += collapsibleList(rows, 5, "件");
+  }
+  if (h.capped) html += `<div class="note">九段の条件（${DAN_THRESHOLDS[8]}pt）に達していますが、九段にはタイトル獲得経験が必要なため、八段のままです。</div>`;
+  if (h.rows.length) {
+    const seasonRows = [...h.rows].reverse().map((r) => `<div class="list-row"><span>第${r.season}季 <span class="dim small">${itemsText(r.items)}</span></span>
+        <span class="num">+${r.sum} <span class="dim small">累計${r.total}pt</span></span></div>`);
+    html += collapsible(seasonRows.join(""), "季ごとのポイント");
+  }
+  return html;
 }
 // 個体ページの見出しに出す段位の枠（タイトル保持者はタイトルも並べる）
 function danBlock(id) {
@@ -933,6 +969,7 @@ async function viewIndividual(id) {
     <div style="display:flex; justify-content:center; margin-bottom:6px;">${radar(p.params || {})}</div>
     ${secTitle("系譜")}${lineageHtml(p, players)}
     ${secTitle("通算成績")}${careerStats(p)}
+    ${secTitle("昇段履歴")}${danHistoryHtml(p, idx)}
     ${secTitle("対戦相手別成績")}${opponentsHtml(p, players)}
     ${secTitle("タイトル獲得歴")}${wonHtml}
     ${secTitle("タイトル戦決勝進出")}${finHtml}
