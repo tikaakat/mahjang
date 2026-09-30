@@ -189,35 +189,30 @@ function setDans(players, idx) {
   DANS = {};
   for (const p of players) DANS[p.id] = danOf(p, idx.title_history || []);
 }
-// 昇段履歴と昇段理由（個体ページ）
+// 昇段履歴と昇段理由（個体ページ）。オセロ版と同じく「第N季：六段（理由）」を1行ずつ、新しい段位を上に並べる
 function danHistoryHtml(p, idx) {
   const h = danHistory(p, idx.title_history || []);
-  const itemsText = (items) => items.map((i) => `${esc(i.label)} +${i.pts}`).join("、");
-  let html = `<div class="note">初段からスタートし、九段が最高です。段位は下がりません（規定は「？」のルール画面）。</div>`;
+  const itemsText = (items) => items.map((i) => `${esc(i.label)}+${i.pts}`).join("・");
+  const line = (season, dan, reason) => `<div class="dan-hist-row">第${season}季：<span class="dan-name">${dan}</span>　<span class="dim">（${reason}）</span></div>`;
+  let html = "";
   if (!h.promotions.length) {
     html += `<div class="dim small" style="padding:4px 0;">まだ昇段していません（${DAN_NAMES[h.level]}・累計${h.total}pt）</div>`;
   } else {
-    // 段位ごとに1行。新しい（高い）段位を上に並べる。一度に複数段上がった場合も、飛ばした段位を1行ずつ出す
+    // 段位ごとに1行。一度に複数段上がった場合も、飛ばした段位を1行ずつ出す
     const levels = [];
     for (const m of h.promotions) for (let lvl = m.to; lvl > m.from; lvl--) levels.push({ lvl, m });
     levels.sort((x, y) => y.lvl - x.lvl);
-    const rows = levels.map(({ lvl, m }) => {
-      const reason = `${itemsText(m.items)}で累計${m.total}pt（${DAN_NAMES[lvl]}は${DAN_THRESHOLDS[lvl]}pt〜）`;
-      const note = lvl === m.to ? `${DAN_NAMES[m.from]}から昇段` : `${DAN_NAMES[m.to]}と同時に昇段（${DAN_NAMES[m.from]}から一度に上がった）`;
-      return `<div class="list-row"><span><b style="color:var(--amber);">${DAN_NAMES[lvl]}</b>
-        <span class="dim small">第${m.season}季・${note}</span><br><span class="dim small">${reason}</span></span></div>`;
-    });
-    const first = h.rows[0] ? `第${h.rows[0].season}季に入門` : "入門時";
-    rows.push(`<div class="list-row"><span><b style="color:var(--amber);">初段</b> <span class="dim small">${first}・初段からスタート</span></span></div>`);
+    const rows = levels.map(({ lvl, m }) => line(m.season, DAN_NAMES[lvl],
+      lvl === m.to ? `${itemsText(m.items)}で累計${m.total}pt` : `${DAN_NAMES[m.to]}と同時に昇段・累計${m.total}pt`));
+    rows.push(line(h.rows[0] ? h.rows[0].season : "?", "初段", "新規参入"));
     html += collapsibleList(rows, 5, "段");
   }
   if (h.capped) html += `<div class="note">九段の条件（${DAN_THRESHOLDS[8]}pt）に達していますが、九段にはタイトル獲得経験が必要なため、八段のままです。</div>`;
   if (h.rows.length) {
-    const seasonRows = [...h.rows].reverse().map((r) => `<div class="list-row"><span>第${r.season}季 <span class="dim small">${itemsText(r.items)}</span></span>
-        <span class="num">+${r.sum} <span class="dim small">累計${r.total}pt</span></span></div>`);
+    const seasonRows = [...h.rows].reverse().map((r) => `<div class="dan-hist-row">第${r.season}季：<span class="dim">${itemsText(r.items)}</span>　+${r.sum}pt <span class="dim">（累計${r.total}pt）</span></div>`);
     html += collapsible(seasonRows.join(""), "季ごとのポイント");
   }
-  return html;
+  return `<div class="dan-hist">${html}</div>`;
 }
 // 個体ページの見出しに出す段位の枠（タイトル保持者はタイトルも並べる）
 function danBlock(id) {
