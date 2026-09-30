@@ -111,9 +111,9 @@ pip install -r requirements-dev.txt && python -m unittest discover -s tests -v
 
 ## GitHub Actions
 `.github/workflows/season.yml` は、毎日 朝6時・昼12時・夜18時ごろ（日本時間の各17分）に1季ずつ進める（手動実行もできる）。オセロ版とは別リポジトリなので、時刻が重なっても互いに待たない。
-1. 投稿の取得
-2. 新人リーグ
-3. 本戦（`run_season.py`）
+1. 本戦（`run_season.py`）…冒頭で、前の実行の新人リーグの勝者と新弟子がDリーグに入門する
+2. 投稿の取得
+3. 新人リーグ（`run_newcomer_league.py`）…本戦で次季の欠員が確定してから開く。勝者は次の実行の本戦の冒頭で入門する（オセロ版と同じ順序）
 4. `data/` のコミット・プッシュ
 5. Xserver への転送とDB取り込み（シークレット設定時のみ）
 

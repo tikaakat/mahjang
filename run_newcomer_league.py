@@ -3,7 +3,7 @@
 上位（来期のDリーグ欠員数ぶん）だけが次の期の開始時にDリーグへ入門する。
 
 投稿が目標人数に満たない場合は自動生成の候補で埋める（自動生成が上位に入った枠は、
-通常の新弟子で補充される）。本戦（run_season.py）の直前に実行する想定。
+通常の新弟子で補充される）。本戦（run_season.py）の直後（次季の欠員が確定してから）に実行する。勝者は次の実行の本戦の冒頭で入門する。
 
 入力:  --submissions-path の JSON（[{"submission_id", "name", "creator", "type", "params"}, ...]）
 出力:  data/newcomer_winners.json（run_season.py が読む）

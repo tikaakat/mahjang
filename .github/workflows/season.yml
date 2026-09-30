@@ -147,7 +147,10 @@ jobs:
           for i in $(seq 1 "$TOTAL"); do
             echo "=== Season batch $i / $TOTAL ==="
 
-            # --- キャラクリエイトの投稿を取得して新人リーグを開催（サイト未設置なら0件） ---
+            python -u run_season.py --data-dir data --seasons 1 --sections-scale "$SCALE"
+
+            # --- 本戦が終わって次季の欠員が確定したら、投稿を取得して新人リーグを開催（サイト未設置なら0件） ---
+            # 勝者は次の実行の本戦の冒頭でDリーグに入門する（結果は今のうちにリーグ表に出る）
             echo '[]' > data/newcomer_submissions.json
             if [ "$DEPLOY" = "1" ]; then
               # 取得・解析のどちらかに失敗したら0件として続行する（サイト未設置・DB未設定の場合など）
@@ -163,8 +166,6 @@ jobs:
               fi
             fi
             python -u run_newcomer_league.py --data-dir data --submissions-path data/newcomer_submissions.json
-
-            python -u run_season.py --data-dir data --seasons 1 --sections-scale "$SCALE"
 
             git add data
             if ! git diff --staged --quiet; then
