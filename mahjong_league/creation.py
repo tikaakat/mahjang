@@ -7,7 +7,7 @@ import random
 from mahjong_sim.ai import PARAM_KEYS
 
 from .buffs import maybe_awaken
-from .individual import LeagueIndividual
+from .individual import LeagueIndividual, roll_initial_age
 
 PARAM_MIN = 0.5
 PARAM_MAX = 10.0
@@ -15,7 +15,6 @@ PARAM_BUDGET = 45.0          # 9項目の合計の上限（サイトの割り振
 NAME_MAX_LEN = 12
 CREATION_AWAKENING_CHANCE = 0.05
 CREATION_TALENT_RANGE = (0.45, 0.62)
-AWAKENED_INITIAL_AGE_RANGE = (16, 18)
 
 # 打ち筋のプリセット（割り振りの出発点。サイトと同じ値）
 PRESETS = {
@@ -87,7 +86,7 @@ def build_created_individual(request, ind_id, master=None, clan_branch_chance=0.
         ind_id, "D", params=params, talent=talent, generation=(master.generation + 1) if master else 0,
         parent_a_id=master.id if master else None, display_name=clean_name(request.get("name")) or ind_id,
         clan_root_id=clan_root,
-        initial_age=random.randint(*AWAKENED_INITIAL_AGE_RANGE) if awakened else None,
+        initial_age=roll_initial_age(bool(awakened)),
     )
     ind.awakened_param = awakened
     ind.volatility = request.setdefault("volatility", round(random.uniform(0.3, 2.0), 2))
