@@ -20,12 +20,12 @@ on:
         type: boolean
         required: false
         default: false
-  # 定期実行：毎日 朝6時・昼12時・夜18時（日本時間）に1季ずつ進める。時刻はUTCで書く
-  # （GitHub の定期実行は混み合うと数分〜数十分遅れることがある）
+  # 定期実行：毎日 朝6時・昼12時・夜18時ごろ（日本時間）に1季ずつ進める。時刻はUTCで書く。
+  # GitHub の定期実行は、毎時0分ちょうどに集中して遅れたり抜けたりするため、17分にずらしている
   schedule:
-    - cron: "0 21 * * *"   # 日本時間 6:00
-    - cron: "0 3 * * *"    # 日本時間 12:00
-    - cron: "0 9 * * *"    # 日本時間 18:00
+    - cron: "17 21 * * *"   # 日本時間 6:17
+    - cron: "17 3 * * *"    # 日本時間 12:17
+    - cron: "17 9 * * *"    # 日本時間 18:17
 
 permissions:
   contents: write
@@ -71,15 +71,16 @@ jobs:
           fi
 
           SSH_OPTS="-o StrictHostKeyChecking=no -o ConnectTimeout=30 -o ServerAliveInterval=15 -o ServerAliveCountMax=4"
-          # Xserverへの接続は一時的にタイムアウトすることがあるため、待ち時間を延ばしながら最大5回試す
-          RETRIES=5
+          # Xserverへは、GitHubの実行環境から一時的に接続できなくなることがある（数分〜10分ほどで戻る）ため、
+          # 待ち時間を延ばしながら最大7回、合計20分ほど粘る
+          RETRIES=7
           retry_cmd() {
             local n=1
             while true; do
               "$@" && return 0
               if [ "$n" -ge "$RETRIES" ]; then return 1; fi
-              echo "::warning::失敗（$n/$RETRIES回目）。$((n * 30))秒後にもう一度試します: $1"
-              sleep $((n * 30))
+              echo "::warning::失敗（$n/$RETRIES回目）。$((n * 60))秒後にもう一度試します: $1"
+              sleep $((n * 60))
               n=$((n + 1))
             done
           }
