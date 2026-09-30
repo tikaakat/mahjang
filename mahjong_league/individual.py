@@ -7,6 +7,14 @@ STYLE_KEYS = PARAM_KEYS  # 打ち筋の個性（牌効率・ドラ・役牌・�
 
 ELO_TRACE_MAX = 400
 
+# 入門時の年齢。オセロ版より幅を広げている（麻雀は年齢層が幅広い）
+NEWCOMER_AGE_RANGE = (25, 35)            # 通常の新人（新弟子・投稿キャラ）
+AWAKENED_INITIAL_AGE_RANGE = (20, 35)    # 覚醒して入門した新人
+
+
+def roll_initial_age(awakened=False):
+    return random.randint(*(AWAKENED_INITIAL_AGE_RANGE if awakened else NEWCOMER_AGE_RANGE))
+
 
 def empty_stats():
     return {"hands": 0, "wins": 0, "tsumo": 0, "dealins": 0, "riichi": 0, "draws": 0, "draw_tenpai": 0,
@@ -31,7 +39,7 @@ class LeagueIndividual:
         self.awakened_param = None
         self.generation = generation
         self.parent_a_id = parent_a_id    # 師匠
-        self.initial_age = initial_age if initial_age is not None else random.randint(20, 26)
+        self.initial_age = initial_age if initial_age is not None else roll_initial_age()
         self.age_multipliers = {}
         self.consecutive_losing_seasons = 0
 

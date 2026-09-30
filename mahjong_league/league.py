@@ -6,7 +6,7 @@ import random
 
 from mahjong_sim.ai import PARAM_KEYS
 
-from .individual import LeagueIndividual
+from .individual import LeagueIndividual, roll_initial_age
 from .buffs import maybe_awaken
 from .tables import play_sessions
 
@@ -24,7 +24,6 @@ D_MIN_NEWCOMER_SLOTS = 2           # 毎年最低限確保する新人枠
 MASTER_MIN_AGE = 30
 CLAN_BRANCH_CHANCE = 0.08
 CLAN_NEW_FOUNDER_CHANCE = 0.08
-AWAKENED_INITIAL_AGE_RANGE = (16, 18)
 
 # 初期ロスターの技量レンジ（リーグが上ほど高い）
 INITIAL_TALENT = {"A": (0.70, 0.90), "B": (0.60, 0.80), "C": (0.50, 0.72), "D": (0.40, 0.65)}
@@ -287,7 +286,7 @@ def generate_disciples(count, season, pool, registry, titleholder_ids=frozenset(
             ind_id, "D", params=params, talent=round(min(0.99, talent), 3), generation=gen,
             parent_a_id=master.id if master else None, display_name=registry.generate(),
             clan_root_id=clan_root,
-            initial_age=random.randint(*AWAKENED_INITIAL_AGE_RANGE) if awakened else None,
+            initial_age=roll_initial_age(bool(awakened)),
         )
         ind.awakened_param = awakened
         ind.volatility = max(0.1, min(3.0, round(vol, 2)))
