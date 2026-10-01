@@ -20,6 +20,14 @@ on:
         type: boolean
         required: false
         default: false
+      restore_kifu_run_id:
+        description: "（転送のみのとき）牌譜のバックアップ（kifu-backup）を取り出す実行のID。空欄なら使わない"
+        required: false
+        default: ""
+      deploy_attempt:
+        description: "（自動の再実行用）何回目の転送のやり直しか"
+        required: false
+        default: "0"
   # 定期実行：毎日 朝6時・昼12時・夜18時ごろ（日本時間）に1季ずつ進める。時刻はUTCで書く。
   # GitHub の定期実行は、毎時0分ちょうどに集中して遅れたり抜けたりするため、17分にずらしている
   schedule:
@@ -29,6 +37,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # 転送に失敗したとき、別の実行環境で転送をやり直す実行を自動で起こすため
 
 jobs:
   season:
@@ -48,6 +57,16 @@ jobs:
 
       - name: Rule tests
         run: python -m unittest discover -s tests -v
+
+      - name: Restore kifu from an earlier run
+        if: ${{ github.event.inputs.restore_kifu_run_id != '' }}
+        continue-on-error: true   # バックアップが無くても（牌譜が無い実行だった場合）、転送は続ける
+        uses: actions/download-artifact@v4
+        with:
+          name: kifu-backup
+          run-id: ${{ github.event.inputs.restore_kifu_run_id }}
+          github-token: ${{ github.token }}
+          path: data/kifu
 
       - name: Run seasons (push after each season)
         env:
@@ -71,9 +90,9 @@ jobs:
           fi
 
           SSH_OPTS="-o StrictHostKeyChecking=no -o ConnectTimeout=30 -o ServerAliveInterval=15 -o ServerAliveCountMax=4"
-          # Xserverへは、GitHubの実行環境から一時的に接続できなくなることがある（数分〜10分ほどで戻る）ため、
-          # 待ち時間を延ばしながら最大7回、合計20分ほど粘る
-          RETRIES=7
+          # Xserverへは、実行環境（実行ごとに変わる）によっては接続できないことがある。同じ実行の中で
+          # やり直しても同じ環境のままなので、ここでは短く切り上げ、失敗したら別の実行環境でやり直す
+          RETRIES=3
           retry_cmd() {
             local n=1
             while true; do
@@ -101,7 +120,7 @@ jobs:
                  "mkdir -p ${XSERVER_TARGET_DIR}data"; then
               echo "::error::Xserverに接続できませんでした（$tag）。サーバーパネルの「国外IPアクセス制限」などを確認してください"
               DEPLOY_FAILED=1
-              return 1
+              return 0   # 失敗の扱いは finish() に任せる（ここで打ち切ると、失敗の目印が付かず自動のやり直しが動かない）
             fi
             # サイト本体（config.php はサーバー上で作成したものを上書きしない）
             # index.html の app.js・style.css の参照にコミットIDを付け、ブラウザが古いファイルを使い続けないようにする
@@ -131,6 +150,7 @@ jobs:
             rm -f /tmp/deploy_key
             if [ "$DEPLOY_FAILED" = "1" ]; then
               echo "::error::Xserverへの反映に失敗しました。牌譜はこの実行のアーティファクト（kifu-backup）に保存しています"
+              echo "DEPLOY_FAILED=1" >> "$GITHUB_ENV"
               exit 1
             fi
           }
@@ -187,3 +207,14 @@ jobs:
           path: data/kifu
           retention-days: 14
           if-no-files-found: ignore
+
+      # 転送の失敗は、別の実行環境ならつながることが多い。牌譜のバックアップを添えて、転送だけをやり直す実行を起こす（最大3回）
+      - name: Retry the deploy from a fresh runner
+        if: ${{ failure() && env.DEPLOY_FAILED == '1' && fromJSON(github.event.inputs.deploy_attempt || '0') < 3 }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run season.yml --ref "${{ github.ref_name }}" \
+            -f deploy_only=true \
+            -f restore_kifu_run_id="${{ github.run_id }}" \
+            -f deploy_attempt="$(( ${{ github.event.inputs.deploy_attempt || 0 }} + 1 ))"
