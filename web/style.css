@@ -263,7 +263,7 @@ input[type="text"], input[type="search"], input:not([type]), select {
 .detail-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--navy-700); border-left: 1px solid var(--navy-700); margin-bottom: 8px; }
 .dg-cell { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; padding: 8px 10px; border-right: 1px solid var(--navy-700); border-bottom: 1px solid var(--navy-700); font-size: 0.78rem; background: rgba(16,24,44,0.5); }
 .dg-label { color: var(--text-dim); white-space: nowrap; }
-.dg-value { font-family: 'Orbitron', 'Noto Sans JP', sans-serif; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dg-value { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .dg-value small { font-size: 0.7em; margin-left: 2px; color: var(--text-dim); }
 .controls button:disabled { color: var(--text-dim); cursor: default; }
 .mboard { cursor: pointer; }
