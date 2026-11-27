@@ -1,0 +1,38 @@
+name: kifu-backup-from-xserver
+
+# Xserver にだけある牌譜（data/kifu）を取り出し、アーティファクトに保存する（Cloudflare 移行用・手動実行）
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Pull kifu from Xserver
+        env:
+          XSERVER_HOST: ${{ secrets.XSERVER_HOST }}
+          XSERVER_USER: ${{ secrets.XSERVER_USER }}
+          XSERVER_PORT: ${{ secrets.XSERVER_SSH_PORT }}
+          XSERVER_SSH_KEY: ${{ secrets.XSERVER_SSH_KEY }}
+          XSERVER_TARGET_DIR: ${{ secrets.MAHJONG_XSERVER_TARGET_DIR }}
+        run: |
+          echo "$XSERVER_SSH_KEY" > /tmp/deploy_key && chmod 600 /tmp/deploy_key
+          SSH="ssh -i /tmp/deploy_key -p $XSERVER_PORT -o StrictHostKeyChecking=no -o ConnectTimeout=30 -o ServerAliveInterval=15 -o ServerAliveCountMax=4 $XSERVER_USER@$XSERVER_HOST"
+          mkdir -p out
+          echo "--- サーバー上の牌譜 ---"
+          $SSH "cd ${XSERVER_TARGET_DIR}data && du -sh kifu && find kifu -type f | wc -l && ls kifu | head"
+          echo "--- 取得 ---"
+          $SSH "cd ${XSERVER_TARGET_DIR}data && tar czf - kifu" > out/kifu.tgz
+          ls -l out/kifu.tgz
+          tar tzf out/kifu.tgz | wc -l
+          rm -f /tmp/deploy_key
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kifu-xserver-full
+          path: out/kifu.tgz
+          retention-days: 90
