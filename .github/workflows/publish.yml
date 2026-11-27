@@ -1,0 +1,113 @@
+name: Publish Season (計算済みの季をサイトに公開)
+run-name: "Publish Season${{ inputs.season && format(' {0}', inputs.season) || '' }}${{ inputs.preview == 'true' && ' [preview]' || '' }}"
+
+# 季は先に計算しておき（ストック）、1季ずつ Cloudflare（mahjong.spia-net.com の Worker）に出す。
+# 第s季を出すときは、Git の履歴から「第s季が終わった時点」の data/ を取り出し、そこから集計とページを作る。
+# publish/state.json の published_season が、サイトに出ている最新の季。
+# 手動実行: season を指定するとその季を出す（省略時は published_season+1）。preview=true なら確認用URLにだけ上げる。
+
+on:
+  workflow_dispatch:
+    inputs:
+      season:
+        description: "公開する季（省略時は published_season+1）"
+        required: false
+        default: ""
+      preview:
+        description: "trueにすると、本番は変えず確認用のURLにだけ上げる（記録は触らない）"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    services:
+      mariadb:
+        image: mariadb:10.11
+        env:
+          MARIADB_ROOT_PASSWORD: root
+          MARIADB_DATABASE: mahjong
+        ports: ["3306:3306"]
+        options: --health-cmd="healthcheck.sh --connect --innodb_initialized" --health-interval=5s --health-timeout=5s --health-retries=20
+    env:
+      DB_HOST: 127.0.0.1
+      DB_USER: root
+      DB_PASS: root
+      DB_NAME: mahjong
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: 0d39c3fe24ce0801cbc20728720e2063
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: PHP（MySQL接続）を用意する
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq php-cli php-mysql mariadb-client >/dev/null
+          php -m | grep -i pdo_mysql
+
+      - name: 公開する季の時点のデータを取り出す
+        id: snap
+        run: |
+          set -euo pipefail
+          git pull -q origin main
+          PUB=$(python3 -c "import json; print(json.load(open('publish/state.json')).get('published_season', 0))")
+          S="${{ inputs.season }}"; [ -z "$S" ] && S=$((PUB + 1))
+          if [ ! -f "data/standings/season_${S}.json" ]; then
+            echo "::error::第${S}季はまだ計算されていません（ストック切れ）"
+            echo "ok=0" >> "$GITHUB_OUTPUT"; exit 1
+          fi
+          # 第s季が終わった時点＝第s+1季の順位表を追加したコミットの、1つ前のコミット（まだ無ければ最新）
+          RESET_C=$(git log --format=%H -1 --grep='^Reset season data' || true)
+          RANGE="HEAD"; [ -n "$RESET_C" ] && RANGE="${RESET_C}..HEAD"
+          NEXT_ADD=$(git log "$RANGE" --diff-filter=A --format=%H -1 -- "data/standings/season_$((S + 1)).json" || true)
+          if [ -n "$NEXT_ADD" ]; then SNAP=$(git rev-parse "${NEXT_ADD}^"); else SNAP=$(git rev-parse HEAD); fi
+          git cat-file -e "${SNAP}:data/standings/season_${S}.json"
+          if git cat-file -e "${SNAP}:data/standings/season_$((S + 1)).json" 2>/dev/null; then echo "::error::取り出す時点の判定を誤りました"; exit 1; fi
+          rm -rf /tmp/snap && mkdir -p /tmp/snap
+          git archive "$SNAP" data | tar -x -C /tmp/snap
+          echo "第${S}季の時点：$(git log -1 --format='%h %ad %s' --date=iso "$SNAP")"
+          echo "season=${S}" >> "$GITHUB_OUTPUT"; echo "ok=1" >> "$GITHUB_OUTPUT"
+
+      - name: 公開用のファイルを作る
+        run: bash cloudflare/build/build.sh /tmp/snap/data cloudflare/dist "${{ steps.snap.outputs.season }}"
+
+      - name: Cloudflare に上げる
+        working-directory: cloudflare
+        run: |
+          set -euo pipefail
+          if [ "${{ inputs.preview }}" = "true" ]; then
+            npx -y wrangler@4.161.0 versions upload --preview-alias preview
+          else
+            npx -y wrangler@4.161.0 deploy
+          fi
+
+      - name: 公開済みの季を記録
+        if: success() && inputs.preview != 'true'
+        env:
+          S: ${{ steps.snap.outputs.season }}
+        run: |
+          git config user.name "mahjong-league-bot"
+          git config user.email "actions@users.noreply.github.com"
+          for attempt in 1 2 3 4; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            python3 -c "import json,sys; p='publish/state.json'; d=json.load(open(p)); d['published_season']=int(sys.argv[1]); d.pop('paused', None); json.dump(d, open(p,'w'), ensure_ascii=False, indent=2); open(p,'a').write('\n')" "$S"
+            git add publish/state.json
+            git diff --staged --quiet && break
+            git commit -q -m "Publish season ${S} [skip ci]"
+            git push -q && break
+            sleep $((attempt * 3))
+          done

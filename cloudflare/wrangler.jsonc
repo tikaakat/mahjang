@@ -1,0 +1,26 @@
+// MAHJONG LEAGUE（mahjong.spia-net.com）の Worker の設定
+// 公開は GitHub Actions（.github/workflows/publish.yml）から `wrangler deploy` で行う。
+// dist/ は cloudflare/build/build.sh が「公開する季の時点のデータ」から作る（リポジトリには入れない）。
+{
+  "name": "mahjong-league",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-01",
+  "account_id": "0d39c3fe24ce0801cbc20728720e2063",
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none",
+    // /api/ と牌譜だけ Worker が受ける（それ以外は静的ファイルをそのまま返す）
+    "run_worker_first": ["/api/*", "/data/kifu/*"]
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "mahjong-league", "database_id": "a39a025a-331d-402f-8953-740b333d5221" }
+  ],
+  "r2_buckets": [
+    { "binding": "KIFU", "bucket_name": "mahjong-kifu" }
+  ],
+  "observability": { "enabled": true }
+}
