@@ -1,0 +1,43 @@
+name: kifu-to-r2
+
+# 取り出し済みの牌譜（kifu_backup.yml のアーティファクト）を、季ごとにまとめて R2（mahjong-kifu）に上げる（手動・1回きり）
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: "kifu_backup.yml の実行ID（アーティファクト kifu-xserver-full を持つ実行）"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: 0d39c3fe24ce0801cbc20728720e2063
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/download-artifact@v4
+        with:
+          name: kifu-xserver-full
+          run-id: ${{ inputs.source_run_id }}
+          github-token: ${{ github.token }}
+          path: /tmp/dl
+      - name: Unpack and pack per season
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ex && tar xzf /tmp/dl/kifu.tgz -C /tmp/ex
+          python3 tools/pack_kifu.py /tmp/ex/kifu /tmp/packs
+          du -sh /tmp/packs; ls /tmp/packs | wc -l
+      - name: Upload to R2
+        run: |
+          set -euo pipefail
+          cd /tmp/packs
+          ls | xargs -P 4 -I{} sh -c 'for i in 1 2 3; do npx -y wrangler@4.161.0 r2 object put "mahjong-kifu/kifu/{}" --file="{}" --remote >/dev/null && exit 0; sleep 5; done; echo "FAILED {}"; exit 1'
+          echo "uploaded: $(ls | wc -l) objects"
