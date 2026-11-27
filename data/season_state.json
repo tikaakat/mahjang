@@ -1,10 +1,10 @@
 {
- "current_season": 6,
+ "current_season": 7,
  "titleholders": {
   "鳳凰位": {
-   "id": "A0-009",
-   "name": "小森沙織",
-   "since": 6
+   "id": "A0-002",
+   "name": "岩崎颯",
+   "since": 7
   },
   "麒麟位": {
    "id": "B0-000",
@@ -12,14 +12,14 @@
    "since": 6
   },
   "霊亀位": {
-   "id": "B0-010",
-   "name": "阿部美紀",
-   "since": 6
+   "id": "C0-009",
+   "name": "大杉さくら",
+   "since": 7
   },
   "応龍位": {
-   "id": "B0-015",
-   "name": "柴田聡太",
-   "since": 6
+   "id": "D5-002",
+   "name": "石川貴弘",
+   "since": 7
   }
  },
  "title_history": [
@@ -860,6 +860,146 @@
      "name": "岩崎颯",
      "points": -2.0,
      "raw": -19.6
+    }
+   ]
+  },
+  {
+   "title": "鳳凰位",
+   "season": 7,
+   "event": "奪取",
+   "winner_id": "A0-002",
+   "winner_name": "岩崎颯",
+   "previous_id": "A0-009",
+   "previous_name": "小森沙織",
+   "final_standings": [
+    {
+     "id": "A0-002",
+     "name": "岩崎颯",
+     "points": 70.8,
+     "raw": 46.8
+    },
+    {
+     "id": "A0-004",
+     "name": "大沼友紀",
+     "points": -8.0,
+     "raw": -5.0
+    },
+    {
+     "id": "A0-009",
+     "name": "小森沙織",
+     "points": -13.5,
+     "raw": -18.5
+    },
+    {
+     "id": "A0-003",
+     "name": "田島新",
+     "points": -49.3,
+     "raw": -23.3
+    }
+   ]
+  },
+  {
+   "title": "麒麟位",
+   "season": 7,
+   "event": "防衛",
+   "winner_id": "B0-000",
+   "winner_name": "梅田友和",
+   "previous_id": "B0-000",
+   "previous_name": "梅田友和",
+   "final_standings": [
+    {
+     "id": "B0-000",
+     "name": "梅田友和",
+     "points": 111.6,
+     "raw": 1.6
+    },
+    {
+     "id": "A0-008",
+     "name": "山崎聡太",
+     "points": -10.6,
+     "raw": -20.6
+    },
+    {
+     "id": "D6-003",
+     "name": "中山大輔",
+     "points": -50.1,
+     "raw": -40.1
+    },
+    {
+     "id": "B0-013",
+     "name": "浦上美咲子",
+     "points": -50.9,
+     "raw": -40.9
+    }
+   ]
+  },
+  {
+   "title": "霊亀位",
+   "season": 7,
+   "event": "奪取",
+   "winner_id": "C0-009",
+   "winner_name": "大杉さくら",
+   "previous_id": "B0-010",
+   "previous_name": "阿部美紀",
+   "final_standings": [
+    {
+     "id": "C0-009",
+     "name": "大杉さくら",
+     "points": 86.5,
+     "raw": 51.5
+    },
+    {
+     "id": "B0-010",
+     "name": "阿部美紀",
+     "points": -1.5,
+     "raw": -6.5
+    },
+    {
+     "id": "C0-003",
+     "name": "中川健二",
+     "points": -25.4,
+     "raw": -10.4
+    },
+    {
+     "id": "A0-010",
+     "name": "山口順子",
+     "points": -59.6,
+     "raw": -34.6
+    }
+   ]
+  },
+  {
+   "title": "応龍位",
+   "season": 7,
+   "event": "奪取",
+   "winner_id": "D5-002",
+   "winner_name": "石川貴弘",
+   "previous_id": "B0-015",
+   "previous_name": "柴田聡太",
+   "final_standings": [
+    {
+     "id": "D5-002",
+     "name": "石川貴弘",
+     "points": 2.0,
+     "raw": 8.9
+    },
+    {
+     "id": "D7-004",
+     "name": "小澤萌",
+     "points": 1.0,
+     "raw": 11.9
+    },
+    {
+     "id": "D2-001",
+     "name": "須田泉美",
+     "points": -1.0,
+     "raw": -5.8
+    },
+    {
+     "id": "B0-015",
+     "name": "柴田聡太",
+     "points": -2.0,
+     "raw": -15.0
     }
    ]
   }
@@ -33563,6 +33703,9686 @@
     ]
    },
    "retired_season": 6
+  },
+  {
+   "id": "D6-009",
+   "league": "D",
+   "params": {
+    "speed_weight": 6.858,
+    "dora_weight": 7.208,
+    "yakuhai_weight": 1.925,
+    "flush_weight": 6.65,
+    "tanyao_weight": 4.817,
+    "call_weight": 2.57,
+    "riichi_weight": 3.519,
+    "defense_weight": 5.585,
+    "push_weight": 7.667
+   },
+   "talent": 0.499,
+   "clan_root_id": "B0-007",
+   "display_name": "宇野浩明",
+   "awakened_param": null,
+   "generation": 1,
+   "parent_a_id": "B0-007",
+   "initial_age": 34,
+   "age_multipliers": {
+    "speed_weight": 0.961,
+    "dora_weight": 0.969,
+    "yakuhai_weight": 0.98,
+    "flush_weight": 1.037,
+    "tanyao_weight": 1.023,
+    "call_weight": 1.068,
+    "riichi_weight": 0.989,
+    "defense_weight": 1.052,
+    "push_weight": 0.965,
+    "talent": 1.059
+   },
+   "consecutive_losing_seasons": 2,
+   "elo": 1487.15,
+   "peak_elo": 1528.38,
+   "volatility": 0.39,
+   "seasons_in_league": 1,
+   "total_seasons": 2,
+   "retired": true,
+   "games": 33,
+   "placements": [
+    5,
+    13,
+    7,
+    8
+   ],
+   "total_points": -41.0,
+   "career": [
+    {
+     "season": 6,
+     "league": "D",
+     "rank": 21,
+     "points": -46.4,
+     "elo": 1500.6,
+     "movement": "stay"
+    },
+    {
+     "season": 7,
+     "league": "D",
+     "rank": 18,
+     "points": -19.2,
+     "elo": 1487.2,
+     "movement": "retired"
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null,
+   "stats": {
+    "hands": 386,
+    "wins": 73,
+    "tsumo": 27,
+    "dealins": 61,
+    "riichi": 98,
+    "draws": 77,
+    "draw_tenpai": 30,
+    "win_value": 293400,
+    "dealin_value": 200800,
+    "max_value": 12000,
+    "yakuman": 0,
+    "score_sum": 940400,
+    "score_max": 48400,
+    "busts": 0
+   },
+   "elo_history": [
+    [
+     6,
+     1500.6
+    ],
+    [
+     7,
+     1487.2
+    ]
+   ],
+   "elo_trace": [
+    [
+     6,
+     1,
+     1474.8
+    ],
+    [
+     6,
+     2,
+     1467.8
+    ],
+    [
+     6,
+     3,
+     1477.3
+    ],
+    [
+     6,
+     4,
+     1486.1
+    ],
+    [
+     6,
+     5,
+     1510.4
+    ],
+    [
+     6,
+     6,
+     1484.5
+    ],
+    [
+     6,
+     7,
+     1492.9
+    ],
+    [
+     6,
+     8,
+     1484.6
+    ],
+    [
+     6,
+     9,
+     1511.6
+    ],
+    [
+     6,
+     10,
+     1520.4
+    ],
+    [
+     6,
+     11,
+     1528.4
+    ],
+    [
+     6,
+     12,
+     1503.8
+    ],
+    [
+     6,
+     13,
+     1524.8
+    ],
+    [
+     6,
+     14,
+     1517.1
+    ],
+    [
+     6,
+     15,
+     1491.7
+    ],
+    [
+     6,
+     16,
+     1500.6
+    ],
+    [
+     7,
+     17,
+     1490.1
+    ],
+    [
+     7,
+     18,
+     1464.4
+    ],
+    [
+     7,
+     19,
+     1488.9
+    ],
+    [
+     7,
+     20,
+     1495.2
+    ],
+    [
+     7,
+     21,
+     1468.7
+    ],
+    [
+     7,
+     22,
+     1476.6
+    ],
+    [
+     7,
+     23,
+     1451.7
+    ],
+    [
+     7,
+     24,
+     1444.8
+    ],
+    [
+     7,
+     25,
+     1439.1
+    ],
+    [
+     7,
+     26,
+     1450.1
+    ],
+    [
+     7,
+     27,
+     1460.3
+    ],
+    [
+     7,
+     28,
+     1469.6
+    ],
+    [
+     7,
+     29,
+     1478.7
+    ],
+    [
+     7,
+     30,
+     1506.9
+    ],
+    [
+     7,
+     31,
+     1501.9
+    ],
+    [
+     7,
+     32,
+     1477.4
+    ],
+    [
+     7,
+     33,
+     1487.2
+    ]
+   ],
+   "recent_games": [
+    {
+     "id": "6-0232",
+     "season": 6,
+     "label": "Dリーグ 第1節",
+     "placement": 2,
+     "points": 6.7,
+     "score": 32700,
+     "others": [
+      "吉田綾",
+      "加藤泉",
+      "須藤章子"
+     ]
+    },
+    {
+     "id": "6-0253",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 1,
+     "points": 13.4,
+     "score": 35400,
+     "others": [
+      "海野義隆",
+      "谷川香織",
+      "小島昌弘"
+     ]
+    },
+    {
+     "id": "6-0254",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -22.3,
+     "score": 15700,
+     "others": [
+      "谷川香織",
+      "小島昌弘",
+      "海野義隆"
+     ]
+    },
+    {
+     "id": "6-0255",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 7.1,
+     "score": 33100,
+     "others": [
+      "小島昌弘",
+      "海野義隆",
+      "谷川香織"
+     ]
+    },
+    {
+     "id": "6-0256",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 3,
+     "points": -4.3,
+     "score": 29700,
+     "others": [
+      "小島昌弘",
+      "海野義隆",
+      "谷川香織"
+     ]
+    },
+    {
+     "id": "6-0273",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 1,
+     "points": 10.6,
+     "score": 32600,
+     "others": [
+      "青山杏子",
+      "中山大輔",
+      "森田美和子"
+     ]
+    },
+    {
+     "id": "6-0274",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": 4.7,
+     "score": 30700,
+     "others": [
+      "中山大輔",
+      "森田美和子",
+      "青山杏子"
+     ]
+    },
+    {
+     "id": "6-0275",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": 7.7,
+     "score": 33700,
+     "others": [
+      "森田美和子",
+      "青山杏子",
+      "中山大輔"
+     ]
+    },
+    {
+     "id": "6-0276",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -33.0,
+     "score": 5000,
+     "others": [
+      "森田美和子",
+      "青山杏子",
+      "中山大輔"
+     ]
+    },
+    {
+     "id": "6-0334",
+     "season": 6,
+     "label": "霊亀位 1回戦",
+     "placement": 1,
+     "points": 26.1,
+     "score": 41100,
+     "others": [
+      "石川貴弘",
+      "大石俊介",
+      "井上健一"
+     ]
+    },
+    {
+     "id": "6-0348",
+     "season": 6,
+     "label": "霊亀位 2回戦",
+     "placement": 3,
+     "points": -21.2,
+     "score": 13800,
+     "others": [
+      "高木友和",
+      "尾関章子",
+      "谷川香織"
+     ]
+    },
+    {
+     "id": "6-0385",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 20600,
+     "others": [
+      "南葵",
+      "谷海斗",
+      "石岡一美"
+     ]
+    },
+    {
+     "id": "6-0386",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 2,
+     "points": 0.0,
+     "score": 33900,
+     "others": [
+      "谷海斗",
+      "石岡一美",
+      "南葵"
+     ]
+    },
+    {
+     "id": "7-0209",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 3,
+     "points": -8.5,
+     "score": 25500,
+     "others": [
+      "藤本直人",
+      "谷海斗",
+      "岡部祐輝"
+     ]
+    },
+    {
+     "id": "7-0210",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 4,
+     "points": -18.6,
+     "score": 19400,
+     "others": [
+      "谷海斗",
+      "岡部祐輝",
+      "藤本直人"
+     ]
+    },
+    {
+     "id": "7-0211",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 1,
+     "points": 20.5,
+     "score": 42500,
+     "others": [
+      "岡部祐輝",
+      "藤本直人",
+      "谷海斗"
+     ]
+    },
+    {
+     "id": "7-0212",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 2,
+     "points": 8.9,
+     "score": 35900,
+     "others": [
+      "岡部祐輝",
+      "藤本直人",
+      "谷海斗"
+     ]
+    },
+    {
+     "id": "7-0253",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -22.6,
+     "score": 19400,
+     "others": [
+      "伊藤結愛",
+      "小澤萌",
+      "竹本和彦"
+     ]
+    },
+    {
+     "id": "7-0254",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 10.0,
+     "score": 36000,
+     "others": [
+      "伊藤結愛",
+      "小澤萌",
+      "竹本和彦"
+     ]
+    },
+    {
+     "id": "7-0255",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -18.7,
+     "score": 19300,
+     "others": [
+      "小澤萌",
+      "竹本和彦",
+      "伊藤結愛"
+     ]
+    },
+    {
+     "id": "7-0256",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 3,
+     "points": 1.4,
+     "score": 30400,
+     "others": [
+      "竹本和彦",
+      "伊藤結愛",
+      "小澤萌"
+     ]
+    },
+    {
+     "id": "7-0261",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 3,
+     "points": -12.6,
+     "score": 20400,
+     "others": [
+      "加藤泉",
+      "山下裕子",
+      "竹本美咲子"
+     ]
+    },
+    {
+     "id": "7-0262",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": 6.1,
+     "score": 32100,
+     "others": [
+      "山下裕子",
+      "竹本美咲子",
+      "加藤泉"
+     ]
+    },
+    {
+     "id": "7-0263",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": 6.4,
+     "score": 32400,
+     "others": [
+      "竹本美咲子",
+      "加藤泉",
+      "山下裕子"
+     ]
+    },
+    {
+     "id": "7-0264",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": 8.5,
+     "score": 34500,
+     "others": [
+      "竹本美咲子",
+      "加藤泉",
+      "山下裕子"
+     ]
+    },
+    {
+     "id": "7-0334",
+     "season": 7,
+     "label": "霊亀位 1回戦",
+     "placement": 2,
+     "points": 8.6,
+     "score": 33600,
+     "others": [
+      "石川貴弘",
+      "山口一美",
+      "南葵"
+     ]
+    },
+    {
+     "id": "7-0354",
+     "season": 7,
+     "label": "霊亀位 2回戦",
+     "placement": 1,
+     "points": 26.2,
+     "score": 41200,
+     "others": [
+      "谷本剛",
+      "小島昌弘",
+      "宮本楓"
+     ]
+    },
+    {
+     "id": "7-0355",
+     "season": 7,
+     "label": "霊亀位 3回戦",
+     "placement": 3,
+     "points": -13.1,
+     "score": 21900,
+     "others": [
+      "柴田聡太",
+      "岩本拓也",
+      "尾関章子"
+     ]
+    },
+    {
+     "id": "7-0385",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 23500,
+     "others": [
+      "山口一美",
+      "山下裕子",
+      "石川貴弘"
+     ]
+    },
+    {
+     "id": "7-0386",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 2,
+     "points": 0.0,
+     "score": 48400,
+     "others": [
+      "山口一美",
+      "山下裕子",
+      "石川貴弘"
+     ]
+    }
+   ],
+   "opponents": {
+    "C0-019": [
+     8,
+     5,
+     3
+    ],
+    "D2-000": [
+     4,
+     2,
+     2
+    ],
+    "D3-001": [
+     4,
+     1,
+     3
+    ],
+    "D5-001": [
+     4,
+     1,
+     3
+    ],
+    "D6-007": [
+     5,
+     3,
+     2
+    ],
+    "D5-000": [
+     5,
+     3,
+     2
+    ],
+    "C0-015": [
+     4,
+     3,
+     1
+    ],
+    "D6-003": [
+     4,
+     2,
+     2
+    ],
+    "C0-005": [
+     4,
+     2,
+     2
+    ],
+    "D5-002": [
+     4,
+     2,
+     2
+    ],
+    "D6-002": [
+     1,
+     1,
+     0
+    ],
+    "D3-005": [
+     1,
+     1,
+     0
+    ],
+    "D4-003": [
+     1,
+     0,
+     1
+    ],
+    "B0-004": [
+     2,
+     1,
+     1
+    ],
+    "D6-004": [
+     3,
+     1,
+     2
+    ],
+    "D6-006": [
+     6,
+     3,
+     3
+    ],
+    "D3-002": [
+     2,
+     1,
+     1
+    ],
+    "D6-005": [
+     4,
+     2,
+     2
+    ],
+    "D0-020": [
+     4,
+     1,
+     3
+    ],
+    "D0-014": [
+     4,
+     1,
+     3
+    ],
+    "D7-004": [
+     4,
+     1,
+     3
+    ],
+    "D6-001": [
+     4,
+     1,
+     3
+    ],
+    "D4-002": [
+     6,
+     3,
+     3
+    ],
+    "D7-001": [
+     4,
+     2,
+     2
+    ],
+    "D7-003": [
+     3,
+     2,
+     1
+    ],
+    "C0-002": [
+     1,
+     1,
+     0
+    ],
+    "B0-009": [
+     1,
+     1,
+     0
+    ],
+    "B0-015": [
+     1,
+     1,
+     0
+    ],
+    "B0-007": [
+     1,
+     0,
+     1
+    ]
+   },
+   "retired_season": 7
+  },
+  {
+   "id": "D6-001",
+   "league": "D",
+   "params": {
+    "speed_weight": 0.961,
+    "dora_weight": 8.074,
+    "yakuhai_weight": 7.563,
+    "flush_weight": 7.754,
+    "tanyao_weight": 7.393,
+    "call_weight": 9.715,
+    "riichi_weight": 0.912,
+    "defense_weight": 5.231,
+    "push_weight": 1.72
+   },
+   "talent": 0.573,
+   "clan_root_id": "B0-013",
+   "display_name": "竹本和彦",
+   "awakened_param": null,
+   "generation": 2,
+   "parent_a_id": "D2-000",
+   "initial_age": 26,
+   "age_multipliers": {
+    "speed_weight": 1.061,
+    "dora_weight": 0.985,
+    "yakuhai_weight": 1.07,
+    "flush_weight": 1.034,
+    "tanyao_weight": 1.011,
+    "call_weight": 1.133,
+    "riichi_weight": 1.144,
+    "defense_weight": 1.035,
+    "push_weight": 1.146,
+    "talent": 1.108
+   },
+   "consecutive_losing_seasons": 2,
+   "elo": 1426.46,
+   "peak_elo": 1500.0,
+   "volatility": 0.4,
+   "seasons_in_league": 1,
+   "total_seasons": 2,
+   "retired": true,
+   "games": 32,
+   "placements": [
+    5,
+    8,
+    6,
+    13
+   ],
+   "total_points": -140.1,
+   "career": [
+    {
+     "season": 6,
+     "league": "D",
+     "rank": 24,
+     "points": -62.5,
+     "elo": 1377.7,
+     "movement": "stay"
+    },
+    {
+     "season": 7,
+     "league": "D",
+     "rank": 20,
+     "points": -23.7,
+     "elo": 1426.5,
+     "movement": "retired"
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null,
+   "stats": {
+    "hands": 392,
+    "wins": 70,
+    "tsumo": 18,
+    "dealins": 54,
+    "riichi": 38,
+    "draws": 67,
+    "draw_tenpai": 36,
+    "win_value": 218600,
+    "dealin_value": 203800,
+    "max_value": 11600,
+    "yakuman": 0,
+    "score_sum": 827500,
+    "score_max": 49700,
+    "busts": 0
+   },
+   "elo_history": [
+    [
+     6,
+     1377.7
+    ],
+    [
+     7,
+     1426.5
+    ]
+   ],
+   "elo_trace": [
+    [
+     6,
+     1,
+     1475.1
+    ],
+    [
+     6,
+     2,
+     1452.5
+    ],
+    [
+     6,
+     3,
+     1480.0
+    ],
+    [
+     6,
+     4,
+     1472.9
+    ],
+    [
+     6,
+     5,
+     1466.2
+    ],
+    [
+     6,
+     6,
+     1492.0
+    ],
+    [
+     6,
+     7,
+     1499.6
+    ],
+    [
+     6,
+     8,
+     1474.6
+    ],
+    [
+     6,
+     9,
+     1452.2
+    ],
+    [
+     6,
+     10,
+     1431.7
+    ],
+    [
+     6,
+     11,
+     1445.0
+    ],
+    [
+     6,
+     12,
+     1441.2
+    ],
+    [
+     6,
+     13,
+     1419.1
+    ],
+    [
+     6,
+     14,
+     1397.5
+    ],
+    [
+     6,
+     15,
+     1377.7
+    ],
+    [
+     7,
+     16,
+     1408.8
+    ],
+    [
+     7,
+     17,
+     1389.4
+    ],
+    [
+     7,
+     18,
+     1387.6
+    ],
+    [
+     7,
+     19,
+     1385.9
+    ],
+    [
+     7,
+     20,
+     1417.1
+    ],
+    [
+     7,
+     21,
+     1397.7
+    ],
+    [
+     7,
+     22,
+     1411.9
+    ],
+    [
+     7,
+     23,
+     1424.6
+    ],
+    [
+     7,
+     24,
+     1436.3
+    ],
+    [
+     7,
+     25,
+     1446.8
+    ],
+    [
+     7,
+     26,
+     1472.3
+    ],
+    [
+     7,
+     27,
+     1447.8
+    ],
+    [
+     7,
+     28,
+     1456.4
+    ],
+    [
+     7,
+     29,
+     1470.2
+    ],
+    [
+     7,
+     30,
+     1452.5
+    ],
+    [
+     7,
+     31,
+     1430.5
+    ],
+    [
+     7,
+     32,
+     1426.5
+    ]
+   ],
+   "recent_games": [
+    {
+     "id": "6-0223",
+     "season": 6,
+     "label": "Dリーグ 第1節",
+     "placement": 1,
+     "points": 27.7,
+     "score": 49700,
+     "others": [
+      "谷海斗",
+      "須田泉美",
+      "中山大輔"
+     ]
+    },
+    {
+     "id": "6-0224",
+     "season": 6,
+     "label": "Dリーグ 第1節",
+     "placement": 3,
+     "points": -14.0,
+     "score": 20000,
+     "others": [
+      "谷海斗",
+      "須田泉美",
+      "中山大輔"
+     ]
+    },
+    {
+     "id": "6-0249",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 3,
+     "points": -9.4,
+     "score": 24600,
+     "others": [
+      "大石俊介",
+      "南葵",
+      "大森颯"
+     ]
+    },
+    {
+     "id": "6-0250",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 1,
+     "points": 20.4,
+     "score": 42400,
+     "others": [
+      "大石俊介",
+      "南葵",
+      "大森颯"
+     ]
+    },
+    {
+     "id": "6-0251",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 8.7,
+     "score": 35700,
+     "others": [
+      "南葵",
+      "大森颯",
+      "大石俊介"
+     ]
+    },
+    {
+     "id": "6-0252",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -15.5,
+     "score": 22500,
+     "others": [
+      "大森颯",
+      "大石俊介",
+      "南葵"
+     ]
+    },
+    {
+     "id": "6-0265",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -13.6,
+     "score": 24400,
+     "others": [
+      "山下裕子",
+      "藤本直人",
+      "谷川香織"
+     ]
+    },
+    {
+     "id": "6-0266",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -15.3,
+     "score": 22700,
+     "others": [
+      "山下裕子",
+      "藤本直人",
+      "谷川香織"
+     ]
+    },
+    {
+     "id": "6-0267",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": -3.3,
+     "score": 27700,
+     "others": [
+      "藤本直人",
+      "谷川香織",
+      "山下裕子"
+     ]
+    },
+    {
+     "id": "6-0268",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 3,
+     "points": -7.7,
+     "score": 25300,
+     "others": [
+      "谷川香織",
+      "山下裕子",
+      "藤本直人"
+     ]
+    },
+    {
+     "id": "6-0336",
+     "season": 6,
+     "label": "霊亀位 1回戦",
+     "placement": 4,
+     "points": -36.1,
+     "score": 8900,
+     "others": [
+      "後藤さくら",
+      "青山杏子",
+      "加藤泉"
+     ]
+    },
+    {
+     "id": "6-0383",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 19300,
+     "others": [
+      "吉田綾",
+      "井上健一",
+      "小島昌弘"
+     ]
+    },
+    {
+     "id": "6-0384",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 14100,
+     "others": [
+      "井上健一",
+      "小島昌弘",
+      "吉田綾"
+     ]
+    },
+    {
+     "id": "7-0225",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 1,
+     "points": 13.5,
+     "score": 35500,
+     "others": [
+      "竹本美咲子",
+      "大石俊介",
+      "石川貴弘"
+     ]
+    },
+    {
+     "id": "7-0226",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 4,
+     "points": -24.2,
+     "score": 13800,
+     "others": [
+      "竹本美咲子",
+      "大石俊介",
+      "石川貴弘"
+     ]
+    },
+    {
+     "id": "7-0227",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 3,
+     "points": -7.3,
+     "score": 26700,
+     "others": [
+      "大石俊介",
+      "石川貴弘",
+      "竹本美咲子"
+     ]
+    },
+    {
+     "id": "7-0228",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 3,
+     "points": -5.8,
+     "score": 28200,
+     "others": [
+      "石川貴弘",
+      "竹本美咲子",
+      "大石俊介"
+     ]
+    },
+    {
+     "id": "7-0253",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 1,
+     "points": 13.5,
+     "score": 35500,
+     "others": [
+      "宇野浩明",
+      "伊藤結愛",
+      "小澤萌"
+     ]
+    },
+    {
+     "id": "7-0254",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -25.6,
+     "score": 12400,
+     "others": [
+      "伊藤結愛",
+      "小澤萌",
+      "宇野浩明"
+     ]
+    },
+    {
+     "id": "7-0255",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 10.1,
+     "score": 36100,
+     "others": [
+      "小澤萌",
+      "宇野浩明",
+      "伊藤結愛"
+     ]
+    },
+    {
+     "id": "7-0256",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 3.7,
+     "score": 30700,
+     "others": [
+      "宇野浩明",
+      "伊藤結愛",
+      "小澤萌"
+     ]
+    },
+    {
+     "id": "7-0277",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": 4.4,
+     "score": 30400,
+     "others": [
+      "田口花子",
+      "谷海斗",
+      "井上健一"
+     ]
+    },
+    {
+     "id": "7-0278",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": 7.6,
+     "score": 34600,
+     "others": [
+      "谷海斗",
+      "井上健一",
+      "田口花子"
+     ]
+    },
+    {
+     "id": "7-0279",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 1,
+     "points": 20.4,
+     "score": 42400,
+     "others": [
+      "谷海斗",
+      "井上健一",
+      "田口花子"
+     ]
+    },
+    {
+     "id": "7-0280",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -34.0,
+     "score": 4000,
+     "others": [
+      "井上健一",
+      "田口花子",
+      "谷海斗"
+     ]
+    },
+    {
+     "id": "7-0336",
+     "season": 7,
+     "label": "霊亀位 1回戦",
+     "placement": 2,
+     "points": 11.2,
+     "score": 36200,
+     "others": [
+      "加藤泉",
+      "大石俊介",
+      "海野義隆"
+     ]
+    },
+    {
+     "id": "7-0353",
+     "season": 7,
+     "label": "霊亀位 2回戦",
+     "placement": 2,
+     "points": 12.3,
+     "score": 37300,
+     "others": [
+      "中川健二",
+      "山根美紀",
+      "内田光輝"
+     ]
+    },
+    {
+     "id": "7-0358",
+     "season": 7,
+     "label": "霊亀位 3回戦",
+     "placement": 4,
+     "points": -38.3,
+     "score": 6700,
+     "others": [
+      "尾形杏",
+      "菊池美奈子",
+      "大杉さくら"
+     ]
+    },
+    {
+     "id": "7-0387",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 14400,
+     "others": [
+      "小澤萌",
+      "海野義隆",
+      "青山杏子"
+     ]
+    },
+    {
+     "id": "7-0388",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 3,
+     "points": 0.0,
+     "score": 29800,
+     "others": [
+      "海野義隆",
+      "青山杏子",
+      "小澤萌"
+     ]
+    }
+   ],
+   "opponents": {
+    "D2-001": [
+     4,
+     2,
+     2
+    ],
+    "D6-003": [
+     4,
+     1,
+     3
+    ],
+    "D6-006": [
+     8,
+     4,
+     4
+    ],
+    "D6-002": [
+     9,
+     5,
+     4
+    ],
+    "D6-004": [
+     4,
+     2,
+     2
+    ],
+    "B0-005": [
+     4,
+     2,
+     2
+    ],
+    "D4-002": [
+     4,
+     0,
+     4
+    ],
+    "D6-005": [
+     4,
+     2,
+     2
+    ],
+    "D6-007": [
+     4,
+     1,
+     3
+    ],
+    "D6-000": [
+     1,
+     0,
+     1
+    ],
+    "C0-015": [
+     3,
+     1,
+     2
+    ],
+    "C0-019": [
+     2,
+     0,
+     2
+    ],
+    "D3-001": [
+     2,
+     0,
+     2
+    ],
+    "D3-005": [
+     6,
+     2,
+     4
+    ],
+    "D5-000": [
+     2,
+     0,
+     2
+    ],
+    "D7-001": [
+     4,
+     2,
+     2
+    ],
+    "D5-002": [
+     4,
+     1,
+     3
+    ],
+    "D6-009": [
+     4,
+     3,
+     1
+    ],
+    "D0-014": [
+     4,
+     2,
+     2
+    ],
+    "D7-004": [
+     6,
+     2,
+     4
+    ],
+    "D0-004": [
+     4,
+     2,
+     2
+    ],
+    "D5-001": [
+     3,
+     1,
+     2
+    ],
+    "C0-003": [
+     1,
+     0,
+     1
+    ],
+    "D0-027": [
+     1,
+     1,
+     0
+    ],
+    "B0-011": [
+     1,
+     1,
+     0
+    ],
+    "B0-003": [
+     1,
+     0,
+     1
+    ],
+    "C0-017": [
+     1,
+     0,
+     1
+    ],
+    "C0-009": [
+     1,
+     0,
+     1
+    ]
+   },
+   "retired_season": 7
+  },
+  {
+   "id": "D6-000",
+   "league": "D",
+   "params": {
+    "speed_weight": 9.384,
+    "dora_weight": 2.127,
+    "yakuhai_weight": 6.96,
+    "flush_weight": 6.291,
+    "tanyao_weight": 6.18,
+    "call_weight": 5.135,
+    "riichi_weight": 7.206,
+    "defense_weight": 8.238,
+    "push_weight": 4.289
+   },
+   "talent": 0.463,
+   "clan_root_id": "D6-000",
+   "display_name": "後藤さくら",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 31,
+   "age_multipliers": {
+    "speed_weight": 1.031,
+    "dora_weight": 1.085,
+    "yakuhai_weight": 0.953,
+    "flush_weight": 1.029,
+    "tanyao_weight": 0.983,
+    "call_weight": 1.004,
+    "riichi_weight": 0.969,
+    "defense_weight": 1.054,
+    "push_weight": 0.955,
+    "talent": 1.035
+   },
+   "consecutive_losing_seasons": 2,
+   "elo": 1496.12,
+   "peak_elo": 1515.28,
+   "volatility": 1.96,
+   "seasons_in_league": 1,
+   "total_seasons": 2,
+   "retired": true,
+   "games": 36,
+   "placements": [
+    8,
+    9,
+    8,
+    11
+   ],
+   "total_points": -89.2,
+   "career": [
+    {
+     "season": 6,
+     "league": "D",
+     "rank": 26,
+     "points": -76.1,
+     "elo": 1458.7,
+     "movement": "stay"
+    },
+    {
+     "season": 7,
+     "league": "D",
+     "rank": 21,
+     "points": -34.4,
+     "elo": 1496.1,
+     "movement": "retired"
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null,
+   "stats": {
+    "hands": 441,
+    "wins": 80,
+    "tsumo": 20,
+    "dealins": 59,
+    "riichi": 98,
+    "draws": 76,
+    "draw_tenpai": 29,
+    "win_value": 318400,
+    "dealin_value": 208600,
+    "max_value": 18000,
+    "yakuman": 0,
+    "score_sum": 1023700,
+    "score_max": 47700,
+    "busts": 1
+   },
+   "elo_history": [
+    [
+     6,
+     1458.7
+    ],
+    [
+     7,
+     1496.1
+    ]
+   ],
+   "elo_trace": [
+    [
+     6,
+     1,
+     1493.5
+    ],
+    [
+     6,
+     2,
+     1487.6
+    ],
+    [
+     6,
+     3,
+     1466.4
+    ],
+    [
+     6,
+     4,
+     1478.9
+    ],
+    [
+     6,
+     5,
+     1491.8
+    ],
+    [
+     6,
+     6,
+     1487.5
+    ],
+    [
+     6,
+     7,
+     1515.3
+    ],
+    [
+     6,
+     8,
+     1492.7
+    ],
+    [
+     6,
+     9,
+     1467.8
+    ],
+    [
+     6,
+     10,
+     1445.1
+    ],
+    [
+     6,
+     11,
+     1456.4
+    ],
+    [
+     6,
+     12,
+     1434.7
+    ],
+    [
+     6,
+     13,
+     1461.2
+    ],
+    [
+     6,
+     14,
+     1456.8
+    ],
+    [
+     6,
+     15,
+     1465.4
+    ],
+    [
+     6,
+     16,
+     1489.2
+    ],
+    [
+     6,
+     17,
+     1465.0
+    ],
+    [
+     6,
+     18,
+     1458.7
+    ],
+    [
+     7,
+     19,
+     1453.5
+    ],
+    [
+     7,
+     20,
+     1432.7
+    ],
+    [
+     7,
+     21,
+     1461.6
+    ],
+    [
+     7,
+     22,
+     1456.1
+    ],
+    [
+     7,
+     23,
+     1482.1
+    ],
+    [
+     7,
+     24,
+     1505.8
+    ],
+    [
+     7,
+     25,
+     1511.6
+    ],
+    [
+     7,
+     26,
+     1485.0
+    ],
+    [
+     7,
+     27,
+     1458.9
+    ],
+    [
+     7,
+     28,
+     1467.1
+    ],
+    [
+     7,
+     29,
+     1442.6
+    ],
+    [
+     7,
+     30,
+     1468.3
+    ],
+    [
+     7,
+     31,
+     1493.6
+    ],
+    [
+     7,
+     32,
+     1473.6
+    ],
+    [
+     7,
+     33,
+     1480.7
+    ],
+    [
+     7,
+     34,
+     1487.4
+    ],
+    [
+     7,
+     35,
+     1500.4
+    ],
+    [
+     7,
+     36,
+     1496.1
+    ]
+   ],
+   "recent_games": [
+    {
+     "id": "6-0235",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 1,
+     "points": 23.3,
+     "score": 45300,
+     "others": [
+      "谷海斗",
+      "青山杏子",
+      "田口花子"
+     ]
+    },
+    {
+     "id": "6-0236",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -19.8,
+     "score": 18200,
+     "others": [
+      "谷海斗",
+      "青山杏子",
+      "田口花子"
+     ]
+    },
+    {
+     "id": "6-0277",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -14.3,
+     "score": 23700,
+     "others": [
+      "小島昌弘",
+      "五十嵐美和",
+      "須藤章子"
+     ]
+    },
+    {
+     "id": "6-0278",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -15.9,
+     "score": 22100,
+     "others": [
+      "小島昌弘",
+      "五十嵐美和",
+      "須藤章子"
+     ]
+    },
+    {
+     "id": "6-0279",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": 8.5,
+     "score": 34500,
+     "others": [
+      "五十嵐美和",
+      "須藤章子",
+      "小島昌弘"
+     ]
+    },
+    {
+     "id": "6-0280",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -27.3,
+     "score": 10700,
+     "others": [
+      "須藤章子",
+      "小島昌弘",
+      "五十嵐美和"
+     ]
+    },
+    {
+     "id": "6-0336",
+     "season": 6,
+     "label": "霊亀位 1回戦",
+     "placement": 1,
+     "points": 27.1,
+     "score": 42100,
+     "others": [
+      "青山杏子",
+      "竹本和彦",
+      "加藤泉"
+     ]
+    },
+    {
+     "id": "6-0354",
+     "season": 6,
+     "label": "霊亀位 2回戦",
+     "placement": 3,
+     "points": -4.7,
+     "score": 30300,
+     "others": [
+      "石川彩乃",
+      "岩本拓也",
+      "山崎聡太"
+     ]
+    },
+    {
+     "id": "6-0387",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 2,
+     "points": 0.0,
+     "score": 45900,
+     "others": [
+      "加藤泉",
+      "藤本直人",
+      "青山杏子"
+     ]
+    },
+    {
+     "id": "6-0388",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 1,
+     "points": 1.0,
+     "score": 32500,
+     "others": [
+      "藤本直人",
+      "青山杏子",
+      "加藤泉"
+     ]
+    },
+    {
+     "id": "6-0395",
+     "season": 6,
+     "label": "応龍位 2回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 18500,
+     "others": [
+      "三好浩二",
+      "宮本楓",
+      "前田光輝"
+     ]
+    },
+    {
+     "id": "6-0396",
+     "season": 6,
+     "label": "応龍位 2回戦",
+     "placement": 3,
+     "points": 0.0,
+     "score": 29900,
+     "others": [
+      "三好浩二",
+      "宮本楓",
+      "前田光輝"
+     ]
+    },
+    {
+     "id": "7-0221",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 3,
+     "points": -8.5,
+     "score": 25500,
+     "others": [
+      "森碧",
+      "大森颯",
+      "須田泉美"
+     ]
+    },
+    {
+     "id": "7-0222",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 4,
+     "points": -42.2,
+     "score": -4200,
+     "others": [
+      "森碧",
+      "大森颯",
+      "須田泉美"
+     ]
+    },
+    {
+     "id": "7-0223",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 1,
+     "points": 13.0,
+     "score": 35000,
+     "others": [
+      "大森颯",
+      "須田泉美",
+      "森碧"
+     ]
+    },
+    {
+     "id": "7-0224",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 3,
+     "points": -8.0,
+     "score": 26000,
+     "others": [
+      "須田泉美",
+      "森碧",
+      "大森颯"
+     ]
+    },
+    {
+     "id": "7-0233",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 1,
+     "points": 13.4,
+     "score": 35400,
+     "others": [
+      "梅沢湊",
+      "井上健一",
+      "竹本美咲子"
+     ]
+    },
+    {
+     "id": "7-0234",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 1,
+     "points": 16.6,
+     "score": 38600,
+     "others": [
+      "梅沢湊",
+      "井上健一",
+      "竹本美咲子"
+     ]
+    },
+    {
+     "id": "7-0235",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 11.6,
+     "score": 37600,
+     "others": [
+      "井上健一",
+      "竹本美咲子",
+      "梅沢湊"
+     ]
+    },
+    {
+     "id": "7-0236",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -15.9,
+     "score": 22100,
+     "others": [
+      "竹本美咲子",
+      "梅沢湊",
+      "井上健一"
+     ]
+    },
+    {
+     "id": "7-0281",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -21.3,
+     "score": 20700,
+     "others": [
+      "酒井泰史",
+      "藤本直人",
+      "小澤萌"
+     ]
+    },
+    {
+     "id": "7-0282",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": -4.0,
+     "score": 27000,
+     "others": [
+      "藤本直人",
+      "小澤萌",
+      "酒井泰史"
+     ]
+    },
+    {
+     "id": "7-0283",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -14.0,
+     "score": 24000,
+     "others": [
+      "小澤萌",
+      "酒井泰史",
+      "藤本直人"
+     ]
+    },
+    {
+     "id": "7-0284",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 1,
+     "points": 24.9,
+     "score": 46900,
+     "others": [
+      "酒井泰史",
+      "藤本直人",
+      "小澤萌"
+     ]
+    },
+    {
+     "id": "7-0333",
+     "season": 7,
+     "label": "霊亀位 1回戦",
+     "placement": 1,
+     "points": 32.7,
+     "score": 47700,
+     "others": [
+      "梅沢湊",
+      "井上健一",
+      "青山杏子"
+     ]
+    },
+    {
+     "id": "7-0347",
+     "season": 7,
+     "label": "霊亀位 2回戦",
+     "placement": 4,
+     "points": -33.8,
+     "score": 11200,
+     "others": [
+      "高木友和",
+      "林楓",
+      "竹田香織"
+     ]
+    },
+    {
+     "id": "7-0383",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 2,
+     "points": 0.0,
+     "score": 27500,
+     "others": [
+      "伊藤結愛",
+      "南葵",
+      "井上健一"
+     ]
+    },
+    {
+     "id": "7-0384",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 2,
+     "points": 0.0,
+     "score": 37500,
+     "others": [
+      "南葵",
+      "井上健一",
+      "伊藤結愛"
+     ]
+    },
+    {
+     "id": "7-0417",
+     "season": 7,
+     "label": "応龍位 2回戦",
+     "placement": 2,
+     "points": 0.0,
+     "score": 29000,
+     "others": [
+      "中山大輔",
+      "井上浩二",
+      "石川悠真"
+     ]
+    },
+    {
+     "id": "7-0418",
+     "season": 7,
+     "label": "応龍位 2回戦",
+     "placement": 3,
+     "points": 0.0,
+     "score": 27100,
+     "others": [
+      "井上浩二",
+      "石川悠真",
+      "中山大輔"
+     ]
+    }
+   ],
+   "opponents": {
+    "D5-001": [
+     4,
+     1,
+     3
+    ],
+    "D0-025": [
+     4,
+     1,
+     3
+    ],
+    "D4-002": [
+     4,
+     2,
+     2
+    ],
+    "C0-015": [
+     8,
+     5,
+     3
+    ],
+    "D0-004": [
+     4,
+     2,
+     2
+    ],
+    "D6-006": [
+     4,
+     3,
+     1
+    ],
+    "D5-000": [
+     4,
+     1,
+     3
+    ],
+    "C0-018": [
+     4,
+     0,
+     4
+    ],
+    "D2-000": [
+     4,
+     1,
+     3
+    ],
+    "D6-001": [
+     1,
+     1,
+     0
+    ],
+    "C0-019": [
+     3,
+     2,
+     1
+    ],
+    "B0-001": [
+     1,
+     0,
+     1
+    ],
+    "B0-007": [
+     1,
+     1,
+     0
+    ],
+    "A0-008": [
+     1,
+     0,
+     1
+    ],
+    "D6-005": [
+     6,
+     3,
+     3
+    ],
+    "D3-006": [
+     2,
+     0,
+     2
+    ],
+    "B0-009": [
+     2,
+     0,
+     2
+    ],
+    "C0-001": [
+     2,
+     1,
+     1
+    ],
+    "C0-000": [
+     4,
+     3,
+     1
+    ],
+    "B0-005": [
+     4,
+     1,
+     3
+    ],
+    "D2-001": [
+     4,
+     1,
+     3
+    ],
+    "D7-002": [
+     5,
+     3,
+     2
+    ],
+    "D3-005": [
+     7,
+     6,
+     1
+    ],
+    "D7-001": [
+     4,
+     3,
+     1
+    ],
+    "D6-008": [
+     4,
+     2,
+     2
+    ],
+    "D7-004": [
+     4,
+     2,
+     2
+    ],
+    "D4-003": [
+     1,
+     0,
+     1
+    ],
+    "D0-000": [
+     1,
+     0,
+     1
+    ],
+    "A0-005": [
+     1,
+     0,
+     1
+    ],
+    "D0-014": [
+     2,
+     2,
+     0
+    ],
+    "D6-004": [
+     2,
+     0,
+     2
+    ],
+    "D6-003": [
+     2,
+     1,
+     1
+    ],
+    "D0-011": [
+     2,
+     1,
+     1
+    ],
+    "C0-012": [
+     2,
+     1,
+     1
+    ]
+   },
+   "retired_season": 7
+  },
+  {
+   "id": "D6-005",
+   "league": "D",
+   "params": {
+    "speed_weight": 4.728,
+    "dora_weight": 3.39,
+    "yakuhai_weight": 1.799,
+    "flush_weight": 1.138,
+    "tanyao_weight": 0.658,
+    "call_weight": 7.715,
+    "riichi_weight": 6.304,
+    "defense_weight": 1.21,
+    "push_weight": 6.485
+   },
+   "talent": 0.565,
+   "clan_root_id": "D6-005",
+   "display_name": "藤本直人",
+   "awakened_param": null,
+   "generation": 1,
+   "parent_a_id": "C0-004",
+   "initial_age": 27,
+   "age_multipliers": {
+    "speed_weight": 1.14,
+    "dora_weight": 0.962,
+    "yakuhai_weight": 0.993,
+    "flush_weight": 0.951,
+    "tanyao_weight": 1.079,
+    "call_weight": 1.031,
+    "riichi_weight": 0.967,
+    "defense_weight": 1.063,
+    "push_weight": 1.102,
+    "talent": 1.102
+   },
+   "consecutive_losing_seasons": 2,
+   "elo": 1396.82,
+   "peak_elo": 1500.0,
+   "volatility": 1.86,
+   "seasons_in_league": 1,
+   "total_seasons": 2,
+   "retired": true,
+   "games": 32,
+   "placements": [
+    5,
+    5,
+    11,
+    11
+   ],
+   "total_points": -76.8,
+   "career": [
+    {
+     "season": 6,
+     "league": "D",
+     "rank": 16,
+     "points": -26.0,
+     "elo": 1405.8,
+     "movement": "stay"
+    },
+    {
+     "season": 7,
+     "league": "D",
+     "rank": 23,
+     "points": -40.4,
+     "elo": 1396.8,
+     "movement": "retired"
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null,
+   "stats": {
+    "hands": 377,
+    "wins": 83,
+    "tsumo": 23,
+    "dealins": 69,
+    "riichi": 97,
+    "draws": 55,
+    "draw_tenpai": 28,
+    "win_value": 268500,
+    "dealin_value": 253300,
+    "max_value": 12000,
+    "yakuman": 0,
+    "score_sum": 885200,
+    "score_max": 57100,
+    "busts": 1
+   },
+   "elo_history": [
+    [
+     6,
+     1405.8
+    ],
+    [
+     7,
+     1396.8
+    ]
+   ],
+   "elo_trace": [
+    [
+     6,
+     1,
+     1488.2
+    ],
+    [
+     6,
+     2,
+     1477.4
+    ],
+    [
+     6,
+     3,
+     1499.7
+    ],
+    [
+     6,
+     4,
+     1472.1
+    ],
+    [
+     6,
+     5,
+     1495.3
+    ],
+    [
+     6,
+     6,
+     1468.5
+    ],
+    [
+     6,
+     7,
+     1476.0
+    ],
+    [
+     6,
+     8,
+     1450.9
+    ],
+    [
+     6,
+     9,
+     1446.5
+    ],
+    [
+     6,
+     10,
+     1458.6
+    ],
+    [
+     6,
+     11,
+     1453.5
+    ],
+    [
+     6,
+     12,
+     1432.9
+    ],
+    [
+     6,
+     13,
+     1429.8
+    ],
+    [
+     6,
+     14,
+     1408.9
+    ],
+    [
+     6,
+     15,
+     1405.8
+    ],
+    [
+     7,
+     16,
+     1419.8
+    ],
+    [
+     7,
+     17,
+     1448.5
+    ],
+    [
+     7,
+     18,
+     1442.5
+    ],
+    [
+     7,
+     19,
+     1421.0
+    ],
+    [
+     7,
+     20,
+     1400.5
+    ],
+    [
+     7,
+     21,
+     1397.9
+    ],
+    [
+     7,
+     22,
+     1379.4
+    ],
+    [
+     7,
+     23,
+     1394.5
+    ],
+    [
+     7,
+     24,
+     1392.6
+    ],
+    [
+     7,
+     25,
+     1422.7
+    ],
+    [
+     7,
+     26,
+     1434.3
+    ],
+    [
+     7,
+     27,
+     1412.7
+    ],
+    [
+     7,
+     28,
+     1410.6
+    ],
+    [
+     7,
+     29,
+     1440.5
+    ],
+    [
+     7,
+     30,
+     1435.8
+    ],
+    [
+     7,
+     31,
+     1415.5
+    ],
+    [
+     7,
+     32,
+     1396.8
+    ]
+   ],
+   "recent_games": [
+    {
+     "id": "6-0207",
+     "season": 6,
+     "label": "Dリーグ 第1節",
+     "placement": 1,
+     "points": 19.3,
+     "score": 41300,
+     "others": [
+      "小島昌弘",
+      "大石俊介",
+      "井上健一"
+     ]
+    },
+    {
+     "id": "6-0208",
+     "season": 6,
+     "label": "Dリーグ 第1節",
+     "placement": 4,
+     "points": -10.9,
+     "score": 27100,
+     "others": [
+      "小島昌弘",
+      "大石俊介",
+      "井上健一"
+     ]
+    },
+    {
+     "id": "6-0241",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 1,
+     "points": 38.3,
+     "score": 56300,
+     "others": [
+      "吉田綾",
+      "尾形杏",
+      "石岡一美"
+     ]
+    },
+    {
+     "id": "6-0242",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -14.9,
+     "score": 23100,
+     "others": [
+      "尾形杏",
+      "石岡一美",
+      "吉田綾"
+     ]
+    },
+    {
+     "id": "6-0243",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": -2.2,
+     "score": 28800,
+     "others": [
+      "石岡一美",
+      "吉田綾",
+      "尾形杏"
+     ]
+    },
+    {
+     "id": "6-0244",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -24.1,
+     "score": 13900,
+     "others": [
+      "石岡一美",
+      "吉田綾",
+      "尾形杏"
+     ]
+    },
+    {
+     "id": "6-0265",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 3,
+     "points": -9.3,
+     "score": 24700,
+     "others": [
+      "竹本和彦",
+      "山下裕子",
+      "谷川香織"
+     ]
+    },
+    {
+     "id": "6-0266",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": -3.8,
+     "score": 27200,
+     "others": [
+      "山下裕子",
+      "谷川香織",
+      "竹本和彦"
+     ]
+    },
+    {
+     "id": "6-0267",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 3,
+     "points": -5.6,
+     "score": 27400,
+     "others": [
+      "谷川香織",
+      "竹本和彦",
+      "山下裕子"
+     ]
+    },
+    {
+     "id": "6-0268",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -14.4,
+     "score": 23600,
+     "others": [
+      "谷川香織",
+      "竹本和彦",
+      "山下裕子"
+     ]
+    },
+    {
+     "id": "6-0337",
+     "season": 6,
+     "label": "霊亀位 1回戦",
+     "placement": 3,
+     "points": -5.6,
+     "score": 29400,
+     "others": [
+      "吉田綾",
+      "海野義隆",
+      "中山大輔"
+     ]
+    },
+    {
+     "id": "6-0387",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 1800,
+     "others": [
+      "加藤泉",
+      "青山杏子",
+      "後藤さくら"
+     ]
+    },
+    {
+     "id": "6-0388",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 3,
+     "points": 0.0,
+     "score": 30800,
+     "others": [
+      "青山杏子",
+      "後藤さくら",
+      "加藤泉"
+     ]
+    },
+    {
+     "id": "7-0209",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 2,
+     "points": 7.3,
+     "score": 33300,
+     "others": [
+      "谷海斗",
+      "宇野浩明",
+      "岡部祐輝"
+     ]
+    },
+    {
+     "id": "7-0210",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 1,
+     "points": 32.6,
+     "score": 50600,
+     "others": [
+      "谷海斗",
+      "宇野浩明",
+      "岡部祐輝"
+     ]
+    },
+    {
+     "id": "7-0211",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 3,
+     "points": -12.1,
+     "score": 21900,
+     "others": [
+      "宇野浩明",
+      "岡部祐輝",
+      "谷海斗"
+     ]
+    },
+    {
+     "id": "7-0212",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 4,
+     "points": -29.6,
+     "score": 12400,
+     "others": [
+      "岡部祐輝",
+      "谷海斗",
+      "宇野浩明"
+     ]
+    },
+    {
+     "id": "7-0245",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -21.5,
+     "score": 16500,
+     "others": [
+      "南葵",
+      "海野義隆",
+      "大石俊介"
+     ]
+    },
+    {
+     "id": "7-0246",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 3,
+     "points": 3.5,
+     "score": 32500,
+     "others": [
+      "海野義隆",
+      "大石俊介",
+      "南葵"
+     ]
+    },
+    {
+     "id": "7-0247",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -51.0,
+     "score": -9000,
+     "others": [
+      "大石俊介",
+      "南葵",
+      "海野義隆"
+     ]
+    },
+    {
+     "id": "7-0248",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 6.1,
+     "score": 32100,
+     "others": [
+      "大石俊介",
+      "南葵",
+      "海野義隆"
+     ]
+    },
+    {
+     "id": "7-0281",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 3,
+     "points": 2.0,
+     "score": 31000,
+     "others": [
+      "酒井泰史",
+      "小澤萌",
+      "後藤さくら"
+     ]
+    },
+    {
+     "id": "7-0282",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 1,
+     "points": 39.1,
+     "score": 57100,
+     "others": [
+      "小澤萌",
+      "後藤さくら",
+      "酒井泰史"
+     ]
+    },
+    {
+     "id": "7-0283",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": 6.4,
+     "score": 32400,
+     "others": [
+      "小澤萌",
+      "後藤さくら",
+      "酒井泰史"
+     ]
+    },
+    {
+     "id": "7-0284",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -23.2,
+     "score": 14800,
+     "others": [
+      "後藤さくら",
+      "酒井泰史",
+      "小澤萌"
+     ]
+    },
+    {
+     "id": "7-0335",
+     "season": 7,
+     "label": "霊亀位 1回戦",
+     "placement": 3,
+     "points": -2.8,
+     "score": 32200,
+     "others": [
+      "谷海斗",
+      "山下裕子",
+      "須田泉美"
+     ]
+    },
+    {
+     "id": "7-0393",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 1,
+     "points": 1.0,
+     "score": 36300,
+     "others": [
+      "尾形杏",
+      "岡部祐輝",
+      "梅沢湊"
+     ]
+    },
+    {
+     "id": "7-0394",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 3,
+     "points": 0.0,
+     "score": 30300,
+     "others": [
+      "岡部祐輝",
+      "梅沢湊",
+      "尾形杏"
+     ]
+    },
+    {
+     "id": "7-0405",
+     "season": 7,
+     "label": "応龍位 2回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 19800,
+     "others": [
+      "大槻詩乃",
+      "伊藤真央",
+      "田島新"
+     ]
+    },
+    {
+     "id": "7-0406",
+     "season": 7,
+     "label": "応龍位 2回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 21000,
+     "others": [
+      "大槻詩乃",
+      "伊藤真央",
+      "田島新"
+     ]
+    }
+   ],
+   "opponents": {
+    "D6-002": [
+     8,
+     3,
+     5
+    ],
+    "D3-005": [
+     4,
+     2,
+     2
+    ],
+    "D5-000": [
+     4,
+     1,
+     3
+    ],
+    "D3-001": [
+     5,
+     3,
+     2
+    ],
+    "B0-003": [
+     6,
+     2,
+     4
+    ],
+    "D3-002": [
+     4,
+     2,
+     2
+    ],
+    "D6-001": [
+     4,
+     2,
+     2
+    ],
+    "D4-002": [
+     5,
+     1,
+     4
+    ],
+    "D6-007": [
+     4,
+     1,
+     3
+    ],
+    "D5-001": [
+     5,
+     1,
+     4
+    ],
+    "D6-003": [
+     1,
+     0,
+     1
+    ],
+    "C0-019": [
+     2,
+     1,
+     1
+    ],
+    "C0-015": [
+     2,
+     0,
+     2
+    ],
+    "D6-000": [
+     6,
+     3,
+     3
+    ],
+    "D6-006": [
+     5,
+     4,
+     1
+    ],
+    "D6-009": [
+     4,
+     2,
+     2
+    ],
+    "D0-020": [
+     6,
+     3,
+     3
+    ],
+    "D6-004": [
+     4,
+     1,
+     3
+    ],
+    "D6-008": [
+     4,
+     1,
+     3
+    ],
+    "D7-004": [
+     4,
+     2,
+     2
+    ],
+    "D2-001": [
+     1,
+     0,
+     1
+    ],
+    "D7-002": [
+     2,
+     1,
+     1
+    ],
+    "D0-013": [
+     2,
+     0,
+     2
+    ],
+    "B0-012": [
+     2,
+     0,
+     2
+    ],
+    "A0-003": [
+     2,
+     0,
+     2
+    ]
+   },
+   "retired_season": 7
+  },
+  {
+   "id": "D0-004",
+   "league": "D",
+   "params": {
+    "speed_weight": 7.304,
+    "dora_weight": 4.202,
+    "yakuhai_weight": 3.05,
+    "flush_weight": 8.52,
+    "tanyao_weight": 3.045,
+    "call_weight": 8.788,
+    "riichi_weight": 2.763,
+    "defense_weight": 8.621,
+    "push_weight": 8.224
+   },
+   "talent": 0.49,
+   "clan_root_id": "D0-004",
+   "display_name": "田口花子",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 38,
+   "age_multipliers": {
+    "speed_weight": 1.086,
+    "dora_weight": 1.038,
+    "yakuhai_weight": 1.018,
+    "flush_weight": 1.078,
+    "tanyao_weight": 1.087,
+    "call_weight": 1.065,
+    "riichi_weight": 0.986,
+    "defense_weight": 0.979,
+    "push_weight": 1.055,
+    "talent": 1.099
+   },
+   "consecutive_losing_seasons": 2,
+   "elo": 1493.39,
+   "peak_elo": 1610.9,
+   "volatility": 1.38,
+   "seasons_in_league": 6,
+   "total_seasons": 7,
+   "retired": true,
+   "games": 151,
+   "placements": [
+    40,
+    41,
+    33,
+    37
+   ],
+   "total_points": -37.8,
+   "career": [
+    {
+     "season": 1,
+     "league": "D",
+     "rank": 8,
+     "points": 41.8,
+     "elo": 1481.5,
+     "movement": "stay"
+    },
+    {
+     "season": 2,
+     "league": "D",
+     "rank": 20,
+     "points": -35.8,
+     "elo": 1457.3,
+     "movement": "stay"
+    },
+    {
+     "season": 3,
+     "league": "D",
+     "rank": 15,
+     "points": 1.2,
+     "elo": 1540.3,
+     "movement": "stay"
+    },
+    {
+     "season": 4,
+     "league": "D",
+     "rank": 25,
+     "points": -56.5,
+     "elo": 1583.4,
+     "movement": "stay"
+    },
+    {
+     "season": 5,
+     "league": "D",
+     "rank": 6,
+     "points": 60.6,
+     "elo": 1569.9,
+     "movement": "stay"
+    },
+    {
+     "season": 6,
+     "league": "D",
+     "rank": 23,
+     "points": -62.5,
+     "elo": 1493.6,
+     "movement": "stay"
+    },
+    {
+     "season": 7,
+     "league": "D",
+     "rank": 25,
+     "points": -57.7,
+     "elo": 1493.4,
+     "movement": "retired"
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null,
+   "stats": {
+    "hands": 1691,
+    "wins": 365,
+    "tsumo": 120,
+    "dealins": 233,
+    "riichi": 293,
+    "draws": 311,
+    "draw_tenpai": 158,
+    "win_value": 1309800,
+    "dealin_value": 891000,
+    "max_value": 18000,
+    "yakuman": 0,
+    "score_sum": 4455000,
+    "score_max": 64500,
+    "busts": 3
+   },
+   "elo_history": [
+    [
+     1,
+     1481.5
+    ],
+    [
+     2,
+     1457.3
+    ],
+    [
+     3,
+     1540.3
+    ],
+    [
+     4,
+     1583.4
+    ],
+    [
+     5,
+     1569.9
+    ],
+    [
+     6,
+     1493.6
+    ],
+    [
+     7,
+     1493.4
+    ]
+   ],
+   "elo_trace": [
+    [
+     1,
+     1,
+     1508.0
+    ],
+    [
+     1,
+     2,
+     1483.3
+    ],
+    [
+     1,
+     3,
+     1476.8
+    ],
+    [
+     1,
+     4,
+     1486.9
+    ],
+    [
+     1,
+     5,
+     1495.6
+    ],
+    [
+     1,
+     6,
+     1503.4
+    ],
+    [
+     1,
+     7,
+     1526.6
+    ],
+    [
+     1,
+     8,
+     1547.6
+    ],
+    [
+     1,
+     9,
+     1522.7
+    ],
+    [
+     1,
+     10,
+     1532.0
+    ],
+    [
+     1,
+     11,
+     1524.5
+    ],
+    [
+     1,
+     12,
+     1533.7
+    ],
+    [
+     1,
+     13,
+     1510.7
+    ],
+    [
+     1,
+     14,
+     1533.2
+    ],
+    [
+     1,
+     15,
+     1558.5
+    ],
+    [
+     1,
+     16,
+     1565.6
+    ],
+    [
+     1,
+     17,
+     1537.6
+    ],
+    [
+     1,
+     18,
+     1512.2
+    ],
+    [
+     1,
+     19,
+     1488.5
+    ],
+    [
+     1,
+     20,
+     1515.1
+    ],
+    [
+     1,
+     21,
+     1505.9
+    ],
+    [
+     1,
+     22,
+     1481.5
+    ],
+    [
+     2,
+     23,
+     1504.9
+    ],
+    [
+     2,
+     24,
+     1494.1
+    ],
+    [
+     2,
+     25,
+     1468.4
+    ],
+    [
+     2,
+     26,
+     1492.9
+    ],
+    [
+     2,
+     27,
+     1518.5
+    ],
+    [
+     2,
+     28,
+     1493.7
+    ],
+    [
+     2,
+     29,
+     1487.2
+    ],
+    [
+     2,
+     30,
+     1465.2
+    ],
+    [
+     2,
+     31,
+     1457.8
+    ],
+    [
+     2,
+     32,
+     1451.1
+    ],
+    [
+     2,
+     33,
+     1429.0
+    ],
+    [
+     2,
+     34,
+     1440.9
+    ],
+    [
+     2,
+     35,
+     1452.3
+    ],
+    [
+     2,
+     36,
+     1466.3
+    ],
+    [
+     2,
+     37,
+     1479.3
+    ],
+    [
+     2,
+     38,
+     1476.0
+    ],
+    [
+     2,
+     39,
+     1489.0
+    ],
+    [
+     2,
+     40,
+     1471.6
+    ],
+    [
+     2,
+     41,
+     1471.7
+    ],
+    [
+     2,
+     42,
+     1480.9
+    ],
+    [
+     2,
+     43,
+     1457.3
+    ],
+    [
+     3,
+     44,
+     1434.0
+    ],
+    [
+     3,
+     45,
+     1444.9
+    ],
+    [
+     3,
+     46,
+     1470.7
+    ],
+    [
+     3,
+     47,
+     1478.1
+    ],
+    [
+     3,
+     48,
+     1486.6
+    ],
+    [
+     3,
+     49,
+     1510.2
+    ],
+    [
+     3,
+     50,
+     1515.8
+    ],
+    [
+     3,
+     51,
+     1505.0
+    ],
+    [
+     3,
+     52,
+     1482.5
+    ],
+    [
+     3,
+     53,
+     1494.1
+    ],
+    [
+     3,
+     54,
+     1488.7
+    ],
+    [
+     3,
+     55,
+     1515.7
+    ],
+    [
+     3,
+     56,
+     1496.4
+    ],
+    [
+     3,
+     57,
+     1517.9
+    ],
+    [
+     3,
+     58,
+     1525.4
+    ],
+    [
+     3,
+     59,
+     1533.6
+    ],
+    [
+     3,
+     60,
+     1558.0
+    ],
+    [
+     3,
+     61,
+     1580.1
+    ],
+    [
+     3,
+     62,
+     1570.7
+    ],
+    [
+     3,
+     63,
+     1546.1
+    ],
+    [
+     3,
+     64,
+     1565.1
+    ],
+    [
+     3,
+     65,
+     1550.4
+    ],
+    [
+     3,
+     66,
+     1529.2
+    ],
+    [
+     3,
+     67,
+     1557.9
+    ],
+    [
+     3,
+     68,
+     1548.7
+    ],
+    [
+     3,
+     69,
+     1540.3
+    ],
+    [
+     4,
+     70,
+     1531.5
+    ],
+    [
+     4,
+     71,
+     1534.0
+    ],
+    [
+     4,
+     72,
+     1525.7
+    ],
+    [
+     4,
+     73,
+     1539.2
+    ],
+    [
+     4,
+     74,
+     1531.1
+    ],
+    [
+     4,
+     75,
+     1523.7
+    ],
+    [
+     4,
+     76,
+     1538.0
+    ],
+    [
+     4,
+     77,
+     1519.5
+    ],
+    [
+     4,
+     78,
+     1500.3
+    ],
+    [
+     4,
+     79,
+     1503.5
+    ],
+    [
+     4,
+     80,
+     1495.9
+    ],
+    [
+     4,
+     81,
+     1478.1
+    ],
+    [
+     4,
+     82,
+     1493.3
+    ],
+    [
+     4,
+     83,
+     1510.9
+    ],
+    [
+     4,
+     84,
+     1516.0
+    ],
+    [
+     4,
+     85,
+     1511.8
+    ],
+    [
+     4,
+     86,
+     1529.2
+    ],
+    [
+     4,
+     87,
+     1546.1
+    ],
+    [
+     4,
+     88,
+     1562.1
+    ],
+    [
+     4,
+     89,
+     1578.3
+    ],
+    [
+     4,
+     90,
+     1582.8
+    ],
+    [
+     4,
+     91,
+     1597.7
+    ],
+    [
+     4,
+     92,
+     1601.2
+    ],
+    [
+     4,
+     93,
+     1604.5
+    ],
+    [
+     4,
+     94,
+     1586.2
+    ],
+    [
+     4,
+     95,
+     1579.7
+    ],
+    [
+     4,
+     96,
+     1573.6
+    ],
+    [
+     4,
+     97,
+     1575.5
+    ],
+    [
+     4,
+     98,
+     1587.9
+    ],
+    [
+     4,
+     99,
+     1602.1
+    ],
+    [
+     4,
+     100,
+     1583.4
+    ],
+    [
+     5,
+     101,
+     1594.3
+    ],
+    [
+     5,
+     102,
+     1583.1
+    ],
+    [
+     5,
+     103,
+     1594.0
+    ],
+    [
+     5,
+     104,
+     1593.6
+    ],
+    [
+     5,
+     105,
+     1597.0
+    ],
+    [
+     5,
+     106,
+     1610.9
+    ],
+    [
+     5,
+     107,
+     1602.6
+    ],
+    [
+     5,
+     108,
+     1584.2
+    ],
+    [
+     5,
+     109,
+     1574.0
+    ],
+    [
+     5,
+     110,
+     1585.7
+    ],
+    [
+     5,
+     111,
+     1596.6
+    ],
+    [
+     5,
+     112,
+     1607.1
+    ],
+    [
+     5,
+     113,
+     1588.4
+    ],
+    [
+     5,
+     114,
+     1599.5
+    ],
+    [
+     5,
+     115,
+     1579.1
+    ],
+    [
+     5,
+     116,
+     1590.9
+    ],
+    [
+     5,
+     117,
+     1569.9
+    ],
+    [
+     6,
+     118,
+     1571.0
+    ],
+    [
+     6,
+     119,
+     1550.8
+    ],
+    [
+     6,
+     120,
+     1563.6
+    ],
+    [
+     6,
+     121,
+     1575.7
+    ],
+    [
+     6,
+     122,
+     1567.7
+    ],
+    [
+     6,
+     123,
+     1570.9
+    ],
+    [
+     6,
+     124,
+     1573.8
+    ],
+    [
+     6,
+     125,
+     1576.5
+    ],
+    [
+     6,
+     126,
+     1556.4
+    ],
+    [
+     6,
+     127,
+     1548.2
+    ],
+    [
+     6,
+     128,
+     1529.9
+    ],
+    [
+     6,
+     129,
+     1512.8
+    ],
+    [
+     6,
+     130,
+     1507.0
+    ],
+    [
+     6,
+     131,
+     1511.0
+    ],
+    [
+     6,
+     132,
+     1493.6
+    ],
+    [
+     7,
+     133,
+     1478.4
+    ],
+    [
+     7,
+     134,
+     1464.3
+    ],
+    [
+     7,
+     135,
+     1472.5
+    ],
+    [
+     7,
+     136,
+     1480.1
+    ],
+    [
+     7,
+     137,
+     1475.1
+    ],
+    [
+     7,
+     138,
+     1480.9
+    ],
+    [
+     7,
+     139,
+     1465.1
+    ],
+    [
+     7,
+     140,
+     1482.2
+    ],
+    [
+     7,
+     141,
+     1475.8
+    ],
+    [
+     7,
+     142,
+     1491.0
+    ],
+    [
+     7,
+     143,
+     1473.4
+    ],
+    [
+     7,
+     144,
+     1478.3
+    ],
+    [
+     7,
+     145,
+     1483.8
+    ],
+    [
+     7,
+     146,
+     1491.0
+    ],
+    [
+     7,
+     147,
+     1489.6
+    ],
+    [
+     7,
+     148,
+     1484.0
+    ],
+    [
+     7,
+     149,
+     1500.0
+    ],
+    [
+     7,
+     150,
+     1485.6
+    ],
+    [
+     7,
+     151,
+     1493.4
+    ]
+   ],
+   "recent_games": [
+    {
+     "id": "6-0233",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 3,
+     "points": -16.0,
+     "score": 18000,
+     "others": [
+      "青山杏子",
+      "後藤さくら",
+      "谷海斗"
+     ]
+    },
+    {
+     "id": "6-0234",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 4.0,
+     "score": 31000,
+     "others": [
+      "後藤さくら",
+      "谷海斗",
+      "青山杏子"
+     ]
+    },
+    {
+     "id": "6-0235",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 11.0,
+     "score": 37000,
+     "others": [
+      "後藤さくら",
+      "谷海斗",
+      "青山杏子"
+     ]
+    },
+    {
+     "id": "6-0236",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": -3.3,
+     "score": 27700,
+     "others": [
+      "谷海斗",
+      "青山杏子",
+      "後藤さくら"
+     ]
+    },
+    {
+     "id": "6-0285",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -25.7,
+     "score": 12300,
+     "others": [
+      "南葵",
+      "尾形杏",
+      "中川健二"
+     ]
+    },
+    {
+     "id": "6-0286",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 3,
+     "points": 3.1,
+     "score": 32100,
+     "others": [
+      "尾形杏",
+      "中川健二",
+      "南葵"
+     ]
+    },
+    {
+     "id": "6-0287",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -31.0,
+     "score": 11000,
+     "others": [
+      "尾形杏",
+      "中川健二",
+      "南葵"
+     ]
+    },
+    {
+     "id": "6-0288",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -25.4,
+     "score": 12600,
+     "others": [
+      "中川健二",
+      "南葵",
+      "尾形杏"
+     ]
+    },
+    {
+     "id": "6-0338",
+     "season": 6,
+     "label": "霊亀位 1回戦",
+     "placement": 3,
+     "points": -4.1,
+     "score": 30900,
+     "others": [
+      "須藤章子",
+      "尾形杏",
+      "酒井泰史"
+     ]
+    },
+    {
+     "id": "6-0391",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 2,
+     "points": 0.0,
+     "score": 30800,
+     "others": [
+      "須藤章子",
+      "石川貴弘",
+      "海野義隆"
+     ]
+    },
+    {
+     "id": "6-0392",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 15800,
+     "others": [
+      "石川貴弘",
+      "海野義隆",
+      "須藤章子"
+     ]
+    },
+    {
+     "id": "7-0205",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 4,
+     "points": -22.6,
+     "score": 15400,
+     "others": [
+      "山口一美",
+      "山岸深雪",
+      "小島昌弘"
+     ]
+    },
+    {
+     "id": "7-0206",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 4,
+     "points": -21.1,
+     "score": 16900,
+     "others": [
+      "山岸深雪",
+      "小島昌弘",
+      "山口一美"
+     ]
+    },
+    {
+     "id": "7-0207",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 2,
+     "points": 9.3,
+     "score": 35300,
+     "others": [
+      "山岸深雪",
+      "小島昌弘",
+      "山口一美"
+     ]
+    },
+    {
+     "id": "7-0208",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 2,
+     "points": -5.4,
+     "score": 25600,
+     "others": [
+      "小島昌弘",
+      "山口一美",
+      "山岸深雪"
+     ]
+    },
+    {
+     "id": "7-0237",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 3,
+     "points": -5.7,
+     "score": 28300,
+     "others": [
+      "尾形杏",
+      "須田泉美",
+      "酒井泰史"
+     ]
+    },
+    {
+     "id": "7-0238",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 6.2,
+     "score": 32200,
+     "others": [
+      "須田泉美",
+      "酒井泰史",
+      "尾形杏"
+     ]
+    },
+    {
+     "id": "7-0239",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -22.3,
+     "score": 19700,
+     "others": [
+      "酒井泰史",
+      "尾形杏",
+      "須田泉美"
+     ]
+    },
+    {
+     "id": "7-0240",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 1,
+     "points": 22.6,
+     "score": 44600,
+     "others": [
+      "酒井泰史",
+      "尾形杏",
+      "須田泉美"
+     ]
+    },
+    {
+     "id": "7-0277",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 3,
+     "points": -7.8,
+     "score": 26200,
+     "others": [
+      "竹本和彦",
+      "谷海斗",
+      "井上健一"
+     ]
+    },
+    {
+     "id": "7-0278",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 1,
+     "points": 23.2,
+     "score": 45200,
+     "others": [
+      "竹本和彦",
+      "谷海斗",
+      "井上健一"
+     ]
+    },
+    {
+     "id": "7-0279",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -29.1,
+     "score": 12900,
+     "others": [
+      "谷海斗",
+      "井上健一",
+      "竹本和彦"
+     ]
+    },
+    {
+     "id": "7-0280",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": -5.0,
+     "score": 26000,
+     "others": [
+      "井上健一",
+      "竹本和彦",
+      "谷海斗"
+     ]
+    },
+    {
+     "id": "7-0337",
+     "season": 7,
+     "label": "霊亀位 1回戦",
+     "placement": 2,
+     "points": 16.9,
+     "score": 41900,
+     "others": [
+      "伊藤結愛",
+      "酒井泰史",
+      "小澤萌"
+     ]
+    },
+    {
+     "id": "7-0351",
+     "season": 7,
+     "label": "霊亀位 2回戦",
+     "placement": 2,
+     "points": 9.1,
+     "score": 34100,
+     "others": [
+      "中山大輔",
+      "神谷亜矢",
+      "小田島信一"
+     ]
+    },
+    {
+     "id": "7-0362",
+     "season": 7,
+     "label": "霊亀位 3回戦",
+     "placement": 3,
+     "points": -13.2,
+     "score": 21800,
+     "others": [
+      "梅沢湊",
+      "大森悠斗",
+      "小森沙織"
+     ]
+    },
+    {
+     "id": "7-0391",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 3,
+     "points": 0.0,
+     "score": 24800,
+     "others": [
+      "須田泉美",
+      "酒井泰史",
+      "大石俊介"
+     ]
+    },
+    {
+     "id": "7-0392",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 1,
+     "points": 1.0,
+     "score": 40200,
+     "others": [
+      "酒井泰史",
+      "大石俊介",
+      "須田泉美"
+     ]
+    },
+    {
+     "id": "7-0403",
+     "season": 7,
+     "label": "応龍位 2回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 23000,
+     "others": [
+      "大森颯",
+      "山口順子",
+      "伊藤友和"
+     ]
+    },
+    {
+     "id": "7-0404",
+     "season": 7,
+     "label": "応龍位 2回戦",
+     "placement": 2,
+     "points": 0.0,
+     "score": 31000,
+     "others": [
+      "山口順子",
+      "伊藤友和",
+      "大森颯"
+     ]
+    }
+   ],
+   "opponents": {
+    "D0-012": [
+     5,
+     2,
+     3
+    ],
+    "D0-013": [
+     10,
+     4,
+     6
+    ],
+    "D0-025": [
+     14,
+     8,
+     6
+    ],
+    "D0-026": [
+     14,
+     7,
+     7
+    ],
+    "D0-017": [
+     8,
+     5,
+     3
+    ],
+    "D0-009": [
+     4,
+     4,
+     0
+    ],
+    "D0-001": [
+     15,
+     7,
+     8
+    ],
+    "D0-005": [
+     9,
+     6,
+     3
+    ],
+    "D0-016": [
+     18,
+     12,
+     6
+    ],
+    "A0-006": [
+     4,
+     1,
+     3
+    ],
+    "C0-017": [
+     3,
+     0,
+     3
+    ],
+    "A0-009": [
+     6,
+     1,
+     5
+    ],
+    "D0-019": [
+     2,
+     1,
+     1
+    ],
+    "D0-024": [
+     6,
+     4,
+     2
+    ],
+    "D0-008": [
+     1,
+     1,
+     0
+    ],
+    "C0-019": [
+     3,
+     2,
+     1
+    ],
+    "B0-006": [
+     3,
+     2,
+     1
+    ],
+    "C0-007": [
+     5,
+     4,
+     1
+    ],
+    "D0-000": [
+     2,
+     0,
+     2
+    ],
+    "C0-000": [
+     1,
+     1,
+     0
+    ],
+    "B0-004": [
+     1,
+     1,
+     0
+    ],
+    "A0-000": [
+     6,
+     1,
+     5
+    ],
+    "D0-006": [
+     6,
+     3,
+     3
+    ],
+    "A0-005": [
+     2,
+     0,
+     2
+    ],
+    "D0-014": [
+     5,
+     3,
+     2
+    ],
+    "C0-003": [
+     7,
+     1,
+     6
+    ],
+    "D0-011": [
+     13,
+     5,
+     8
+    ],
+    "D0-003": [
+     4,
+     3,
+     1
+    ],
+    "D2-001": [
+     13,
+     5,
+     8
+    ],
+    "C0-008": [
+     5,
+     2,
+     3
+    ],
+    "D0-020": [
+     4,
+     2,
+     2
+    ],
+    "A0-011": [
+     2,
+     1,
+     1
+    ],
+    "B0-008": [
+     4,
+     2,
+     2
+    ],
+    "A0-004": [
+     3,
+     1,
+     2
+    ],
+    "A0-003": [
+     2,
+     1,
+     1
+    ],
+    "B0-012": [
+     2,
+     1,
+     1
+    ],
+    "B0-011": [
+     7,
+     3,
+     4
+    ],
+    "D0-015": [
+     2,
+     1,
+     1
+    ],
+    "D3-001": [
+     8,
+     4,
+     4
+    ],
+    "D2-000": [
+     14,
+     11,
+     3
+    ],
+    "D0-023": [
+     8,
+     5,
+     3
+    ],
+    "D3-002": [
+     7,
+     2,
+     5
+    ],
+    "D0-021": [
+     5,
+     4,
+     1
+    ],
+    "B0-002": [
+     2,
+     0,
+     2
+    ],
+    "C0-012": [
+     1,
+     1,
+     0
+    ],
+    "B0-009": [
+     3,
+     3,
+     0
+    ],
+    "B0-000": [
+     5,
+     5,
+     0
+    ],
+    "A0-007": [
+     5,
+     3,
+     2
+    ],
+    "C0-002": [
+     3,
+     2,
+     1
+    ],
+    "D3-007": [
+     10,
+     7,
+     3
+    ],
+    "C0-006": [
+     2,
+     1,
+     1
+    ],
+    "B0-015": [
+     2,
+     0,
+     2
+    ],
+    "C0-013": [
+     5,
+     3,
+     2
+    ],
+    "D4-003": [
+     5,
+     2,
+     3
+    ],
+    "D3-004": [
+     6,
+     1,
+     5
+    ],
+    "C0-001": [
+     22,
+     10,
+     12
+    ],
+    "C0-004": [
+     3,
+     1,
+     2
+    ],
+    "B0-001": [
+     2,
+     2,
+     0
+    ],
+    "D0-027": [
+     8,
+     5,
+     3
+    ],
+    "D3-003": [
+     2,
+     2,
+     0
+    ],
+    "D0-018": [
+     2,
+     1,
+     1
+    ],
+    "D4-000": [
+     4,
+     3,
+     1
+    ],
+    "C0-018": [
+     5,
+     3,
+     2
+    ],
+    "B0-005": [
+     12,
+     7,
+     5
+    ],
+    "C0-005": [
+     1,
+     1,
+     0
+    ],
+    "D4-002": [
+     1,
+     1,
+     0
+    ],
+    "B0-003": [
+     13,
+     6,
+     7
+    ],
+    "D5-002": [
+     6,
+     4,
+     2
+    ],
+    "C0-015": [
+     4,
+     2,
+     2
+    ],
+    "D6-000": [
+     4,
+     2,
+     2
+    ],
+    "D6-006": [
+     8,
+     5,
+     3
+    ],
+    "D6-004": [
+     4,
+     0,
+     4
+    ],
+    "D6-008": [
+     8,
+     6,
+     2
+    ],
+    "D5-001": [
+     2,
+     0,
+     2
+    ],
+    "D7-003": [
+     4,
+     1,
+     3
+    ],
+    "D7-000": [
+     4,
+     2,
+     2
+    ],
+    "D5-000": [
+     4,
+     1,
+     3
+    ],
+    "D6-001": [
+     4,
+     2,
+     2
+    ],
+    "D3-005": [
+     4,
+     2,
+     2
+    ],
+    "D7-004": [
+     1,
+     0,
+     1
+    ],
+    "D6-003": [
+     1,
+     1,
+     0
+    ],
+    "A0-001": [
+     1,
+     0,
+     1
+    ],
+    "D7-002": [
+     1,
+     1,
+     0
+    ],
+    "D6-002": [
+     2,
+     1,
+     1
+    ],
+    "A0-010": [
+     2,
+     0,
+     2
+    ],
+    "C0-014": [
+     2,
+     1,
+     1
+    ]
+   },
+   "retired_season": 7
+  },
+  {
+   "id": "D3-005",
+   "league": "D",
+   "params": {
+    "speed_weight": 4.207,
+    "dora_weight": 7.82,
+    "yakuhai_weight": 1.434,
+    "flush_weight": 4.442,
+    "tanyao_weight": 7.903,
+    "call_weight": 3.821,
+    "riichi_weight": 4.532,
+    "defense_weight": 3.543,
+    "push_weight": 5.114
+   },
+   "talent": 0.563,
+   "clan_root_id": "B0-009",
+   "display_name": "井上健一",
+   "awakened_param": null,
+   "generation": 1,
+   "parent_a_id": "B0-009",
+   "initial_age": 28,
+   "age_multipliers": {
+    "speed_weight": 1.032,
+    "dora_weight": 0.999,
+    "yakuhai_weight": 0.957,
+    "flush_weight": 1.052,
+    "tanyao_weight": 1.01,
+    "call_weight": 1.03,
+    "riichi_weight": 0.968,
+    "defense_weight": 1.059,
+    "push_weight": 1.052,
+    "talent": 0.956
+   },
+   "consecutive_losing_seasons": 2,
+   "elo": 1416.99,
+   "peak_elo": 1506.18,
+   "volatility": 0.47,
+   "seasons_in_league": 4,
+   "total_seasons": 5,
+   "retired": true,
+   "games": 80,
+   "placements": [
+    15,
+    17,
+    28,
+    20
+   ],
+   "total_points": -154.6,
+   "career": [
+    {
+     "season": 3,
+     "league": "D",
+     "rank": 14,
+     "points": 1.5,
+     "elo": 1461.5,
+     "movement": "stay"
+    },
+    {
+     "season": 4,
+     "league": "D",
+     "rank": 19,
+     "points": -16.4,
+     "elo": 1421.0,
+     "movement": "stay"
+    },
+    {
+     "season": 5,
+     "league": "D",
+     "rank": 8,
+     "points": 51.2,
+     "elo": 1464.4,
+     "movement": "stay"
+    },
+    {
+     "season": 6,
+     "league": "D",
+     "rank": 19,
+     "points": -37.7,
+     "elo": 1478.3,
+     "movement": "stay"
+    },
+    {
+     "season": 7,
+     "league": "D",
+     "rank": 26,
+     "points": -72.3,
+     "elo": 1417.0,
+     "movement": "retired"
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null,
+   "stats": {
+    "hands": 917,
+    "wins": 164,
+    "tsumo": 49,
+    "dealins": 131,
+    "riichi": 202,
+    "draws": 211,
+    "draw_tenpai": 81,
+    "win_value": 639600,
+    "dealin_value": 443700,
+    "max_value": 18000,
+    "yakuman": 0,
+    "score_sum": 2274800,
+    "score_max": 74600,
+    "busts": 1
+   },
+   "elo_history": [
+    [
+     3,
+     1461.5
+    ],
+    [
+     4,
+     1421.0
+    ],
+    [
+     5,
+     1464.4
+    ],
+    [
+     6,
+     1478.3
+    ],
+    [
+     7,
+     1417.0
+    ]
+   ],
+   "elo_trace": [
+    [
+     3,
+     1,
+     1473.4
+    ],
+    [
+     3,
+     2,
+     1465.2
+    ],
+    [
+     3,
+     3,
+     1473.7
+    ],
+    [
+     3,
+     4,
+     1481.5
+    ],
+    [
+     3,
+     5,
+     1506.2
+    ],
+    [
+     3,
+     6,
+     1480.6
+    ],
+    [
+     3,
+     7,
+     1489.4
+    ],
+    [
+     3,
+     8,
+     1465.4
+    ],
+    [
+     3,
+     9,
+     1475.3
+    ],
+    [
+     3,
+     10,
+     1468.4
+    ],
+    [
+     3,
+     11,
+     1462.1
+    ],
+    [
+     3,
+     12,
+     1488.3
+    ],
+    [
+     3,
+     13,
+     1463.7
+    ],
+    [
+     3,
+     14,
+     1470.9
+    ],
+    [
+     3,
+     15,
+     1461.5
+    ],
+    [
+     4,
+     16,
+     1454.7
+    ],
+    [
+     4,
+     17,
+     1448.7
+    ],
+    [
+     4,
+     18,
+     1459.1
+    ],
+    [
+     4,
+     19,
+     1468.4
+    ],
+    [
+     4,
+     20,
+     1446.2
+    ],
+    [
+     4,
+     21,
+     1473.9
+    ],
+    [
+     4,
+     22,
+     1451.3
+    ],
+    [
+     4,
+     23,
+     1446.6
+    ],
+    [
+     4,
+     24,
+     1438.6
+    ],
+    [
+     4,
+     25,
+     1431.4
+    ],
+    [
+     4,
+     26,
+     1425.1
+    ],
+    [
+     4,
+     27,
+     1451.2
+    ],
+    [
+     4,
+     28,
+     1477.6
+    ],
+    [
+     4,
+     29,
+     1454.6
+    ],
+    [
+     4,
+     30,
+     1445.4
+    ],
+    [
+     4,
+     31,
+     1421.0
+    ],
+    [
+     5,
+     32,
+     1429.9
+    ],
+    [
+     5,
+     33,
+     1422.0
+    ],
+    [
+     5,
+     34,
+     1446.7
+    ],
+    [
+     5,
+     35,
+     1421.4
+    ],
+    [
+     5,
+     36,
+     1415.3
+    ],
+    [
+     5,
+     37,
+     1410.0
+    ],
+    [
+     5,
+     38,
+     1405.2
+    ],
+    [
+     5,
+     39,
+     1432.5
+    ],
+    [
+     5,
+     40,
+     1461.2
+    ],
+    [
+     5,
+     41,
+     1471.4
+    ],
+    [
+     5,
+     42,
+     1464.5
+    ],
+    [
+     5,
+     43,
+     1490.4
+    ],
+    [
+     5,
+     44,
+     1479.7
+    ],
+    [
+     5,
+     45,
+     1488.5
+    ],
+    [
+     5,
+     46,
+     1464.4
+    ],
+    [
+     6,
+     47,
+     1469.4
+    ],
+    [
+     6,
+     48,
+     1452.6
+    ],
+    [
+     6,
+     49,
+     1447.7
+    ],
+    [
+     6,
+     50,
+     1443.1
+    ],
+    [
+     6,
+     51,
+     1451.4
+    ],
+    [
+     6,
+     52,
+     1448.5
+    ],
+    [
+     6,
+     53,
+     1435.0
+    ],
+    [
+     6,
+     54,
+     1443.8
+    ],
+    [
+     6,
+     55,
+     1462.6
+    ],
+    [
+     6,
+     56,
+     1469.5
+    ],
+    [
+     6,
+     57,
+     1465.2
+    ],
+    [
+     6,
+     58,
+     1482.6
+    ],
+    [
+     6,
+     59,
+     1465.8
+    ],
+    [
+     6,
+     60,
+     1480.5
+    ],
+    [
+     6,
+     61,
+     1494.3
+    ],
+    [
+     6,
+     62,
+     1500.8
+    ],
+    [
+     6,
+     63,
+     1496.3
+    ],
+    [
+     6,
+     64,
+     1492.4
+    ],
+    [
+     6,
+     65,
+     1478.3
+    ],
+    [
+     7,
+     66,
+     1474.4
+    ],
+    [
+     7,
+     67,
+     1481.5
+    ],
+    [
+     7,
+     68,
+     1477.4
+    ],
+    [
+     7,
+     69,
+     1484.3
+    ],
+    [
+     7,
+     70,
+     1467.9
+    ],
+    [
+     7,
+     71,
+     1452.6
+    ],
+    [
+     7,
+     72,
+     1438.4
+    ],
+    [
+     7,
+     73,
+     1457.1
+    ],
+    [
+     7,
+     74,
+     1473.6
+    ],
+    [
+     7,
+     75,
+     1457.0
+    ],
+    [
+     7,
+     76,
+     1452.0
+    ],
+    [
+     7,
+     77,
+     1447.6
+    ],
+    [
+     7,
+     78,
+     1433.6
+    ],
+    [
+     7,
+     79,
+     1419.5
+    ],
+    [
+     7,
+     80,
+     1417.0
+    ]
+   ],
+   "recent_games": [
+    {
+     "id": "6-0237",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 6.2,
+     "score": 32200,
+     "others": [
+      "五十嵐美和",
+      "山下裕子",
+      "須田泉美"
+     ]
+    },
+    {
+     "id": "6-0238",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 3,
+     "points": -8.9,
+     "score": 24100,
+     "others": [
+      "山下裕子",
+      "須田泉美",
+      "五十嵐美和"
+     ]
+    },
+    {
+     "id": "6-0239",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -13.5,
+     "score": 24500,
+     "others": [
+      "須田泉美",
+      "五十嵐美和",
+      "山下裕子"
+     ]
+    },
+    {
+     "id": "6-0240",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 8.3,
+     "score": 34300,
+     "others": [
+      "須田泉美",
+      "五十嵐美和",
+      "山下裕子"
+     ]
+    },
+    {
+     "id": "6-0269",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 1,
+     "points": 14.8,
+     "score": 36800,
+     "others": [
+      "吉田綾",
+      "谷海斗",
+      "海野義隆"
+     ]
+    },
+    {
+     "id": "6-0270",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": 6.2,
+     "score": 32200,
+     "others": [
+      "谷海斗",
+      "海野義隆",
+      "吉田綾"
+     ]
+    },
+    {
+     "id": "6-0271",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 3,
+     "points": -9.2,
+     "score": 23800,
+     "others": [
+      "海野義隆",
+      "吉田綾",
+      "谷海斗"
+     ]
+    },
+    {
+     "id": "6-0272",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 1,
+     "points": 12.2,
+     "score": 34200,
+     "others": [
+      "吉田綾",
+      "谷海斗",
+      "海野義隆"
+     ]
+    },
+    {
+     "id": "6-0334",
+     "season": 6,
+     "label": "霊亀位 1回戦",
+     "placement": 4,
+     "points": -30.5,
+     "score": 14500,
+     "others": [
+      "石川貴弘",
+      "大石俊介",
+      "宇野浩明"
+     ]
+    },
+    {
+     "id": "6-0383",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 1,
+     "points": 1.0,
+     "score": 42600,
+     "others": [
+      "吉田綾",
+      "竹本和彦",
+      "小島昌弘"
+     ]
+    },
+    {
+     "id": "6-0384",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 1,
+     "points": 1.0,
+     "score": 36300,
+     "others": [
+      "竹本和彦",
+      "小島昌弘",
+      "吉田綾"
+     ]
+    },
+    {
+     "id": "6-0399",
+     "season": 6,
+     "label": "応龍位 2回戦",
+     "placement": 2,
+     "points": 0.0,
+     "score": 33100,
+     "others": [
+      "加藤泉",
+      "中川健二",
+      "太田一美"
+     ]
+    },
+    {
+     "id": "6-0400",
+     "season": 6,
+     "label": "応龍位 2回戦",
+     "placement": 3,
+     "points": 0.0,
+     "score": 28600,
+     "others": [
+      "中川健二",
+      "太田一美",
+      "加藤泉"
+     ]
+    },
+    {
+     "id": "6-0435",
+     "season": 6,
+     "label": "応龍位 3回戦",
+     "placement": 3,
+     "points": 0.0,
+     "score": 25700,
+     "others": [
+      "山崎聡太",
+      "小島昌弘",
+      "大杉花子"
+     ]
+    },
+    {
+     "id": "6-0436",
+     "season": 6,
+     "label": "応龍位 3回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 20900,
+     "others": [
+      "山崎聡太",
+      "小島昌弘",
+      "大杉花子"
+     ]
+    },
+    {
+     "id": "7-0217",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 3,
+     "points": -9.9,
+     "score": 24100,
+     "others": [
+      "南葵",
+      "伊藤結愛",
+      "山下裕子"
+     ]
+    },
+    {
+     "id": "7-0218",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 2,
+     "points": -1.8,
+     "score": 29200,
+     "others": [
+      "伊藤結愛",
+      "山下裕子",
+      "南葵"
+     ]
+    },
+    {
+     "id": "7-0219",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 3,
+     "points": 1.6,
+     "score": 30600,
+     "others": [
+      "山下裕子",
+      "南葵",
+      "伊藤結愛"
+     ]
+    },
+    {
+     "id": "7-0220",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 2,
+     "points": -7.1,
+     "score": 23900,
+     "others": [
+      "山下裕子",
+      "南葵",
+      "伊藤結愛"
+     ]
+    },
+    {
+     "id": "7-0233",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -13.8,
+     "score": 24200,
+     "others": [
+      "後藤さくら",
+      "梅沢湊",
+      "竹本美咲子"
+     ]
+    },
+    {
+     "id": "7-0234",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -17.1,
+     "score": 20900,
+     "others": [
+      "梅沢湊",
+      "竹本美咲子",
+      "後藤さくら"
+     ]
+    },
+    {
+     "id": "7-0235",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -18.6,
+     "score": 19400,
+     "others": [
+      "竹本美咲子",
+      "後藤さくら",
+      "梅沢湊"
+     ]
+    },
+    {
+     "id": "7-0236",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 1,
+     "points": 16.8,
+     "score": 38800,
+     "others": [
+      "竹本美咲子",
+      "後藤さくら",
+      "梅沢湊"
+     ]
+    },
+    {
+     "id": "7-0277",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 1,
+     "points": 18.5,
+     "score": 40500,
+     "others": [
+      "田口花子",
+      "竹本和彦",
+      "谷海斗"
+     ]
+    },
+    {
+     "id": "7-0278",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -34.9,
+     "score": 7100,
+     "others": [
+      "竹本和彦",
+      "谷海斗",
+      "田口花子"
+     ]
+    },
+    {
+     "id": "7-0279",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 3,
+     "points": 2.5,
+     "score": 31500,
+     "others": [
+      "谷海斗",
+      "田口花子",
+      "竹本和彦"
+     ]
+    },
+    {
+     "id": "7-0280",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 3,
+     "points": -8.5,
+     "score": 24500,
+     "others": [
+      "田口花子",
+      "竹本和彦",
+      "谷海斗"
+     ]
+    },
+    {
+     "id": "7-0333",
+     "season": 7,
+     "label": "霊亀位 1回戦",
+     "placement": 4,
+     "points": -30.3,
+     "score": 14700,
+     "others": [
+      "梅沢湊",
+      "後藤さくら",
+      "青山杏子"
+     ]
+    },
+    {
+     "id": "7-0383",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 9200,
+     "others": [
+      "伊藤結愛",
+      "後藤さくら",
+      "南葵"
+     ]
+    },
+    {
+     "id": "7-0384",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 3,
+     "points": 0.0,
+     "score": 29700,
+     "others": [
+      "後藤さくら",
+      "南葵",
+      "伊藤結愛"
+     ]
+    }
+   ],
+   "opponents": {
+    "D3-007": [
+     9,
+     3,
+     6
+    ],
+    "D0-001": [
+     9,
+     6,
+     3
+    ],
+    "D0-022": [
+     8,
+     4,
+     4
+    ],
+    "D0-014": [
+     16,
+     7,
+     9
+    ],
+    "D3-003": [
+     4,
+     2,
+     2
+    ],
+    "D3-001": [
+     14,
+     8,
+     6
+    ],
+    "D0-013": [
+     8,
+     3,
+     5
+    ],
+    "D3-000": [
+     7,
+     2,
+     5
+    ],
+    "D0-024": [
+     4,
+     3,
+     1
+    ],
+    "D0-016": [
+     5,
+     2,
+     3
+    ],
+    "D0-026": [
+     2,
+     1,
+     1
+    ],
+    "D3-004": [
+     2,
+     2,
+     0
+    ],
+    "D3-002": [
+     4,
+     2,
+     2
+    ],
+    "D0-017": [
+     4,
+     1,
+     3
+    ],
+    "D0-021": [
+     4,
+     3,
+     1
+    ],
+    "D4-001": [
+     8,
+     3,
+     5
+    ],
+    "D4-002": [
+     13,
+     7,
+     6
+    ],
+    "C0-003": [
+     10,
+     6,
+     4
+    ],
+    "A0-011": [
+     1,
+     0,
+     1
+    ],
+    "B0-005": [
+     1,
+     0,
+     1
+    ],
+    "C0-013": [
+     2,
+     0,
+     2
+    ],
+    "D0-012": [
+     3,
+     0,
+     3
+    ],
+    "C0-008": [
+     6,
+     2,
+     4
+    ],
+    "C0-010": [
+     4,
+     2,
+     2
+    ],
+    "D4-000": [
+     4,
+     3,
+     1
+    ],
+    "D5-001": [
+     10,
+     7,
+     3
+    ],
+    "C0-018": [
+     6,
+     3,
+     3
+    ],
+    "D6-002": [
+     5,
+     2,
+     3
+    ],
+    "D6-005": [
+     4,
+     2,
+     2
+    ],
+    "D5-000": [
+     8,
+     2,
+     6
+    ],
+    "D2-001": [
+     4,
+     2,
+     2
+    ],
+    "D6-006": [
+     8,
+     4,
+     4
+    ],
+    "D5-002": [
+     1,
+     0,
+     1
+    ],
+    "D6-009": [
+     1,
+     0,
+     1
+    ],
+    "D6-001": [
+     6,
+     4,
+     2
+    ],
+    "C0-019": [
+     2,
+     1,
+     1
+    ],
+    "B0-014": [
+     2,
+     0,
+     2
+    ],
+    "A0-008": [
+     2,
+     0,
+     2
+    ],
+    "A0-007": [
+     2,
+     1,
+     1
+    ],
+    "D6-004": [
+     6,
+     2,
+     4
+    ],
+    "D6-000": [
+     7,
+     1,
+     6
+    ],
+    "D7-002": [
+     5,
+     1,
+     4
+    ],
+    "D7-001": [
+     4,
+     1,
+     3
+    ],
+    "D0-004": [
+     4,
+     2,
+     2
+    ],
+    "C0-015": [
+     1,
+     0,
+     1
+    ]
+   },
+   "retired_season": 7
+  },
+  {
+   "id": "C0-019",
+   "league": "D",
+   "params": {
+    "speed_weight": 1.97,
+    "dora_weight": 0.929,
+    "yakuhai_weight": 2.901,
+    "flush_weight": 5.679,
+    "tanyao_weight": 0.608,
+    "call_weight": 5.526,
+    "riichi_weight": 8.916,
+    "defense_weight": 7.222,
+    "push_weight": 9.694
+   },
+   "talent": 0.54,
+   "clan_root_id": "C0-019",
+   "display_name": "加藤泉",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 63,
+   "age_multipliers": {
+    "speed_weight": 0.873,
+    "dora_weight": 0.878,
+    "yakuhai_weight": 0.94,
+    "flush_weight": 0.985,
+    "tanyao_weight": 0.908,
+    "call_weight": 0.879,
+    "riichi_weight": 1.011,
+    "defense_weight": 0.962,
+    "push_weight": 0.877,
+    "talent": 0.975
+   },
+   "consecutive_losing_seasons": 2,
+   "elo": 1406.15,
+   "peak_elo": 1645.63,
+   "volatility": 0.4,
+   "seasons_in_league": 1,
+   "total_seasons": 7,
+   "retired": true,
+   "games": 155,
+   "placements": [
+    41,
+    25,
+    41,
+    48
+   ],
+   "total_points": -354.8,
+   "career": [
+    {
+     "season": 1,
+     "league": "C",
+     "rank": 4,
+     "points": 76.6,
+     "elo": 1506.3,
+     "movement": "promoted"
+    },
+    {
+     "season": 2,
+     "league": "B",
+     "rank": 14,
+     "points": -83.5,
+     "elo": 1630.2,
+     "movement": "relegated"
+    },
+    {
+     "season": 3,
+     "league": "C",
+     "rank": 15,
+     "points": -26.3,
+     "elo": 1519.0,
+     "movement": "stay"
+    },
+    {
+     "season": 4,
+     "league": "C",
+     "rank": 11,
+     "points": 5.3,
+     "elo": 1519.1,
+     "movement": "stay"
+    },
+    {
+     "season": 5,
+     "league": "C",
+     "rank": 17,
+     "points": -93.6,
+     "elo": 1476.0,
+     "movement": "relegated"
+    },
+    {
+     "season": 6,
+     "league": "D",
+     "rank": 22,
+     "points": -47.6,
+     "elo": 1449.5,
+     "movement": "stay"
+    },
+    {
+     "season": 7,
+     "league": "D",
+     "rank": 28,
+     "points": -98.6,
+     "elo": 1406.2,
+     "movement": "retired"
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null,
+   "stats": {
+    "hands": 1722,
+    "wins": 320,
+    "tsumo": 107,
+    "dealins": 245,
+    "riichi": 500,
+    "draws": 384,
+    "draw_tenpai": 166,
+    "win_value": 1375300,
+    "dealin_value": 899100,
+    "max_value": 48000,
+    "yakuman": 2,
+    "score_sum": 4548200,
+    "score_max": 86800,
+    "busts": 2
+   },
+   "elo_history": [
+    [
+     1,
+     1506.3
+    ],
+    [
+     2,
+     1630.2
+    ],
+    [
+     3,
+     1519.0
+    ],
+    [
+     4,
+     1519.1
+    ],
+    [
+     5,
+     1476.0
+    ],
+    [
+     6,
+     1449.5
+    ],
+    [
+     7,
+     1406.2
+    ]
+   ],
+   "elo_trace": [
+    [
+     1,
+     1,
+     1524.0
+    ],
+    [
+     1,
+     2,
+     1513.8
+    ],
+    [
+     1,
+     3,
+     1536.5
+    ],
+    [
+     1,
+     4,
+     1557.2
+    ],
+    [
+     1,
+     5,
+     1576.7
+    ],
+    [
+     1,
+     6,
+     1546.5
+    ],
+    [
+     1,
+     7,
+     1566.9
+    ],
+    [
+     1,
+     8,
+     1537.5
+    ],
+    [
+     1,
+     9,
+     1511.5
+    ],
+    [
+     1,
+     10,
+     1535.7
+    ],
+    [
+     1,
+     11,
+     1557.8
+    ],
+    [
+     1,
+     12,
+     1577.9
+    ],
+    [
+     1,
+     13,
+     1562.9
+    ],
+    [
+     1,
+     14,
+     1533.1
+    ],
+    [
+     1,
+     15,
+     1522.0
+    ],
+    [
+     1,
+     16,
+     1543.9
+    ],
+    [
+     1,
+     17,
+     1535.8
+    ],
+    [
+     1,
+     18,
+     1544.9
+    ],
+    [
+     1,
+     19,
+     1521.6
+    ],
+    [
+     1,
+     20,
+     1513.0
+    ],
+    [
+     1,
+     21,
+     1537.2
+    ],
+    [
+     1,
+     22,
+     1529.4
+    ],
+    [
+     1,
+     23,
+     1506.3
+    ],
+    [
+     2,
+     24,
+     1511.8
+    ],
+    [
+     2,
+     25,
+     1516.8
+    ],
+    [
+     2,
+     26,
+     1521.3
+    ],
+    [
+     2,
+     27,
+     1493.4
+    ],
+    [
+     2,
+     28,
+     1489.8
+    ],
+    [
+     2,
+     29,
+     1470.4
+    ],
+    [
+     2,
+     30,
+     1500.7
+    ],
+    [
+     2,
+     31,
+     1496.4
+    ],
+    [
+     2,
+     32,
+     1521.8
+    ],
+    [
+     2,
+     33,
+     1513.1
+    ],
+    [
+     2,
+     34,
+     1489.2
+    ],
+    [
+     2,
+     35,
+     1467.3
+    ],
+    [
+     2,
+     36,
+     1445.4
+    ],
+    [
+     2,
+     37,
+     1441.5
+    ],
+    [
+     2,
+     38,
+     1437.9
+    ],
+    [
+     2,
+     39,
+     1466.5
+    ],
+    [
+     2,
+     40,
+     1461.1
+    ],
+    [
+     2,
+     41,
+     1442.9
+    ],
+    [
+     2,
+     42,
+     1474.2
+    ],
+    [
+     2,
+     43,
+     1503.3
+    ],
+    [
+     2,
+     44,
+     1497.7
+    ],
+    [
+     2,
+     45,
+     1524.5
+    ],
+    [
+     2,
+     46,
+     1500.9
+    ],
+    [
+     2,
+     47,
+     1531.2
+    ],
+    [
+     2,
+     48,
+     1542.8
+    ],
+    [
+     2,
+     49,
+     1537.6
+    ],
+    [
+     2,
+     50,
+     1548.8
+    ],
+    [
+     2,
+     51,
+     1575.1
+    ],
+    [
+     2,
+     52,
+     1598.4
+    ],
+    [
+     2,
+     53,
+     1587.7
+    ],
+    [
+     2,
+     54,
+     1609.9
+    ],
+    [
+     2,
+     55,
+     1630.2
+    ],
+    [
+     3,
+     56,
+     1613.5
+    ],
+    [
+     3,
+     57,
+     1630.3
+    ],
+    [
+     3,
+     58,
+     1645.6
+    ],
+    [
+     3,
+     59,
+     1643.8
+    ],
+    [
+     3,
+     60,
+     1627.2
+    ],
+    [
+     3,
+     61,
+     1596.0
+    ],
+    [
+     3,
+     62,
+     1567.5
+    ],
+    [
+     3,
+     63,
+     1541.6
+    ],
+    [
+     3,
+     64,
+     1532.0
+    ],
+    [
+     3,
+     65,
+     1555.2
+    ],
+    [
+     3,
+     66,
+     1544.3
+    ],
+    [
+     3,
+     67,
+     1518.4
+    ],
+    [
+     3,
+     68,
+     1511.3
+    ],
+    [
+     3,
+     69,
+     1536.8
+    ],
+    [
+     3,
+     70,
+     1512.1
+    ],
+    [
+     3,
+     71,
+     1505.5
+    ],
+    [
+     3,
+     72,
+     1499.5
+    ],
+    [
+     3,
+     73,
+     1497.1
+    ],
+    [
+     3,
+     74,
+     1510.9
+    ],
+    [
+     3,
+     75,
+     1523.6
+    ],
+    [
+     3,
+     76,
+     1519.0
+    ],
+    [
+     4,
+     77,
+     1523.7
+    ],
+    [
+     4,
+     78,
+     1517.4
+    ],
+    [
+     4,
+     79,
+     1532.6
+    ],
+    [
+     4,
+     80,
+     1536.2
+    ],
+    [
+     4,
+     81,
+     1519.6
+    ],
+    [
+     4,
+     82,
+     1504.1
+    ],
+    [
+     4,
+     83,
+     1489.4
+    ],
+    [
+     4,
+     84,
+     1496.9
+    ],
+    [
+     4,
+     85,
+     1514.5
+    ],
+    [
+     4,
+     86,
+     1499.0
+    ],
+    [
+     4,
+     87,
+     1495.1
+    ],
+    [
+     4,
+     88,
+     1512.8
+    ],
+    [
+     4,
+     89,
+     1496.7
+    ],
+    [
+     4,
+     90,
+     1503.0
+    ],
+    [
+     4,
+     91,
+     1519.6
+    ],
+    [
+     4,
+     92,
+     1513.8
+    ],
+    [
+     4,
+     93,
+     1510.3
+    ],
+    [
+     4,
+     94,
+     1497.2
+    ],
+    [
+     4,
+     95,
+     1516.8
+    ],
+    [
+     4,
+     96,
+     1500.3
+    ],
+    [
+     4,
+     97,
+     1516.8
+    ],
+    [
+     4,
+     98,
+     1523.5
+    ],
+    [
+     4,
+     99,
+     1519.1
+    ],
+    [
+     5,
+     100,
+     1536.7
+    ],
+    [
+     5,
+     101,
+     1521.2
+    ],
+    [
+     5,
+     102,
+     1506.6
+    ],
+    [
+     5,
+     103,
+     1524.9
+    ],
+    [
+     5,
+     104,
+     1516.9
+    ],
+    [
+     5,
+     105,
+     1498.7
+    ],
+    [
+     5,
+     106,
+     1502.9
+    ],
+    [
+     5,
+     107,
+     1517.5
+    ],
+    [
+     5,
+     108,
+     1501.5
+    ],
+    [
+     5,
+     109,
+     1486.6
+    ],
+    [
+     5,
+     110,
+     1472.5
+    ],
+    [
+     5,
+     111,
+     1459.3
+    ],
+    [
+     5,
+     112,
+     1476.1
+    ],
+    [
+     5,
+     113,
+     1470.5
+    ],
+    [
+     5,
+     114,
+     1454.7
+    ],
+    [
+     5,
+     115,
+     1471.9
+    ],
+    [
+     5,
+     116,
+     1479.1
+    ],
+    [
+     5,
+     117,
+     1466.7
+    ],
+    [
+     5,
+     118,
+     1485.0
+    ],
+    [
+     5,
+     119,
+     1491.4
+    ],
+    [
+     5,
+     120,
+     1478.0
+    ],
+    [
+     5,
+     121,
+     1476.0
+    ],
+    [
+     6,
+     122,
+     1482.1
+    ],
+    [
+     6,
+     123,
+     1466.3
+    ],
+    [
+     6,
+     124,
+     1483.4
+    ],
+    [
+     6,
+     125,
+     1467.5
+    ],
+    [
+     6,
+     126,
+     1452.4
+    ],
+    [
+     6,
+     127,
+     1459.6
+    ],
+    [
+     6,
+     128,
+     1455.7
+    ],
+    [
+     6,
+     129,
+     1441.3
+    ],
+    [
+     6,
+     130,
+     1448.3
+    ],
+    [
+     6,
+     131,
+     1433.7
+    ],
+    [
+     6,
+     132,
+     1441.3
+    ],
+    [
+     6,
+     133,
+     1448.4
+    ],
+    [
+     6,
+     134,
+     1454.6
+    ],
+    [
+     6,
+     135,
+     1451.7
+    ],
+    [
+     6,
+     136,
+     1468.5
+    ],
+    [
+     6,
+     137,
+     1452.1
+    ],
+    [
+     6,
+     138,
+     1439.8
+    ],
+    [
+     6,
+     139,
+     1449.5
+    ],
+    [
+     7,
+     140,
+     1445.6
+    ],
+    [
+     7,
+     141,
+     1431.4
+    ],
+    [
+     7,
+     142,
+     1418.1
+    ],
+    [
+     7,
+     143,
+     1427.0
+    ],
+    [
+     7,
+     144,
+     1425.2
+    ],
+    [
+     7,
+     145,
+     1413.1
+    ],
+    [
+     7,
+     146,
+     1412.3
+    ],
+    [
+     7,
+     147,
+     1411.6
+    ],
+    [
+     7,
+     148,
+     1399.1
+    ],
+    [
+     7,
+     149,
+     1398.1
+    ],
+    [
+     7,
+     150,
+     1418.6
+    ],
+    [
+     7,
+     151,
+     1406.0
+    ],
+    [
+     7,
+     152,
+     1424.9
+    ],
+    [
+     7,
+     153,
+     1423.9
+    ],
+    [
+     7,
+     154,
+     1409.3
+    ],
+    [
+     7,
+     155,
+     1406.2
+    ]
+   ],
+   "recent_games": [
+    {
+     "id": "6-0257",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -15.7,
+     "score": 22300,
+     "others": [
+      "森田美和子",
+      "中川健二",
+      "武藤凛"
+     ]
+    },
+    {
+     "id": "6-0258",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 2,
+     "points": 5.7,
+     "score": 32700,
+     "others": [
+      "中川健二",
+      "武藤凛",
+      "森田美和子"
+     ]
+    },
+    {
+     "id": "6-0259",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 3,
+     "points": -12.4,
+     "score": 21600,
+     "others": [
+      "武藤凛",
+      "森田美和子",
+      "中川健二"
+     ]
+    },
+    {
+     "id": "6-0260",
+     "season": 6,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -15.3,
+     "score": 22700,
+     "others": [
+      "武藤凛",
+      "森田美和子",
+      "中川健二"
+     ]
+    },
+    {
+     "id": "6-0261",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": -1.1,
+     "score": 29900,
+     "others": [
+      "石岡一美",
+      "大森颯",
+      "酒井泰史"
+     ]
+    },
+    {
+     "id": "6-0262",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -16.6,
+     "score": 21400,
+     "others": [
+      "大森颯",
+      "酒井泰史",
+      "石岡一美"
+     ]
+    },
+    {
+     "id": "6-0263",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": 4.8,
+     "score": 30800,
+     "others": [
+      "大森颯",
+      "酒井泰史",
+      "石岡一美"
+     ]
+    },
+    {
+     "id": "6-0264",
+     "season": 6,
+     "label": "Dリーグ 第3節",
+     "placement": 2,
+     "points": 7.5,
+     "score": 33500,
+     "others": [
+      "酒井泰史",
+      "石岡一美",
+      "大森颯"
+     ]
+    },
+    {
+     "id": "6-0336",
+     "season": 6,
+     "label": "霊亀位 1回戦",
+     "placement": 2,
+     "points": 13.6,
+     "score": 38600,
+     "others": [
+      "後藤さくら",
+      "青山杏子",
+      "竹本和彦"
+     ]
+    },
+    {
+     "id": "6-0346",
+     "season": 6,
+     "label": "霊亀位 2回戦",
+     "placement": 3,
+     "points": -7.4,
+     "score": 27600,
+     "others": [
+      "海野義隆",
+      "大杉花子",
+      "谷海斗"
+     ]
+    },
+    {
+     "id": "6-0387",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 1,
+     "points": 1.0,
+     "score": 60200,
+     "others": [
+      "藤本直人",
+      "青山杏子",
+      "後藤さくら"
+     ]
+    },
+    {
+     "id": "6-0388",
+     "season": 6,
+     "label": "応龍位 1回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 24900,
+     "others": [
+      "藤本直人",
+      "青山杏子",
+      "後藤さくら"
+     ]
+    },
+    {
+     "id": "6-0399",
+     "season": 6,
+     "label": "応龍位 2回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 23100,
+     "others": [
+      "中川健二",
+      "井上健一",
+      "太田一美"
+     ]
+    },
+    {
+     "id": "6-0400",
+     "season": 6,
+     "label": "応龍位 2回戦",
+     "placement": 2,
+     "points": 0.0,
+     "score": 33000,
+     "others": [
+      "中川健二",
+      "井上健一",
+      "太田一美"
+     ]
+    },
+    {
+     "id": "7-0229",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 3,
+     "points": 5.9,
+     "score": 34900,
+     "others": [
+      "小澤萌",
+      "海野義隆",
+      "尾形杏"
+     ]
+    },
+    {
+     "id": "7-0230",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 4,
+     "points": -17.6,
+     "score": 20400,
+     "others": [
+      "海野義隆",
+      "尾形杏",
+      "小澤萌"
+     ]
+    },
+    {
+     "id": "7-0231",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 4,
+     "points": -34.8,
+     "score": 3200,
+     "others": [
+      "尾形杏",
+      "小澤萌",
+      "海野義隆"
+     ]
+    },
+    {
+     "id": "7-0232",
+     "season": 7,
+     "label": "Dリーグ 第1節",
+     "placement": 2,
+     "points": 6.7,
+     "score": 32700,
+     "others": [
+      "尾形杏",
+      "小澤萌",
+      "海野義隆"
+     ]
+    },
+    {
+     "id": "7-0257",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 3,
+     "points": 4.4,
+     "score": 33400,
+     "others": [
+      "山岸深雪",
+      "岡部祐輝",
+      "小島昌弘"
+     ]
+    },
+    {
+     "id": "7-0258",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 4,
+     "points": -18.6,
+     "score": 19400,
+     "others": [
+      "岡部祐輝",
+      "小島昌弘",
+      "山岸深雪"
+     ]
+    },
+    {
+     "id": "7-0259",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 3,
+     "points": -9.4,
+     "score": 24600,
+     "others": [
+      "岡部祐輝",
+      "小島昌弘",
+      "山岸深雪"
+     ]
+    },
+    {
+     "id": "7-0260",
+     "season": 7,
+     "label": "Dリーグ 第2節",
+     "placement": 3,
+     "points": -14.5,
+     "score": 18500,
+     "others": [
+      "小島昌弘",
+      "山岸深雪",
+      "岡部祐輝"
+     ]
+    },
+    {
+     "id": "7-0261",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -25.6,
+     "score": 12400,
+     "others": [
+      "山下裕子",
+      "宇野浩明",
+      "竹本美咲子"
+     ]
+    },
+    {
+     "id": "7-0262",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 3,
+     "points": -8.7,
+     "score": 25300,
+     "others": [
+      "山下裕子",
+      "宇野浩明",
+      "竹本美咲子"
+     ]
+    },
+    {
+     "id": "7-0263",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 1,
+     "points": 34.7,
+     "score": 56700,
+     "others": [
+      "宇野浩明",
+      "竹本美咲子",
+      "山下裕子"
+     ]
+    },
+    {
+     "id": "7-0264",
+     "season": 7,
+     "label": "Dリーグ 第3節",
+     "placement": 4,
+     "points": -21.1,
+     "score": 16900,
+     "others": [
+      "竹本美咲子",
+      "山下裕子",
+      "宇野浩明"
+     ]
+    },
+    {
+     "id": "7-0336",
+     "season": 7,
+     "label": "霊亀位 1回戦",
+     "placement": 1,
+     "points": 28.5,
+     "score": 43500,
+     "others": [
+      "大石俊介",
+      "海野義隆",
+      "竹本和彦"
+     ]
+    },
+    {
+     "id": "7-0343",
+     "season": 7,
+     "label": "霊亀位 2回戦",
+     "placement": 3,
+     "points": -16.2,
+     "score": 18800,
+     "others": [
+      "田島新",
+      "須田泉美",
+      "山口順子"
+     ]
+    },
+    {
+     "id": "7-0389",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 14100,
+     "others": [
+      "森碧",
+      "谷海斗",
+      "三好浩二"
+     ]
+    },
+    {
+     "id": "7-0390",
+     "season": 7,
+     "label": "応龍位 1回戦",
+     "placement": 3,
+     "points": 0.0,
+     "score": 30000,
+     "others": [
+      "谷海斗",
+      "三好浩二",
+      "森碧"
+     ]
+    }
+   ],
+   "opponents": {
+    "C0-001": [
+     10,
+     5,
+     5
+    ],
+    "C0-000": [
+     13,
+     7,
+     6
+    ],
+    "C0-018": [
+     5,
+     4,
+     1
+    ],
+    "C0-013": [
+     8,
+     5,
+     3
+    ],
+    "C0-012": [
+     15,
+     7,
+     8
+    ],
+    "C0-014": [
+     12,
+     8,
+     4
+    ],
+    "C0-008": [
+     8,
+     6,
+     2
+    ],
+    "C0-015": [
+     19,
+     11,
+     8
+    ],
+    "C0-003": [
+     20,
+     9,
+     11
+    ],
+    "C0-007": [
+     5,
+     2,
+     3
+    ],
+    "D0-025": [
+     5,
+     1,
+     4
+    ],
+    "B0-006": [
+     4,
+     2,
+     2
+    ],
+    "A0-005": [
+     3,
+     0,
+     3
+    ],
+    "D0-004": [
+     3,
+     1,
+     2
+    ],
+    "D0-018": [
+     9,
+     3,
+     6
+    ],
+    "C0-017": [
+     10,
+     2,
+     8
+    ],
+    "B0-010": [
+     1,
+     0,
+     1
+    ],
+    "A0-002": [
+     3,
+     2,
+     1
+    ],
+    "C0-004": [
+     6,
+     2,
+     4
+    ],
+    "A0-009": [
+     2,
+     1,
+     1
+    ],
+    "C0-009": [
+     6,
+     0,
+     6
+    ],
+    "B0-005": [
+     8,
+     4,
+     4
+    ],
+    "B0-001": [
+     8,
+     4,
+     4
+    ],
+    "B0-007": [
+     4,
+     2,
+     2
+    ],
+    "B0-011": [
+     4,
+     2,
+     2
+    ],
+    "B0-015": [
+     10,
+     3,
+     7
+    ],
+    "B0-009": [
+     4,
+     1,
+     3
+    ],
+    "A0-008": [
+     10,
+     2,
+     8
+    ],
+    "B0-002": [
+     4,
+     1,
+     3
+    ],
+    "A0-000": [
+     1,
+     0,
+     1
+    ],
+    "A0-007": [
+     3,
+     0,
+     3
+    ],
+    "C0-005": [
+     6,
+     3,
+     3
+    ],
+    "A0-003": [
+     7,
+     4,
+     3
+    ],
+    "B0-008": [
+     2,
+     1,
+     1
+    ],
+    "D0-023": [
+     2,
+     2,
+     0
+    ],
+    "B0-004": [
+     4,
+     3,
+     1
+    ],
+    "D0-024": [
+     2,
+     1,
+     1
+    ],
+    "D0-005": [
+     5,
+     3,
+     2
+    ],
+    "A0-006": [
+     8,
+     5,
+     3
+    ],
+    "C0-002": [
+     11,
+     9,
+     2
+    ],
+    "D0-012": [
+     4,
+     4,
+     0
+    ],
+    "B0-003": [
+     22,
+     10,
+     12
+    ],
+    "D2-001": [
+     9,
+     7,
+     2
+    ],
+    "D0-027": [
+     8,
+     3,
+     5
+    ],
+    "C0-006": [
+     4,
+     1,
+     3
+    ],
+    "B0-013": [
+     16,
+     10,
+     6
+    ],
+    "C0-016": [
+     8,
+     3,
+     5
+    ],
+    "D0-014": [
+     1,
+     1,
+     0
+    ],
+    "B0-012": [
+     4,
+     1,
+     3
+    ],
+    "D0-011": [
+     10,
+     4,
+     6
+    ],
+    "D3-006": [
+     10,
+     3,
+     7
+    ],
+    "D0-020": [
+     11,
+     7,
+     4
+    ],
+    "B0-014": [
+     4,
+     1,
+     3
+    ],
+    "A0-004": [
+     1,
+     1,
+     0
+    ],
+    "A0-010": [
+     7,
+     2,
+     5
+    ],
+    "D0-000": [
+     4,
+     1,
+     3
+    ],
+    "D0-013": [
+     4,
+     0,
+     4
+    ],
+    "A0-011": [
+     1,
+     0,
+     1
+    ],
+    "B0-000": [
+     2,
+     1,
+     1
+    ],
+    "D4-001": [
+     2,
+     2,
+     0
+    ],
+    "D6-009": [
+     8,
+     3,
+     5
+    ],
+    "D2-000": [
+     4,
+     1,
+     3
+    ],
+    "D3-001": [
+     4,
+     2,
+     2
+    ],
+    "D3-002": [
+     4,
+     3,
+     1
+    ],
+    "D6-008": [
+     4,
+     1,
+     3
+    ],
+    "D6-000": [
+     3,
+     1,
+     2
+    ],
+    "D6-001": [
+     2,
+     2,
+     0
+    ],
+    "D5-001": [
+     6,
+     3,
+     3
+    ],
+    "D6-006": [
+     3,
+     0,
+     3
+    ],
+    "D6-005": [
+     2,
+     1,
+     1
+    ],
+    "D3-005": [
+     2,
+     1,
+     1
+    ],
+    "D7-004": [
+     4,
+     1,
+     3
+    ],
+    "D7-000": [
+     4,
+     0,
+     4
+    ],
+    "D5-000": [
+     4,
+     1,
+     3
+    ],
+    "D4-002": [
+     4,
+     2,
+     2
+    ],
+    "D7-001": [
+     4,
+     1,
+     3
+    ],
+    "D6-002": [
+     1,
+     1,
+     0
+    ]
+   },
+   "retired_season": 7
+  },
+  {
+   "id": "A0-006",
+   "league": "C",
+   "params": {
+    "speed_weight": 6.851,
+    "dora_weight": 8.914,
+    "yakuhai_weight": 2.682,
+    "flush_weight": 5.257,
+    "tanyao_weight": 1.534,
+    "call_weight": 4.946,
+    "riichi_weight": 7.486,
+    "defense_weight": 5.129,
+    "push_weight": 4.717
+   },
+   "talent": 0.695,
+   "clan_root_id": "A0-006",
+   "display_name": "小田島信一",
+   "awakened_param": null,
+   "generation": 0,
+   "parent_a_id": null,
+   "initial_age": 64,
+   "age_multipliers": {
+    "speed_weight": 0.997,
+    "dora_weight": 0.977,
+    "yakuhai_weight": 0.995,
+    "flush_weight": 0.886,
+    "tanyao_weight": 0.998,
+    "call_weight": 0.921,
+    "riichi_weight": 0.815,
+    "defense_weight": 0.963,
+    "push_weight": 0.979,
+    "talent": 0.894
+   },
+   "consecutive_losing_seasons": 0,
+   "elo": 1487.85,
+   "peak_elo": 1642.41,
+   "volatility": 0.98,
+   "seasons_in_league": 0,
+   "total_seasons": 7,
+   "retired": true,
+   "games": 196,
+   "placements": [
+    40,
+    54,
+    53,
+    49
+   ],
+   "total_points": -436.3,
+   "career": [
+    {
+     "season": 1,
+     "league": "A",
+     "rank": 4,
+     "points": 49.0,
+     "elo": 1547.4,
+     "movement": "stay"
+    },
+    {
+     "season": 2,
+     "league": "A",
+     "rank": 12,
+     "points": -134.3,
+     "elo": 1630.5,
+     "movement": "relegated"
+    },
+    {
+     "season": 3,
+     "league": "B",
+     "rank": 6,
+     "points": 15.5,
+     "elo": 1542.6,
+     "movement": "stay"
+    },
+    {
+     "season": 4,
+     "league": "B",
+     "rank": 12,
+     "points": -49.5,
+     "elo": 1465.6,
+     "movement": "stay"
+    },
+    {
+     "season": 5,
+     "league": "B",
+     "rank": 6,
+     "points": 18.1,
+     "elo": 1483.4,
+     "movement": "stay"
+    },
+    {
+     "season": 6,
+     "league": "B",
+     "rank": 14,
+     "points": -84.8,
+     "elo": 1463.3,
+     "movement": "relegated"
+    },
+    {
+     "season": 7,
+     "league": "C",
+     "rank": 15,
+     "points": -32.4,
+     "elo": 1487.8,
+     "movement": "retired"
+    }
+   ],
+   "created": false,
+   "submission_id": null,
+   "creator": null,
+   "stats": {
+    "hands": 2204,
+    "wins": 372,
+    "tsumo": 144,
+    "dealins": 297,
+    "riichi": 640,
+    "draws": 485,
+    "draw_tenpai": 184,
+    "win_value": 1723700,
+    "dealin_value": 1096300,
+    "max_value": 48000,
+    "yakuman": 1,
+    "score_sum": 5544000,
+    "score_max": 94600,
+    "busts": 1
+   },
+   "elo_history": [
+    [
+     1,
+     1547.4
+    ],
+    [
+     2,
+     1630.5
+    ],
+    [
+     3,
+     1542.6
+    ],
+    [
+     4,
+     1465.6
+    ],
+    [
+     5,
+     1483.4
+    ],
+    [
+     6,
+     1463.3
+    ],
+    [
+     7,
+     1487.8
+    ]
+   ],
+   "elo_trace": [
+    [
+     1,
+     1,
+     1524.0
+    ],
+    [
+     1,
+     2,
+     1497.8
+    ],
+    [
+     1,
+     3,
+     1506.0
+    ],
+    [
+     1,
+     4,
+     1529.4
+    ],
+    [
+     1,
+     5,
+     1551.5
+    ],
+    [
+     1,
+     6,
+     1523.5
+    ],
+    [
+     1,
+     7,
+     1530.1
+    ],
+    [
+     1,
+     8,
+     1536.1
+    ],
+    [
+     1,
+     9,
+     1510.3
+    ],
+    [
+     1,
+     10,
+     1534.8
+    ],
+    [
+     1,
+     11,
+     1557.1
+    ],
+    [
+     1,
+     12,
+     1561.4
+    ],
+    [
+     1,
+     13,
+     1580.8
+    ],
+    [
+     1,
+     14,
+     1598.5
+    ],
+    [
+     1,
+     15,
+     1566.7
+    ],
+    [
+     1,
+     16,
+     1537.7
+    ],
+    [
+     1,
+     17,
+     1559.9
+    ],
+    [
+     1,
+     18,
+     1532.1
+    ],
+    [
+     1,
+     19,
+     1522.8
+    ],
+    [
+     1,
+     20,
+     1530.3
+    ],
+    [
+     1,
+     21,
+     1539.9
+    ],
+    [
+     1,
+     22,
+     1532.6
+    ],
+    [
+     1,
+     23,
+     1542.0
+    ],
+    [
+     1,
+     24,
+     1550.5
+    ],
+    [
+     1,
+     25,
+     1542.2
+    ],
+    [
+     1,
+     26,
+     1534.7
+    ],
+    [
+     1,
+     27,
+     1543.9
+    ],
+    [
+     1,
+     28,
+     1520.2
+    ],
+    [
+     1,
+     29,
+     1530.7
+    ],
+    [
+     1,
+     30,
+     1540.1
+    ],
+    [
+     1,
+     31,
+     1516.8
+    ],
+    [
+     1,
+     32,
+     1495.6
+    ],
+    [
+     1,
+     33,
+     1492.2
+    ],
+    [
+     1,
+     34,
+     1489.2
+    ],
+    [
+     1,
+     35,
+     1486.4
+    ],
+    [
+     1,
+     36,
+     1515.9
+    ],
+    [
+     1,
+     37,
+     1526.5
+    ],
+    [
+     1,
+     38,
+     1521.7
+    ],
+    [
+     1,
+     39,
+     1517.3
+    ],
+    [
+     1,
+     40,
+     1542.2
+    ],
+    [
+     1,
+     41,
+     1533.0
+    ],
+    [
+     1,
+     42,
+     1554.2
+    ],
+    [
+     1,
+     43,
+     1557.5
+    ],
+    [
+     1,
+     44,
+     1577.5
+    ],
+    [
+     1,
+     45,
+     1547.7
+    ],
+    [
+     1,
+     46,
+     1539.2
+    ],
+    [
+     1,
+     47,
+     1547.4
+    ],
+    [
+     2,
+     48,
+     1534.7
+    ],
+    [
+     2,
+     49,
+     1507.1
+    ],
+    [
+     2,
+     50,
+     1482.0
+    ],
+    [
+     2,
+     51,
+     1491.2
+    ],
+    [
+     2,
+     52,
+     1487.1
+    ],
+    [
+     2,
+     53,
+     1499.4
+    ],
+    [
+     2,
+     54,
+     1510.6
+    ],
+    [
+     2,
+     55,
+     1536.7
+    ],
+    [
+     2,
+     56,
+     1514.4
+    ],
+    [
+     2,
+     57,
+     1526.1
+    ],
+    [
+     2,
+     58,
+     1520.8
+    ],
+    [
+     2,
+     59,
+     1499.9
+    ],
+    [
+     2,
+     60,
+     1478.3
+    ],
+    [
+     2,
+     61,
+     1474.7
+    ],
+    [
+     2,
+     62,
+     1455.4
+    ],
+    [
+     2,
+     63,
+     1453.7
+    ],
+    [
+     2,
+     64,
+     1479.9
+    ],
+    [
+     2,
+     65,
+     1471.7
+    ],
+    [
+     2,
+     66,
+     1448.2
+    ],
+    [
+     2,
+     67,
+     1426.9
+    ],
+    [
+     2,
+     68,
+     1440.3
+    ],
+    [
+     2,
+     69,
+     1471.2
+    ],
+    [
+     2,
+     70,
+     1454.2
+    ],
+    [
+     2,
+     71,
+     1454.5
+    ],
+    [
+     2,
+     72,
+     1483.0
+    ],
+    [
+     2,
+     73,
+     1509.0
+    ],
+    [
+     2,
+     74,
+     1521.7
+    ],
+    [
+     2,
+     75,
+     1533.4
+    ],
+    [
+     2,
+     76,
+     1542.4
+    ],
+    [
+     2,
+     77,
+     1534.6
+    ],
+    [
+     2,
+     78,
+     1561.2
+    ],
+    [
+     2,
+     79,
+     1569.5
+    ],
+    [
+     2,
+     80,
+     1593.9
+    ],
+    [
+     2,
+     81,
+     1616.0
+    ],
+    [
+     2,
+     82,
+     1620.1
+    ],
+    [
+     2,
+     83,
+     1623.4
+    ],
+    [
+     2,
+     84,
+     1642.4
+    ],
+    [
+     2,
+     85,
+     1627.8
+    ],
+    [
+     2,
+     86,
+     1630.5
+    ],
+    [
+     3,
+     87,
+     1615.4
+    ],
+    [
+     3,
+     88,
+     1617.6
+    ],
+    [
+     3,
+     89,
+     1603.7
+    ],
+    [
+     3,
+     90,
+     1607.0
+    ],
+    [
+     3,
+     91,
+     1592.4
+    ],
+    [
+     3,
+     92,
+     1611.0
+    ],
+    [
+     3,
+     93,
+     1580.0
+    ],
+    [
+     3,
+     94,
+     1551.7
+    ],
+    [
+     3,
+     95,
+     1557.2
+    ],
+    [
+     3,
+     96,
+     1530.3
+    ],
+    [
+     3,
+     97,
+     1505.8
+    ],
+    [
+     3,
+     98,
+     1499.5
+    ],
+    [
+     3,
+     99,
+     1492.1
+    ],
+    [
+     3,
+     100,
+     1501.3
+    ],
+    [
+     3,
+     101,
+     1525.7
+    ],
+    [
+     3,
+     102,
+     1547.9
+    ],
+    [
+     3,
+     103,
+     1572.8
+    ],
+    [
+     3,
+     104,
+     1597.4
+    ],
+    [
+     3,
+     105,
+     1603.8
+    ],
+    [
+     3,
+     106,
+     1627.3
+    ],
+    [
+     3,
+     107,
+     1616.7
+    ],
+    [
+     3,
+     108,
+     1595.2
+    ],
+    [
+     3,
+     109,
+     1591.5
+    ],
+    [
+     3,
+     110,
+     1572.2
+    ],
+    [
+     3,
+     111,
+     1559.4
+    ],
+    [
+     3,
+     112,
+     1566.1
+    ],
+    [
+     3,
+     113,
+     1588.1
+    ],
+    [
+     3,
+     114,
+     1560.1
+    ],
+    [
+     3,
+     115,
+     1542.6
+    ],
+    [
+     4,
+     116,
+     1549.3
+    ],
+    [
+     4,
+     117,
+     1555.6
+    ],
+    [
+     4,
+     118,
+     1561.6
+    ],
+    [
+     4,
+     119,
+     1556.5
+    ],
+    [
+     4,
+     120,
+     1561.0
+    ],
+    [
+     4,
+     121,
+     1554.6
+    ],
+    [
+     4,
+     122,
+     1537.8
+    ],
+    [
+     4,
+     123,
+     1522.2
+    ],
+    [
+     4,
+     124,
+     1526.4
+    ],
+    [
+     4,
+     125,
+     1530.3
+    ],
+    [
+     4,
+     126,
+     1544.7
+    ],
+    [
+     4,
+     127,
+     1526.2
+    ],
+    [
+     4,
+     128,
+     1531.5
+    ],
+    [
+     4,
+     129,
+     1536.4
+    ],
+    [
+     4,
+     130,
+     1530.4
+    ],
+    [
+     4,
+     131,
+     1514.0
+    ],
+    [
+     4,
+     132,
+     1511.6
+    ],
+    [
+     4,
+     133,
+     1494.6
+    ],
+    [
+     4,
+     134,
+     1479.6
+    ],
+    [
+     4,
+     135,
+     1465.6
+    ],
+    [
+     5,
+     136,
+     1463.4
+    ],
+    [
+     5,
+     137,
+     1472.0
+    ],
+    [
+     5,
+     138,
+     1469.5
+    ],
+    [
+     5,
+     139,
+     1477.8
+    ],
+    [
+     5,
+     140,
+     1484.9
+    ],
+    [
+     5,
+     141,
+     1502.3
+    ],
+    [
+     5,
+     142,
+     1508.0
+    ],
+    [
+     5,
+     143,
+     1513.3
+    ],
+    [
+     5,
+     144,
+     1500.3
+    ],
+    [
+     5,
+     145,
+     1520.0
+    ],
+    [
+     5,
+     146,
+     1506.5
+    ],
+    [
+     5,
+     147,
+     1493.8
+    ],
+    [
+     5,
+     148,
+     1511.9
+    ],
+    [
+     5,
+     149,
+     1507.5
+    ],
+    [
+     5,
+     150,
+     1503.3
+    ],
+    [
+     5,
+     151,
+     1510.1
+    ],
+    [
+     5,
+     152,
+     1493.6
+    ],
+    [
+     5,
+     153,
+     1488.3
+    ],
+    [
+     5,
+     154,
+     1483.4
+    ],
+    [
+     6,
+     155,
+     1490.6
+    ],
+    [
+     6,
+     156,
+     1476.0
+    ],
+    [
+     6,
+     157,
+     1483.7
+    ],
+    [
+     6,
+     158,
+     1480.2
+    ],
+    [
+     6,
+     159,
+     1468.2
+    ],
+    [
+     6,
+     160,
+     1456.9
+    ],
+    [
+     6,
+     161,
+     1467.5
+    ],
+    [
+     6,
+     162,
+     1466.9
+    ],
+    [
+     6,
+     163,
+     1474.1
+    ],
+    [
+     6,
+     164,
+     1470.2
+    ],
+    [
+     6,
+     165,
+     1487.8
+    ],
+    [
+     6,
+     166,
+     1472.4
+    ],
+    [
+     6,
+     167,
+     1458.8
+    ],
+    [
+     6,
+     168,
+     1478.0
+    ],
+    [
+     6,
+     169,
+     1474.8
+    ],
+    [
+     6,
+     170,
+     1482.5
+    ],
+    [
+     6,
+     171,
+     1478.4
+    ],
+    [
+     6,
+     172,
+     1465.1
+    ],
+    [
+     6,
+     173,
+     1463.3
+    ],
+    [
+     7,
+     174,
+     1460.0
+    ],
+    [
+     7,
+     175,
+     1446.1
+    ],
+    [
+     7,
+     176,
+     1443.9
+    ],
+    [
+     7,
+     177,
+     1431.1
+    ],
+    [
+     7,
+     178,
+     1428.6
+    ],
+    [
+     7,
+     179,
+     1436.9
+    ],
+    [
+     7,
+     180,
+     1455.4
+    ],
+    [
+     7,
+     181,
+     1462.1
+    ],
+    [
+     7,
+     182,
+     1445.5
+    ],
+    [
+     7,
+     183,
+     1462.0
+    ],
+    [
+     7,
+     184,
+     1477.5
+    ],
+    [
+     7,
+     185,
+     1470.8
+    ],
+    [
+     7,
+     186,
+     1467.7
+    ],
+    [
+     7,
+     187,
+     1486.1
+    ],
+    [
+     7,
+     188,
+     1482.0
+    ],
+    [
+     7,
+     189,
+     1467.6
+    ],
+    [
+     7,
+     190,
+     1454.4
+    ],
+    [
+     7,
+     191,
+     1452.3
+    ],
+    [
+     7,
+     192,
+     1471.5
+    ],
+    [
+     7,
+     193,
+     1459.0
+    ],
+    [
+     7,
+     194,
+     1479.1
+    ],
+    [
+     7,
+     195,
+     1478.1
+    ],
+    [
+     7,
+     196,
+     1487.8
+    ]
+   ],
+   "recent_games": [
+    {
+     "id": "6-0109",
+     "season": 6,
+     "label": "Bリーグ 第4節",
+     "placement": 4,
+     "points": -20.5,
+     "score": 21500,
+     "others": [
+      "大森悠斗",
+      "太田一美",
+      "大杉花子"
+     ]
+    },
+    {
+     "id": "6-0110",
+     "season": 6,
+     "label": "Bリーグ 第4節",
+     "placement": 1,
+     "points": 25.7,
+     "score": 47700,
+     "others": [
+      "太田一美",
+      "大杉花子",
+      "大森悠斗"
+     ]
+    },
+    {
+     "id": "6-0111",
+     "season": 6,
+     "label": "Bリーグ 第4節",
+     "placement": 3,
+     "points": -9.6,
+     "score": 23400,
+     "others": [
+      "大杉花子",
+      "大森悠斗",
+      "太田一美"
+     ]
+    },
+    {
+     "id": "6-0112",
+     "season": 6,
+     "label": "Bリーグ 第4節",
+     "placement": 2,
+     "points": -1.4,
+     "score": 29600,
+     "others": [
+      "大森悠斗",
+      "太田一美",
+      "大杉花子"
+     ]
+    },
+    {
+     "id": "6-0342",
+     "season": 6,
+     "label": "霊亀位 2回戦",
+     "placement": 3,
+     "points": -5.7,
+     "score": 29300,
+     "others": [
+      "浦上美咲子",
+      "岡部祐輝",
+      "太田一美"
+     ]
+    },
+    {
+     "id": "6-0401",
+     "season": 6,
+     "label": "応龍位 2回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 5500,
+     "others": [
+      "岡部祐輝",
+      "和田健一",
+      "林楓"
+     ]
+    },
+    {
+     "id": "6-0402",
+     "season": 6,
+     "label": "応龍位 2回戦",
+     "placement": 3,
+     "points": 0.0,
+     "score": 30900,
+     "others": [
+      "和田健一",
+      "林楓",
+      "岡部祐輝"
+     ]
+    },
+    {
+     "id": "7-0133",
+     "season": 7,
+     "label": "Cリーグ 第1節",
+     "placement": 3,
+     "points": -6.8,
+     "score": 26200,
+     "others": [
+      "前田光輝",
+      "岩本拓也",
+      "中山大輔"
+     ]
+    },
+    {
+     "id": "7-0134",
+     "season": 7,
+     "label": "Cリーグ 第1節",
+     "placement": 4,
+     "points": -18.5,
+     "score": 19500,
+     "others": [
+      "前田光輝",
+      "岩本拓也",
+      "中山大輔"
+     ]
+    },
+    {
+     "id": "7-0135",
+     "season": 7,
+     "label": "Cリーグ 第1節",
+     "placement": 3,
+     "points": -7.2,
+     "score": 26800,
+     "others": [
+      "岩本拓也",
+      "中山大輔",
+      "前田光輝"
+     ]
+    },
+    {
+     "id": "7-0136",
+     "season": 7,
+     "label": "Cリーグ 第1節",
+     "placement": 4,
+     "points": -26.9,
+     "score": 15100,
+     "others": [
+      "中山大輔",
+      "前田光輝",
+      "岩本拓也"
+     ]
+    },
+    {
+     "id": "7-0149",
+     "season": 7,
+     "label": "Cリーグ 第2節",
+     "placement": 3,
+     "points": -9.3,
+     "score": 24700,
+     "others": [
+      "西誠",
+      "谷川和彦",
+      "伊藤真央"
+     ]
+    },
+    {
+     "id": "7-0150",
+     "season": 7,
+     "label": "Cリーグ 第2節",
+     "placement": 2,
+     "points": 4.2,
+     "score": 30200,
+     "others": [
+      "谷川和彦",
+      "伊藤真央",
+      "西誠"
+     ]
+    },
+    {
+     "id": "7-0151",
+     "season": 7,
+     "label": "Cリーグ 第2節",
+     "placement": 1,
+     "points": 39.0,
+     "score": 57000,
+     "others": [
+      "伊藤真央",
+      "西誠",
+      "谷川和彦"
+     ]
+    },
+    {
+     "id": "7-0152",
+     "season": 7,
+     "label": "Cリーグ 第2節",
+     "placement": 2,
+     "points": 6.0,
+     "score": 32000,
+     "others": [
+      "西誠",
+      "谷川和彦",
+      "伊藤真央"
+     ]
+    },
+    {
+     "id": "7-0165",
+     "season": 7,
+     "label": "Cリーグ 第3節",
+     "placement": 4,
+     "points": -27.6,
+     "score": 10400,
+     "others": [
+      "大江彩乃",
+      "山根美紀",
+      "伊藤友和"
+     ]
+    },
+    {
+     "id": "7-0166",
+     "season": 7,
+     "label": "Cリーグ 第3節",
+     "placement": 1,
+     "points": 14.1,
+     "score": 36100,
+     "others": [
+      "山根美紀",
+      "伊藤友和",
+      "大江彩乃"
+     ]
+    },
+    {
+     "id": "7-0167",
+     "season": 7,
+     "label": "Cリーグ 第3節",
+     "placement": 1,
+     "points": 27.7,
+     "score": 45700,
+     "others": [
+      "伊藤友和",
+      "大江彩乃",
+      "山根美紀"
+     ]
+    },
+    {
+     "id": "7-0168",
+     "season": 7,
+     "label": "Cリーグ 第3節",
+     "placement": 3,
+     "points": -16.7,
+     "score": 17300,
+     "others": [
+      "大江彩乃",
+      "山根美紀",
+      "伊藤友和"
+     ]
+    },
+    {
+     "id": "7-0201",
+     "season": 7,
+     "label": "Cリーグ 第4節",
+     "placement": 3,
+     "points": -8.1,
+     "score": 24900,
+     "others": [
+      "武藤凛",
+      "山根美紀",
+      "浦上美咲子"
+     ]
+    },
+    {
+     "id": "7-0202",
+     "season": 7,
+     "label": "Cリーグ 第4節",
+     "placement": 1,
+     "points": 21.5,
+     "score": 43500,
+     "others": [
+      "山根美紀",
+      "浦上美咲子",
+      "武藤凛"
+     ]
+    },
+    {
+     "id": "7-0203",
+     "season": 7,
+     "label": "Cリーグ 第4節",
+     "placement": 3,
+     "points": -7.9,
+     "score": 25100,
+     "others": [
+      "浦上美咲子",
+      "武藤凛",
+      "山根美紀"
+     ]
+    },
+    {
+     "id": "7-0204",
+     "season": 7,
+     "label": "Cリーグ 第4節",
+     "placement": 4,
+     "points": -15.9,
+     "score": 22100,
+     "others": [
+      "浦上美咲子",
+      "武藤凛",
+      "山根美紀"
+     ]
+    },
+    {
+     "id": "7-0351",
+     "season": 7,
+     "label": "霊亀位 2回戦",
+     "placement": 4,
+     "points": -32.1,
+     "score": 12900,
+     "others": [
+      "中山大輔",
+      "神谷亜矢",
+      "田口花子"
+     ]
+    },
+    {
+     "id": "7-0409",
+     "season": 7,
+     "label": "応龍位 2回戦",
+     "placement": 3,
+     "points": 0.0,
+     "score": 24800,
+     "others": [
+      "梅沢湊",
+      "谷口美優",
+      "武藤凛"
+     ]
+    },
+    {
+     "id": "7-0410",
+     "season": 7,
+     "label": "応龍位 2回戦",
+     "placement": 1,
+     "points": 1.0,
+     "score": 42000,
+     "others": [
+      "梅沢湊",
+      "谷口美優",
+      "武藤凛"
+     ]
+    },
+    {
+     "id": "7-0429",
+     "season": 7,
+     "label": "応龍位 3回戦",
+     "placement": 4,
+     "points": -1.0,
+     "score": 26000,
+     "others": [
+      "須田泉美",
+      "山崎聡太",
+      "竹本美咲子"
+     ]
+    },
+    {
+     "id": "7-0430",
+     "season": 7,
+     "label": "応龍位 3回戦",
+     "placement": 1,
+     "points": 1.0,
+     "score": 41100,
+     "others": [
+      "山崎聡太",
+      "竹本美咲子",
+      "須田泉美"
+     ]
+    },
+    {
+     "id": "7-0443",
+     "season": 7,
+     "label": "応龍位 準々決勝",
+     "placement": 3,
+     "points": 0.0,
+     "score": 17600,
+     "others": [
+      "梅田友和",
+      "菊池美奈子",
+      "海野義隆"
+     ]
+    },
+    {
+     "id": "7-0444",
+     "season": 7,
+     "label": "応龍位 準々決勝",
+     "placement": 2,
+     "points": 0.0,
+     "score": 33600,
+     "others": [
+      "梅田友和",
+      "菊池美奈子",
+      "海野義隆"
+     ]
+    }
+   ],
+   "opponents": {
+    "A0-009": [
+     18,
+     6,
+     12
+    ],
+    "A0-005": [
+     15,
+     7,
+     8
+    ],
+    "A0-002": [
+     29,
+     13,
+     16
+    ],
+    "A0-007": [
+     41,
+     20,
+     21
+    ],
+    "A0-000": [
+     19,
+     7,
+     12
+    ],
+    "A0-011": [
+     30,
+     12,
+     17
+    ],
+    "A0-003": [
+     10,
+     3,
+     7
+    ],
+    "A0-001": [
+     14,
+     7,
+     7
+    ],
+    "A0-010": [
+     5,
+     4,
+     1
+    ],
+    "A0-004": [
+     22,
+     8,
+     14
+    ],
+    "D0-004": [
+     4,
+     3,
+     1
+    ],
+    "C0-017": [
+     6,
+     4,
+     2
+    ],
+    "B0-009": [
+     19,
+     7,
+     12
+    ],
+    "C0-000": [
+     10,
+     5,
+     5
+    ],
+    "D0-024": [
+     1,
+     1,
+     0
+    ],
+    "C0-004": [
+     20,
+     11,
+     9
+    ],
+    "B0-015": [
+     15,
+     6,
+     9
+    ],
+    "D0-015": [
+     1,
+     0,
+     1
+    ],
+    "D0-025": [
+     12,
+     7,
+     5
+    ],
+    "C0-003": [
+     8,
+     5,
+     3
+    ],
+    "C0-012": [
+     18,
+     10,
+     8
+    ],
+    "D0-027": [
+     12,
+     4,
+     8
+    ],
+    "C0-009": [
+     14,
+     9,
+     5
+    ],
+    "B0-008": [
+     16,
+     11,
+     5
+    ],
+    "B0-006": [
+     13,
+     5,
+     8
+    ],
+    "B0-014": [
+     12,
+     3,
+     9
+    ],
+    "B0-007": [
+     17,
+     9,
+     8
+    ],
+    "A0-008": [
+     15,
+     6,
+     9
+    ],
+    "D2-001": [
+     3,
+     2,
+     1
+    ],
+    "B0-011": [
+     6,
+     1,
+     5
+    ],
+    "C0-014": [
+     6,
+     5,
+     1
+    ],
+    "C0-008": [
+     2,
+     2,
+     0
+    ],
+    "D0-008": [
+     2,
+     2,
+     0
+    ],
+    "D0-013": [
+     2,
+     1,
+     1
+    ],
+    "C0-002": [
+     11,
+     7,
+     4
+    ],
+    "B0-003": [
+     2,
+     2,
+     0
+    ],
+    "D0-005": [
+     7,
+     6,
+     1
+    ],
+    "C0-019": [
+     8,
+     3,
+     5
+    ],
+    "B0-004": [
+     8,
+     1,
+     7
+    ],
+    "B0-000": [
+     8,
+     4,
+     4
+    ],
+    "C0-005": [
+     4,
+     2,
+     2
+    ],
+    "B0-002": [
+     16,
+     8,
+     8
+    ],
+    "B0-010": [
+     12,
+     3,
+     9
+    ],
+    "B0-001": [
+     4,
+     4,
+     0
+    ],
+    "D0-017": [
+     3,
+     3,
+     0
+    ],
+    "D0-011": [
+     4,
+     2,
+     2
+    ],
+    "D0-018": [
+     10,
+     6,
+     4
+    ],
+    "D0-026": [
+     1,
+     1,
+     0
+    ],
+    "D3-002": [
+     2,
+     2,
+     0
+    ],
+    "C0-016": [
+     4,
+     0,
+     4
+    ],
+    "C0-006": [
+     4,
+     2,
+     2
+    ],
+    "D0-012": [
+     1,
+     0,
+     1
+    ],
+    "D0-023": [
+     2,
+     0,
+     2
+    ],
+    "C0-018": [
+     1,
+     0,
+     1
+    ],
+    "D5-001": [
+     4,
+     1,
+     3
+    ],
+    "B0-013": [
+     5,
+     3,
+     2
+    ],
+    "D0-020": [
+     3,
+     1,
+     2
+    ],
+    "D0-000": [
+     2,
+     0,
+     2
+    ],
+    "C0-001": [
+     4,
+     0,
+     4
+    ],
+    "D6-003": [
+     5,
+     1,
+     4
+    ],
+    "D3-004": [
+     4,
+     3,
+     1
+    ],
+    "B0-012": [
+     4,
+     4,
+     0
+    ],
+    "D4-001": [
+     4,
+     2,
+     2
+    ],
+    "D7-002": [
+     2,
+     2,
+     0
+    ],
+    "D7-001": [
+     2,
+     1,
+     1
+    ]
+   },
+   "retired_season": 7
   }
  ],
  "name_registry": {
@@ -33668,7 +43488,12 @@
   "谷海斗": 1,
   "谷川香織": 1,
   "酒井泰史": 1,
-  "宇野浩明": 1
+  "宇野浩明": 1,
+  "山岸深雪": 1,
+  "竹本美咲子": 1,
+  "梅沢湊": 1,
+  "山口一美": 1,
+  "小澤萌": 1
  },
  "rules": {
   "houou": {
