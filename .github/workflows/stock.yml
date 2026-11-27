@@ -1,0 +1,98 @@
+name: Stock Seasons (季を先に計算してためる)
+run-name: "Stock ${{ inputs.seasons }} seasons${{ inputs.reset == 'true' && ' [reset]' || '' }}"
+
+# 季を先に計算して履歴にためる（ストック）。公開は publish.yml が時刻ごとに1季ずつ行う。
+# 1季ごとに1コミットにするので、publish.yml が「第s季が終わった時点」を取り出せる。
+# 牌譜は季ごとにまとめて R2（mahjong-kifu）に上げる（Worker が公開済みの季の分だけ返す）。
+# reset=true なら、最初に data/ を空にして（履歴には残る）第1季からやり直す。
+
+on:
+  workflow_dispatch:
+    inputs:
+      seasons:
+        description: "何季分ためるか"
+        required: false
+        default: "10"
+      sections_scale:
+        description: "リーグの節数の倍率（1.0=標準）"
+        required: false
+        default: "1.0"
+      reset:
+        description: "trueにすると、最初に data/ を空にして第1季からやり直す"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mahjong-league
+  cancel-in-progress: false
+
+jobs:
+  stock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: 0d39c3fe24ce0801cbc20728720e2063
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: pip install -r requirements-dev.txt
+      - name: Rule tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Reset data
+        if: ${{ inputs.reset == 'true' }}
+        run: |
+          set -euo pipefail
+          git config user.name "mahjong-league-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git rm -rq data
+          mkdir -p data
+          echo '{"mode":"replay","published_season":0,"paused":true}' > publish/state.json
+          git add publish/state.json
+          git commit -qm "Reset the league data to start over from season 1 [skip ci]"
+          git pull -q --rebase origin "${{ github.ref_name }}"
+          git push -q origin "HEAD:${{ github.ref_name }}"
+
+      - name: Run seasons (one commit per season, kifu to R2)
+        run: |
+          set -uo pipefail
+          git config user.name "mahjong-league-bot"
+          git config user.email "actions@users.noreply.github.com"
+          TOTAL="${{ inputs.seasons }}"; SCALE="${{ inputs.sections_scale }}"
+          for i in $(seq 1 "$TOTAL"); do
+            echo "=== Stock $i / $TOTAL ==="
+            python -u run_season.py --data-dir data --seasons 1 --sections-scale "$SCALE" || exit 1
+            echo '[]' > data/newcomer_submissions.json
+            python -u run_newcomer_league.py --data-dir data --submissions-path data/newcomer_submissions.json || exit 1
+            S=$(ls data/standings | sed -n 's/^season_\([0-9]*\)\.json$/\1/p' | sort -n | tail -1)
+
+            # 牌譜：この季の分を1つにまとめて R2 へ（失敗しても季は先へ進め、最後にまとめて報告する）
+            rm -rf /tmp/k && mkdir -p /tmp/k/src /tmp/k/out
+            cp data/kifu/${S}-*.json /tmp/k/src/ 2>/dev/null || true
+            python3 tools/pack_kifu.py /tmp/k/src /tmp/k/out
+            for f in "${S}.pack" "${S}.idx.json"; do
+              ok=0
+              for t in 1 2 3; do
+                (cd /tmp/k/out && npx -y wrangler@4.161.0 r2 object put "mahjong-kifu/kifu/$f" --file="$f" --remote >/dev/null) && { ok=1; break; }
+                sleep 10
+              done
+              [ "$ok" = 1 ] || { echo "::error::牌譜のアップロードに失敗: $f"; echo "$S" >> /tmp/kifu_failed; }
+            done
+            rm -rf data/kifu
+
+            git add data
+            if ! git diff --staged --quiet; then
+              git commit -qm "Stock season $S [skip ci]"
+              for a in 1 2 3 4; do git pull -q --rebase origin "${{ github.ref_name }}" && git push -q origin "HEAD:${{ github.ref_name }}" && break; sleep $((a * 3)); done
+            fi
+          done
+          if [ -s /tmp/kifu_failed ]; then echo "::error::牌譜のアップロードに失敗した季: $(tr '\n' ' ' < /tmp/kifu_failed)"; exit 1; fi

@@ -7,6 +7,7 @@
   "compatibility_date": "2026-11-01",
   "account_id": "0d39c3fe24ce0801cbc20728720e2063",
   "workers_dev": true,
+  "routes": [{ "pattern": "mahjong.spia-net.com", "custom_domain": true }],
   "preview_urls": true,
   "assets": {
     "directory": "./dist",
