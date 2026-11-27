@@ -71,11 +71,17 @@ jobs:
             echo "ok=0" >> "$GITHUB_OUTPUT"; exit 1
           fi
           # 第s季が終わった時点＝第s+1季の順位表を追加したコミットの、1つ前のコミット（まだ無ければ最新）
-          RESET_C=$(git log --format=%H -1 --grep='^Reset season data' || true)
+          RESET_C=$(git log --format=%H -1 --grep='^Reset the league data' || true)
           RANGE="HEAD"; [ -n "$RESET_C" ] && RANGE="${RESET_C}..HEAD"
           NEXT_ADD=$(git log "$RANGE" --diff-filter=A --format=%H -1 -- "data/standings/season_$((S + 1)).json" || true)
           if [ -n "$NEXT_ADD" ]; then SNAP=$(git rev-parse "${NEXT_ADD}^"); else SNAP=$(git rev-parse HEAD); fi
-          git cat-file -e "${SNAP}:data/standings/season_${S}.json"
+          # 複数の季がまとめて1コミットで入っている区間では、その1つ前の時点に第s季が無い。
+          # その場合は、まとめて入った時点そのものを出す（出す季は、その時点で最新の季になる）
+          if ! git cat-file -e "${SNAP}:data/standings/season_${S}.json" 2>/dev/null; then
+            SNAP="$NEXT_ADD"
+            S=$(git ls-tree --name-only "$SNAP" data/standings/ | sed -n 's/.*season_\([0-9]*\)\.json$/\1/p' | sort -n | tail -1)
+            echo "まとめて入った区間のため、第${S}季の時点（$(git rev-parse --short "$SNAP")）を出します"
+          fi
           if git cat-file -e "${SNAP}:data/standings/season_$((S + 1)).json" 2>/dev/null; then echo "::error::取り出す時点の判定を誤りました"; exit 1; fi
           rm -rf /tmp/snap && mkdir -p /tmp/snap
           git archive "$SNAP" data | tar -x -C /tmp/snap
