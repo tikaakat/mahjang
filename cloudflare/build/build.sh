@@ -16,7 +16,7 @@ cat > "$SRV/config.php" <<PHP
 <?php return ['db_dsn'=>'mysql:host=$DB_HOST;dbname=$DB_NAME;charset=utf8mb4','db_user'=>'$DB_USER','db_pass'=>'$DB_PASS',
  'secret_key'=>'build','data_dir'=>'$DATA','submit_per_ip_per_day'=>0,'submit_per_day'=>0];
 PHP
-mysql -h "$DB_HOST" -u "$DB_USER" "-p$DB_PASS" -e "DROP DATABASE IF EXISTS \`$DB_NAME\`; CREATE DATABASE \`$DB_NAME\` CHARACTER SET utf8mb4;"
+mysql --skip-ssl -h "$DB_HOST" -u "$DB_USER" "-p$DB_PASS" -e "DROP DATABASE IF EXISTS \`$DB_NAME\`; CREATE DATABASE \`$DB_NAME\` CHARACTER SET utf8mb4;"
 (cd "$SRV" && php admin/migrate.php && php admin/import.php)
 
 echo "=== 2. 集計を書き出す ==="
