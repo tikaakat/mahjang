@@ -7,11 +7,10 @@ run-name: "Publish Season${{ inputs.season && format(' {0}', inputs.season) || '
 # 手動実行: season を指定するとその季を出す（省略時は published_season+1）。preview=true なら確認用URLにだけ上げる。
 
 on:
-  # 定時公開：毎日 日本時間 7:30・21:00 に、次の季を1季ずつ出す（UTC 22:30・12:00）。
-  # GitHub の定期実行は数十分〜数時間遅れることがある。
+  # 定時公開：毎日 日本時間 7:00 に、次の季を1季出す。
+  # GitHub の定期実行は遅れることがあるので、6:17（UTC 21:17）に起動し、7:00 まで待ってから公開する。
   schedule:
-    - cron: "30 22 * * *"
-    - cron: "0 12 * * *"
+    - cron: "17 21 * * *"
   workflow_dispatch:
     inputs:
       season:
@@ -59,6 +58,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+
+      - name: 公開時刻（7:00 JST）まで待つ
+        if: github.event_name == 'schedule'
+        run: |
+          RELEASE_AT=$(TZ=Asia/Tokyo date -d "$(TZ=Asia/Tokyo date +%F) 07:00" +%s)
+          W=$((RELEASE_AT - $(date +%s)))
+          if [ "$W" -gt 0 ] && [ "$W" -lt 7200 ]; then echo "7:00 JST まで $((W / 60))分 待ちます"; sleep "$W"; fi
 
       - name: PHP（MySQL接続）を用意する
         run: |
