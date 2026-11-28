@@ -25,6 +25,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # ストックが少ないとき、補充（stock.yml）を起動するため
 
 concurrency:
   group: publish
@@ -122,3 +123,26 @@ jobs:
             git push -q && break
             sleep $((attempt * 3))
           done
+
+      # ストックが少なければ補充する（計算済みの最新の季 − 公開済みの季 が40季を切ったら、20季分を起動）。
+      # 補充の実行中は重ねて起動しない。ためすぎないので、季が際限なく増えることはない
+      - name: ストック補充
+        if: always() && inputs.preview != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          git fetch -q origin main && git reset -q --hard origin/main
+          LATEST=$(ls data/standings | sed -n 's/^season_\([0-9]*\)\.json$/\1/p' | sort -n | tail -1)
+          PUB=$(python3 -c "import json; print(json.load(open('publish/state.json')).get('published_season', 0))")
+          STOCK=$((LATEST - PUB))
+          echo "計算済み：第${LATEST}季　公開済み：第${PUB}季　ストック：${STOCK}季"
+          if [ "$STOCK" -lt 40 ]; then
+            RUNNING=$(gh run list --workflow stock.yml --status in_progress --json databaseId --jq length; gh run list --workflow stock.yml --status queued --json databaseId --jq length)
+            if [ "$(echo "$RUNNING" | paste -sd+ | bc)" = "0" ]; then
+              echo "ストックが少ないため、20季分を補充します"
+              gh workflow run stock.yml --ref main -f seasons=20 || echo "::warning::補充の起動に失敗しました"
+            else
+              echo "補充を実行中のため、起動しません"
+            fi
+          fi
