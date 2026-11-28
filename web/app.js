@@ -1,4 +1,4 @@
-// MAHJONG LEAGUE フロントエンド（ビルド不要の静的サイト）
+// サーキット麻雀リーグ フロントエンド（ビルド不要の静的サイト）
 // 画面構成・見た目はオセロ版（CIRCUIT OTHELLO LEAGUE）に合わせている。
 // データは run_season.py が出力する data/ 以下のJSONを直接読む（記録・投稿だけ server/api を使う）。
 const BASE = window.MAHJONG_DATA_BASE || "data/";
