@@ -100,7 +100,7 @@ pip install -r requirements-dev.txt && python -m unittest discover -s tests -v
 ## 公開の仕組み（Cloudflare）
 サイトは Cloudflare（Worker＋静的ファイル＋R2）で公開している。URL は https://mahjong.spia-net.com/ 、ファンサイトは `/news/`。旧 Xserver 版は、新しい URL へ転送している。
 
-- **ストック方式**：季は先に計算して履歴にためておき（`stock.yml`、1季ごとに1コミット）、公開は `publish.yml` が **毎日 日本時間 7:30・21:00** に1季ずつ行う。第s季を出すときは、Git の履歴から「第s季が終わった時点」の `data/` を取り出して集計とページを作るので、先の季は見えない。公開済みの季は `publish/state.json` の `published_season`。
+- **ストック方式**：季は先に計算して履歴にためておき（`stock.yml`、1季ごとに1コミット）、公開は `publish.yml` が **毎日 日本時間 7:00** に1季ずつ行う。第s季を出すときは、Git の履歴から「第s季が終わった時点」の `data/` を取り出して集計とページを作るので、先の季は見えない。公開済みの季は `publish/state.json` の `published_season`。
 - **ストックの補充**：公開のたびに、計算済みの最新の季 − 公開済みの季 を数え、40季を切ったら `stock.yml` を20季分起動する（実行中は重ねて起動しない）。
 - **集計**：公開時に、一時的な MariaDB へ取り込み（`server/` の取り込み処理を流用）、`stats.php` の全パターンを JSON に書き出す（`cloudflare/build/`）。Worker は `/api/stats.php` でその JSON を返す。
 - **牌譜**：リポジトリには入れず、季ごとに1つにまとめて R2（`mahjong-kifu`）に置く（`tools/pack_kifu.py`）。Worker は `/data/kifu/<季>-<連番>.json` で1半荘ぶんを取り出し、未公開の季は返さない。
@@ -112,7 +112,7 @@ pip install -r requirements-dev.txt && python -m unittest discover -s tests -v
 | ワークフロー | 役割 |
 |---|---|
 | `stock.yml` | 季を先に計算してためる（`seasons`、`reset=true` で第1季からやり直し）。牌譜を R2 へ |
-| `publish.yml` | 次の季を公開する（毎日 7:30・21:00）。`season` で季を指定、`preview=true` で確認用URLのみ |
+| `publish.yml` | 次の季を公開する（毎日 7:00）。`season` で季を指定、`preview=true` で確認用URLのみ |
 | `kifu_backup.yml` / `kifu_to_r2.yml` | Xserver の牌譜を取り出して R2 へ移した1回きりの移行用 |
 | `xserver_redirect.yml` | 旧 Xserver 版を新URLへ転送する1回きりの設定 |
 | `season.yml` | 旧方式（Xserver へ転送）。定期実行は止めている。使わない |
