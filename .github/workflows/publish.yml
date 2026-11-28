@@ -7,6 +7,11 @@ run-name: "Publish Season${{ inputs.season && format(' {0}', inputs.season) || '
 # 手動実行: season を指定するとその季を出す（省略時は published_season+1）。preview=true なら確認用URLにだけ上げる。
 
 on:
+  # 定時公開：毎日 日本時間 7:30・21:00 に、次の季を1季ずつ出す（UTC 22:30・12:00）。
+  # GitHub の定期実行は数十分〜数時間遅れることがある。
+  schedule:
+    - cron: "30 22 * * *"
+    - cron: "0 12 * * *"
   workflow_dispatch:
     inputs:
       season:
