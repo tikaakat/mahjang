@@ -1,4 +1,4 @@
-// MAHJONG LEAGUE（mahjong.spia-net.com）の Worker の設定
+// サーキット麻雀リーグ（mahjong.spia-net.com）の Worker の設定
 // 公開は GitHub Actions（.github/workflows/publish.yml）から `wrangler deploy` で行う。
 // dist/ は cloudflare/build/build.sh が「公開する季の時点のデータ」から作る（リポジトリには入れない）。
 {
