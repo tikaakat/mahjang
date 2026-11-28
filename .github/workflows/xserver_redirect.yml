@@ -1,0 +1,40 @@
+name: xserver-redirect-to-cloudflare
+
+# 旧サイト（Xserver）に来た人を、新しいURL（https://mahjong.spia-net.com/）へ転送する（手動・1回きり）。
+# 設置先の .htaccess を転送用に置き換える（元のファイルは .htaccess.bak に残す）。ファイルや DB は消さない。
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  redirect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Put redirect .htaccess
+        env:
+          XSERVER_HOST: ${{ secrets.XSERVER_HOST }}
+          XSERVER_USER: ${{ secrets.XSERVER_USER }}
+          XSERVER_PORT: ${{ secrets.XSERVER_SSH_PORT }}
+          XSERVER_SSH_KEY: ${{ secrets.XSERVER_SSH_KEY }}
+          XSERVER_TARGET_DIR: ${{ secrets.MAHJONG_XSERVER_TARGET_DIR }}
+        run: |
+          set -euo pipefail
+          echo "$XSERVER_SSH_KEY" > /tmp/k && chmod 600 /tmp/k
+          SSH="ssh -i /tmp/k -p $XSERVER_PORT -o StrictHostKeyChecking=no -o ConnectTimeout=30 $XSERVER_USER@$XSERVER_HOST"
+          cat > /tmp/htaccess <<'HT'
+          # MAHJONG LEAGUE は https://mahjong.spia-net.com/ に移転しました
+          RewriteEngine On
+          RewriteRule ^ https://mahjong.spia-net.com/ [R=301,L]
+          HT
+          sed -i 's/^          //' /tmp/htaccess
+          for i in 1 2 3; do
+            if $SSH "cd ${XSERVER_TARGET_DIR} && { [ -f .htaccess.bak ] || cp -p .htaccess .htaccess.bak 2>/dev/null || true; }" \
+               && scp -i /tmp/k -P "$XSERVER_PORT" -o StrictHostKeyChecking=no -o ConnectTimeout=30 /tmp/htaccess "$XSERVER_USER@$XSERVER_HOST:${XSERVER_TARGET_DIR}.htaccess"; then
+              echo "転送用の .htaccess を置きました"; rm -f /tmp/k; exit 0
+            fi
+            sleep $((i * 30))
+          done
+          echo "::error::Xserver に接続できませんでした"; exit 1
