@@ -97,28 +97,25 @@ pip install -r requirements-dev.txt && python -m unittest discover -s tests -v
 
 それぞれ通算と期別で見られる。
 
-## サーバー設置（Xserver）
-1. MySQLのデータベースとユーザーを作る（サーバーパネル → MySQL設定）。
-2. 設置先ディレクトリに `server/config.sample.php` を `config.php` としてコピーし、DB接続情報と `secret_key` を設定する。
-3. GitHub のシークレットを登録する。
-   - `XSERVER_HOST` / `XSERVER_USER` / `XSERVER_SSH_PORT` / `XSERVER_SSH_KEY`（オセロ版と共通）
-   - `MAHJONG_XSERVER_TARGET_DIR`：設置先の絶対パス（末尾 `/`）
-4. Actions を手動実行する。サイト一式と data/ が転送され、SSH 経由でサーバー上の `admin/migrate.php`（テーブル作成）と `admin/import.php`（取り込み）が実行される。投稿の取得（`admin/export_pending.php`）も SSH 経由。
-   Xserver は海外（GitHub Actions）からの Web アクセスを弾くため、URL を呼ぶ方式は使わない。
-   ブラウザから手動で実行したいときは `admin/import.php?key=（config.php の secret_key）` を開く。
+## 公開の仕組み（Cloudflare）
+サイトは Cloudflare（Worker＋静的ファイル＋R2）で公開している。URL は https://mahjong.spia-net.com/ 、ファンサイトは `/news/`。旧 Xserver 版は、新しい URL へ転送している。
 
-`config.php`・`lib.php`・`schema.sql` は `.htaccess` で直接アクセスを拒否している。投稿は1IPあたり1日3件、全体で1日60件まで（`config.php` で変更可）。
+- **ストック方式**：季は先に計算して履歴にためておき（`stock.yml`、1季ごとに1コミット）、公開は `publish.yml` が **毎日 日本時間 7:30・21:00** に1季ずつ行う。第s季を出すときは、Git の履歴から「第s季が終わった時点」の `data/` を取り出して集計とページを作るので、先の季は見えない。公開済みの季は `publish/state.json` の `published_season`。
+- **ストックの補充**：公開のたびに、計算済みの最新の季 − 公開済みの季 を数え、40季を切ったら `stock.yml` を20季分起動する（実行中は重ねて起動しない）。
+- **集計**：公開時に、一時的な MariaDB へ取り込み（`server/` の取り込み処理を流用）、`stats.php` の全パターンを JSON に書き出す（`cloudflare/build/`）。Worker は `/api/stats.php` でその JSON を返す。
+- **牌譜**：リポジトリには入れず、季ごとに1つにまとめて R2（`mahjong-kifu`）に置く（`tools/pack_kifu.py`）。Worker は `/data/kifu/<季>-<連番>.json` で1半荘ぶんを取り出し、未公開の季は返さない。
+- **ファンサイト**：`fan-site/index.html`（選手名鑑・タイトル・ルール・殿堂・支援）。支援ボタンは、`DONATE_URL` に Stripe の Payment Link を入れると有効になる。
+- **キャラクリエイト**：停止中（`/api/submit.php` などは 503 を返す）。
+- シークレット：`CLOUDFLARE_API_TOKEN`（Workers・D1・R2 の編集権限）。アカウントIDは `cloudflare/wrangler.jsonc` にある。
 
 ## GitHub Actions
-`.github/workflows/season.yml` は、毎日 朝6時・昼12時・夜18時ごろ（日本時間の各17分）に1季ずつ進める（手動実行もできる）。オセロ版とは別リポジトリなので、時刻が重なっても互いに待たない。
-1. 本戦（`run_season.py`）…冒頭で、前の実行の新人リーグの勝者と新弟子がDリーグに入門する
-2. 投稿の取得
-3. 新人リーグ（`run_newcomer_league.py`）…本戦で次季の欠員が確定してから開く。勝者は次の実行の本戦の冒頭で入門する（オセロ版と同じ順序）
-4. `data/` のコミット・プッシュ
-5. Xserver への転送とDB取り込み（シークレット設定時のみ）
-
-Xserver へは、実行ごとに変わる GitHub の実行環境によってはつながらないことがある（同じ実行の中でやり直しても、同じ環境なのでつながらない）。そのため、同じ実行の中では3回だけ試し、つながらなければ実行を「失敗」として終え、**別の実行環境で転送だけをやり直す実行を自動で起こす**（最大3回）。その実行の牌譜（リポジトリに入れていない）は Actions のアーティファクト `kifu-backup`（14日間）に保存され、やり直しの実行が取り出して転送する。
-手動実行の `deploy_only` は、季を進めずに転送とDB取り込みだけを行う。`restore_kifu_run_id` に失敗した実行のIDを入れると、その実行の牌譜バックアップも一緒に転送する。
+| ワークフロー | 役割 |
+|---|---|
+| `stock.yml` | 季を先に計算してためる（`seasons`、`reset=true` で第1季からやり直し）。牌譜を R2 へ |
+| `publish.yml` | 次の季を公開する（毎日 7:30・21:00）。`season` で季を指定、`preview=true` で確認用URLのみ |
+| `kifu_backup.yml` / `kifu_to_r2.yml` | Xserver の牌譜を取り出して R2 へ移した1回きりの移行用 |
+| `xserver_redirect.yml` | 旧 Xserver 版を新URLへ転送する1回きりの設定 |
+| `season.yml` | 旧方式（Xserver へ転送）。定期実行は止めている。使わない |
 
 ## AIの調整と計測
 `python tools/measure_ai.py --games 150 --rule houou` は、リーグの雀士で半荘を多数打ち、局単位の指標を現実のプロの目安（Mリーグの平均：和了率20.6%・放銃率11.0%・立直率24.2%・副露率23.3%・流局率16〜22%）と並べて表示する。技量帯ごとの平均着順も出るので、技量が高いほど強いことも確認できる。
