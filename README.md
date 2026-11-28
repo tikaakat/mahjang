@@ -104,7 +104,7 @@ pip install -r requirements-dev.txt && python -m unittest discover -s tests -v
 - **ストックの補充**：公開のたびに、計算済みの最新の季 − 公開済みの季 を数え、40季を切ったら `stock.yml` を20季分起動する（実行中は重ねて起動しない）。
 - **集計**：公開時に、一時的な MariaDB へ取り込み（`server/` の取り込み処理を流用）、`stats.php` の全パターンを JSON に書き出す（`cloudflare/build/`）。Worker は `/api/stats.php` でその JSON を返す。
 - **牌譜**：リポジトリには入れず、季ごとに1つにまとめて R2（`mahjong-kifu`）に置く（`tools/pack_kifu.py`）。Worker は `/data/kifu/<季>-<連番>.json` で1半荘ぶんを取り出し、未公開の季は返さない。
-- **ファンサイト**：`fan-site/index.html`（選手名鑑・タイトル・ルール・殿堂・支援）。支援ボタンは、`DONATE_URL` に Stripe の Payment Link を入れると有効になる。
+- **ファンサイト**：`fan-site/index.html`（選手名鑑・タイトル・ルール・殿堂・支援）。支援ボタンは OFUSE（https://ofuse.me/engineering_rd0）へのリンク（`DONATE_URL`）。オセロ・メインサイトと同じく、支援は OFUSE に一元化している。
 - **キャラクリエイト**：停止中（`/api/submit.php` などは 503 を返す）。
 - シークレット：`CLOUDFLARE_API_TOKEN`（Workers・D1・R2 の編集権限）。アカウントIDは `cloudflare/wrangler.jsonc` にある。
 
