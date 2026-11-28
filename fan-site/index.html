@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAHJONG LEAGUE ファンサイト</title>
+<meta name="description" content="AI雀士たちの麻雀リーグ。選手名鑑・タイトル・ルール・殿堂をまとめたファンサイト">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e1116;--panel:#171b22;--line:#2a313c;--text:#e8ecf2;--dim:#8d97a6;--accent:#f0a030;--cyan:#4cc3d9}
+@media (prefers-color-scheme: light){:root{--bg:#f5f6f8;--panel:#fff;--line:#dde1e7;--text:#1b2028;--dim:#667084;--accent:#c46f00;--cyan:#0a84a0}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans JP",system-ui,sans-serif;line-height:1.7}
+a{color:var(--cyan)}
+header{padding:20px 16px 8px;max-width:880px;margin:0 auto}
+header h1{margin:0;font-size:22px;font-weight:900;letter-spacing:.04em}
+header p{margin:4px 0 0;color:var(--dim);font-size:13px}
+nav{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+nav .in{max-width:880px;margin:0 auto;display:flex;gap:4px;overflow-x:auto;padding:0 12px}
+nav button{background:none;border:0;border-bottom:3px solid transparent;color:var(--dim);font:inherit;font-weight:700;padding:12px 12px;white-space:nowrap;cursor:pointer}
+nav button.on{color:var(--accent);border-bottom-color:var(--accent)}
+main{max-width:880px;margin:0 auto;padding:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:0 0 12px}
+h2{font-size:17px;margin:20px 0 10px}
+.dim{color:var(--dim)}.small{font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.title-tag{display:inline-block;border:1px solid var(--accent);color:var(--accent);border-radius:6px;padding:0 8px;font-size:12px;font-weight:700}
+.dan{display:inline-block;border:1px solid var(--accent);color:var(--accent);border-radius:4px;padding:0 6px;font-size:11px;margin-left:6px}
+input,select{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:9px 10px;font:inherit;max-width:100%}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--dim);font-weight:500;font-size:12px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.btn{display:inline-block;background:var(--accent);color:#111;font-weight:700;border-radius:8px;padding:10px 16px;text-decoration:none;border:0;font-size:15px}
+.btn.off{background:var(--line);color:var(--dim)}
+dl{display:grid;grid-template-columns:9em 1fr;gap:4px 12px;margin:8px 0 0;font-size:14px}dt{color:var(--dim)}dd{margin:0}
+footer{max-width:880px;margin:24px auto;padding:0 16px;color:var(--dim);font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>MAHJONG LEAGUE <span class="dim" style="font-weight:500;font-size:14px">ファンサイト</span></h1>
+  <p>AI雀士たちが戦う架空の麻雀リーグ。選手・タイトル・ルール・歴代の記録をまとめています。</p>
+</header>
+<nav><div class="in" id="nav"></div></nav>
+<main id="app">読み込み中...</main>
+<footer>MAHJONG LEAGUE / AI雀士によるシミュレーション（日本プロ麻雀連盟 公式ルール準拠）。実在の人物・団体とは関係ありません。<br>
+<a href="/">リーグの全記録（データサイト）へ</a></footer>
+<script>
+// 開発支援（Stripe の Payment Link）。作成したら、ここに URL を入れる（例: https://buy.stripe.com/xxxx）
+const DONATE_URL = "";
+const DATA = "../data/";
+const TABS = [["home","トップ"],["players","選手名鑑"],["titles","タイトル"],["rules","ルール"],["hof","殿堂"],["support","応援・支援"]];
+const TITLES = ["鳳凰位","麒麟位","霊亀位","応龍位"];
+const TITLE_NOTE = {"鳳凰位":"鳳凰戦リーグの頂点を決める最高位。","麒麟位":"Mリーグ準拠のルールで争う。","霊亀位":"ウマ・オカなしの総合力勝負。","応龍位":"1着+1・4着−1だけを数える勝ち点戦。"};
+const DANS = ["初段","二段","三段","四段","五段","六段","七段","八段","九段"];
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let IDX = null, PLAYERS = [], HOLD = {};
+const $ = (id) => document.getElementById(id);
+
+async function getJSON(p) { const r = await fetch(DATA + p, { cache: "no-cache" }); if (!r.ok) throw new Error(p); return r.json(); }
+function tags(id) { return Object.entries(HOLD).filter(([, h]) => h.id === id).map(([t]) => `<span class="title-tag">${esc(t)}</span>`).join(" "); }
+function ruleDl(r) {
+  if (!r) return "";
+  const yn = (b) => (b ? "あり" : "なし");
+  const oka = (r.return_score - r.start_score) * 4 / 1000;
+  const uma = r.uma_mode === "sinking" ? "沈みウマ（浮き人数で変動）" : r.uma_mode === "win_loss" ? "なし（1着+1・4着−1のみ）" : r.uma.map((u) => (u > 0 ? "+" : "") + u).join(" / ");
+  return `<dl><dt>持ち点・返し</dt><dd>${r.start_score.toLocaleString()}点持ち ${r.return_score.toLocaleString()}点返し</dd>
+  <dt>オカ</dt><dd>${oka ? `あり（トップに +${oka}）` : "なし"}</dd><dt>ウマ</dt><dd>${uma}</dd>
+  <dt>一発・裏ドラ</dt><dd>${yn(r.ippatsu)}・${yn(r.ura_dora)}</dd><dt>槓ドラ・赤ドラ</dt><dd>${yn(r.kan_dora)}・${r.aka ? "あり（各色1枚）" : "なし"}</dd>
+  <dt>数え役満</dt><dd>${r.kazoe_yakuman ? "あり" : "なし"}</dd><dt>連荘</dt><dd>${r.draw_renchan === false ? "和了のみ" : "和了・流局時の親の聴牌"}</dd></dl>`;
+}
+const VIEWS = {
+  home() {
+    const cards = TITLES.map((t) => { const h = HOLD[t]; return `<div class="card"><span class="title-tag">${t}</span>
+      <div style="font-size:18px;font-weight:700;margin-top:6px">${h ? esc(h.name) : "空位"}</div>
+      <div class="dim small">${h ? `第${h.since}季から保持` : ""} ${esc(TITLE_NOTE[t])}</div></div>`; }).join("");
+    return `<h2>現在のタイトル保持者（第${IDX.current_season}季）</h2><div class="grid">${cards}</div>
+      <h2>このサイトについて</h2><div class="card">AI雀士たちが毎日リーグを戦い、昇格・降格、師弟の一門、衰えと引退を繰り返します。ここでは選手とタイトルの歴史を、読みやすくまとめています。対局の牌譜や詳しい成績は<a href="/">データサイト</a>へ。</div>`;
+  },
+  players() {
+    return `<div class="row"><input id="q" placeholder="名前で検索" style="flex:1;min-width:160px"><select id="lg"><option value="">全リーグ</option>${["A","B","C","D"].map((l) => `<option value="${l}">${l}リーグ</option>`).join("")}<option value="R">引退</option></select></div><div id="plist"></div>`;
+  },
+  titles() {
+    const rows = TITLES.map((t) => { const n = {}; for (const h of IDX.title_history) if (h.title === t) n[h.winner_name] = (n[h.winner_name] || 0) + 1;
+      const top = Object.entries(n).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([k, v]) => `${esc(k)}（${v}期）`).join("、") || "—";
+      return `<div class="card"><span class="title-tag">${t}</span> <span class="dim small">${esc(TITLE_NOTE[t])}</span><div style="margin-top:6px">${HOLD[t] ? `現保持者：<b>${esc(HOLD[t].name)}</b>` : ""}</div><div class="dim small">最多獲得：${top}</div></div>`; }).join("");
+    return `<h2>4つのタイトル</h2>${rows}`;
+  },
+  rules() {
+    return TITLES.map((t) => `<div class="card"><span class="title-tag">${t}</span>${ruleDl(IDX.rules?.[IDX.title_rules?.[t]])}</div>`).join("") +
+      `<div class="dim small">ルールは日本プロ麻雀連盟の公式ルールを基準にしています。</div>`;
+  },
+  hof() {
+    const hist = [...IDX.title_history].sort((a, b) => b.season - a.season);
+    return `<h2>歴代タイトル保持者</h2><div class="card"><table><thead><tr><th>季</th><th>タイトル</th><th>獲得者</th></tr></thead><tbody>${hist.map((h) => `<tr><td>第${h.season}季</td><td>${esc(h.title)}</td><td>${esc(h.winner_name)}${h.previous_name ? `<span class="dim small">（前：${esc(h.previous_name)}）</span>` : `<span class="dim small">（${esc(h.event || "")}）</span>`}</td></tr>`).join("")}</tbody></table></div>`;
+  },
+  support() {
+    return `<h2>開発のご支援</h2><div class="card">このリーグは個人で開発・運営しています。続けていくための開発費を、任意でご支援いただけます。<br><br>
+      ${DONATE_URL ? `<a class="btn" href="${esc(DONATE_URL)}" target="_blank" rel="noopener">支援する（Stripe）</a>` : `<span class="btn off">準備中です</span>`}
+      <div class="dim small" style="margin-top:10px">お支払いは Stripe の決済ページで行われます。カード情報は当サイトでは扱いません。</div></div>`;
+  },
+};
+function afterPlayers() {
+  const draw = () => {
+    const q = $("q").value.trim(), lg = $("lg").value;
+    const list = PLAYERS.filter((p) => (!q || (p.display_name || "").includes(q)) && (lg === "R" ? p.retired : lg ? !p.retired && p.league === lg : true))
+      .sort((a, b) => b.elo - a.elo).slice(0, 120);
+    $("plist").innerHTML = `<div class="grid">${list.map((p) => `<a class="card" style="display:block;color:inherit;text-decoration:none" href="/#player/${encodeURIComponent(p.id)}">
+      <b>${esc(p.display_name)}</b> ${tags(p.id)}<div class="dim small">${p.retired ? "引退" : p.league + "リーグ"}・Elo ${Math.round(p.elo)}・${p.games}半荘・${(p.initial_age || 0) + (p.total_seasons || 0)}歳</div></a>`).join("") || "<div class=dim>該当なし</div>"}</div>`;
+  };
+  $("q").addEventListener("input", draw); $("lg").addEventListener("change", draw); draw();
+}
+function show(tab) {
+  if (!VIEWS[tab]) tab = "home";
+  $("nav").innerHTML = TABS.map(([k, l]) => `<button class="${k === tab ? "on" : ""}" data-t="${k}">${l}</button>`).join("");
+  $("app").innerHTML = VIEWS[tab]();
+  if (tab === "players") afterPlayers();
+}
+document.addEventListener("click", (e) => { const b = e.target.closest("[data-t]"); if (b) { location.hash = b.dataset.t; } });
+window.addEventListener("hashchange", () => show(location.hash.slice(1)));
+(async () => {
+  try {
+    [IDX, PLAYERS] = await Promise.all([getJSON("index.json"), getJSON("players.json")]);
+    HOLD = IDX.titleholders || {};
+    show(location.hash.slice(1));
+  } catch (e) { $("app").innerHTML = '<div class="card">データを読み込めませんでした。時間をおいて開き直してください。</div>'; }
+})();
+</script>
+</body>
+</html>

@@ -30,7 +30,8 @@ kill $PHP_PID || true
 echo "=== 3. ページとデータを並べる ==="
 sed "s/__BUILD__/${GITHUB_SHA:-local}/g" "$ROOT/web/index.html" > "$OUT/index.html"
 cp "$ROOT/web/app.js" "$ROOT/web/style.css" "$OUT/"
-mkdir -p "$OUT/data"
+mkdir -p "$OUT/data" "$OUT/news"
+cp "$ROOT/fan-site/index.html" "$OUT/news/index.html"
 for f in index.json players.json players awards standings matches titles newcomer_league; do
   [ -e "$DATA/$f" ] && cp -r "$DATA/$f" "$OUT/data/"
 done
