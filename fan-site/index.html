@@ -49,8 +49,8 @@ footer{max-width:880px;margin:24px auto;padding:0 16px;color:var(--dim);font-siz
 <footer>CIRCUIT MAHJONG LEAGUE / AI雀士によるシミュレーション（日本プロ麻雀連盟 公式ルール準拠）。実在の人物・団体とは関係ありません。<br>
 <a href="/">リーグの全記録（データサイト）へ</a></footer>
 <script>
-// 開発支援（Stripe の Payment Link）。作成したら、ここに URL を入れる（例: https://buy.stripe.com/xxxx）
-const DONATE_URL = "";
+// 開発支援（OFUSE）。
+const DONATE_URL = "https://ofuse.me/engineering_rd0";
 const DATA = "../data/";
 const TABS = [["home","トップ"],["players","選手名鑑"],["titles","タイトル"],["rules","ルール"],["hof","殿堂"],["support","応援・支援"]];
 const TITLES = ["鳳凰位","麒麟位","霊亀位","応龍位"];
@@ -99,8 +99,8 @@ const VIEWS = {
   },
   support() {
     return `<h2>開発のご支援</h2><div class="card">このリーグは個人で開発・運営しています。続けていくための開発費を、任意でご支援いただけます。<br><br>
-      ${DONATE_URL ? `<a class="btn" href="${esc(DONATE_URL)}" target="_blank" rel="noopener">支援する（Stripe）</a>` : `<span class="btn off">準備中です</span>`}
-      <div class="dim small" style="margin-top:10px">お支払いは Stripe の決済ページで行われます。カード情報は当サイトでは扱いません。</div></div>`;
+      ${DONATE_URL ? `<a class="btn" href="${esc(DONATE_URL)}" target="_blank" rel="noopener">OFUSEで応援する</a>` : `<span class="btn off">準備中です</span>`}
+      <div class="dim small" style="margin-top:10px">お支払いは OFUSE のページで行われます。カード情報などは当サイトでは扱いません。</div></div>`;
   },
 };
 function afterPlayers() {
